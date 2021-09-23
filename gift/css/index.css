@@ -63,6 +63,7 @@ body :-ms-input-placeholder {
   height: 400px;
   text-align: center;
 }
+
 .container h1 {
   font-size: 40px;
   -webkit-transition-duration: 1s;
@@ -233,4 +234,73 @@ form button:hover {
     -webkit-transform: translateY(-900px) rotate(600deg);
             transform: translateY(-900px) rotate(600deg);
   }
+}
+
+.reading{
+  width:1300px;
+  height:600px;
+  position:relative;
+  float:left;
+  z-index: -9999;
+  margin:0px 20px;
+  border:8px solid rgba(14, 10, 252, 0);
+  /* display:none; */
+  padding-top: 30px;
+}
+
+.butt{
+  height: 48px;
+  width: 250px;
+  position:absolute;
+  z-index: 999;
+  left:0;
+  right:0;
+  top:360.5px;
+  /* bottom:0;
+  top:0; */
+  margin:auto;
+
+  outline: 0;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0);
+  
+  border-radius: 3px;
+  padding: 10px 15px;
+  /* display: block; */
+  text-align: center;
+  /* font-family: "Microsoft YaHei"; */
+  /* font-size: 18px; */
+  /* color: white; */
+  /* -webkit-transition-duration: 0.25s;
+          transition-duration: 0.25s; */
+  /* font-weight: 300; */
+}
+.butt:hover +.reading{
+  z-index:99;
+}
+.text{
+  width:520px;
+  height:600px;
+  border:8px solid rgba(14, 10, 252, 0);
+  border-radius: 3px;
+  /* z-index:99999; */
+  position: absolute;
+  font-size: 13px;
+  color: black;
+  text-align: justify;
+  /* 文章两端对齐 */
+  /* margin:20px 0px 0px 20px; */
+}
+.questions{
+  width:500px;
+  height:600px;
+  border:8px solid rgba(31, 253, 61, 0);
+  border-radius: 3px;
+  /* z-index:99999; */
+  position: absolute;
+  font-size: 14px;
+  color: black;
+  margin-left:800px;
+  /* margin-top: 20px; */
+  /* margin-right:20px; */
 }
