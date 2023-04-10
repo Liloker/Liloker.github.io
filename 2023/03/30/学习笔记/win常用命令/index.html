@@ -1,0 +1,386 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>win系统常用命令 | 逍 遥 の B l o g</title><meta name="keywords" content="cmd常用命令"><meta name="author" content="XiaoYao"><meta name="copyright" content="XiaoYao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="win系统常用命令">
+<meta property="og:url" content="https://w4xiaoyao.top/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/win%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+<meta property="og:site_name" content="逍 遥 の B l o g">
+<meta property="og:description" content="笔记">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/023.jpg">
+<meta property="article:published_time" content="2023-03-30T13:01:15.566Z">
+<meta property="article:modified_time" content="2021-05-16T16:00:00.000Z">
+<meta property="article:author" content="XiaoYao">
+<meta property="article:tag" content="cmd">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/023.jpg"><link rel="shortcut icon" href="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/favicon_hacker.png"><link rel="canonical" href="https://w4xiaoyao.top/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/win%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"Author: XiaoYao","link":"Link: ","source":"Source: 逍 遥 の B l o g","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source."}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'win系统常用命令',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-05-17 00:00:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><type="text/css" href="/css/mycss.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"><script src="/live2d-widget/autoload.js"></script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/profile_knife.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">55</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">68</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archive</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw far fa-images"></i><span> Gallery</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fas fa-gamepad"></i><span> Game1</span></a></li><li><a class="site-page child" href="/gamee/"><i class="fa-fw fas fa-gamepad"></i><span> Game2</span></a></li><li><a class="site-page child" href="/gameee/"><i class="fa-fw fas fa-gamepad"></i><span> Game3</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/023.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">逍 遥 の B l o g</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archive</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw far fa-images"></i><span> Gallery</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fas fa-gamepad"></i><span> Game1</span></a></li><li><a class="site-page child" href="/gamee/"><i class="fa-fw fas fa-gamepad"></i><span> Game2</span></a></li><li><a class="site-page child" href="/gameee/"><i class="fa-fw fas fa-gamepad"></i><span> Game3</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">win系统常用命令</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-03-30T13:01:15.566Z" title="Created 2023-03-30 21:01:15">2023-03-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-05-16T16:00:00.000Z" title="Updated 2021-05-17 00:00:00">2021-05-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">3.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>11min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="win系统常用命令"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>win10<strong>企业版</strong>，<strong>专业工作站版本不错</strong>，其他版本不能很好地支持一些命令</p>
+<p>cmd可视为powershell的子集</p>
+<h3 id="文件-夹-的增删改查"><a href="#文件-夹-的增删改查" class="headerlink" title="文件(夹)的增删改查"></a>文件(夹)的增删改查</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> 显示当前目录</span><br><span class="line"><span class="built_in">cd</span> .. 进入上级目录</span><br><span class="line"><span class="built_in">cd</span> . 还在当前目录</span><br><span class="line"><span class="built_in">cd</span> [文件夹名字] 进入文件夹</span><br><span class="line"><span class="built_in">dir</span> 显示当前目录</span><br><span class="line"><span class="built_in">dir</span> /b 只显示文件名</span><br><span class="line"><span class="built_in">dir</span> /S 递归显示所有内容</span><br><span class="line"><span class="built_in">dir</span> /X 现实别名，可以用来删除畸形文件与文件夹</span><br><span class="line"><span class="built_in">dir</span> <span class="built_in">ni</span>* 显示所有开头为<span class="built_in">ni</span>的文件</span><br><span class="line">tree [文件夹] 以树状图显示文件</span><br><span class="line"><span class="built_in">ren</span> [目标] [新名字]重命名 这里目标可以是绝对路径，（自己不在该目录下）</span><br><span class="line"></span><br><span class="line">rename 学习资料 <span class="string">&quot;学习资料../&quot;</span>  将文件夹重命名带有点结尾的，win不允许，所以删不掉打不开除非格式化</span><br><span class="line"><span class="built_in">dir</span> /x 查看文件短名字，复制用rename重命名为合法名字，即可打开</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">mkdir [文件夹名] 创建文件夹</span><br><span class="line"><span class="built_in">rmdir</span> [文件夹名] 删除文件夹</span><br><span class="line"><span class="built_in">cd</span> <span class="string">&quot;matlab 2016a&quot;</span> 当文件名有空格时使用双引号包裹</span><br><span class="line"><span class="built_in">md</span> c:\test\<span class="number">123</span> 递归创建文件夹（只能创建文件夹）</span><br><span class="line"><span class="built_in">rd</span> /s /q c:\test 静默删除test文件夹下的所有东西</span><br><span class="line"><span class="built_in">copy</span> go.txt c:\haha 复制go.txt到haha文件夹下</span><br><span class="line"><span class="built_in">copy</span> go.txt c:\haha\gogogo.txt 复制的同时还改名</span><br><span class="line"><span class="built_in">copy</span> /Y go1.txt+go2.txt go3.txt 合并文件夹（涉及隐写术）不换行</span><br><span class="line"><span class="built_in">copy</span> /b <span class="number">123</span>.jpg + 学习资料.zip new.jpg 将图片与压缩包合并，通过修改后缀名可打开查看</span><br><span class="line"><span class="built_in">move</span> 移动/剪切</span><br><span class="line"><span class="built_in">move</span> go1.txt c:\haha 剪切当前目录下的go1.txt到c盘的haha目录下，可直接改名</span><br><span class="line"><span class="built_in">del</span> go2.txt 删除某个文件</span><br><span class="line"><span class="built_in">del</span> [文件夹] 删除文件夹中的所有内容</span><br><span class="line"><span class="built_in">del</span> /f [文件夹] 强制删除</span><br><span class="line"><span class="built_in">del</span> /f /s /q [文件夹] 静默强制删除（不会询问是否确认删除）</span><br><span class="line">replace a.txt c:\new 把当前目录下的a.txt替换成c:\new目录下的a.txt</span><br><span class="line"><span class="built_in">type</span> a.txt 查看a.txt中的内容</span><br><span class="line"><span class="built_in">type</span> a.txt | more 慢慢看，按空格再显示</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="注册表文件"><a href="#注册表文件" class="headerlink" title="注册表文件"></a>注册表文件</h3><p>注册表对于win系统来说相当于神经系统</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">运行输入regedit，召唤注册表</span><br><span class="line"></span><br><span class="line">reg add <span class="string">&quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run&quot;</span> /v haha /t REG_SZ /d <span class="string">&quot;c:\a.txt&quot;</span> /f  强制在开机启动项注册表目录中添加一条叫haha的，/t类型为REG_SZ的项，运行文件为c:\a.txt 强制运行  开机启动项重启生效</span><br><span class="line"></span><br><span class="line">reg delete <span class="string">&quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run&quot;</span> /v haha /f 强制删除这个叫haha的开机启动项</span><br><span class="line"></span><br><span class="line">reg export <span class="string">&quot;hkcu\software\Microsoft\Unified Store&quot;</span> c:\abc.reg 将该项注册表导出到c:命名为abc.reg 用于备份，双击该reg文件即可恢复注册表文件，与导入命令等效</span><br><span class="line"></span><br><span class="line">reg import c:\abc.txt 导入注册表文件</span><br><span class="line"></span><br><span class="line">reg query <span class="string">&quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\IEXPLORE.EXE&quot;</span> /s 查看指定注册项</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="命令执行顺序"><a href="#命令执行顺序" class="headerlink" title="命令执行顺序"></a>命令执行顺序</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&amp; 按顺序执行多条命令，不管是否出错</span><br><span class="line">ipconfig &amp; <span class="built_in">dir</span></span><br><span class="line"></span><br><span class="line">&amp;&amp; 按顺序，出错则停止执行</span><br><span class="line">ipconfig &amp;&amp; <span class="built_in">dir</span></span><br><span class="line">find <span class="string">&quot;x&quot;</span> c:\a.txt &amp;&amp; <span class="built_in">echo</span> <span class="string">&#x27;success&#x27;</span> 在a.txt中，如果发现x字符，就输出success</span><br><span class="line"></span><br><span class="line">|| 按顺序执行多条命令，当碰到正确的，就不继续执行</span><br><span class="line">find <span class="string">&quot;x&quot;</span> c:\a.txt || <span class="built_in">echo</span> <span class="string">&#x27;success&#x27;</span></span><br><span class="line"></span><br><span class="line">| 管道命令</span><br><span class="line"><span class="built_in">dir</span> *.* /s /a <span class="number">2</span>&gt;&amp;<span class="number">1</span> | find /c <span class="string">&quot;.exe&quot;</span></span><br><span class="line">输出当前目录下所有文件夹包括子文件夹中的exe文件个数</span><br><span class="line"></span><br><span class="line">&gt; 把当前命令输出的内容进行覆盖（重定向）</span><br><span class="line">tasklist &gt; <span class="number">1</span>.txt 把当前任务列表（同任务管理器）中的内容输出到<span class="number">1</span>.txt文件中，<span class="built_in">cd</span> . &gt; <span class="number">2</span>.txt 就相当于创建一个txt</span><br><span class="line"></span><br><span class="line">&gt;&gt; 追加型重定向，不会覆盖</span><br><span class="line"><span class="built_in">echo</span> aaaaa &gt;&gt; <span class="number">1</span>.txt</span><br><span class="line"></span><br><span class="line">&lt; 从文件中获取信息</span><br><span class="line">date &lt; <span class="number">1</span>.txt  获取<span class="number">1</span>.txt的信息作为date的输入内容</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">@</span> 命令修饰符</span><br><span class="line">@<span class="built_in">cd</span> /d c:\new 执行命令的时候不打印内容（只能对输入正确命令生效）</span><br><span class="line"></span><br><span class="line">，逗号代替空格</span><br><span class="line"><span class="built_in">cd</span>,.. = <span class="built_in">cd</span> .. （很多防火墙不给输入空格）</span><br><span class="line"></span><br><span class="line">; 执行命令相同时，分离目标</span><br><span class="line"><span class="built_in">dir</span> c:\haha;c:\new</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="常用实用命令"><a href="#常用实用命令" class="headerlink" title="常用实用命令"></a>常用实用命令</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cls</span> 清屏</span><br><span class="line">ver 查看系统版本号</span><br><span class="line">winver 查看window版本号</span><br><span class="line">whoami 我是谁</span><br><span class="line">query user查询用户登录状态</span><br><span class="line">hostname 查看主机名</span><br><span class="line">vol 查看当前卷的序列号</span><br><span class="line">label 显示当前分区的卷标（有些企业会用到）</span><br><span class="line">label c:system 给c盘命名</span><br><span class="line">date /t 显示当前日期</span><br><span class="line">time /t 显示当前时间</span><br><span class="line"><span class="built_in">start</span> /max notepad.exe 最大化打开记事本文件，运行中也可以直接调出notepad.exe</span><br><span class="line">calc 弹出计算器</span><br><span class="line"><span class="keyword">exit</span> <span class="number">0</span> 退出cmd</span><br><span class="line">systeminfo 查看系统详细信息，包括补丁</span><br><span class="line">wmic 查看硬件信息</span><br><span class="line">wmic logicaldisk 查看逻辑磁盘信息</span><br><span class="line">logoff 注销用户</span><br><span class="line"></span><br><span class="line">shutdown /s 关闭计算机</span><br><span class="line">shutdown /s /t <span class="number">3600</span> 一小时后关机</span><br><span class="line">shutdown /a 终止系统关闭</span><br><span class="line"></span><br><span class="line">shutdown /<span class="built_in">r</span> 重启</span><br><span class="line"></span><br><span class="line">format d:/FS:ntfs /Q 快速格式化d盘，文件系统为ntfs系统</span><br><span class="line">chkdsk /f d:修复d盘的错误</span><br><span class="line"></span><br><span class="line">netsh advfirewall <span class="built_in">set</span> allprofiles state off/on 关闭开启防火墙，allprofiles可以替换为currentprofiles，domainprofiles，接触域环境之后了解</span><br><span class="line"></span><br><span class="line">schtasks /creat /<span class="built_in">sc</span> minute /mo <span class="number">20</span> /tn <span class="string">&quot;haha&quot;</span> /tr c:\cmd.bat</span><br><span class="line">创建一个名为haha的计划任务，任务每<span class="number">20</span>分钟执行一次cmd.bat</span><br><span class="line"></span><br><span class="line">schtasks /delete /tn <span class="string">&quot;haha&quot;</span> /f 删除名为haha的计划任务</span><br><span class="line"></span><br><span class="line">schtasks /run /tn <span class="string">&quot;haha&quot;</span> 现在运行计划任务</span><br><span class="line">schtasks /<span class="keyword">end</span> /tn <span class="string">&quot;haha&quot;</span> 停止运行计划任务</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="文本处理命令"><a href="#文本处理命令" class="headerlink" title="文本处理命令"></a>文本处理命令</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">find /N /I <span class="string">&quot;haha&quot;</span> a.txt 在a.txt中带着行号显示查找带有haha字符串的，忽略大小写的结果</span><br><span class="line">find /C <span class="string">&quot;haha&quot;</span> a.txt 在a.txt中，haha出现了几次</span><br><span class="line">findstr <span class="string">&quot;lai le&quot;</span> a.txt 在a.txt中发现lai le这个字符串，显示这行</span><br><span class="line">findstr /C:<span class="string">&quot;ai&quot;</span> a.txt 在a.txt中搜索关键词ai</span><br><span class="line">findstr /S /I <span class="string">&quot;ai&quot;</span> *.* 忽略大小写情况下，在当前所有目录和子目录所有文件中搜索关键词ai</span><br><span class="line">findstr <span class="string">&quot;^wo&quot;</span> a.txt 在a.txt中搜索以wo字符为开头的（这里^wo用到正则表达式）</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="自补充其他命令"><a href="#自补充其他命令" class="headerlink" title="自补充其他命令"></a>自补充其他命令</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">time 显示当前时间</span><br><span class="line">[命令] /? 获取帮助</span><br><span class="line">ctrl+z  ctrl+c  中断执行</span><br><span class="line">A: 从c盘进入到A盘</span><br><span class="line">chcp 查看cmd默认字符编码，默认<span class="number">936</span>是GBK (汉字内码扩展规范)</span><br><span class="line">chcp <span class="number">65501</span> <span class="number">65501</span>代表utf<span class="literal">-8</span> （使用nc传输中文乱码问题待解决）</span><br><span class="line"></span><br><span class="line">arp /a 查看arp表</span><br><span class="line">netsh i i show <span class="keyword">in</span> 查看本地连接的网卡id</span><br><span class="line">netsh <span class="literal">-c</span> <span class="string">&quot;i i&quot;</span> add neighbors <span class="number">11</span> <span class="string">&quot;192.168.1.1&quot;</span> <span class="string">&quot;aa-bb-cc-00-10-10&quot;</span> 将自己id强行绑定到路由器mac地址上</span><br><span class="line">此时已突破arp欺骗</span><br><span class="line"></span><br><span class="line">explorer.exe 启动文件资源管理器</span><br><span class="line"></span><br><span class="line">查看MD5值  MD5重合的概率是<span class="number">2</span>e<span class="literal">-128</span></span><br><span class="line">certutil <span class="literal">-hashfile</span> 文件名 MD5</span><br><span class="line">查看 SHA1</span><br><span class="line">certutil <span class="literal">-hashfile</span> 文件名 SHA1</span><br><span class="line">查看SHA256</span><br><span class="line">certutil <span class="literal">-hashfile</span> 文件名 SHA256</span><br><span class="line"></span><br><span class="line">win平台安装<span class="built_in">wget</span>之后</span><br><span class="line"><span class="built_in">wget</span> <span class="literal">-c</span>[断点续传]<span class="literal">-t</span> <span class="number">0</span>[重试次数] [<span class="type">url</span>] </span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="畸形文件夹"><a href="#畸形文件夹" class="headerlink" title="畸形文件夹"></a>畸形文件夹</h3><p>由Windows系统漏洞造成的无法删除情况。一些恶意软件往往利用系统漏洞建立一些畸形的非法文件，最常见的就是后边带…的文件夹。五种方法建立一个非法文件，列举如下（cmd中运行）</p>
+<p>1、md c:\…\  这种方法建立的文件夹是隐藏的、不可打开、无法删除的，当然隐藏不是指普通的隐藏，这种隐藏在Windows自带的资源管理器中无论如何也看不到。</p>
+<p>2、md “c:\test / “ 注意加空格和引号。这种方法建立的文件夹可见，可打开，可在该文件夹下创建、拷贝、删除文件，但不可删除。典型特征是文件夹末尾有空格。</p>
+<p>3、md c:\test…\ 这是最常见的。这种方法建立的文件夹可见，不可打开，不可删除，典型特征是文件夹尾部有“.”。</p>
+<p>4、md \.\c:\con\ 这种方法是强行建立一个与设备名相同的文件，造成无法删除，根据系统实际情况，也可能根本无法访问。因为文件夹名必须与设备名相同，所以这种方法典型的特征是文件夹名是固定的以下之一：con、aux、com1、com2、prn、nul。</p>
+<p>5、超长文件名。一些文件名过长的文件夹进行嵌套，导致内层文件夹因路径名过程无法访问。比如C:\111…1\111…11\111….1\2\ 这时候最里边的2文件夹就没办法访问了</p>
+<p>注意上边所提到的无法访问、无法删除都是指Windows自带的资源管理器，用cmd命令完全可以操作这些文件夹，否则有什么意义？用Windows自带管理器操作这些文件时，往往会看到错误提示：目标不存在、系统找不到该项目、路径错误、参数错误、MS-DOS功能无效等等类似的提示。</p>
+<hr>
+<p>​    接下来就讲解如何操作这些文件夹。</p>
+<ul>
+<li><p>对于第一种，这种方法基本已经失效，因为它只在win98上有效，估计现在没有用win98了，所以跳过。</p>
+</li>
+<li><p>对于第二种和第三种，这两种方法可以用一个杀手锏必杀。就是利用别名，我们不用考虑这个文件夹到底是怎么个结构，也不用考虑到底是怎么建成的，只要看一下它的别名就可以自由操作了。看别名的方法是用dir命令+/x参数。比如 dir c:\ /x 这个命令就是查看c盘下的所有文件，并显示别名。我们利用别名就可以随意操作这个文件了，比如：进入cd c:\AB259<del>1\ 删除rd c:\AB259</del>1\。</p>
+</li>
+<li><p>对于第四种，这种方法创建的非法文件比较特殊，能不能用Windows自带管理器访问要看系统具体情况，而且没有别名，那怎么办呢？我们来回忆一下它的原理：利用网络位置建立一个与设备名相同的非法文件。这句话说明之所以自带管理器无法操作是因为它在网络位置，那么我们在访问的时候加上网络位置就可以了！网络位置即在路径前加\.\。比如：进入 cd\.\c:\con\ 删除 rd\.\c:\con\。 这种文件夹一共就那么几种，应该很好识别！</p>
+</li>
+<li><p>对于第五种，这种方法很好破解，不就是因为路径长而无法访问吗？那我们就从最外层入手，先把最外层的文件夹名字改成短的，逐层深入，慢慢这个体系就瓦解了。为什么不从里边入手，因为里边路径太长，Windows系统不允许访问，更不允许重命名。如果这些超长文件夹被做了手脚（与上边的漏洞融合），导致无法重命名，那么。。。就要请出我们的cmd杀手锏了：别名！这些超长文件夹绝对是有别名的！从另一个角度看，访问这些超长文件夹也可以用8.3命名法，也就是用短文件名访问。所谓8.3命名法就是文件名不超过8个，扩展名不超过3个，比如123456789.txt写成123456~1.txt。</p>
+</li>
+</ul>
+<hr>
+<h3 id="ping命令学习笔记"><a href="#ping命令学习笔记" class="headerlink" title="ping命令学习笔记"></a>ping命令学习笔记</h3><p>ICMP的典型应用，常用来检测网络连通，搜集信息</p>
+<p>参数</p>
+<p>-a 设置发送ICMP ECHO Request报文的源IP地址。<br>-C 设置发送ICMP ECHO Request报文的取值范围1 <del>4294967295.缺省次数。为5次。<br>-h 设置TTL的值。取值范围1</del>255 .<br>-t 发送ICMP ECHO Request报文后,等|单位是ms ,取值范围是0 <del>待ICMP ECHO Reply报文的超时是65535.缺省超时时间是2000ms.<br>-m 设置发送下一个ICMP请求报文的等待取值范围1 ~ 10000 ,单位ms.<br>时间。缺省值为500ms.记录路由。缺省情况下,不记录路由。<br>-S ECHO-REQUEST报文长度(不包括IP单位是字节,取值范围是20</del>和ICMP报文头)。.8100.缺省报文长度是56字节。</p>
+<hr>
+<h3 id="关于dump"><a href="#关于dump" class="headerlink" title="关于dump"></a>关于dump</h3><p><strong>1、为什么要dump（dump的目的）？</strong>因为程序在计算机中运行时，在内存、CPU、I/O等设备上的数据都是动态的（或者说是易失的），也就是说数据使用完或者发生异常就会丢掉。如果我想得到某些时刻的数据（有可能是调试程序Bug或者收集某些信息），就要把他转储（dump）为静态（如文件）的形式。否则，这些数据你永远都拿不到。</p>
+<p><strong>2、dump转储的是什么内容（dump的对象）？</strong>其实就是将动态（易失）的数据，保存为静态的数据（持久数据）。像程序这种本来就保存在存储介质（如硬盘）中的数据，也就没有必要dump。</p>
+<p>常出现dump的场景：Unix/Linux中的coredump，Java中的headdump和threaddump，还有就是tcpdump工具</p>
+<hr>
+<p>inurl:asp?id= 教育</p>
+<p><a target="_blank" rel="noopener" href="http://www.tt120.org/article.asp?id=261">www.tt120.org/article.asp?id=261</a> </p>
+<p>enterdesk.com 爬虫图片</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">XiaoYao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://w4xiaoyao.top/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/win%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">https://w4xiaoyao.top/2023/03/30/学习笔记/win常用命令/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/cmd/">cmd</a></div><div class="post_share"><div class="social-share" data-image="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/023.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%94%BB%E5%87%BB%E6%A1%86%E6%9E%B6/"><img class="prev-cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/028.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">攻击框架</div></div></a></div><div class="next-post pull-right"><a href="/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%B8%8D%E6%83%B3%E5%86%99%E8%BF%99%E7%83%82%E5%A4%A7%E8%A1%97%E7%9A%84C++%E9%93%B6%E8%A1%8C%E8%BF%98%E8%B4%B7%E7%B3%BB%E7%BB%9F/"><img class="next-cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_019.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">不想写这烂大街的C++银行还贷系统</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Valine</span><span class="switch-btn"></span><span class="second-comment">Waline</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/profile_knife.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">XiaoYao</div><div class="author-info__description">多巴胺被赐予意义，人类社会便有了混沌，愿世间尚有净土，留存爱与欢喜。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">55</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">68</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Liloker"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Liloker" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:theone@liloker.anonaddy.me" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://blog.csdn.net/weixin_42160117" target="_blank" title="CSDN"><i class="far fa-copyright"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">来了，随便坐吧~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6-%E5%A4%B9-%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5"><span class="toc-number">2.</span> <span class="toc-text">文件(夹)的增删改查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%96%87%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">注册表文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="toc-number">4.</span> <span class="toc-text">命令执行顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%AE%9E%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">5.</span> <span class="toc-text">常用实用命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-number">6.</span> <span class="toc-text">文本处理命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E8%A1%A5%E5%85%85%E5%85%B6%E4%BB%96%E5%91%BD%E4%BB%A4"><span class="toc-number">7.</span> <span class="toc-text">自补充其他命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%95%B8%E5%BD%A2%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">8.</span> <span class="toc-text">畸形文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ping%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="toc-number">9.</span> <span class="toc-text">ping命令学习笔记</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8Edump"><span class="toc-number">10.</span> <span class="toc-text">关于dump</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E8%A7%92%E5%8A%A8%E9%87%8F%E5%AE%88%E6%81%92/" title="角动量守恒"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/010.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="角动量守恒"/></a><div class="content"><a class="title" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E8%A7%92%E5%8A%A8%E9%87%8F%E5%AE%88%E6%81%92/" title="角动量守恒">角动量守恒</a><time datetime="2023-03-30T13:01:15.574Z" title="Created 2023-03-30 21:01:15">2023-03-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E5%AE%9E%E6%88%98Linux%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" title="实战Linux应急响应"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_007.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="实战Linux应急响应"/></a><div class="content"><a class="title" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E5%AE%9E%E6%88%98Linux%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" title="实战Linux应急响应">实战Linux应急响应</a><time datetime="2023-03-30T13:01:15.574Z" title="Created 2023-03-30 21:01:15">2023-03-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E7%94%A8powershell%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E5%B9%B6%E8%AE%BE%E4%B8%BA%E5%A3%81%E7%BA%B8/" title="计划任务运行powershell自动获取聚焦图片并设为壁纸"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/010.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计划任务运行powershell自动获取聚焦图片并设为壁纸"/></a><div class="content"><a class="title" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E7%94%A8powershell%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E5%B9%B6%E8%AE%BE%E4%B8%BA%E5%A3%81%E7%BA%B8/" title="计划任务运行powershell自动获取聚焦图片并设为壁纸">计划任务运行powershell自动获取聚焦图片并设为壁纸</a><time datetime="2023-03-30T13:01:15.573Z" title="Created 2023-03-30 21:01:15">2023-03-30</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/023.jpg')">#footer-wrap
+  if theme.footer.owner.enable
+    - var now = new Date()
+    - var nowYear = now.getFullYear()
+    if theme.footer.owner.since && theme.footer.owner.since != nowYear
+      .copyright!= `&copy;${theme.footer.owner.since} - ${nowYear} By ${config.author}`
+    else
+      .copyright!= `&copy;${nowYear} By ${config.author}`
+  if theme.footer.copyright
+    .framework-info
+      span= _p('footer.framework') + ' '
+      a(href='https://hexo.io')= 'Hexo'
+      span.footer-separator |
+      span= _p('footer.theme') + ' '
+      a(href='https://github.com/jerryc127/hexo-theme-butterfly')= 'Butterfly'
+  if theme.footer.custom_text
+    .footer_custom_text!=`${theme.footer.custom_text}`
+</footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="Increase font size"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="Decrease font size"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'RYm4g1Khr0F0wyTlik3kI2We-MdYXbMMI',
+      appKey: 'u9VLeiSQuTLpO2mWRAMlYrKX',
+      placeholder: '随便说两句吧~',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick,mail"],
+      visitor: true
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script>function loadWaline () {
+  function initWaline () {
+    const waline = new Waline(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://waline2-five.vercel.app/',
+      avatar: 'identicon',
+      path: location.pathname,
+      emojiCDN: '',
+      emojiMaps: "",
+      visitor: true
+    }, {"pageSize":10,"placeholder":"随便留下点什么吧~","langMode":{"admin":"博主","nick":"xiaoyao"}}))
+  }
+
+  if (typeof Waline === 'function') initWaline() 
+  else getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js').then(initWaline)
+}
+
+if ('Valine' === 'Waline' || !true) {
+  if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="7988378536" data-server="tencent" data-type="playlist" data-fixed="true" data-mini="true" data-autoplay="true" data-theme="#408fda" data-order="random" data-preload="auto" data-mutex="true" muted></div><script type="text/javascript" src="/js/myjs.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener toc scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

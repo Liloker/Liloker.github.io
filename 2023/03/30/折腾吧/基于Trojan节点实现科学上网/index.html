@@ -1,0 +1,725 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>基于Trojan节点实现科学上网 | 逍 遥 の B l o g</title><meta name="keywords" content="笔记,Trojan,端口,SOCKS5,VPS,BBR加速"><meta name="author" content="XiaoYao"><meta name="copyright" content="XiaoYao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="基于trojan的科学上网">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于Trojan节点实现科学上网">
+<meta property="og:url" content="https://w4xiaoyao.top/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E5%9F%BA%E4%BA%8ETrojan%E8%8A%82%E7%82%B9%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/">
+<meta property="og:site_name" content="逍 遥 の B l o g">
+<meta property="og:description" content="基于trojan的科学上网">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/009.jpg">
+<meta property="article:published_time" content="2023-03-30T13:01:15.573Z">
+<meta property="article:modified_time" content="2021-05-07T13:04:25.000Z">
+<meta property="article:author" content="XiaoYao">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="Trojan">
+<meta property="article:tag" content="端口">
+<meta property="article:tag" content="SOCKS5">
+<meta property="article:tag" content="VPS">
+<meta property="article:tag" content="BBR加速">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/009.jpg"><link rel="shortcut icon" href="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/favicon_hacker.png"><link rel="canonical" href="https://w4xiaoyao.top/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E5%9F%BA%E4%BA%8ETrojan%E8%8A%82%E7%82%B9%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"Author: XiaoYao","link":"Link: ","source":"Source: 逍 遥 の B l o g","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source."}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '基于Trojan节点实现科学上网',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-05-07 21:04:25'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><type="text/css" href="/css/mycss.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"><script src="/live2d-widget/autoload.js"></script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/profile_knife.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">55</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">68</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archive</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw far fa-images"></i><span> Gallery</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fas fa-gamepad"></i><span> Game1</span></a></li><li><a class="site-page child" href="/gamee/"><i class="fa-fw fas fa-gamepad"></i><span> Game2</span></a></li><li><a class="site-page child" href="/gameee/"><i class="fa-fw fas fa-gamepad"></i><span> Game3</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/009.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">逍 遥 の B l o g</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archive</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw far fa-images"></i><span> Gallery</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fas fa-gamepad"></i><span> Game1</span></a></li><li><a class="site-page child" href="/gamee/"><i class="fa-fw fas fa-gamepad"></i><span> Game2</span></a></li><li><a class="site-page child" href="/gameee/"><i class="fa-fw fas fa-gamepad"></i><span> Game3</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">基于Trojan节点实现科学上网</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-03-30T13:01:15.573Z" title="Created 2023-03-30 21:01:15">2023-03-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-05-07T13:04:25.000Z" title="Updated 2021-05-07 21:04:25">2021-05-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%98%E8%85%BE%E5%90%A7/">折腾吧</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">9.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>35min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="基于Trojan节点实现科学上网"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="记一次基于Trojan搭建xx的经历"><a href="#记一次基于Trojan搭建xx的经历" class="headerlink" title="记一次基于Trojan搭建xx的经历"></a>记一次基于Trojan搭建xx的经历</h2><h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><ul>
+<li><p>租一个vultr的vps，据说ipv6的最低有2.5$，优惠见网站<a target="_blank" rel="noopener" href="https://www.vultryhw.cn/">https://www.vultryhw.cn/</a></p>
+</li>
+<li><p>vultr和namecheap两个都可以在国内访问2022.3.9实测</p>
+<p>据说有个白嫖网站，<a target="_blank" rel="noopener" href="https://www.freenom.com/zh/index.html?lang=zh">https://www.freenom.com/zh/index.html?lang=zh</a></p>
+</li>
+<li><p>域名A解析到vps的IP</p>
+</li>
+<li><p>vps安装依赖项命令：</p>
+<p>centOS：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">centos：yum update -y &amp;&amp; yum install sudo newt curl -y &amp;&amp; sudo -i</span><br></pre></td></tr></table></figure>
+
+<p><strong>debian</strong>、ubuntu：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get update &amp;&amp; apt-get install sudo whiptail curl locales -y &amp;&amp; sudo -i</span><br></pre></td></tr></table></figure></li>
+<li><p>安装前确保打开80和443端口:</p>
+<p>centos7 系列</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --state #查看防火墙状态</span><br><span class="line">firewall-cmd --list-ports #查看开放端口</span><br><span class="line">systemctl start firewalld #开启防火墙</span><br><span class="line">firewall-cmd --zone=public --add-port=6666/tcp --permanent #--zone #作用域 --add-port=6666/tcp  # 添加端口，格式为：端口/通讯协议 --permanent  # 永久生效，没有此参数重启后失效</span><br><span class="line">firewall-cmd --reload #重启防火墙</span><br><span class="line">netstat -ntlp #查看当前所有tcp端口·</span><br><span class="line">netstat -ntulp |grep 6666 #查看所有6666端口使用情况</span><br></pre></td></tr></table></figure>
+
+
+
+<p>debian，ubuntu系列 打开80端口与查看80端口命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">netstat -anp</span><br><span class="line">apt-get update</span><br><span class="line">apt-get install ncat</span><br><span class="line">nc -lp 80 &amp;</span><br><span class="line">netstat -an | grep 80</span><br><span class="line">netstat -an | grep 80</span><br></pre></td></tr></table></figure>
+
+<p>443端口操作同上</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">安装iptables查看端口（通常系统自带）</span><br><span class="line">apt-get install iptables</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>以下适合Linux Debian10操作系统的服务器，开启防火墙以及端口持久化的方法</p>
+<p>如果遇到创建服务器的时候报错服务器错误，或者点击日志发现主机拒绝访问这种情况可能是服务器的防火墙没有开启</p>
+<p>排查方法：telnet：port 看是否可以连通</p>
+<p>如果没法连通需要开放防火墙端口 </p>
+<p>首先安装 iptables（通常系统都会自带，如果没有就需要安装），使用以下命令 </p>
+<p>sudo apt-get update </p>
+<p>sudo apt-get install iptables </p>
+<p>安装成功后使用以下命令开放一个个端口 </p>
+<p>iptables -I INPUT -p tcp –dport 8080 -j ACCEPT </p>
+<p>开启一个范围的端口</p>
+<p>iptables  -A INPUT -p tcp –dport 51000：60000 -j ACCEPT</p>
+<p>设置完就已经放行了指定的端口，但重启后会失效，所以需要设置持续生效规则： </p>
+<p>输入以下安装 iptables-persistent </p>
+<p>sudo apt-get install iptables-persistent </p>
+<p>输入以下命令保存规则持续生效 </p>
+<p>netfilter-persistent save </p>
+<p>netfilter-persistent reload </p>
+<p>完成之后端口就会持续开放。</p>
+</blockquote>
+</li>
+<li><p>debian查看端口的方法：<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_14414732/2513736">https://blog.51cto.com/u_14414732/2513736</a></p>
+</li>
+<li><p>debian查看防火墙状态：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  apt-get install ufw <span class="comment">#hostus默认没安装防火墙</span></span><br><span class="line">  sudo ufw status</span><br><span class="line">/etc/init.d/ufw stop</span><br></pre></td></tr></table></figure>
+
+<p>关闭：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw <span class="built_in">disable</span>|<span class="built_in">enable</span>  <span class="comment">#否则连接不上80和443端口</span></span><br><span class="line">或者开启ufw状态下，单独开放22,80和443端口，ufw allow 80</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">  参考：https:&#x2F;&#x2F;www.jb51.net&#x2F;os&#x2F;Ubuntu&#x2F;72109.html</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">### 踩坑</span><br><span class="line"></span><br><span class="line">- debian开放所有端口（这个一键安装教程真坑，真是一键入坑，关闭防火墙≠开启所有端口）</span><br><span class="line"></span><br><span class="line">  主要是用了这句：</span><br><span class="line"></span><br><span class="line">  &#96;&#96;&#96;bash</span><br><span class="line">  iptables -A INPUT -p tcp --dport 51000：60000 -j ACCEPT</span><br></pre></td></tr></table></figure>
+
+<p>真坑，把1到65535全开了很不正常的吧，trojan原理是伪装，那这样本身会造成系统的不安全，而且端口全开也有一种大张旗鼓的感觉？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">以下适合Linux debian10操作系统的服务器，开启防火墙以及端口持久化的方法</span><br><span class="line"></span><br><span class="line">如果遇到创建服务器的时候报错服务器错误，或者点击日志发现主机拒绝访问这种情况可能是服务器的防火墙没有开启</span><br><span class="line"></span><br><span class="line">排查方法：telnet：prot 看是否可以连通</span><br><span class="line"></span><br><span class="line">如果没法连通需要开放防火墙端口</span><br><span class="line"></span><br><span class="line">首先安装 iptables（通常系统都会自带，如果没有就需要安装），使用以下命令</span><br><span class="line"></span><br><span class="line">sudo apt-get update</span><br><span class="line"></span><br><span class="line">sudo apt-get install iptables</span><br><span class="line"></span><br><span class="line">安装成功后使用以下命令开放一个个端口</span><br><span class="line"></span><br><span class="line">iptables -I INPUT -p tcp --dport 8080 -j ACCEPT</span><br><span class="line"></span><br><span class="line">开启一个范围的端口</span><br><span class="line"></span><br><span class="line">iptables -A INPUT -p tcp --dport 51000：60000 -j ACCEPT</span><br><span class="line"></span><br><span class="line">设置完就已经放行了指定的端口，但重启后会失效，所以需要设置持续生效规则：</span><br><span class="line"></span><br><span class="line">输入以下安装 iptables-persistent</span><br><span class="line"></span><br><span class="line">sudo apt-get install iptables-persistent</span><br><span class="line"></span><br><span class="line">输入以下命令保存规则持续生效</span><br><span class="line"></span><br><span class="line">netfilter-persistent save</span><br><span class="line"></span><br><span class="line">netfilter-persistent reload</span><br><span class="line"></span><br><span class="line">完成之后端口就会持续开放。</span><br></pre></td></tr></table></figure></li>
+<li><p>一键安装脚本：（不要用，用下面的新方法）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/johnrosen1/trojan-gfw-script/master/vps.sh)</span>&quot;</span> </span><br></pre></td></tr></table></figure>
+
+<p>这个版本开发者更新后删除了v2ray，下面命令安装旧版本，可用于安装多个应用： </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/harry3633/trojan-gfw-script/master/trojangui.sh)</span>&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>输入解析好的域名</p>
+</li>
+<li><p>设置密码：wdnmd123</p>
+</li>
+<li><p>遇到的坑：centos内置防火墙，需要根据os版本提前关闭防火墙，vultr上默认安装的centos可能有默认的SELinux，除了关闭防火墙，还需要配置SELinux放行端口</p>
+<ul>
+<li><p>firewalld is not running解决方案<a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/5552ef47f509bd518ffbc933.html">https://jingyan.baidu.com/article/5552ef47f509bd518ffbc933.html</a></p>
+</li>
+<li><p>坑中坑，真坑，累了看不到希望。。。</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>折腾了半天，得到的却是这么个结果：</li>
+</ul>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210512202136445.png" alt="image-20210512202136445"></p>
+<p>换方法，（这里换方法直接搜这里证书申请失败来着，于是发现了新方法）</p>
+<hr>
+<h3 id="小收获"><a href="#小收获" class="headerlink" title="小收获"></a>小收获</h3><p>找方法时发现个好玩的<a target="_blank" rel="noopener" href="http://luyiminggonnabeok.cn/2019/12/30/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAtraccar%E6%89%8B%E6%9C%BAGPS%E8%BF%BD%E8%B8%AA%E6%9C%8D%E5%8A%A1%E5%99%A8/">http://luyiminggonnabeok.cn/2019/12/30/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAtraccar%E6%89%8B%E6%9C%BAGPS%E8%BF%BD%E8%B8%AA%E6%9C%8D%E5%8A%A1%E5%99%A8/</a>    改天尝试一下用vps搭建traccar手机GPS追踪服务。</p>
+<p>检查vps端口是否能访问的网址：<a target="_blank" rel="noopener" href="https://www.toolsdaquan.com/ipcheck/">https://www.toolsdaquan.com/ipcheck/</a></p>
+<hr>
+<h2 id="脚本部署"><a href="#脚本部署" class="headerlink" title="脚本部署"></a>脚本部署</h2><h3 id="VPS部署"><a href="#VPS部署" class="headerlink" title="VPS部署"></a>VPS部署</h3><p>先上结果：c23e1df9</p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210512203634914.png" alt="image-20210512203634914"></p>
+<p>参考教程：<a target="_blank" rel="noopener" href="https://www.v2rayssr.com/trojan-2.html">https://www.v2rayssr.com/trojan-2.html</a></p>
+<p>在采用此教程之前经历了一次旧方法的失败，所以可能已经具备了旧方法的一些事前准备：</p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210512205300533.png" alt="image-20210512205300533"></p>
+<p>除了旧方法的防火墙关闭，打开80和443端口，更新依赖项的命令之外，别的应该没影响了。</p>
+<p>下面说新方法的正式步骤：</p>
+<h4 id="安装半自动化脚本："><a href="#安装半自动化脚本：" class="headerlink" title="安装半自动化脚本："></a>安装半自动化脚本：</h4><p>1、检查SELinux是否关闭，本文用的是Debian，不存在SELinux</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/sbin/sestatus -v      <span class="comment">##如果返回参数为enabled即为开启，disabled为关闭</span></span><br></pre></td></tr></table></figure>
+
+<p>2、安装基础依赖环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum -y install wget    <span class="comment">##ContOS Yum 安装 wget</span></span><br><span class="line">apt-get install wget   <span class="comment">##Debian Ubuntu 安装 wget</span></span><br></pre></td></tr></table></figure>
+
+<p>3、运行Trojan安装代码</p>
+<p>分3行，一行一行复制，有条不紊，出问题好查错</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate <span class="string">&quot;https://raw.githubusercontent.com/V2RaySSR/Trojansh/master/trojan1.sh&quot;</span> &amp;&amp; chmod +x trojan1.sh &amp;&amp; ./trojan1.sh</span><br><span class="line"></span><br><span class="line">检查安装依赖，少什么自动补什么</span><br><span class="line">本过程安装了sudo/nginx/wget/unzip/zip/curl/tar/trojan</span><br><span class="line">现在你访问 http://liloker.club 应该有伪装站点的存在了</span><br><span class="line">伪装站点目录在 /usr/share/nginx/html 可自行更换网站</span><br><span class="line">Trojan配置文件在 /usr/<span class="built_in">local</span>/etc/trojan</span><br><span class="line">检测没有问题之后可以进行下一部分安装</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate <span class="string">&quot;https://raw.githubusercontent.com/V2RaySSR/Trojansh/master/trojan2.sh&quot;</span> &amp;&amp; chmod +x trojan2.sh &amp;&amp; ./trojan2.sh</span><br><span class="line"></span><br><span class="line">第二步，证书申请及安装，由于脚本申请次数限制，这步容易报错，如果出错，可以到此教程的youtube链接中查看</span><br><span class="line">手动申请证书完成后的操作：</span><br><span class="line">1、证书申请下来后请粘贴到/usr/<span class="built_in">local</span>/etc/trojan目录</span><br><span class="line">2、证书文件改名为 cert.crt</span><br><span class="line">3、秘钥文件改名为 private.key</span><br><span class="line">若完成上述步骤可跳过此脚本并进行第三部分脚本的操作</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate <span class="string">&quot;https://raw.githubusercontent.com/V2RaySSR/Trojansh/master/trojan3.sh&quot;</span> &amp;&amp; chmod +x trojan3.sh &amp;&amp; ./trojan3.sh</span><br><span class="line"></span><br><span class="line">这步配置trojan服务器端，结束后https://www.liloker.club输入完整网址成功，同时存在https://liloker.club和http://liloker.club这样不安全的网址</span><br><span class="line"></span><br><span class="line">若需修改密码或忘记密码</span><br><span class="line">请访问VPS: /usr/<span class="built_in">local</span>/etc/trojan/config.json</span><br><span class="line"></span><br><span class="line">PC的v2ray配置时地址填域名，填ip时返回503，可能是因为这个IP 是共享的，服务器根据 Request 的 Header 中 host 值来确定路由到哪台应用服务上，可使用打开 postman，仍然通过 IP 访问，添加 host 参数，值为域名，Send 请求后返回是否为正常的页面内容来判断</span><br></pre></td></tr></table></figure>
+
+<p>结束后即出现开头的图：</p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210512203634914.png" alt="image-20210512203634914"></p>
+<p>配套视频教程：<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=RBNKJ7iUtm0">https://www.youtube.com/watch?v=RBNKJ7iUtm0</a></p>
+<p>4、安装BBRPLUS加速（命令已失效）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate <span class="string">&quot;https://github.com/ylx2016/Linux-NetSpeed/releases/download/sh/tcp.sh&quot;</span> &amp;&amp; chmod +x tcp.sh &amp;&amp; ./tcp.sh</span><br></pre></td></tr></table></figure>
+
+<p>坑爹，链接404了！</p>
+<p>后面单独开一个BBR加速部分，先跑起来再加速。</p>
+<h4 id="手动安装步骤"><a href="#手动安装步骤" class="headerlink" title="手动安装步骤"></a>手动安装步骤</h4><p><a target="_blank" rel="noopener" href="https://www.v2rayssr.com/trojanssl.html">https://www.v2rayssr.com/trojanssl.html</a></p>
+<p>配套视频 <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=hWZKbaV3xDk">https://www.youtube.com/watch?v=hWZKbaV3xDk</a></p>
+<h4 id="trojan服务端"><a href="#trojan服务端" class="headerlink" title="trojan服务端"></a>trojan服务端</h4><p><a target="_blank" rel="noopener" href="https://github.com/trojan-gfw/trojan/releases">https://github.com/trojan-gfw/trojan/releases</a></p>
+<hr>
+<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><h4 id="windows：v2rayN"><a href="#windows：v2rayN" class="headerlink" title="windows：v2rayN"></a>windows：v2rayN</h4><p>新方法给的链接都挂掉了，去github上找找</p>
+<p><strong><a target="_blank" rel="noopener" href="https://github.com/2dust/v2rayN/releases/tag/4.15">https://github.com/2dust/v2rayN/releases/tag/4.15</a> 宝藏链接，下载里面的core版本就可以在win客户端运行，如果不行，可能是.NET版本有问题</strong></p>
+<p>查了下，自己的win10上好像也没有.NET framework。。。。。。</p>
+<hr>
+<h5 id="虚拟机win7-x64尝试："><a href="#虚拟机win7-x64尝试：" class="headerlink" title="虚拟机win7 x64尝试："></a>虚拟机win7 x64尝试：</h5><p>下载后在虚拟机的win7上报错：程序停止运行</p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210513144900521.png" alt="image-20210513144900521"></p>
+<p>按要求安装了4030319.1版本，结果又报错：错误代码：clr20r3</p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210513145855108.png" alt="image-20210513145855108"></p>
+<p>百度说是需要更新.NET framework，靠谱链接：V2ray依赖项.NET framework框架安装： <a target="_blank" rel="noopener" href="https://dotnet.microsoft.com/download/dotnet-framework/thank-you/net472-web-installer">https://dotnet.microsoft.com/download/dotnet-framework/thank-you/net472-web-installer</a> 安装失败，说是网络原因，找到下载源官网下载<a target="_blank" rel="noopener" href="https://dotnet.microsoft.com/download/dotnet-framework/net472%E3%80%82">https://dotnet.microsoft.com/download/dotnet-framework/net472。</a></p>
+<p>又报错，这次说证书错误<img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210513144639710.png" alt="image-20210513144639710"></p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210513172707714.png" alt="image-20210513172707714"></p>
+<p>崩溃。。。。。。</p>
+<hr>
+<p>后来在<a target="_blank" rel="noopener" href="https://bbs.csdn.net/topics/391822424%E5%8F%91%E7%8E%B0%E5%8F%AF%E8%83%BD%E5%B0%B1%E6%98%AFnet%E6%A1%86%E6%9E%B6%E7%89%88%E6%9C%AC%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%8C%E5%A5%87%E4%BA%86%E6%80%AA%E4%BA%86%EF%BC%8C%E6%88%91%E5%B0%B1%E6%98%AF%E6%8C%89%E8%A6%81%E6%B1%82%E5%AE%89%E8%A3%85%E7%9A%84%E9%82%A3%E4%B8%AA%E7%89%88%E6%9C%AC%E7%9A%84%E6%A1%86%E6%9E%B6%EF%BC%8C%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8%E4%BA%86%EF%BC%8C%E8%BF%99%E4%B8%AA%E5%9B%9E%E7%AD%94%E6%89%AF%E5%88%B0%E7%B3%BB%E7%BB%9F%EF%BC%8C%E4%BA%8E%E6%98%AF%E6%88%91%E6%8A%8A%E8%BD%AF%E4%BB%B6%E4%BB%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%8B%96%E5%88%B0%E4%B8%BB%E6%9C%BA%E5%8F%91%E7%8E%B0%E5%B0%B1%E8%BF%90%E8%A1%8C%E6%88%90%E5%8A%9F%E4%BA%86%E3%80%82%E3%80%82%E3%80%82%E3%80%82%E3%80%82%E3%80%82%E6%88%91%E6%9C%89%E7%82%B9%E6%80%80%E7%96%91%E6%98%AF%E4%B9%8B%E5%89%8D%E6%8A%93%E5%8C%85%E5%9C%A8%E7%B3%BB%E7%BB%9F%E9%87%8C%E7%95%99%E7%9A%84%E8%AF%81%E4%B9%A6%E5%BD%B1%E5%93%8D%E7%9A%84%E3%80%82%E3%80%82%E3%80%82">https://bbs.csdn.net/topics/391822424发现可能就是net框架版本的问题，奇了怪了，我就是按要求安装的那个版本的框架，不起作用了，这个回答扯到系统，于是我把软件从虚拟机拖到主机发现就运行成功了。。。。。。我有点怀疑是之前抓包在系统里留的证书影响的。。。</a></p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210513151225071.png" alt="image-20210513151225071"></p>
+<p>之后还是想把VM中的win7搞定，看了几个问题解决方案，感觉就像是NET版本的问题，决定把net升级一下，教程链接<a target="_blank" rel="noopener" href="https://blog.csdn.net/richardfjf/article/details/108112229">https://blog.csdn.net/richardfjf/article/details/108112229</a> 这个教程涉及到系统的补丁，说是没有补丁高版本的NET框架就会报签名的错。。。</p>
+<p>成功了！</p>
+<p>安装完上面那个win7补丁后NET4.7.3081.0版本就能顺利安装上了，然后v2rayN也能正常运行了，和主机一样可以使用。</p>
+<hr>
+<h5 id="宿主机win10-x64尝试"><a href="#宿主机win10-x64尝试" class="headerlink" title="宿主机win10 x64尝试:"></a>宿主机win10 x64尝试:</h5><p>在主机上直接运行<a target="_blank" rel="noopener" href="https://github.com/2dust/v2rayN/releases/tag/4.15%E4%B8%ADv2rayN-core%E7%89%88%E6%9C%AC%E7%9A%84%EF%BC%8C%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%8C%E7%81%AB%E7%8B%90%E9%BB%98%E8%AE%A4%E4%BD%BF%E7%94%A8%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%90%86%EF%BC%8Cv2ray-core%E4%BD%BF%E7%94%A8%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%90%86%E3%80%82">https://github.com/2dust/v2rayN/releases/tag/4.15中v2rayN-core版本的，配置服务器，火狐默认使用系统代理，v2ray-core使用自动配置系统代理。</a></p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210513152657060.png" alt="image-20210513152657060"></p>
+<hr>
+<p>关于trojanWin，就像电脑版的Igniter一样的木马图标</p>
+<p>资源链接：<a target="_blank" rel="noopener" href="https://github.com/rkzrdm/TrojanWin">https://github.com/rkzrdm/TrojanWin</a> 但是貌似只是把trojan.exe装了个UI界面，没什么用</p>
+<p>tips：蓝灯开启后，火狐使用的是系统代理。这里trojan一直怀疑需要手动配置socks5代理</p>
+<hr>
+<h4 id="Android：lgnite"><a href="#Android：lgnite" class="headerlink" title="Android：lgnite"></a>Android：lgnite</h4><p>安卓端使用lgniter</p>
+<p>trojan的github资源：<a target="_blank" rel="noopener" href="https://github.com/trojan-gfw/trojan/wiki/Mobile-Platforms">https://github.com/trojan-gfw/trojan/wiki/Mobile-Platforms</a></p>
+<p>忘记手机是哪个链接下的了，<a target="_blank" rel="noopener" href="https://github.com/trojan-gfw/igniter/releases/tag/v0.10.3-beta%EF%BC%8C%E8%BF%99%E4%B8%AA%E9%93%BE%E6%8E%A5%E4%B9%9F%E6%9C%89%E4%B8%8D%E5%B0%91">https://github.com/trojan-gfw/igniter/releases/tag/v0.10.3-beta，这个链接也有不少</a></p>
+<pre><code>Enable IPv6：是否支持 IPv6，国内用户支持 IPv6 的终端较少，启用不启用关系大
+Verify Certificate：是否验证证书，默认是打开的，对于自签名的服务器，建议关闭此项
+Bypass China with Clash：是否通过 Clash 优化绕过中国网络的样子，因为没仔细研究其优化策略，也不好说是否有效，建议使用默认开启即可
+关于igniter:   https://www.rultr.com/tutorials/vps/3825.html
+</code></pre>
+<p>但是！</p>
+<p>使用lgniter测试成功，ip地址待验证，验证结果很不幸，不知道为什么，手机挂了Igniter之后从ip138查到的ip地址是一样的。。。</p>
+<p>不过话说回来，手机IP也应该是运营商基站根据DHCP这种类似的协议进行动态ip分配的，所以理论上可以通过打开飞行模式再关闭，或者换一个基站，就变ip了？（待测试）</p>
+<hr>
+<h4 id="mac：没搞过"><a href="#mac：没搞过" class="headerlink" title="mac：没搞过"></a>mac：没搞过</h4><p><a target="_blank" rel="noopener" href="https://www.datacenterfarm.com/3254.html">https://www.datacenterfarm.com/3254.html</a></p>
+<p>这个链接，看看就行</p>
+<h4 id="ios"><a href="#ios" class="headerlink" title="ios"></a>ios</h4><p>参考西部世界</p>
+<p><a target="_blank" rel="noopener" href="https://xbsj7625.space/portal/page/download?client=ios">https://xbsj7625.space/portal/page/download?client=ios</a></p>
+<hr>
+<h2 id="BBR加速"><a href="#BBR加速" class="headerlink" title="BBR加速"></a>BBR加速</h2><p>简而言之，BBR是谷歌开发出的用来加速的，之后出现了魔改BBR，BBR Plus等版本，达到压榨VPS带宽潜力的效果。</p>
+<p>1、不同版本BBR加速效果对比视频链接<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=YOxKxVhiyUY">https://www.youtube.com/watch?v=YOxKxVhiyUY</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">视频中搬瓦工VPS：http:&#x2F;&#x2F;bit.ly&#x2F;3ckoUov</span><br><span class="line">自用搬瓦工机场：http:&#x2F;&#x2F;bit.ly&#x2F;387YRNP</span><br><span class="line"></span><br><span class="line">BBR一键安装脚本：https:&#x2F;&#x2F;www.94ish.me&#x2F;1635.html</span><br><span class="line">支持系统 Centos 6+ &#x2F; Debian 7+ &#x2F; Ubuntu 14+ BBR魔改版不支持Debian 8</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate <span class="string">&quot;https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh&quot;</span></span><br><span class="line">chmod +x tcp.sh</span><br><span class="line">./tcp.sh</span><br><span class="line"></span><br><span class="line">运行脚本代码</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210513202631837.png" alt="image-20210513202631837"></p>
+<p><a target="_blank" rel="noopener" href="https://www.94ish.me/1635.html">https://www.94ish.me/1635.html</a>   上面脚本代码出处</p>
+<p>默认开启了BBR，这里尝试使用了BBRplus，貌似没啥效果，youtube看4k还是卡。。。</p>
+<hr>
+<p>2、假设上面的方法成功了，所以这里就不写了</p>
+<hr>
+<h2 id="trojan原理"><a href="#trojan原理" class="headerlink" title="trojan原理"></a>trojan原理</h2><p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210513150811423.png" alt="image-20210513150811423"></p>
+<p>相关文档 <a target="_blank" rel="noopener" href="https://p4gefau1t.github.io/trojan-go/">https://p4gefau1t.github.io/trojan-go/</a></p>
+<h2 id="KCP加速"><a href="#KCP加速" class="headerlink" title="KCP加速"></a>KCP加速</h2><p>部署原理</p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20220422184745820.png" alt="image-20220422184745820"></p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20220422184800629.png" alt="image-20220422184800629"></p>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.likecs.com/show-1019259.html">https://www.likecs.com/show-1019259.html</a></p>
+<h2 id="免责声明"><a href="#免责声明" class="headerlink" title="免责声明"></a>免责声明</h2><p>资源敏感，不外放了。</p>
+<p>本文的所有教程与代码均收集于网络，仅作为学习过程的一种积累，切忌不可用于商业用途或用于干违反法律的奇奇怪怪的事情，转载需获得作者允许，否则保持追究权利。</p>
+<h2 id="维护记录"><a href="#维护记录" class="headerlink" title="维护记录"></a>维护记录</h2><p>20210703</p>
+<p><a target="_blank" rel="noopener" href="http://www.v2rayssr.com/">www.v2rayssr.com</a> 波仔分享</p>
+<p><a target="_blank" rel="noopener" href="http://port.ping.pe/">http://port.ping.pe</a> 查看端口有没有被ban</p>
+<p>45.77.194.230         cP)82bVBF*8uQ48-</p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=hWZKbaV3xDk">https://www.youtube.com/watch?v=hWZKbaV3xDk</a></p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210703184307999.png" alt="image-20210703184307999"></p>
+<h3 id="手动申请证书"><a href="#手动申请证书" class="headerlink" title="手动申请证书"></a>手动申请证书</h3><p>利用网站 <strong>port.ping.pe</strong> 对vps的ip进行测试，全绿，ip没被ban，ip:80 http端口全绿，https443端口全红，结合上述第二步出现问题，第一步trojan脚本已成功打开http域名主页，说明很可能是证书问题导致的https请求不成功。</p>
+<p>配置https</p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210703185038660.png" alt="image-20210703185038660"></p>
+<p>freessl.cn国内需要手机验证，可用国际版freessl.org</p>
+<p>参考教程 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/29421815">https://zhuanlan.zhihu.com/p/29421815</a></p>
+<p>使用keymanager离线生成CSR证书签名请求，参考<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/65178284">https://zhuanlan.zhihu.com/p/65178284</a> 下载地址<a target="_blank" rel="noopener" href="https://www.keymanager.org/#">https://www.keymanager.org/#</a></p>
+<p>创建CSR时的通用名要与freessl.org中输入的域名一致，否则报证书内容filled不匹配错</p>
+<h4 id="sslforfree"><a href="#sslforfree" class="headerlink" title="sslforfree"></a>sslforfree</h4><p>应该是freessl出问题了，cn国内要手机，org总是失败，找不到原因，索性寻找别的申请证书服务商，<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/174755007">https://zhuanlan.zhihu.com/p/174755007</a> 最后在<strong>sslforfree.com成功申请到</strong>了证书，用的http验证，期间遇到503错误，将服务器关机重启解决（23年1月17日实测sslforfree屏蔽了部分十分钟邮箱，183@ Passw0rd 有3次90天证书）</p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210708162042226.png" alt="image-20210708162042226"></p>
+<p>前面一键部署脚本中，网站安装目录/usr/share/nginx/html</p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210708161829022.png" alt="image-20210708161829022"></p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210708132301973.png" alt="image-20210708132301973"></p>
+<hr>
+<ul>
+<li>当证书3个月失效之后，systemctl restart trojan会出现active：failed   trojan failed with exit code并且指向trojan的config.json文件</li>
+<li>证书更新后，最好重新运行一下trojan3.sh 之后restart服务</li>
+</ul>
+<p>拿到证书后根据第二步放到指定目录，改名，安装完成</p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210703185227505.png" alt="image-20210703185227505"></p>
+<h3 id="http-amp-https-amp-证书-amp-中间人攻击"><a href="#http-amp-https-amp-证书-amp-中间人攻击" class="headerlink" title="http&amp;https&amp;证书&amp;中间人攻击"></a>http&amp;https&amp;证书&amp;中间人攻击</h3><p>http的香维护，对https理解更深入了一层，参考链接 看完还不懂HTTPS我直播吃翔 - winwill2012的文章 - 知乎 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/25976060">https://zhuanlan.zhihu.com/p/25976060</a> 经过思考做出的笔记如下图</p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/00B2798EC60D3EE3EBAE71E82E6B9C3C.jpg" alt="img"></p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/6AC30F5D5FCEC11153B82838A2D96410.jpg" alt="img"></p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/FE34E6651440FC1825B80DED19ED387D.jpg" alt="img"></p>
+<p>同时，在寻找临时翻墙软件时，github上有个freefq的，nice，直接订阅，已经fork了，也有手机版的v2rayN了，真香！</p>
+<hr>
+<p>tempVPS：迈阿密e130c4d5</p>
+<p>liloker: 45.32.170.65</p>
+<p>第一代：韩</p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210527193946025.png" alt="image-20210527193946025"></p>
+<hr>
+<h3 id="自动申请证书脚本"><a href="#自动申请证书脚本" class="headerlink" title="自动申请证书脚本"></a>自动申请证书脚本</h3><p>trojan2.sh脚本修复</p>
+<p>其实报错日志已经提示了，第二行连用法都写出来了！</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Please update your account with an email address first.</span><br><span class="line">acme.sh --register-account -m my@example.com</span><br></pre></td></tr></table></figure>
+
+<p>1.先果断重新安装acme，卸载：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.acme.sh/acme.sh  --uninstall</span><br></pre></td></tr></table></figure>
+
+<p>2.然后安装时别再忘记写邮箱了！</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl  https://get.acme.sh | sh -s email=my@example.com</span><br></pre></td></tr></table></figure>
+
+<p>Cloudflare的最后再继续添加api密匙啥的环境变量等然后再申请。</p>
+<p>另外有<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/580318775">https://zhuanlan.zhihu.com/p/580318775</a> 详细参考</p>
+<hr>
+<h2 id="常见与不常见端口汇总"><a href="#常见与不常见端口汇总" class="headerlink" title="常见与不常见端口汇总"></a>常见与不常见端口汇总</h2><p>一个计算机最多有65535个端口，端口不能重复。<br><strong>常用端口号：</strong><br>IIS（HTTP）：80<br>SQLServer：1433<br>Oracle：1521<br>MySQL：3306<br>FTP：21<br>SSH：22<br>Tomcat：8080</p>
+<p><strong>常用和不常用端口一览</strong></p>
+<p>端口：0<br>服务：Reserved<br>说明：通常用于分析操作系统。这一方法能够工作是因为在一些系统中“0”是无效端口，当你试图使用通常的闭合端口连接它时将产生不同的结果。一种典型的扫描，使用IP地址为0.0.0.0，设置ACK位并在以太网层广播。 </p>
+<p>端口：1<br>服务：tcpmux<br>说明：这显示有人在寻找SGI<br>Irix机器。Irix是实现tcpmux的主要提供者，默认情况下tcpmux在这种系统中被打开。Irix机器在发布是含有几个默认的无密码的帐户，如：IP、GUEST<br>UUCP、NUUCP、DEMOS<br>、TUTOR、DIAG、OUTOFBOX等。许多管理员在安装后忘记删除这些帐户。因此HACKER在INTERNET上搜索tcpmux并利用这些帐户。</p>
+<p>端口：7<br>服务：Echo<br>说明：能看到许多人搜索Fraggle放大器时，发送到X.X.X.0和X.X.X.255的信息。 </p>
+<p>端口：19<br>服务：Character<br>Generator<br>说明：这是一种仅仅发送字符的服务。UDP版本将会在收到UDP包后回应含有垃圾字符的包。TCP连接时会发送含有垃圾字符的数据流直到连接关闭。HACKER利用IP欺骗可以发动DoS攻击。伪造两个chargen服务器之间的UDP包。同样Fraggle<br>DoS攻击向目标地址的这个端口广播一个带有伪造受害者IP的数据包，受害者为了回应这些数据而过载。</p>
+<p>端口：21<br>服务：FTP<br>说明：FTP服务器所开放的端口，用于上传、下载。最常见的攻击者用于寻找打开anonymous的FTP服务器的方法。这些服务器带有可读写的目录。木马Doly<br>Trojan、Fore、Invisible FTP、WebEx、WinCrash和Blade<br>Runner所开放的端口。</p>
+<p>端口：22<br>服务：Ssh<br>说明：PcAnywhere建立的TCP和这一端口的连接可能是为了寻找ssh。这一服务有许多弱点，如果配置成特定的模式，许多使用RSAREF库的版本就会有不少的漏洞存在。</p>
+<p>端口：23<br>服务：Telnet<br>说明：远程登录，入侵者在搜索远程登录UNIX的服务。大多数情况下扫描这一端口是为了找到机器运行的操作系统。还有使用其他技术，入侵者也会找到密码。木马Tiny<br>Telnet<br>Server就开放这个端口。</p>
+<p>端口：25<br>服务：SMTP<br>说明：SMTP服务器所开放的端口，用于发送邮件。入侵者寻找SMTP服务器是为了传递他们的SPAM。入侵者的帐户被关闭，他们需要连接到高带宽的E-MAIL服务器上，将简单的信息传递到不同的地址。木马Antigen、Email<br>Password Sender、Haebu Coceda、Shtrilitz<br>Stealth、WinPC、WinSpy都开放这个端口。</p>
+<p>端口：31<br>服务：MSG<br>Authentication<br>说明：木马Master Paradise、Hackers<br>Paradise开放此端口。</p>
+<p>端口：42<br>服务：WINS<br>Replication<br>说明：WINS复制</p>
+<p>端口：53<br>服务：Domain Name<br>Server（DNS）<br>说明：DNS服务器所开放的端口，入侵者可能是试图进行区域传递（TCP），欺骗DNS（UDP）或隐藏其他的通信。因此防火墙常常过滤或记录此端口。</p>
+<p>端口：67<br>服务：Bootstrap<br>Protocol Server<br>说明：通过DSL和Cable<br>modem的防火墙常会看见大量发送到广播地址255.255.255.255的数据。这些机器在向DHCP服务器请求一个地址。HACKER常进入它们，分配一个地址把自己作为局部路由器而发起大量中间人（man-in-middle）攻击。客户端向68端口广播请求配置，服务器向67端口广播回应请求。这种回应使用广播是因为客户端还不知道可以发送的IP地址。</p>
+<p>DHCP (UDP ports 67 and 68)</p>
+<p>端口：69<br>服务：Trival<br>File<br>Transfer<br>说明：许多服务器与bootp一起提供这项服务，便于从系统下载启动代码。但是它们常常由于错误配置而使入侵者能从系统中窃取任何文件。它们也可用于系统写入文件。 </p>
+<p>端口：79<br>服务：Finger<br>Server<br>说明：入侵者用于获得用户信息，查询操作系统，探测已知的缓冲区溢出错误，回应从自己机器到其他机器Finger扫描。</p>
+<p>端口：80<br>服务：HTTP<br>说明：用于网页浏览。木马Executor开放此端口。</p>
+<p>端口：99<br>服务：Metagram<br>Relay<br>说明：后门程序ncx99开放此端口。</p>
+<p>端口：102<br>服务：Message transfer<br>agent(MTA)-X.400 over TCP/IP<br>说明：消息传输代理。</p>
+<p>端口：109<br>服务：Post Office<br>Protocol<br>-Version3<br>说明：POP3服务器开放此端口，用于接收邮件，客户端访问服务器端的邮件服务。POP3服务有许多公认的弱点。关于用户名和密码交换缓冲区溢出的弱点至少有20个，这意味着入侵者可以在真正登陆前进入系统。成功登陆后还有其他缓冲区溢出错误。</p>
+<p>端口：110<br>服务：SUN公司的RPC服务所有端口<br>说明：常见RPC服务有rpc.mountd、NFS、rpc.statd、rpc.csmd、rpc.ttybd、amd等</p>
+<p>端口：113<br>服务：Authentication<br>Service<br>说明：这是一个许多计算机上运行的协议，用于鉴别TCP连接的用户。使用标准的这种服务可以获得许多计算机的信息。但是它可作为许多服务的记录器，尤其是FTP、POP、IMAP、SMTP和IRC等服务。通常如果有许多客户通过防火墙访问这些服务，将会看到许多这个端口的连接请求。记住，如果阻断这个端口客户端会感觉到在防火墙另一边与E-MAIL服务器的缓慢连接。许多防火墙支持TCP连接的阻断过程中发回RST。这将会停止缓慢的连接。</p>
+<p>端口：119<br>服务：Network<br>News Transfer<br>Protocol<br>说明：NEWS新闻组传输协议，承载USENET通信。这个端口的连接通常是人们在寻找USENET服务器。多数ISP限制，只有他们的客户才能访问他们的新闻组服务器。打开新闻组服务器将允许发/读任何人的帖子，访问被限制的新闻组服务器，匿名发帖或发送SPAM。</p>
+<p>端口：135<br>服务：Location<br>Service<br>说明：Microsoft在这个端口运行DCE RPC end-point mapper为它的DCOM服务。这与UNIX<br>111端口的功能很相似。使用DCOM和RPC的服务利用计算机上的end-point<br>mapper注册它们的位置。远端客户连接到计算机时，它们查找end-point<br>mapper找到服务的位置。HACKER扫描计算机的这个端口是为了找到这个计算机上运行Exchange<br>Server吗？什么版本？还有些DOS攻击直接针对这个端口。</p>
+<p>端口：137、138、139<br>服务：NETBIOS Name<br>Service<br>说明：其中137、138是UDP端口，当通过网上邻居传输文件时用这个端口。而139端口通过这个端口进入的连接试图获得NetBIOS/SMB服务。这个协议被用于windows文件和打印机共享和SAMBA。还有WINS<br>Regisrtation也用它。 </p>
+<p>端口：143<br>服务：Interim Mail Access Protocol<br>v2<br>说明：和POP3的安全问题一样，许多IMAP服务器存在有缓冲区溢出漏洞。记住：一种Linux蠕虫（admv0rm）会通过这个端口繁殖，因此许多这个端口的扫描来自不知情的已经被感染的用户。当REDHAT在他们的LINUX发布版本中默认允许IMAP后，这些漏洞变的很流行。这一端口还被用于IMAP2，但并不流行。</p>
+<p>端口：161<br>服务：SNMP<br>说明：SNMP允许远程管理设备。所有配置和运行信息的储存在数据库中，通过SNMP可获得这些信息。许多管理员的错误配置将被暴露在Internet。Cackers将试图使用默认的密码public、private访问系统。他们可能会试验所有可能的组合。SNMP包可能会被错误的指向用户的网络。</p>
+<p>端口：177<br>服务：X<br>Display Manager Control<br>Protocol<br>说明：许多入侵者通过它访问X-windows操作台，它同时需要打开6000端口。</p>
+<p>端口：389<br>服务：LDAP、ILS<br>说明：轻型目录访问协议和NetMeeting<br>Internet Locator<br>Server共用这一端口。</p>
+<p>端口：443<br>服务：Https<br>说明：网页浏览端口，能提供加密和通过安全端口传输的另一种HTTP。</p>
+<p>端口：456<br>服务：[NULL]<br>说明：木马HACKERS<br>PARADISE开放此端口。</p>
+<p>端口：513<br>服务：Login,remote login<br>说明：是从使用cable<br>modem或DSL登陆到子网中的UNIX计算机发出的广播。这些人为入侵者进入他们的系统提供了信息。</p>
+<p>端口：544<br>服务：[NULL]<br>说明：kerberos kshell</p>
+<p>端口：548<br>服务：Macintosh,File<br>Services(AFP/IP)<br>说明：Macintosh,文件服务。</p>
+<p>端口：553<br>服务：CORBA IIOP<br>（UDP）<br>说明：使用cable<br>modem、DSL或VLAN将会看到这个端口的广播。CORBA是一种面向对象的RPC系统。入侵者可以利用这些信息进入系统。</p>
+<p>端口：555<br>服务：DSF<br>说明：木马PhAse1.0、Stealth<br>Spy、IniKiller开放此端口。</p>
+<p>端口：568<br>服务：Membership DPA<br>说明：成员资格<br>DPA。</p>
+<p>端口：569<br>服务：Membership MSN<br>说明：成员资格<br>MSN。</p>
+<p>端口：635<br>服务：mountd<br>说明：Linux的mountd<br>Bug。这是扫描的一个流行BUG。大多数对这个端口的扫描是基于UDP的，但是基于TCP的mountd有所增加（mountd同时运行于两个端口）。记住mountd可运行于任何端口（到底是哪个端口，需要在端口111做portmap查询），只是Linux默认端口是635，就像NFS通常运行于2049端口。</p>
+<p>端口：636<br>服务：LDAP<br>说明：SSL（Secure<br>Sockets layer）</p>
+<p>端口：666<br>服务：Doom Id Software<br>说明：木马Attack FTP、Satanz<br>Backdoor开放此端口</p>
+<p>端口：993<br>服务：IMAP<br>说明：SSL（Secure Sockets<br>layer）</p>
+<p>端口：1001、1011<br>服务：[NULL]<br>说明：木马Silencer、WebEx开放1001端口。木马Doly<br>Trojan开放1011端口。</p>
+<p>端口：1024<br>服务：Reserved<br>说明：它是动态端口的开始，许多程序并不在乎用哪个端口连接网络，它们请求系统为它们分配下一个闲置端口。基于这一点分配从端口1024开始。这就是说第一个向系统发出请求的会分配到1024端口。你可以重启机器，打开Telnet，再打开一个窗口运行natstat<br>-a 将会看到Telnet被分配1024端口。还有SQL<br>session也用此端口和5000端口。</p>
+<p>端口：1025、1033<br>服务：1025：network blackjack<br>1033：[NULL]<br>说明：木马netspy开放这2个端口。</p>
+<p>端口：1080<br>服务：SOCKS<br>说明：这一协议以通道方式穿过防火墙，允许防火墙后面的人通过一个IP地址访问INTERNET。理论上它应该只允许内部的通信向外到达INTERNET。但是由于错误的配置，它会允许位于防火墙外部的攻击穿过防火墙。WinGate常会发生这种错误，在加入IRC聊天室时常会看到这种情况。</p>
+<p>端口：1170<br>服务：[NULL]<br>说明：木马Streaming<br>Audio Trojan、Psyber Stream<br>Server、Voice开放此端口。</p>
+<p>端口：1234、1243、6711、6776<br>服务：[NULL]<br>说明：木马SubSeven2.0、Ultors<br>Trojan开放1234、6776端口。木马SubSeven1.0/1.9开放1243、6711、6776端口。</p>
+<p>端口：1245<br>服务：[NULL]<br>说明：木马Vodoo开放此端口。</p>
+<p>端口：1433<br>服务：SQL<br>说明：Microsoft的SQL服务开放的端口。</p>
+<p>端口：1492<br>服务：stone-design-1<br>说明：木马FTP99CMP开放此端口。</p>
+<p>端口：1500<br>服务：RPC<br>client fixed port session<br>queries<br>说明：RPC客户固定端口会话查询</p>
+<p>端口：1503<br>服务：NetMeeting<br>T.120<br>说明：NetMeeting<br>T.120</p>
+<p>端口：1524<br>服务：ingress<br>说明：许多攻击脚本将安装一个后门SHELL于这个端口，尤其是针对SUN系统中Sendmail和RPC服务漏洞的脚本。如果刚安装了防火墙就看到在这个端口上的连接企图，很可能是上述原因。可以试试Telnet到用户的计算机上的这个端口，看看它是否会给你一个SHELL。连接到600/pcserver也存在这个问题。</p>
+<p>端口：1600<br>服务：issd<br>说明：木马Shivka-Burka开放此端口。</p>
+<p>端口：1720<br>服务：NetMeeting<br>说明：NetMeeting<br>H.233 call Setup。</p>
+<p>端口：1731<br>服务：NetMeeting Audio Call<br>Control<br>说明：NetMeeting音频调用控制。</p>
+<p>端口：1807<br>服务：[NULL]<br>说明：木马SpySender开放此端口。</p>
+<p>端口：1981<br>服务：[NULL]<br>说明：木马ShockRave开放此端口。</p>
+<p>端口：1999<br>服务：cisco<br>identification<br>port<br>说明：木马BackDoor开放此端口。</p>
+<p>端口：2000<br>服务：[NULL]<br>说明：木马GirlFriend<br>1.3、Millenium 1.0开放此端口。</p>
+<p>端口：2001<br>服务：[NULL]<br>说明：木马Millenium 1.0、Trojan<br>Cow开放此端口。</p>
+<p>端口：2023<br>服务：xinuexpansion 4<br>说明：木马Pass<br>Ripper开放此端口。</p>
+<p>端口：2049<br>服务：NFS<br>说明：NFS程序常运行于这个端口。通常需要访问Portmapper查询这个服务运行于哪个端口。</p>
+<p>端口：2115<br>服务：[NULL]<br>说明：木马Bugs开放此端口。</p>
+<p>端口：2140、3150<br>服务：[NULL]<br>说明：木马Deep<br>Throat 1.0/3.0开放此端口。</p>
+<p>端口：2500<br>服务：RPC client using a fixed port session<br>replication<br>说明：应用固定端口会话复制的RPC客户</p>
+<p>端口：2583<br>服务：[NULL]<br>说明：木马Wincrash<br>2.0开放此端口。</p>
+<p>端口：2801<br>服务：[NULL]<br>说明：木马Phineas<br>Phucker开放此端口。</p>
+<p>端口：3024、4092<br>服务：[NULL]<br>说明：木马WinCrash开放此端口。</p>
+<p>端口：3128<br>服务：squid<br>说明：这是squid<br>HTTP代理服务器的默认端口。攻击者扫描这个端口是为了搜寻一个代理服务器而匿名访问Internet。也会看到搜索其他代理服务器的端口8000、8001、8080、8888。扫描这个端口的另一个原因是用户正在进入聊天室。其他用户也会检验这个端口以确定用户的机器是否支持代理。</p>
+<p>端口：3129<br>服务：[NULL]<br>说明：木马Master<br>Paradise开放此端口。</p>
+<p>端口：3150<br>服务：[NULL]<br>说明：木马The<br>Invasor开放此端口。</p>
+<p>端口：3210、4321<br>服务：[NULL]<br>说明：木马SchoolBus开放此端口</p>
+<p>端口：3333<br>服务：dec-notes<br>说明：木马Prosiak开放此端口</p>
+<p>端口：3389<br>服务：超级终端<br>说明：WINDOWS<br>2000终端开放此端口。</p>
+<p>端口：3700<br>服务：[NULL]<br>说明：木马Portal of<br>Doom开放此端口</p>
+<p>端口：3996、4060<br>服务：[NULL]<br>说明：木马RemoteAnything开放此端口</p>
+<p>端口：4000<br>服务：QQ客户端<br>说明：腾讯QQ客户端开放此端口。</p>
+<p>端口：4092<br>服务：[NULL]<br>说明：木马WinCrash开放此端口。</p>
+<p>端口：4590<br>服务：[NULL]<br>说明：木马ICQTrojan开放此端口。</p>
+<p>端口：5000、5001、5321、50505<br>服务：[NULL]<br>说明：木马blazer5开放5000端口。木马Sockets<br>de<br>Troie开放5000、5001、5321、50505端口。</p>
+<p>端口：5400、5401、5402<br>服务：[NULL]<br>说明：木马Blade<br>Runner开放此端口。</p>
+<p>端口：5550<br>服务：[NULL]<br>说明：木马xtcp开放此端口。</p>
+<p>端口：5569<br>服务：[NULL]<br>说明：木马Robo-Hack开放此端口。</p>
+<p>端口：5632<br>服务：pcAnywere<br>说明：有时会看到很多这个端口的扫描，这依赖于用户所在的位置。当用户打开pcAnywere时，它会自动扫描局域网C类网以寻找可能的代理（这里的代理是指agent而不是proxy）。入侵者也会寻找开放这种服务的计算机。，所以应该查看这种扫描的源地址。一些搜寻pcAnywere的扫描包常含端口22的UDP数据包。</p>
+<p>端口：5742<br>服务：[NULL]<br>说明：木马WinCrash1.03开放此端口。</p>
+<p>端口：6267<br>服务：[NULL]<br>说明：木马广外女生开放此端口。</p>
+<p>端口：6400<br>服务：[NULL]<br>说明：木马The<br>tHing开放此端口。</p>
+<p>端口：6670、6671<br>服务：[NULL]<br>说明：木马Deep Throat开放6670端口。而Deep<br>Throat<br>3.0开放6671端口。</p>
+<p>端口：6883<br>服务：[NULL]<br>说明：木马DeltaSource开放此端口。</p>
+<p>端口：6969<br>服务：[NULL]<br>说明：木马Gatecrasher、Priority开放此端口。</p>
+<p>端口：6970<br>服务：RealAudio<br>说明：RealAudio客户将从服务器的6970-7170的UDP端口接收音频数据流。这是由TCP-7070端口外向控制连接设置的。</p>
+<p>端口：7000<br>服务：[NULL]<br>说明：木马Remote<br>Grab开放此端口。</p>
+<p>端口：7300、7301、7306、7307、7308<br>服务：[NULL]<br>说明：木马NetMonitor开放此端口。另外NetSpy1.0也开放7306端口。</p>
+<p>端口：7323<br>服务：[NULL]<br>说明：Sygate服务器端。</p>
+<p>端口：7626<br>服务：[NULL]<br>说明：木马Giscier开放此端口。</p>
+<p>端口：7789<br>服务：[NULL]<br>说明：木马ICKiller开放此端口。</p>
+<p>端口：8000<br>服务：OICQ<br>说明：腾讯QQ服务器端开放此端口。</p>
+<p>端口：8010<br>服务：Wingate<br>说明：Wingate代理开放此端口。</p>
+<p>端口：8080<br>服务：代理端口<br>说明：WWW代理开放此端口。</p>
+<p>端口：9400、9401、9402<br>服务：[NULL]<br>说明：木马Incommand<br>1.0开放此端口。</p>
+<p>端口：9872、9873、9874、9875、10067、10167<br>服务：[NULL]<br>说明：木马Portal<br>of<br>Doom开放此端口。</p>
+<p>端口：9989<br>服务：[NULL]<br>说明：木马iNi-Killer开放此端口。</p>
+<p>端口：11000<br>服务：[NULL]<br>说明：木马SennaSpy开放此端口。</p>
+<p>端口：11223<br>服务：[NULL]<br>说明：木马Progenic<br>trojan开放此端口。</p>
+<p>端口：12076、61466<br>服务：[NULL]<br>说明：木马Telecommando开放此端口。</p>
+<p>端口：12223<br>服务：[NULL]<br>说明：木马Hack’99<br>KeyLogger开放此端口。</p>
+<p>端口：12345、12346<br>服务：[NULL]<br>说明：木马NetBus1.60/1.70、GabanBus开放此端口。</p>
+<p>端口：12361<br>服务：[NULL]<br>说明：木马Whack-a-mole开放此端口。</p>
+<p>端口：13223<br>服务：PowWow<br>说明：PowWow是Tribal<br>Voice的聊天程序。它允许用户在此端口打开私人聊天的连接。这一程序对于建立连接非常具有攻击性。它会驻扎在这个TCP端口等回应。造成类似心跳间隔的连接请求。如果一个拨号用户从另一个聊天者手中继承了IP地址就会发生好象有很多不同的人在测试这个端口的情况。这一协议使用OPNG作为其连接请求的前4个字节。</p>
+<p>端口：16969<br>服务：[NULL]<br>说明：木马Priority开放此端口。</p>
+<p>端口：17027<br>服务：Conducent<br>说明：这是一个外向连接。这是由于公司内部有人安装了带有Conducent”adbot”的共享软件。Conducent”adbot”是为共享软件显示广告服务的。使用这种服务的一种流行的软件是Pkware。</p>
+<p>端口：19191<br>服务：[NULL]<br>说明：木马蓝色火焰开放此端口。</p>
+<p>端口：20000、20001 </p>
+<p>服务：[NULL]<br>说明：木马Millennium开放此端口。</p>
+<p>端口：20034<br>服务：[NULL]<br>说明：木马NetBus<br>Pro开放此端口。</p>
+<p>端口：21554<br>服务：[NULL]<br>说明：木马GirlFriend开放此端口。</p>
+<p>端口：22222<br>服务：[NULL]<br>说明：木马Prosiak开放此端口。</p>
+<p>端口：23456<br>服务：[NULL]<br>说明：木马Evil<br>FTP、Ugly<br>FTP开放此端口。</p>
+<p>端口：26274、47262<br>服务：[NULL]<br>说明：木马Delta开放此端口。</p>
+<p>端口：27374<br>服务：[NULL]<br>说明：木马Subseven<br>2.1开放此端口。</p>
+<p>端口：30100<br>服务：[NULL]<br>说明：木马NetSphere开放此端口。</p>
+<p>端口：30303<br>服务：[NULL]<br>说明：木马Socket23开放此端口。</p>
+<p>端口：30999<br>服务：[NULL]<br>说明：木马Kuang开放此端口。</p>
+<p>端口：31337、31338<br>服务：[NULL]<br>说明：木马BO(Back<br>Orifice)开放此端口。另外木马DeepBO也开放31338端口。</p>
+<p>端口：31339 </p>
+<p>服务：[NULL]<br>说明：木马NetSpy<br>DK开放此端口。</p>
+<p>端口：31666<br>服务：[NULL]<br>说明：木马BOWhack开放此端口。</p>
+<p>端口：33333<br>服务：[NULL]<br>说明：木马Prosiak开放此端口。</p>
+<p>端口：34324<br>服务：[NULL]<br>说明：木马Tiny<br>Telnet Server、BigGluck、TN开放此端口。</p>
+<p>端口：40412<br>服务：[NULL]<br>说明：木马The<br>Spy开放此端口。</p>
+<p>端口：40421、40422、40423、40426、<br>服务：[NULL]<br>说明：木马Masters<br>Paradise开放此端口。</p>
+<p>端口：43210、54321<br>服务：[NULL]<br>说明：木马SchoolBus<br>1.0/2.0开放此端口。</p>
+<p>端口：44445<br>服务：[NULL]<br>说明：木马Happypig开放此端口。</p>
+<p>端口：50766 </p>
+<p>服务：[NULL]<br>说明：木马Fore开放此端口。</p>
+<p>端口：53001<br>服务：[NULL]<br>说明：木马Remote<br>Windows Shutdown开放此端口。</p>
+<p>端口：65000<br>服务：[NULL]<br>说明：木马Devil<br>1.03开放此端口。</p>
+<p>端口：88<br>说明：Kerberos<br>krb5。另外TCP的88端口也是这个用途。</p>
+<p>端口：137<br>说明：SQL Named Pipes encryption over other<br>protocols name lookup(其他协议名称查找上的SQL命名管道加密技术)和SQL RPC encryption over other<br>protocols name lookup(其他协议名称查找上的SQL RPC加密技术)和Wins NetBT name service(WINS<br>NetBT名称服务)和Wins Proxy都用这个端口。</p>
+<p>端口：161<br>说明：Simple Network Management<br>Protocol(SMTP)（简单网络管理协议）。</p>
+<p>端口：162<br>说明：SNMP<br>Trap（SNMP陷阱）</p>
+<p>端口：445<br>说明：Common Internet File<br>System(CIFS)（公共Internet文件系统）</p>
+<p>端口：464<br>说明：Kerberos<br>kpasswd(v5)。另外TCP的464端口也是这个用途。</p>
+<p>端口：500<br>说明：Internet Key<br>Exchange(IKE)（Internet密钥交换）</p>
+<p>端口：1645、1812<br>说明：Remot Authentication<br>Dial-In User Service(RADIUS)authentication(Routing and Remote<br>Access)(远程认证拨号用户服务)</p>
+<p>端口：1646、1813<br>说明：RADIUS accounting(Routing and<br>Remote Access)(RADIUS记帐（路由和远程访问）)</p>
+<p>端口：1701<br>说明：Layer Two Tunneling<br>Protocol(L2TP)(第2层隧道协议)</p>
+<p>端口：1801、3527<br>说明：Microsoft Message Queue<br>Server(Microsoft消息队列服务器)。还有TCP的135、1801、2101、2103、2105也是同样的用途。</p>
+<p>端口：2504<br>说明：Network<br>Load Balancing(网络平衡负荷)</p>
+<p>网络层—数据包的包格式里面有个很重要的字段叫做协议号。比如在传输层如果是TCP连接，那么在网络层IP包里面的协议号就将会有个值是6，如果是UDP的话那个值就是17—传输层。</p>
+<p>传输层—通过接口关联(端口的字段叫做端口)—应用层。<br>用netstat –an 可以查看本机开放的端口号。 </p>
+<p><strong>代理服务器常用端口</strong></p>
+<p>（1）. HTTP协议代理服务器常用端口号：80/8080/3128/8081/9080<br>（2）. SOCKS代理协议服务器常用端口号：1080<br>（3）. FTP（文件传输）协议代理服务器常用端口号：21<br>（4）. Telnet（远程登录）协议代理服务器常用端口：23</p>
+<p>HTTP服务器，默认的端口号为80/tcp（木马Executor开放此端口）；<br>HTTPS（securely transferring web pages）服务器，默认的端口号为443/tcp 443/udp；<br>Telnet（不安全的文本传送），默认端口号为23/tcp（木马Tiny Telnet Server所开放的端口）；<br>FTP，默认的端口号为21/tcp（木马Doly Trojan、Fore、Invisible FTP、WebEx、WinCrash和Blade Runner所开放的端口）；<br>TFTP（Trivial File Transfer Protocol ），默认的端口号为69/udp；<br>SSH（安全登录）、SCP（文件传输）、端口重定向，默认的端口号为22/tcp；<br>SMTP Simple Mail Transfer Protocol (E-mail)，默认的端口号为25/tcp（木马Antigen、Email Password Sender、Haebu Coceda、Shtrilitz Stealth、WinPC、WinSpy都开放这个端口）；<br>POP3 Post Office Protocol (E-mail) ，默认的端口号为110/tcp；<br>WebLogic，默认的端口号为7001；<br>Webshpere应用程序，默认的端口号为9080；<br>webshpere管理工具，默认的端口号为9090；<br>JBOSS，默认的端口号为8080；<br>TOMCAT，默认的端口号为8080；<br>WIN2003远程登陆，默认的端口号为3389；<br>Symantec AV/Filter for MSE ,默认端口号为 8081；<br>Oracle 数据库，默认的端口号为1521；<br>ORACLE EMCTL，默认的端口号为1158；<br>Oracle XDB（ XML 数据库），默认的端口号为8080；<br>Oracle XDB FTP服务，默认的端口号为2100；<br>MS SQL<em>SERVER数据库server，默认的端口号为1433/tcp 1433/udp；<br>MS SQL</em>SERVER数据库monitor，默认的端口号为1434/tcp 1434/udp；<br>QQ，默认的端口号为1080/udp</p>
+<p>TcpMux0 1 Tcp端口服务多路复用器<br>Echo 1 7 回送(echo回送所有的接收数据)</p>
+<p>Discard2 9 删除(静态删除所有接受的数据)<br>Systat3 11 当前用户<br>Daytime 13 白天<br>Quotd 17 每天的引用<br>Chargen 19 产生字符<br>Ftp-data 20<br>文件传送(默认数据)<br>Ftp 21 文件传送(控制端口)<br>Telnet 23 远程通信网</p>
+<p>Smtp 25 简单邮件传输协议<br>Time 37 时间<br>Nicname 43 谁</p>
+<p>Domain 53 域名服务器<br>Bootps 67 引导程序协议服务器<br>Bootpc 68<br>引导程序协议客户<br>Tftp 69 普通文件传输协议<br>Gopher 70 Gopher</p>
+<p>Finger 79 拨号<br>WWW-http 80 WWW-Http<br>Kerberos 88<br>Kerberos<br>Pop2 109 邮政协议版本2<br>Pop3 110 邮政协议版本3</p>
+<p>Sunrpc 111 Sun运端程序呼叫<br>nntp 119 网络新闻传输协议<br>Ntp 123 网络时间协议</p>
+<p>Netbios-ns 137 网络基本输入输出系统命名服务<br>Netbios-ns 138<br>网络基本输入输出系统数据报服务<br>Netbios-ssn 139 网络基本输入输出系统期间服务<br>Imap2 143<br>中间邮件访问协议V2<br>Snmp 161 简单网络管理协议<br>Bgp 179 边界网关协议</p>
+<p>Syslog 514 系统登陆器</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">XiaoYao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://w4xiaoyao.top/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E5%9F%BA%E4%BA%8ETrojan%E8%8A%82%E7%82%B9%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/">https://w4xiaoyao.top/2023/03/30/折腾吧/基于Trojan节点实现科学上网/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a><a class="post-meta__tags" href="/tags/Trojan/">Trojan</a><a class="post-meta__tags" href="/tags/%E7%AB%AF%E5%8F%A3/">端口</a><a class="post-meta__tags" href="/tags/SOCKS5/">SOCKS5</a><a class="post-meta__tags" href="/tags/VPS/">VPS</a><a class="post-meta__tags" href="/tags/BBR%E5%8A%A0%E9%80%9F/">BBR加速</a></div><div class="post_share"><div class="social-share" data-image="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/009.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E7%94%A8powershell%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E5%B9%B6%E8%AE%BE%E4%B8%BA%E5%A3%81%E7%BA%B8/"><img class="prev-cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/010.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">计划任务运行powershell自动获取聚焦图片并设为壁纸</div></div></a></div><div class="next-post pull-right"><a href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E4%BB%8E0%E6%90%AD%E5%BB%BA%E4%BC%81%E4%B8%9A%E4%B8%93%E7%94%A8%E7%BD%91%E7%BB%9Cvpn/"><img class="next-cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/008.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">从0搭建企业专用网络VPN</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Valine</span><span class="switch-btn"></span><span class="second-comment">Waline</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/profile_knife.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">XiaoYao</div><div class="author-info__description">多巴胺被赐予意义，人类社会便有了混沌，愿世间尚有净土，留存爱与欢喜。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">55</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">68</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Liloker"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Liloker" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:theone@liloker.anonaddy.me" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://blog.csdn.net/weixin_42160117" target="_blank" title="CSDN"><i class="far fa-copyright"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">来了，随便坐吧~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9F%BA%E4%BA%8ETrojan%E6%90%AD%E5%BB%BAxx%E7%9A%84%E7%BB%8F%E5%8E%86"><span class="toc-number">1.</span> <span class="toc-text">记一次基于Trojan搭建xx的经历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-number">1.1.</span> <span class="toc-text">环境准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E6%94%B6%E8%8E%B7"><span class="toc-number">1.2.</span> <span class="toc-text">小收获</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC%E9%83%A8%E7%BD%B2"><span class="toc-number">2.</span> <span class="toc-text">脚本部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#VPS%E9%83%A8%E7%BD%B2"><span class="toc-number">2.1.</span> <span class="toc-text">VPS部署</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%8D%8A%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC%EF%BC%9A"><span class="toc-number">2.1.1.</span> <span class="toc-text">安装半自动化脚本：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.1.2.</span> <span class="toc-text">手动安装步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#trojan%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="toc-number">2.1.3.</span> <span class="toc-text">trojan服务端</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-number">2.2.</span> <span class="toc-text">客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#windows%EF%BC%9Av2rayN"><span class="toc-number">2.2.1.</span> <span class="toc-text">windows：v2rayN</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BAwin7-x64%E5%B0%9D%E8%AF%95%EF%BC%9A"><span class="toc-number">2.2.1.1.</span> <span class="toc-text">虚拟机win7 x64尝试：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%BF%E4%B8%BB%E6%9C%BAwin10-x64%E5%B0%9D%E8%AF%95"><span class="toc-number">2.2.1.2.</span> <span class="toc-text">宿主机win10 x64尝试:</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Android%EF%BC%9Algnite"><span class="toc-number">2.2.2.</span> <span class="toc-text">Android：lgnite</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mac%EF%BC%9A%E6%B2%A1%E6%90%9E%E8%BF%87"><span class="toc-number">2.2.3.</span> <span class="toc-text">mac：没搞过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ios"><span class="toc-number">2.2.4.</span> <span class="toc-text">ios</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BBR%E5%8A%A0%E9%80%9F"><span class="toc-number">3.</span> <span class="toc-text">BBR加速</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#trojan%E5%8E%9F%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">trojan原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KCP%E5%8A%A0%E9%80%9F"><span class="toc-number">5.</span> <span class="toc-text">KCP加速</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%8D%E8%B4%A3%E5%A3%B0%E6%98%8E"><span class="toc-number">6.</span> <span class="toc-text">免责声明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%B4%E6%8A%A4%E8%AE%B0%E5%BD%95"><span class="toc-number">7.</span> <span class="toc-text">维护记录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E7%94%B3%E8%AF%B7%E8%AF%81%E4%B9%A6"><span class="toc-number">7.1.</span> <span class="toc-text">手动申请证书</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#sslforfree"><span class="toc-number">7.1.1.</span> <span class="toc-text">sslforfree</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http-amp-https-amp-%E8%AF%81%E4%B9%A6-amp-%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB"><span class="toc-number">7.2.</span> <span class="toc-text">http&amp;https&amp;证书&amp;中间人攻击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E7%94%B3%E8%AF%B7%E8%AF%81%E4%B9%A6%E8%84%9A%E6%9C%AC"><span class="toc-number">7.3.</span> <span class="toc-text">自动申请证书脚本</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E4%B8%8E%E4%B8%8D%E5%B8%B8%E8%A7%81%E7%AB%AF%E5%8F%A3%E6%B1%87%E6%80%BB"><span class="toc-number">8.</span> <span class="toc-text">常见与不常见端口汇总</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E8%A7%92%E5%8A%A8%E9%87%8F%E5%AE%88%E6%81%92/" title="角动量守恒"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/010.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="角动量守恒"/></a><div class="content"><a class="title" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E8%A7%92%E5%8A%A8%E9%87%8F%E5%AE%88%E6%81%92/" title="角动量守恒">角动量守恒</a><time datetime="2023-03-30T13:01:15.574Z" title="Created 2023-03-30 21:01:15">2023-03-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E5%AE%9E%E6%88%98Linux%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" title="实战Linux应急响应"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_007.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="实战Linux应急响应"/></a><div class="content"><a class="title" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E5%AE%9E%E6%88%98Linux%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" title="实战Linux应急响应">实战Linux应急响应</a><time datetime="2023-03-30T13:01:15.574Z" title="Created 2023-03-30 21:01:15">2023-03-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E7%94%A8powershell%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E5%B9%B6%E8%AE%BE%E4%B8%BA%E5%A3%81%E7%BA%B8/" title="计划任务运行powershell自动获取聚焦图片并设为壁纸"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/010.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计划任务运行powershell自动获取聚焦图片并设为壁纸"/></a><div class="content"><a class="title" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E7%94%A8powershell%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E5%B9%B6%E8%AE%BE%E4%B8%BA%E5%A3%81%E7%BA%B8/" title="计划任务运行powershell自动获取聚焦图片并设为壁纸">计划任务运行powershell自动获取聚焦图片并设为壁纸</a><time datetime="2023-03-30T13:01:15.573Z" title="Created 2023-03-30 21:01:15">2023-03-30</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/009.jpg')">#footer-wrap
+  if theme.footer.owner.enable
+    - var now = new Date()
+    - var nowYear = now.getFullYear()
+    if theme.footer.owner.since && theme.footer.owner.since != nowYear
+      .copyright!= `&copy;${theme.footer.owner.since} - ${nowYear} By ${config.author}`
+    else
+      .copyright!= `&copy;${nowYear} By ${config.author}`
+  if theme.footer.copyright
+    .framework-info
+      span= _p('footer.framework') + ' '
+      a(href='https://hexo.io')= 'Hexo'
+      span.footer-separator |
+      span= _p('footer.theme') + ' '
+      a(href='https://github.com/jerryc127/hexo-theme-butterfly')= 'Butterfly'
+  if theme.footer.custom_text
+    .footer_custom_text!=`${theme.footer.custom_text}`
+</footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="Increase font size"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="Decrease font size"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'RYm4g1Khr0F0wyTlik3kI2We-MdYXbMMI',
+      appKey: 'u9VLeiSQuTLpO2mWRAMlYrKX',
+      placeholder: '随便说两句吧~',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick,mail"],
+      visitor: true
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script>function loadWaline () {
+  function initWaline () {
+    const waline = new Waline(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://waline2-five.vercel.app/',
+      avatar: 'identicon',
+      path: location.pathname,
+      emojiCDN: '',
+      emojiMaps: "",
+      visitor: true
+    }, {"pageSize":10,"placeholder":"随便留下点什么吧~","langMode":{"admin":"博主","nick":"xiaoyao"}}))
+  }
+
+  if (typeof Waline === 'function') initWaline() 
+  else getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js').then(initWaline)
+}
+
+if ('Valine' === 'Waline' || !true) {
+  if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="7988378536" data-server="tencent" data-type="playlist" data-fixed="true" data-mini="true" data-autoplay="true" data-theme="#408fda" data-order="random" data-preload="auto" data-mutex="true" muted></div><script type="text/javascript" src="/js/myjs.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener toc scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

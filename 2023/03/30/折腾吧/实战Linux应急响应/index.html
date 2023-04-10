@@ -1,0 +1,575 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>实战Linux应急响应 | 逍 遥 の B l o g</title><meta name="keywords" content="‘fluxion伪热点,cap包,wifi破解'"><meta name="author" content="XiaoYao"><meta name="copyright" content="XiaoYao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="实操wifi密码获取">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实战Linux应急响应">
+<meta property="og:url" content="https://w4xiaoyao.top/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E5%AE%9E%E6%88%98Linux%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">
+<meta property="og:site_name" content="逍 遥 の B l o g">
+<meta property="og:description" content="实操wifi密码获取">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_007.jpg">
+<meta property="article:published_time" content="2023-03-30T13:01:15.574Z">
+<meta property="article:modified_time" content="2022-11-01T16:00:00.000Z">
+<meta property="article:author" content="XiaoYao">
+<meta property="article:tag" content="日常">
+<meta property="article:tag" content="fluxion">
+<meta property="article:tag" content="cap">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_007.jpg"><link rel="shortcut icon" href="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/favicon_hacker.png"><link rel="canonical" href="https://w4xiaoyao.top/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E5%AE%9E%E6%88%98Linux%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"Author: XiaoYao","link":"Link: ","source":"Source: 逍 遥 の B l o g","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source."}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '实战Linux应急响应',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-02 00:00:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><type="text/css" href="/css/mycss.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"><script src="/live2d-widget/autoload.js"></script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/profile_knife.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">55</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">68</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archive</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw far fa-images"></i><span> Gallery</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fas fa-gamepad"></i><span> Game1</span></a></li><li><a class="site-page child" href="/gamee/"><i class="fa-fw fas fa-gamepad"></i><span> Game2</span></a></li><li><a class="site-page child" href="/gameee/"><i class="fa-fw fas fa-gamepad"></i><span> Game3</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_007.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">逍 遥 の B l o g</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archive</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw far fa-images"></i><span> Gallery</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fas fa-gamepad"></i><span> Game1</span></a></li><li><a class="site-page child" href="/gamee/"><i class="fa-fw fas fa-gamepad"></i><span> Game2</span></a></li><li><a class="site-page child" href="/gameee/"><i class="fa-fw fas fa-gamepad"></i><span> Game3</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">实战Linux应急响应</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-03-30T13:01:15.574Z" title="Created 2023-03-30 21:01:15">2023-03-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-11-01T16:00:00.000Z" title="Updated 2022-11-02 00:00:00">2022-11-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%98%E8%85%BE%E5%90%A7/">折腾吧</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">4.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>17min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="实战Linux应急响应"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="Linux应急响应流程"><a href="#Linux应急响应流程" class="headerlink" title="Linux应急响应流程"></a>Linux应急响应流程</h2><h4 id="症状与确认"><a href="#症状与确认" class="headerlink" title="症状与确认"></a>症状与确认</h4><p>cpu飙升</p>
+<p>服务器卡顿</p>
+<p>异常流量</p>
+<p>服务器无法登录</p>
+<p>僵尸网络（肉鸡，变成DDOS的工具）</p>
+<p>挖矿</p>
+<p>dns服务器报毒</p>
+<hr>
+<p><strong>确认</strong></p>
+<p> linux下没有什么工具使用，基本靠手动解决</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">top -c -o %CPU</span><br><span class="line">ps -co pid,ppid,%mem,%cpu,cmd --sort=-%cpu | head -n 5</span><br><span class="line"><span class="meta">#</span><span class="bash">cpu占用前5</span></span><br><span class="line"></span><br><span class="line">lsof -i -PnR #哪个用户使用了哪个PID进行哪些网络通信</span><br><span class="line">ps -ef | grep [特征]</span><br><span class="line">ps aux | grep [PID]     ps aux #显示全部进程</span><br><span class="line">lsof -p [pid]#查看进程打开的文件</span><br><span class="line">lsof -i:[端口]#查看该端口所有的连接情况</span><br><span class="line">md5sum [文件]#计算文件的md5值</span><br><span class="line"></span><br><span class="line">ifconfig 查看eth0中的package，bytes流量情况</span><br></pre></td></tr></table></figure>
+
+
+
+<p>一般情况这几个命令下来能发现点东西</p>
+<h4 id="辅助处置工具"><a href="#辅助处置工具" class="headerlink" title="辅助处置工具"></a>辅助处置工具</h4><p>webshell查杀<br>    河马webshell查杀:<a target="_blank" rel="noopener" href="http://www.shellpub.com/">http://www.shellpub.com</a><br>    深信服网站后门检测工具:<a target="_blank" rel="noopener" href="http://edr.sangfor.com.cn/tool/WebShellKillerForLinux.tar.gz">http://edr.sangfor.com.cn/tool/WebShellKillerForLinux.tar.gz</a></p>
+<p>病毒/Rootkit查杀<br>    chkrootkit: <a target="_blank" rel="noopener" href="http://www.chkrootkit.org/">http://www.chkrootkit.org</a><br>    rkhunter: <a target="_blank" rel="noopener" href="http://rkhunter.sourceforge.net/">http://rkhunter.sourceforge.net</a><br>    Clamav: <a target="_blank" rel="noopener" href="http://www.clamav.net/download.html">http://www.clamav.net/download.html</a></p>
+<p>综合查杀工具<br>    悬镜: <a target="_blank" rel="noopener" href="http://www.xmirror.cn/page/prodon">http://www.xmirror.cn/page/prodon</a></p>
+<p>通常Linux下恶意程序处置，全靠人工解决</p>
+<p>chkrootkit功能:<br>    检测是否被植入后门、木马、rootkit<br>    检测系统命令是否正常<br>    检测登录日志<br>    使用方法:<br>    <a target="_blank" rel="noopener" href="http://ftp.pangeia.com.br/download.htm">http://ftp.pangeia.com.br/download.htm</a><br>    tar -zxvf xxxx.tar.gz<br>    cd 文件夹<br>    make sense<br>    ./chkrootkit<br>    开始检查</p>
+<hr>
+<p>Linux下常用安全工具<br>    rkhunter功能:<br>    系统命令(Binary)检测，包括Md5 校验<br>    Rootkit检测<br>    本机敏感目录、系统配置、服务及套间异常检测<br>    三方应用版本检测<br>    使用方法:<br>    Wget <a target="_blank" rel="noopener" href="https://nchc.dl.sourceforge.net/project/rkhunter/rkhunter/1.4.4/rkhunter-1.4.4.tar.gz">https://nchc.dl.sourceforge.net/project/rkhunter/rkhunter/1.4.4/rkhunter-1.4.4.tar.gz</a><br>    tar -zxvf xxxx.tar.gz<br>    cd 文件夹<br>    ./installer.sh –install<br>    rkhunter -c</p>
+<hr>
+<h4 id="网络行为分析"><a href="#网络行为分析" class="headerlink" title="网络行为分析"></a>网络行为分析</h4><p>who -a</p>
+<p>lsb_release -a        uname -a        hostnamectl    cat /etc/os-release</p>
+<p>netstat -anop  所有的网络连接，可以看到socket连接，带pid</p>
+<p>netstat -utnpl 查看带端口情况</p>
+<p>arp -a 查看arp表，看有没有被arp欺骗</p>
+<p>iptables 封锁和陌生域名的联系</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">iptables -A OUTPUT -d 123.123.123.123 -j DROP #屏蔽出方向；使destination（方向） 上的流量全部drop</span><br><span class="line">iptables -A INPUT -s [目标ip] -j DROP#拒绝源头为目标ip的入流量</span><br><span class="line">iptables -I INPUT -p tcp --dport  443 -m string --string &quot;xxx.com&quot; --algo bm -j DROP</span><br><span class="line">iptables -A INPUT -p tcp --deport 80 -m string --string &quot;x.com&quot; --algo bm -j DROP#拒绝连接目标端口80，目标关键字x.com的tcp的入方向连接</span><br><span class="line">iptables -L#查看</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h4 id="进程检查"><a href="#进程检查" class="headerlink" title="进程检查"></a>进程检查</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ps aux</span><br><span class="line">ps -ef</span><br><span class="line">top -c</span><br><span class="line">htop</span><br><span class="line">lsof -p [pid]</span><br><span class="line">lsof -i</span><br><span class="line">lsof -c</span><br><span class="line"><span class="meta">#</span><span class="bash">隐藏进程</span></span><br><span class="line">	ps -ef | awk &#x27;&#123;print&#125;&#x27; | sort -n | uniq &gt;1</span><br><span class="line">	ls /proc | sort -n | uniq &gt;2</span><br><span class="line">	diff 1 2</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="启动项排查"><a href="#启动项排查" class="headerlink" title="启动项排查"></a>启动项排查</h4><p>/etc/init.d/   init是系统启动的第一个进程（详见linux开机流程笔记），rcX中软链接全部指向init.d<br>有的系统在 /etc/xinetd.d/  旧版/etc/inetd.conf</p>
+<p>查看rc.local文件，有时候这个文件会被篡改</p>
+<p>/etc/rc.d/rc[0-6].d</p>
+<p>/etc/profile.d/</p>
+<p>rcX.d<br>/etc/rc.d/rc.local 文件会在 Linux 系统各项服务都启动完毕之后再被运行，Ubuntu 18.04版及以前有该文件，20版本及之后rc.local文件被服务化，与init.d中的rc.local不同</p>
+<p>etc/init.d目录下ls查看目录名，服务启动脚本，比如其中把ssh启动，意味着就可以通过ssh连接过来了，Apache服务脚本启动</p>
+<p>etc/rcXXX.d 目录名 也可能是目录名，数字0-6这些代表目录运行级别</p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210620153051413.png" alt="image-20210620153051413"></p>
+<p>K开头的，表示不启动服务，S开头表启动服务，一般S就是系统开机初始化之后要做的任务</p>
+<h4 id="计划任务"><a href="#计划任务" class="headerlink" title="计划任务"></a>计划任务</h4><p>/etc/crontab</p>
+<p>/var/spool/cron/用户名</p>
+<p>/var/spool/anacron/<br>/etc/cron.d/<br>/etc/cron.hourly/</p>
+<p>crontab -l 列出所有的启动项</p>
+<p>crontab -r 删除    -e编辑</p>
+<h4 id="几个常出问题的目录"><a href="#几个常出问题的目录" class="headerlink" title="几个常出问题的目录"></a>几个常出问题的目录</h4><p>/var/spool/cron/下的文件夹都需要关注下</p>
+<p>/etc/cron.d</p>
+<p>/etc/cron.hourly  daily  weekly  monthly这些按照时间启动的  </p>
+<h4 id="服务排查"><a href="#服务排查" class="headerlink" title="服务排查"></a>服务排查</h4><p>cat /etc/services      服务名称  使用端口  协议名称</p>
+<p>1-1024 系统保留，大多数情况只能由root使用</p>
+<p>1024-4999 由客户端自由分配</p>
+<p>5000-65535 由服务端程序自由分配</p>
+<h4 id="服务自启动"><a href="#服务自启动" class="headerlink" title="服务自启动"></a>服务自启动</h4><p>chkconfig –level 2345 httpd on  这里2345是级别</p>
+<p>chkconfig –level 0 服务名 on/off  类似win的msconfig<br>        运行级别<br>        0 关机状态，设置成0会导致开不了机<br>        1 单用户模式，无需密码登录root，kali开机e，ubuntu shift修改找回密码<br>        2 多用户模式，无网络和NFS<br>        3 多用户，完整模式，登录后进入控制台的命令行模式<br>        4 不可用，一般不用。如电池将用尽，切换到该模式做一些设置<br>        5 多用户，带图形界面，登录后进入图形GUI模式<br>        6 重新启动，默认不能设置为6，会无限重启<br>手动开启服务<br>    service nginx start<br>设置开机自启服务<br>    chkconfig –level 2345 nginx on</p>
+<p>如果没有<br>    apt-get install sysv-rc-conf<br>    cp /usr/sbin/sysv-rc-conf /usr/sbin/chkconfig<br>    如果没有<br>    vim /etc/apt/sources.list<br>    deb <a target="_blank" rel="noopener" href="http://archive.ubuntu.com/ubuntu/">http://archive.ubuntu.com/ubuntu/</a> trusty main universe restricted multiverse<br>    sudo apt-get update</p>
+<hr>
+<p>关于systemctl<br>    systemctl是RHEL 7 的服务管理工具中主要的工具，它融合之前service和chkconfig的功能于一体。可以使用它永久性或只在当前会话中启用/禁用服务。</p>
+<p>chkconfig –list 查看服务自启动状态  –del删除</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">写个开机服务放到etc/systemd/system下</span></span><br><span class="line"><span class="meta">	cat&gt;</span><span class="bash">node_exporter.service&lt;&lt;<span class="string">EOF</span></span></span><br><span class="line">		[Unit]</span><br><span class="line">		Description=node_exporter Monitoring System</span><br><span class="line">		Documentation=node_exporter Monitoring System</span><br><span class="line"></span><br><span class="line">		[Service]</span><br><span class="line">		ExecStart=/root/node_exporter-1.3.1.linux-amd64/node_exporter --web.listen-address=:9100 </span><br><span class="line"></span><br><span class="line">		[Install]</span><br><span class="line">		WantedBy=multi-user.target</span><br><span class="line">	EOF</span><br><span class="line"><span class="meta">#</span><span class="bash">注意EOF前后不要有空</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="文件检查"><a href="#文件检查" class="headerlink" title="文件检查"></a>文件检查</h4><p>文件完整性检查，有的系统用rpm管理包的话，使用rpm -Va查看所有软件包的变化情况</p>
+<p>敏感目录</p>
+<p>/tmp</p>
+<p>/etc/init.d</p>
+<p>/usr/bin</p>
+<p>/usr/sbin</p>
+<p>/root</p>
+<p>/bin</p>
+<p>/boot</p>
+<p>/sbin</p>
+<p>/etc/passwd</p>
+<p>/etc/shadow</p>
+<p>ls -alt /temp 按时间进行排序</p>
+<p>使用 find / *.py -perm 4777 可以查找到用chmod 777 xxx.py 改变文件权限的文件</p>
+<p>md5sum -b [文件]</p>
+<p>find / -uid 0 -print 查找特权用户文件<br>find / -size +10000k -print 查看文件大于多少大小的<br>find / -name “…” -print<br>ls -al /tmp | grep “Feb 27”<br>find /home/kali -type f -mtime T<br>find / *.jsp -perm 4777<br>whereis [文件名]<br>ls -la<br>du -sh<br>注意关注隐藏文件 .开头的</p>
+<p>ls -al /tmp | grep “Feb 10” 在tmp中寻找所有2月10号的文件   </p>
+<p>inode文件删除<br>    ls -li muma.sh 查看文件编号<br>    find ./* -inum [文件编号] -delete<br>    find ./* -inum [文件编号] -exec rm {} ;<br>    find ./* -inum [文件编号] -exec rm -i {} ;<br>    find ./* -inum [文件编号] -exec rm -f {} ;<br>    find ./* -inum [文件编号] | xargs rm -f</p>
+<h4 id="账号检查"><a href="#账号检查" class="headerlink" title="账号检查"></a>账号检查</h4><p>w  查看某一时刻用户行为</p>
+<p>cat /etc/passwd 记录了所有用户,默认权限644最小权限444</p>
+<p>cat /etc/shadow 中的root记录了加密过的密码(用彩虹表破解)</p>
+<p>less /etc/passwd 用该命令看有没有新增加的用户</p>
+<p>ls -l /etc/passwd</p>
+<p>删除用户</p>
+<p>usermod -L [user]</p>
+<p>userdel [user]</p>
+<p>userdel -r [user]</p>
+<p>删除用户之后，/home目录下的用户名文件夹也删了</p>
+<p>禁用/etc/shadow第二栏!</p>
+<p><strong>用户登录检查</strong></p>
+<p>last 最后登录时间，查看成功的登录 记录在/var/log/wtmp</p>
+<p>lastb 登录失败情况 /var/log/btmp</p>
+<p>lastlog 查看上一次用户登录情况/var/log/lastlog</p>
+<p>last -x reboot 查看重启记录</p>
+<p>last -x shotdown 查看关机记录 /var/log/message</p>
+<h4 id="历史命令检查"><a href="#历史命令检查" class="headerlink" title="历史命令检查"></a>历史命令检查</h4><p>.bash_history</p>
+<p>history 查看历史命令</p>
+<p>history -c 清空历史命令</p>
+<p>cat ~/.bash_history</p>
+<p>cat /etc/hosts 查看host文件 echo $PATH</p>
+<h4 id="处置命令"><a href="#处置命令" class="headerlink" title="处置命令"></a>处置命令</h4><p>chattr +i [目标文件] 锁住crontab</p>
+<p>chmod 000 [目录文件] 去除权限</p>
+<p>lsattr [目标文件]</p>
+<h4 id="日志位置"><a href="#日志位置" class="headerlink" title="日志位置"></a>日志位置</h4><p>linux 的日志目录位置</p>
+<p>/var/log</p>
+<p>日志配置文件</p>
+<p>/etc/rsyslog.conf</p>
+<h2 id="实战之夺回ubuntu登录密码"><a href="#实战之夺回ubuntu登录密码" class="headerlink" title="实战之夺回ubuntu登录密码"></a>实战之夺回ubuntu登录密码</h2><p>有些公司，可以说是没有安全</p>
+<p>员工安全意识薄弱，服务器登录root，密码123456。人家不爆你爆谁？</p>
+<p>居然被小黑阔把服务器密码改了，种了马子</p>
+<p>虽然伤害性不大，但是侮辱性极强</p>
+<p>问题是，如何在不重装系统的前提下夺回密码？</p>
+<hr>
+<p><strong>环境：</strong> <strong>Ubuntu 18.04</strong> 开机grub引导，ROG玩家国度主板，英伟达显卡若干</p>
+<h3 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h3><p>开机，按esc，进入grub命令行模式</p>
+<p><strong>开机，按住shift，按esc</strong>，可以<strong>进入grub菜单</strong>，不小心按多了esc也会进入命令行模式</p>
+<p>Advanced options for Ubuntu 回车</p>
+<p>进入菜单后用<strong>recover mode回车</strong>，使用<strong>root</strong>权限，输入命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -n -o remount,rw /   #因为此时你只有读权限，为了能运行管理员命令，必须重新挂载该shell窗口，赋予写权限</span><br></pre></td></tr></table></figure>
+
+<p>此时可以运行一小部分命令，包括修改密码的命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(sudo) passwd 用户名</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="方案二"><a href="#方案二" class="headerlink" title="方案二"></a>方案二</h3><p>recover mode时，用e编辑</p>
+<p>把linux行的“recovery nomodeset”更改为“quiet splash rw init=/bin/bash”</p>
+<p>然后f10或者ctrl+X</p>
+<p>输入passwd 账户</p>
+<p>此处实际上是输入不了的，因该是某个packet依赖缺失？</p>
+<p>参考链接<a target="_blank" rel="noopener" href="http://www.vzidc.com/news/content/5293.html">http://www.vzidc.com/news/content/5293.html</a></p>
+<hr>
+<h3 id="其他google线索："><a href="#其他google线索：" class="headerlink" title="其他google线索："></a>其他google线索：</h3><ul>
+<li><p>惠普电脑ubuntu18.04，长按F9进入BOOT menu，选择ubuntu之后长按shift并esc进入ubuntu高级模式，然后选择recover mode</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/geekqian/article/details/82912518">https://blog.csdn.net/geekqian/article/details/82912518</a> 在grub命令行中输入normal回车，回到开启界面后按一次esc</p>
+</li>
+<li><p>Type <code>normal</code>, hit Enter, and then tap Esc until the menu is displayed. Hitting Esc at this point won’t drop you to the grub command prompt (so don’t worry about hitting Esc too many times). <a target="_blank" rel="noopener" href="https://askubuntu.com/questions/381613/how-to-return-from-grub-prompt-to-the-grub-menu">https://askubuntu.com/questions/381613/how-to-return-from-grub-prompt-to-the-grub-menu</a> </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://frameboxxindore.com/windows/how-do-i-access-grub-in-ubuntu.html">https://frameboxxindore.com/windows/how-do-i-access-grub-in-ubuntu.html</a> </p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20220505165742140.png" alt="image-20220505165742140"></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44721831/article/details/122182958">https://blog.csdn.net/qq_44721831/article/details/122182958</a> 最终参考的这篇的方案二，但是与文章中的不一样，不需要输入root密码，只需要回车即可。</p>
+</li>
+<li><p>grub的一些命令 <a target="_blank" rel="noopener" href="https://teliute.org/linux/Tecli/lesson1/lesson1.html">https://teliute.org/linux/Tecli/lesson1/lesson1.html</a></p>
+</li>
+<li><p>linux运行级别与图形/命令行启动 <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42446001/article/details/119269739">https://blog.csdn.net/weixin_42446001/article/details/119269739</a></p>
+</li>
+</ul>
+<h3 id="GRUB"><a href="#GRUB" class="headerlink" title="GRUB"></a>GRUB</h3><p>What is the grub menu?<br>Grub is the boot menu. If you have more than one operating system installed, it allows you to select which one to boot. Grub is also useful for troubleshooting. You can use it to modify the boot arguments or to boot from an older kernel.<br>Source: <a target="_blank" rel="noopener" href="https://frameboxxindore.com/windows/how-do-i-access-grub-in-ubuntu.html">https://frameboxxindore.com/windows/how-do-i-access-grub-in-ubuntu.html</a></p>
+<h3 id="设置开机自动进入grub-menu界面"><a href="#设置开机自动进入grub-menu界面" class="headerlink" title="设置开机自动进入grub menu界面"></a>设置开机自动进入grub menu界面</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/default/grub</span><br><span class="line"><span class="meta">#</span><span class="bash">然后把grub_timeout_style=hidden给删除或者注释掉，把grub_cmdline_linux_default修改为text</span></span><br><span class="line">sudo update-grub #重新更新grub配置</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="玩转grub配置文件"><a href="#玩转grub配置文件" class="headerlink" title="玩转grub配置文件"></a>玩转grub配置文件</h3><h4 id="etc-default-grub"><a href="#etc-default-grub" class="headerlink" title="/etc/default/grub"></a>/etc/default/grub</h4><p>GRUB的一个简单选项的配置文件，可以改变引导菜单外观。在执行<code>sudo grub-update</code>后使新配置生效。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">GRUB_DEFAULT=0</span><br><span class="line"><span class="meta">#</span><span class="bash">属性：默认启动项</span></span><br><span class="line"><span class="meta">#</span><span class="bash">参数：可以是数字：从0开始（按照开机选择界面的顺序对应）；也可以是saved或者是某一个菜单条目的标题(查专业手册)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">GRUB_HIDDEN_TIMEOUT=0</span></span><br><span class="line"><span class="meta">#</span><span class="bash">属性：是否隐藏菜单（grub2不再使用）</span></span><br><span class="line"><span class="meta">#</span><span class="bash">参数：0：不隐藏，1：隐藏</span></span><br><span class="line"></span><br><span class="line">GRUB_HIDDEN_TIMEOUT_QUIET=true</span><br><span class="line"><span class="meta">#</span><span class="bash">属性：是否显示等待倒计时</span></span><br><span class="line"><span class="meta">#</span><span class="bash">参数：<span class="literal">true</span>：不显示，<span class="literal">false</span>：显示</span></span><br><span class="line"></span><br><span class="line">GRUB_TIMEOUT=0</span><br><span class="line"><span class="meta">#</span><span class="bash">属性：进入默认启动项的等候时间</span></span><br><span class="line"><span class="meta">#</span><span class="bash">参数：单位：秒，默认0，-1表示一直等待</span></span><br><span class="line"></span><br><span class="line">GRUB_DISTRIBUTOR=`lsb_release -i -s 2&gt; /dev/null || echo Debian`</span><br><span class="line"><span class="meta">#</span><span class="bash">属性：由 GRUB 的分发者设置为他们的标识名称。这用于生成更多信息性的菜单条目标题。</span></span><br><span class="line"></span><br><span class="line">GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash&quot;</span><br><span class="line"><span class="meta">#</span><span class="bash">属性：内核启动参数的默认值</span></span><br><span class="line"><span class="meta">#</span><span class="bash">参数：quiet splash为不显示启动信息，安静的启动，如值为空则显示启动信息</span></span><br><span class="line"><span class="meta">#</span><span class="bash">说明：除非 GRUB_DISABLE_RECOVERY 被设置为 <span class="literal">true</span>，否则每个 Linux 内核将生成两个菜单项: 一个默认条目和一个恢复模式条目。</span></span><br><span class="line">      此选项列出命令行参数，仅添加到默认菜单条目中，位于 GRUB_CMDLINE_LINUX 中列出的参数之后。</span><br><span class="line"></span><br><span class="line">GRUB_CMDLINE_LINUX=&quot;&quot;</span><br><span class="line"><span class="meta">#</span><span class="bash">属性：手动添加内核启动参数</span></span><br><span class="line"><span class="meta">#</span><span class="bash">参数：默认为空，可以添加你需要的参数，以 “name=value” 的格式添加，多个参数用空格隔开</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">GRUB_TERMINAL=console</span></span><br><span class="line"><span class="meta">#</span><span class="bash">属性：是否使用控制终端(仅限grub-pc)</span></span><br><span class="line"><span class="meta">#</span><span class="bash">参数：默认使用图像界面，去掉前面的“<span class="comment">#”则使用控制台终端</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">GRUB_GFXMODE=640x480</span></span><br><span class="line"><span class="meta">#</span><span class="bash">属性：图形界面分辨率</span></span><br><span class="line"><span class="meta">#</span><span class="bash">参数：“宽x高”或者“宽x高x深”，只能使用图形卡通过 VESA BIOS 扩展 （VBE） 支持的模式，因此可能无法提供本地 LCD 面板分辨率。</span></span><br><span class="line">      可以通过 GRUB 中的&quot;videoinfo&quot;命令&quot;列出。</span><br><span class="line"><span class="meta">#</span><span class="bash">说明：分辨率可以指定为一种或多个模式的序列，按逗号(,)或分号(;)分开,依次尝试，直到找到一个。</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">GRUB_DISABLE_LINUX_UUID=<span class="literal">true</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">属性：是否允许GRUB将“root=UUID=xxx”参数传递给Linux</span></span><br><span class="line"><span class="meta">#</span><span class="bash">参数：<span class="literal">true</span>:允许,注释表示不允许</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">GRUB_DISABLE_RECOVERY=<span class="string">&quot;true&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">属性：是否禁用恢复模式菜单项的生成</span></span><br><span class="line"><span class="meta">#</span><span class="bash">参数：<span class="literal">true</span>:禁用，,注释表示不禁用</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">GRUB_INIT_TUNE=<span class="string">&quot;480 440 1&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">属性：取消注释可以在grub启动时收到嘟嘟声</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>grub-update的实际作用就是将相应的修改写入到/boot/grub/grub.cfg文件中，因此作为用户是无需直接修改/boot/grub/grub.cfg进行个性化配置的。</p>
+<h4 id="usr-share-grub-default-grub"><a href="#usr-share-grub-default-grub" class="headerlink" title="/usr/share/grub/default/grub"></a>/usr/share/grub/default/grub</h4><p>示例配置文件，当/etc/default/grub配置发生错误时，可以通过它来帮助你恢复初始配置。</p>
+<h4 id="etc-grub-d"><a href="#etc-grub-d" class="headerlink" title="/etc/grub.d"></a>/etc/grub.d</h4><p>/etc/grub.d目录下包含了很多用来配置 GRUB 的shell脚本,这些配置可以在/etc/default/grub配置的基础上进行的更复杂的配置。同样需通过执行sudo grub-update使新配置生效。</p>
+<h4 id="boot-grub-grub-cfg"><a href="#boot-grub-grub-cfg" class="headerlink" title="/boot/grub/grub.cfg"></a>/boot/grub/grub.cfg</h4><p>当对/etc/default/grub配置文件 和 /etc/grub.d目录内复杂的配置文件进行修改并grub-update后，生成的文件就是/boot/grub/grub.cfg，这也是 GRUB 实际使用到的配置文件。</p>
+<h4 id="boot-grub-cfg"><a href="#boot-grub-cfg" class="headerlink" title="/boot/grub.cfg"></a>/boot/grub.cfg</h4><p>即使是root也不要编辑它，它同样在每次update-grub后自动生成。</p>
+<hr>
+<h4 id="个性化设置引导界面"><a href="#个性化设置引导界面" class="headerlink" title="个性化设置引导界面"></a>个性化设置引导界面</h4><h5 id="1-启动菜单背景图"><a href="#1-启动菜单背景图" class="headerlink" title="1.启动菜单背景图"></a>1.启动菜单背景图</h5><p>引导菜单界面将自动搜索/boot/grub/，并将找到的的第一张图片作为引导菜单背景图。<br>如需要使用背景图，建议背景图分辨率和GRUB_GFXMODE保持一致。</p>
+<h5 id="2-添加GRUB主题"><a href="#2-添加GRUB主题" class="headerlink" title="2.添加GRUB主题"></a>2.添加GRUB主题</h5><p>1)下载主题包</p>
+<p>GRUB主题下载网址：<a target="_blank" rel="noopener" href="https://www.gnome-look.org/browse?cat=109&amp;ord=latest">https://www.gnome-look.org/browse?cat=109&amp;ord=latest</a><br>两个优秀的GRUB主题：<a target="_blank" rel="noopener" href="https://www.gnome-look.org/p/1009236">https://www.gnome-look.org/p/1009236</a> 和 <a target="_blank" rel="noopener" href="https://www.gnome-look.org/p/1414997">https://www.gnome-look.org/p/1414997</a> </p>
+<p>2)解压主题包到指定目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hollowman@hollowman-F117:~/下载$ xz -d Vimix-1080p.tar.xz </span><br><span class="line">hollowman@hollowman-F117:~/下载$ sudo mkdir /boot/grub/themes</span><br><span class="line">hollowman@hollowman-F117:~/下载$ sudo tar -xvf Vimix-1080p.tar -C /boot/grub/themes</span><br></pre></td></tr></table></figure>
+
+
+
+<p>3)修改/etc/default/grub配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hollowman@hollowman-F117:~/下载$ sudo vim /etc/default/grub</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## 注意以下参数</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> GRUB_TIMEOUT_STYLE=hidden                                 <span class="comment">#注释掉，不然不会出现引导菜单</span></span></span><br><span class="line">GRUB_TIMEOUT=3                                              #不能为0，否则引导菜单还没出现就跳过了</span><br><span class="line">GRUB_GFXMODE=&quot;1920x1080&quot;                                    #请将分辨率和图像大小设置一致</span><br><span class="line">GRUB_THEME=/boot/grub/themes/Vimix-1080p/Vimix/theme.txt    #添加此代码，注意参数应设置主题文件theme.txt的路径</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>执行 sudo update-grub</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hollowman@hollowman-F117:~/下载$ sudo update-grub</span><br></pre></td></tr></table></figure>
+
+<p>注意：优麒麟GRUB主题这样设置是无效的<br>原因分析：优麒麟添加了自定义的主题，配置文件存放在/etc/grub.d/06_ubuntukylin_theme 文件<br>解决办法：打开该文件，找到GRUB_THEME这一行，将其注释并改成你自己的主题路径。执行sudo update-grub生效</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hollowman@hollowman-F117:~/下载$ sudo vim /etc/grub.d/06_ubuntukylin_theme</span><br><span class="line"></span><br><span class="line">...省去上文...</span><br><span class="line"><span class="meta">#</span><span class="bash">GRUB_THEME=/usr/share/grub/themes/UKUI/theme.txt</span></span><br><span class="line">GRUB_THEME=/boot/grub/themes/Vimix-1080p/Vimix/theme.txt</span><br><span class="line">...省去下文...</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="grub相关文档"><a href="#grub相关文档" class="headerlink" title="grub相关文档"></a>grub相关文档</h4><p>GNU GRUB Manual 2.06 <a target="_blank" rel="noopener" href="https://www.gnu.org/software/grub/manual/grub/html_node/index.html">https://www.gnu.org/software/grub/manual/grub/html_node/index.html</a><br>GRUB2配置文件”grub.cfg”详解(GRUB2实战手册)–金步国作品 <a target="_blank" rel="noopener" href="http://www.jinbuguo.com/linux/grub.cfg.html">http://www.jinbuguo.com/linux/grub.cfg.html</a></p>
+<blockquote>
+<p>参考链接 <a target="_blank" rel="noopener" href="https://blog.csdn.net/ymz641/article/details/120719529">https://blog.csdn.net/ymz641/article/details/120719529</a></p>
+</blockquote>
+<hr>
+<h2 id="实战之挖矿病毒溯源"><a href="#实战之挖矿病毒溯源" class="headerlink" title="实战之挖矿病毒溯源"></a>实战之挖矿病毒溯源</h2><p>2.25一觉睡醒腾讯云接连报了几个毒，最近做实验做完了这台机器就没关云防火墙，恰巧和ssh密码相关的实验，期间有个弱口令被爆了，结果中了马</p>
+<p>腾讯云曝了异地登录ip，124.160.96.249</p>
+<p>溯源一下，杭州企业网，<del>估计又是哪个倒霉肉鸡</del></p>
+<p>上机排查</p>
+<p>htop发现我这2核cpu使用率160%+，锁定路径与文件名</p>
+<p>不确定此时是否在线</p>
+<p>who 一下，发现没有</p>
+<p>这小子估计是用cpu挖矿了</p>
+<p>先不管，netstat -anop | grep 目标文件名</p>
+<p>发现1个established，</p>
+<p>溯源一下，荷兰，好家伙法外之地，发现主机开着</p>
+<p>回头kill掉这给进程，ps -aux | grep 程序</p>
+<p>kill 文件pid</p>
+<p>ps一下发现有一个居然没kill掉</p>
+<p>kill -9 文件名</p>
+<p>还是没杀掉</p>
+<p>htop处得知运行用户是我众多用户的一个弱密码用户，正好趁机清理一些平时做实验的没用账户</p>
+<p>userdel -f 目标用户</p>
+<p>然后就没了</p>
+<p>后来发现这个其实是僵尸进程，该进程释放了资源但是没有得到父进程的确认。具体可以研究一下daemon类进程，孤儿进程，僵尸进程这些的父子关系<del>争取哪天自己也用上这招</del></p>
+<p>后来对此次木马样本进行分析，发现还给我留了个rsync后门</p>
+<p>真当我这是后院了还</p>
+<p>主程序是一个二进制挖矿程序</p>
+<p>两主程序用来检测系统版本型号以及控制开关</p>
+<p>之后按照流程，排查了计划任务是否被改动</p>
+<p>在时间段内各个用户的bash-history以及systemlog</p>
+<p>别说还真管用，一开始攻击者还就是把文件上传到temp文件夹下然后自删除</p>
+<p>之后躲到那个用户的隐藏目录下</p>
+<p>但还是躲不过find大法好</p>
+<p>样本取差不多之后，把云防火墙不需要端口给关了。</p>
+<p><del>要是我专门创个弱密码弱口令放网上，是不是就可以搜刮其他样本了</del></p>
+<h2 id="实战之钓鱼邮件溯源"><a href="#实战之钓鱼邮件溯源" class="headerlink" title="实战之钓鱼邮件溯源"></a>实战之钓鱼邮件溯源</h2><p>某敏感时期</p>
+<p>收到一钓鱼邮件</p>
+<p>还好员工意识比较强没点开</p>
+<p>员工外网办公笔记本</p>
+<p>断wifi，禁用网卡，敲出样本</p>
+<p>二话不说好家伙，甲方直接给这员工重装了系统</p>
+<p>伪装的很像啊，发件地址的后缀不注意都一模一样</p>
+<p>excel伪装再像你不改后缀exe还是能被发现，即使名字起的再长，显得欲盖弥彰</p>
+<p>邮件用notepad打开，找到两ip</p>
+<p>溯一下，一个住宅肉鸡</p>
+<p>一个阿里云cdn</p>
+<p>调官方api查cdn信息，线索中断。。。</p>
+<p>再来看看样本分析</p>
+<p>二进制文件丢进沙箱跑一下</p>
+<p>这病毒挺强，分析报告看的我冒冷汗。</p>
+<p>甚至包括了虚拟机逃逸，容器逃逸。。。</p>
+<p>得亏没有运行</p>
+<h2 id="实战之教授主机病毒"><a href="#实战之教授主机病毒" class="headerlink" title="实战之教授主机病毒"></a>实战之教授主机病毒</h2><p>待更……</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">XiaoYao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://w4xiaoyao.top/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E5%AE%9E%E6%88%98Linux%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">https://w4xiaoyao.top/2023/03/30/折腾吧/实战Linux应急响应/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%97%A5%E5%B8%B8/">日常</a><a class="post-meta__tags" href="/tags/fluxion/">fluxion</a><a class="post-meta__tags" href="/tags/cap/">cap</a></div><div class="post_share"><div class="social-share" data-image="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_007.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E8%A7%92%E5%8A%A8%E9%87%8F%E5%AE%88%E6%81%92/"><img class="prev-cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/010.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">角动量守恒</div></div></a></div><div class="next-post pull-right"><a href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E7%94%A8powershell%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E5%B9%B6%E8%AE%BE%E4%B8%BA%E5%A3%81%E7%BA%B8/"><img class="next-cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/010.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">计划任务运行powershell自动获取聚焦图片并设为壁纸</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2023/03/30/折腾吧/wifi破解的两种姿势/" title="WIFI破解的两种常用姿势"><img class="cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_007.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2022-04-02</div><div class="title">WIFI破解的两种常用姿势</div></div></a></div><div><a href="/2023/03/30/AI算法/基于蚁群算法下的K-means聚类与2-opt优化/" title="MATLAB——基于蚁群算法下的K-means聚类与2-opt优化"><img class="cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_095.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2021-05-18</div><div class="title">MATLAB——基于蚁群算法下的K-means聚类与2-opt优化</div></div></a></div><div><a href="/2021/05/08/diary/diary-210508/" title="diary-210508"><img class="cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/001.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2021-05-26</div><div class="title">diary-210508</div></div></a></div><div><a href="/2023/03/30/diary/diary-210525/" title="diary-210525"><img class="cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/ohmylife_004.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2021-05-26</div><div class="title">diary-210525</div></div></a></div><div><a href="/2023/03/30/diary/diary-210623/" title="diary-210623"><img class="cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/wallpaper_017.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2021-06-23</div><div class="title">diary-210623</div></div></a></div><div><a href="/2023/03/30/学习笔记/Linux内核路由表/" title="Linux内核路由表"><img class="cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/015.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2022-08-21</div><div class="title">Linux内核路由表</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div><div id="comment-switch"><span class="first-comment">Valine</span><span class="switch-btn"></span><span class="second-comment">Waline</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/profile_knife.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">XiaoYao</div><div class="author-info__description">多巴胺被赐予意义，人类社会便有了混沌，愿世间尚有净土，留存爱与欢喜。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">55</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">68</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Liloker"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Liloker" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:theone@liloker.anonaddy.me" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://blog.csdn.net/weixin_42160117" target="_blank" title="CSDN"><i class="far fa-copyright"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">来了，随便坐吧~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E6%B5%81%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">Linux应急响应流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%97%87%E7%8A%B6%E4%B8%8E%E7%A1%AE%E8%AE%A4"><span class="toc-number">1.0.1.</span> <span class="toc-text">症状与确认</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%85%E5%8A%A9%E5%A4%84%E7%BD%AE%E5%B7%A5%E5%85%B7"><span class="toc-number">1.0.2.</span> <span class="toc-text">辅助处置工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E8%A1%8C%E4%B8%BA%E5%88%86%E6%9E%90"><span class="toc-number">1.0.3.</span> <span class="toc-text">网络行为分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E6%A3%80%E6%9F%A5"><span class="toc-number">1.0.4.</span> <span class="toc-text">进程检查</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E9%A1%B9%E6%8E%92%E6%9F%A5"><span class="toc-number">1.0.5.</span> <span class="toc-text">启动项排查</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.0.6.</span> <span class="toc-text">计划任务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%A0%E4%B8%AA%E5%B8%B8%E5%87%BA%E9%97%AE%E9%A2%98%E7%9A%84%E7%9B%AE%E5%BD%95"><span class="toc-number">1.0.7.</span> <span class="toc-text">几个常出问题的目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E6%8E%92%E6%9F%A5"><span class="toc-number">1.0.8.</span> <span class="toc-text">服务排查</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E8%87%AA%E5%90%AF%E5%8A%A8"><span class="toc-number">1.0.9.</span> <span class="toc-text">服务自启动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%A3%80%E6%9F%A5"><span class="toc-number">1.0.10.</span> <span class="toc-text">文件检查</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B4%A6%E5%8F%B7%E6%A3%80%E6%9F%A5"><span class="toc-number">1.0.11.</span> <span class="toc-text">账号检查</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%86%E5%8F%B2%E5%91%BD%E4%BB%A4%E6%A3%80%E6%9F%A5"><span class="toc-number">1.0.12.</span> <span class="toc-text">历史命令检查</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%84%E7%BD%AE%E5%91%BD%E4%BB%A4"><span class="toc-number">1.0.13.</span> <span class="toc-text">处置命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E4%BD%8D%E7%BD%AE"><span class="toc-number">1.0.14.</span> <span class="toc-text">日志位置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%88%98%E4%B9%8B%E5%A4%BA%E5%9B%9Eubuntu%E7%99%BB%E5%BD%95%E5%AF%86%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">实战之夺回ubuntu登录密码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%B8%80"><span class="toc-number">2.1.</span> <span class="toc-text">方案一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%BA%8C"><span class="toc-number">2.2.</span> <span class="toc-text">方案二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96google%E7%BA%BF%E7%B4%A2%EF%BC%9A"><span class="toc-number">2.3.</span> <span class="toc-text">其他google线索：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GRUB"><span class="toc-number">2.4.</span> <span class="toc-text">GRUB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E8%BF%9B%E5%85%A5grub-menu%E7%95%8C%E9%9D%A2"><span class="toc-number">2.5.</span> <span class="toc-text">设置开机自动进入grub menu界面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%A9%E8%BD%ACgrub%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">2.6.</span> <span class="toc-text">玩转grub配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#etc-default-grub"><span class="toc-number">2.6.1.</span> <span class="toc-text">&#x2F;etc&#x2F;default&#x2F;grub</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#usr-share-grub-default-grub"><span class="toc-number">2.6.2.</span> <span class="toc-text">&#x2F;usr&#x2F;share&#x2F;grub&#x2F;default&#x2F;grub</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#etc-grub-d"><span class="toc-number">2.6.3.</span> <span class="toc-text">&#x2F;etc&#x2F;grub.d</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#boot-grub-grub-cfg"><span class="toc-number">2.6.4.</span> <span class="toc-text">&#x2F;boot&#x2F;grub&#x2F;grub.cfg</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#boot-grub-cfg"><span class="toc-number">2.6.5.</span> <span class="toc-text">&#x2F;boot&#x2F;grub.cfg</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AA%E6%80%A7%E5%8C%96%E8%AE%BE%E7%BD%AE%E5%BC%95%E5%AF%BC%E7%95%8C%E9%9D%A2"><span class="toc-number">2.6.6.</span> <span class="toc-text">个性化设置引导界面</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%90%AF%E5%8A%A8%E8%8F%9C%E5%8D%95%E8%83%8C%E6%99%AF%E5%9B%BE"><span class="toc-number">2.6.6.1.</span> <span class="toc-text">1.启动菜单背景图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E6%B7%BB%E5%8A%A0GRUB%E4%B8%BB%E9%A2%98"><span class="toc-number">2.6.6.2.</span> <span class="toc-text">2.添加GRUB主题</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#grub%E7%9B%B8%E5%85%B3%E6%96%87%E6%A1%A3"><span class="toc-number">2.6.7.</span> <span class="toc-text">grub相关文档</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%88%98%E4%B9%8B%E6%8C%96%E7%9F%BF%E7%97%85%E6%AF%92%E6%BA%AF%E6%BA%90"><span class="toc-number">3.</span> <span class="toc-text">实战之挖矿病毒溯源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%88%98%E4%B9%8B%E9%92%93%E9%B1%BC%E9%82%AE%E4%BB%B6%E6%BA%AF%E6%BA%90"><span class="toc-number">4.</span> <span class="toc-text">实战之钓鱼邮件溯源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%88%98%E4%B9%8B%E6%95%99%E6%8E%88%E4%B8%BB%E6%9C%BA%E7%97%85%E6%AF%92"><span class="toc-number">5.</span> <span class="toc-text">实战之教授主机病毒</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E8%A7%92%E5%8A%A8%E9%87%8F%E5%AE%88%E6%81%92/" title="角动量守恒"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/010.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="角动量守恒"/></a><div class="content"><a class="title" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E8%A7%92%E5%8A%A8%E9%87%8F%E5%AE%88%E6%81%92/" title="角动量守恒">角动量守恒</a><time datetime="2023-03-30T13:01:15.574Z" title="Created 2023-03-30 21:01:15">2023-03-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E5%AE%9E%E6%88%98Linux%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" title="实战Linux应急响应"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_007.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="实战Linux应急响应"/></a><div class="content"><a class="title" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E5%AE%9E%E6%88%98Linux%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" title="实战Linux应急响应">实战Linux应急响应</a><time datetime="2023-03-30T13:01:15.574Z" title="Created 2023-03-30 21:01:15">2023-03-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E7%94%A8powershell%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E5%B9%B6%E8%AE%BE%E4%B8%BA%E5%A3%81%E7%BA%B8/" title="计划任务运行powershell自动获取聚焦图片并设为壁纸"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/010.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计划任务运行powershell自动获取聚焦图片并设为壁纸"/></a><div class="content"><a class="title" href="/2023/03/30/%E6%8A%98%E8%85%BE%E5%90%A7/%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E7%94%A8powershell%E8%8E%B7%E5%8F%96%E5%9B%BE%E7%89%87%E5%B9%B6%E8%AE%BE%E4%B8%BA%E5%A3%81%E7%BA%B8/" title="计划任务运行powershell自动获取聚焦图片并设为壁纸">计划任务运行powershell自动获取聚焦图片并设为壁纸</a><time datetime="2023-03-30T13:01:15.573Z" title="Created 2023-03-30 21:01:15">2023-03-30</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_007.jpg')">#footer-wrap
+  if theme.footer.owner.enable
+    - var now = new Date()
+    - var nowYear = now.getFullYear()
+    if theme.footer.owner.since && theme.footer.owner.since != nowYear
+      .copyright!= `&copy;${theme.footer.owner.since} - ${nowYear} By ${config.author}`
+    else
+      .copyright!= `&copy;${nowYear} By ${config.author}`
+  if theme.footer.copyright
+    .framework-info
+      span= _p('footer.framework') + ' '
+      a(href='https://hexo.io')= 'Hexo'
+      span.footer-separator |
+      span= _p('footer.theme') + ' '
+      a(href='https://github.com/jerryc127/hexo-theme-butterfly')= 'Butterfly'
+  if theme.footer.custom_text
+    .footer_custom_text!=`${theme.footer.custom_text}`
+</footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="Increase font size"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="Decrease font size"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'RYm4g1Khr0F0wyTlik3kI2We-MdYXbMMI',
+      appKey: 'u9VLeiSQuTLpO2mWRAMlYrKX',
+      placeholder: '随便说两句吧~',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick,mail"],
+      visitor: true
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script>function loadWaline () {
+  function initWaline () {
+    const waline = new Waline(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://waline2-five.vercel.app/',
+      avatar: 'identicon',
+      path: location.pathname,
+      emojiCDN: '',
+      emojiMaps: "",
+      visitor: true
+    }, {"pageSize":10,"placeholder":"随便留下点什么吧~","langMode":{"admin":"博主","nick":"xiaoyao"}}))
+  }
+
+  if (typeof Waline === 'function') initWaline() 
+  else getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js').then(initWaline)
+}
+
+if ('Valine' === 'Waline' || !true) {
+  if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="7988378536" data-server="tencent" data-type="playlist" data-fixed="true" data-mini="true" data-autoplay="true" data-theme="#408fda" data-order="random" data-preload="auto" data-mutex="true" muted></div><script type="text/javascript" src="/js/myjs.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener toc scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
