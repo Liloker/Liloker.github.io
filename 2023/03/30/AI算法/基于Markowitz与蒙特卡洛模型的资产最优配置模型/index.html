@@ -1980,12 +1980,12 @@ window.addEventListener('load',preloader.endLoading())</script><div class="js-pj
     const waline = new Waline(Object.assign({
       el: '#waline-wrap',
       serverURL: 'https://waline2-five.vercel.app/',
-      avatar: 'identicon',
+      avatar: 'gravatar',
       path: location.pathname,
       emojiCDN: '',
       emojiMaps: "",
       visitor: true
-    }, {"pageSize":10,"placeholder":"中国之外地区请用Waline评论哦~","langMode":{"admin":"博主","nick":"xiaoyao"}}))
+    }, {"pageSize":10,"placeholder":"随便说点什么吧~","langMode":{"nick":"昵称"}}))
   }
 
   if (typeof Waline === 'function') initWaline() 
