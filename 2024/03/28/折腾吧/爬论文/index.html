@@ -1,0 +1,328 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>爬论文 | 逍 遥 の B l o g</title><meta name="keywords" content="爬虫,python,Burp,postman"><meta name="author" content="XiaoYao"><meta name="copyright" content="XiaoYao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="下论文太麻烦,写个爬虫批量下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="爬论文">
+<meta property="og:url" content="https://w4xiaoyao.site/2024/03/28/%E6%8A%98%E8%85%BE%E5%90%A7/%E7%88%AC%E8%AE%BA%E6%96%87/">
+<meta property="og:site_name" content="逍 遥 の B l o g">
+<meta property="og:description" content="下论文太麻烦,写个爬虫批量下">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/165.jpg">
+<meta property="article:published_time" content="2024-03-28T03:30:11.989Z">
+<meta property="article:modified_time" content="2024-05-06T04:55:04.064Z">
+<meta property="article:author" content="XiaoYao">
+<meta property="article:tag" content="爬虫">
+<meta property="article:tag" content="论文">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/165.jpg"><link rel="shortcut icon" href="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/favicon_hacker.png"><link rel="canonical" href="https://w4xiaoyao.site/2024/03/28/%E6%8A%98%E8%85%BE%E5%90%A7/%E7%88%AC%E8%AE%BA%E6%96%87/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?true";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"Author: XiaoYao","link":"Link: ","source":"Source: 逍 遥 の B l o g","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source."}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '爬论文',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-05-06 12:55:04'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><type="text/css" href="/css/mycss.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"><script src="/live2d-widget/autoload.js"></script><script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?f1a652ffc0084a6a5ec4853f1d82444c";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/profile_knife.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">62</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">74</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">14</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archive</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw far fa-images"></i><span> Gallery</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fas fa-gamepad"></i><span> Game1</span></a></li><li><a class="site-page child" href="/gamee/"><i class="fa-fw fas fa-gamepad"></i><span> Game2</span></a></li><li><a class="site-page child" href="/gameee/"><i class="fa-fw fas fa-gamepad"></i><span> Game3</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/165.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">逍 遥 の B l o g</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archive</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw far fa-images"></i><span> Gallery</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fas fa-gamepad"></i><span> Game1</span></a></li><li><a class="site-page child" href="/gamee/"><i class="fa-fw fas fa-gamepad"></i><span> Game2</span></a></li><li><a class="site-page child" href="/gameee/"><i class="fa-fw fas fa-gamepad"></i><span> Game3</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">爬论文</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-03-28T03:30:11.989Z" title="Created 2024-03-28 11:30:11">2024-03-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-05-06T04:55:04.064Z" title="Updated 2024-05-06 12:55:04">2024-05-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%98%E8%85%BE%E5%90%A7/">折腾吧</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">3.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>20min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="爬论文"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>下论文看，但是发现这个页面有个异步加载的模块，具体来说会随着左边的筛选来实时更新右侧论文结果，虽然chrome检查源码可以获得，但是xpath获取不到，而且真实的查询url也没有在js或者html中看到</p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20240328114235643.png" alt="image-20240328114235643"></p>
+<p>xpath插件匹配不到元素，为了摸清楚论文从数据库加载到眼前的整个流程，使用chrome+burp+postman验证</p>
+<h3 id="原理分析"><a href="#原理分析" class="headerlink" title="原理分析"></a>原理分析</h3><p>挂学校vpn</p>
+<p>chrome挂burp代理 拿Site map，结合要测的模块，分别找到对应请求接口</p>
+<ul>
+<li>根据筛选获取论文列表</li>
+<li>查看论文详情，获取论文下载和查看链接</li>
+<li>论文列表下一页</li>
+</ul>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20240328114910755.png" alt="image-20240328114910755"></p>
+<p>题外话，这里可以测一波sql注入</p>
+<p>返回一个论文列表，onclick触发，但是并不是直接的论文链接，而是两个论文参数拼接，chrome中鼠标点一下看看burp能抓到啥</p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20240328115247143.png" alt="image-20240328115247143"></p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20240328115139061.png" alt="image-20240328115139061"></p>
+<p>鼠标点击后两个论文参数作为post的body参数传递，进入论文信息页面，找到html的查看全文接口</p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20240328115624079.png" alt="image-20240328115624079"></p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20240328115807878.png" alt="image-20240328115807878"></p>
+<p>点一下看看，发现论文下载和查看链接只是地址拼接以上信息即可，至此获取论文的下载链接</p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20240328115931849.png" alt="image-20240328115931849"></p>
+<p>回到论文列表，再看下下一页接口，简单的get请求，使用postman模拟下，200 ok，注意这里postman header也要和获取论文列表时一样，需要添加burp中请求一样的cookie值。请求论文信息时只需要content-type一致即可</p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20240328114508501.png" alt="image-20240328114508501"></p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20240328120114661.png" alt="image-20240328120114661"></p>
+<h3 id="实施计划"><a href="#实施计划" class="headerlink" title="实施计划"></a>实施计划</h3><p>既然知道了完整原理，代码该如何写呢？</p>
+<ul>
+<li>python写一个post请求，从burp中复制chrome中查询参数作为body参数，body内容为：ffields=degree%3A%E5%8D%9A%E5%A3%AB%E5%90%8E%2C%E5%8D%9A%E5%A3%AB%3Aspecial%3Afuzzy%7Cdegree_type%3A%E5%8D%9A%E5%A3%AB%E5%90%8E%2C%E5%B7%A5%E5%AD%A6%E5%8D%9A%E5%A3%AB%2C%E7%90%86%E5%AD%A6%E5%8D%9A%E5%A3%AB%2C%E5%B7%A5%E7%A8%8B%E7%AE%A1%E7%90%86%E7%A1%95%E5%A3%AB%2C%E5%B7%A5%E7%A8%8B%E7%A1%95%E5%A3%AB%2C%E5%B7%A5%E5%AD%A6%E7%A1%95%E5%A3%AB%2C%E7%90%86%E5%AD%A6%E7%A1%95%E5%A3%AB%3Aspecial%3Afuzzy%7Ccomplete_date_year%3A2023%3Aand%7Cdepartment%3A%E4%BF%A1%E6%81%AF%E5%AD%A6%E9%83%A8%2C%E7%90%86%E5%B7%A5%E5%AD%A6%E9%99%A2%2C%E8%BD%AF%E4%BB%B6%E5%AD%A6%E9%99%A2%2C%E4%BF%A1%E6%81%AF%E7%A7%91%E5%AD%A6%E6%8A%80%E6%9C%AF%E5%AD%A6%E9%99%A2%2C%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E4%B8%8E%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AD%A6%E9%99%A2%2C%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%AD%A6%E9%99%A2%3Aspecial%3Aexact%7Cxkcode%3A07*+OR+08*+OR+14*%3Aand&amp;ffieldstr=%E5%8D%9A%E5%A3%AB%E5%90%8E%26%E5%8D%9A%E5%A3%AB%26%E5%8D%9A%E5%A3%AB%E5%90%8E%26%E5%B7%A5%E5%AD%A6%E5%8D%9A%E5%A3%AB%26%E7%90%86%E5%AD%A6%E5%8D%9A%E5%A3%AB%26%E5%B7%A5%E7%A8%8B%E7%AE%A1%E7%90%86%E7%A1%95%E5%A3%AB%26%E5%B7%A5%E7%A8%8B%E7%A1%95%E5%A3%AB%26%E5%B7%A5%E5%AD%A6%E7%A1%95%E5%A3%AB%26%E7%90%86%E5%AD%A6%E7%A1%95%E5%A3%AB%26%E4%BF%A1%E6%81%AF%E5%AD%A6%E9%83%A8%26%E7%90%86%E5%B7%A5%E5%AD%A6%E9%99%A2%26%E8%BD%AF%E4%BB%B6%E5%AD%A6%E9%99%A2%26%E4%BF%A1%E6%81%AF%E7%A7%91%E5%AD%A6%E6%8A%80%E6%9C%AF%E5%AD%A6%E9%99%A2%26%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E4%B8%8E%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AD%A6%E9%99%A2%26%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%AD%A6%E9%99%A2%26%E7%90%86%E5%AD%A6%26%E5%B7%A5%E5%AD%A6%26%E4%BA%A4%E5%8F%89%E5%AD%A6%E7%A7%91&amp;searchkeyword=%E5%B7%A5%E5%AD%A6&amp;searchstrs=&amp;degree_check=%E5%8D%9A%E5%A3%AB%E5%90%8E&amp;degree_type_check=%E5%8D%9A%E5%A3%AB%E5%90%8E&amp;degree_check=%E5%8D%9A%E5%A3%AB&amp;degree_type_check=%E5%B7%A5%E5%AD%A6%E5%8D%9A%E5%A3%AB&amp;degree_type_check=%E7%90%86%E5%AD%A6%E5%8D%9A%E5%A3%AB&amp;degree_type_check=%E5%B7%A5%E7%A8%8B%E7%AE%A1%E7%90%86%E7%A1%95%E5%A3%AB&amp;degree_type_check=%E5%B7%A5%E7%A8%8B%E7%A1%95%E5%A3%AB&amp;degree_type_check=%E5%B7%A5%E5%AD%A6%E7%A1%95%E5%A3%AB&amp;degree_type_check=%E7%90%86%E5%AD%A6%E7%A1%95%E5%A3%AB&amp;year_check=2023&amp;department_check=%E4%BF%A1%E6%81%AF%E5%AD%A6%E9%83%A8&amp;department_check=%E7%90%86%E5%B7%A5%E5%AD%A6%E9%99%A2&amp;department_check=%E8%BD%AF%E4%BB%B6%E5%AD%A6%E9%99%A2&amp;department_check=%E4%BF%A1%E6%81%AF%E7%A7%91%E5%AD%A6%E6%8A%80%E6%9C%AF%E5%AD%A6%E9%99%A2&amp;department_check=%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E4%B8%8E%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AD%A6%E9%99%A2&amp;department_check=%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%AD%A6%E9%99%A2&amp;xkcode_check=07&amp;xkcode_check=08&amp;xkcode_check=14，header参数cookie：JSESSIONID=BCD85613ED45953A6E8B4ECC1AA7BDFA，content-type：application/x-www-form-urlencoded。获取目标论文列表响应resp</li>
+<li>写一个循环，循环变量i从1到n，n为总论文数量，如果i除以20==0，则触发“下一页”get请求，url为2xx.1xx.xx.xxx:8800/pagedown.action?pagenum=20&amp;pager.offset=20，header的cookie：JSESSIONID=BCD85613ED45953A6E8B4ECC1AA7BDFA 获取响应resp，因为每页20篇文章放在一页，所以定义一个index变量=i%20。</li>
+<li>循环中，用xpath语法//td/a@onclick[index] 匹配到第一步得到的resp中td标签下的a标签中的onclick属性中的docinfo中的两个参数，对于匹配到的两个参数分别赋值给id1和id2</li>
+<li>以id1和id2作为body参数，再写一个post请求，header参数cookie：JSESSIONID=BCD85613ED45953A6E8B4ECC1AA7BDFA，body内容为id1=fbb480481b6f68960dc5706d1ff6ecb6&amp;id2=nV46efrR0eQ%25253D，获取论文详情页面resp2</li>
+<li>xpath语法driver.find_element(By.XPATH,”//div[@class=’look btn’]/a@href”)匹配到resp2中的内容，取出href属性值openfile?dbid=72&amp;objid=55_54_49_48_50_50&amp;lwsing=172014b5348fcf30785e542bf4ba4cc5，然后拼接域2xx.xxx.xx.xxx:8800/获得最终完整下载链接url:2xx.xxx.xx.xxx:8800/openfile?dbid=72&amp;objid=55_54_49_48_50_50&amp;lwsing=172014b5348fcf30785e542bf4ba4cc5</li>
+<li>写一个get请求上一步的url链接获取论文并保存到当地文件夹</li>
+</ul>
+<p>至此一个简单爬虫主体框架出来了，甚至都不需要selenium参加，如果使用selenium得使用等待页面元素都加载完成，然后挨个点击论文进行下载，考虑到异步加载xpath抓不到元素然后会多出来语法这块的坑，调试过程，而且似乎没有什么反爬，直接考虑post了</p>
+<p>耽搁了几天时间，再次捡起来这个事情发现获取不到信息，查下来是JSESSIONID的值变了，只要重新burpsuit抓包获取再放到postman中即可</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">pip install Flask Flask-Session</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, session, make_response, request, redirect, url_for</span><br><span class="line"><span class="keyword">from</span> flask_session <span class="keyword">import</span> Session</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> timedelta</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">app.config[<span class="string">&#x27;SESSION_TYPE&#x27;</span>] = <span class="string">&#x27;filesystem&#x27;</span> <span class="comment"># 可配置为redis等</span></span><br><span class="line">Session(app)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置session</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>():</span></span><br><span class="line">    <span class="keyword">if</span> <span class="string">&#x27;views&#x27;</span> <span class="keyword">not</span> <span class="keyword">in</span> session:</span><br><span class="line">        session[<span class="string">&#x27;views&#x27;</span>] = <span class="number">0</span></span><br><span class="line">    session[<span class="string">&#x27;views&#x27;</span>] += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Session views: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(session[<span class="string">&#x27;views&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/set/&lt;int:value&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">set_views</span>(<span class="params">value</span>):</span></span><br><span class="line">    session[<span class="string">&#x27;views&#x27;</span>] = value</span><br><span class="line">    <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;index&#x27;</span>)) <span class="comment"># 返回302和新的url</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The value of JSESSIONID can change after a certain period of time due to session timeout settings in the servlet container. This is not directly related to connection breaks or cookie expiration times. 通常在java中默认30min</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/set_cookie&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">set_cookie</span>():</span></span><br><span class="line">    response = make_response(<span class="string">&#x27;Cookie set!&#x27;</span>)</span><br><span class="line">    expires = datetime.utcnow() + timedelta(hours=<span class="number">1</span>)</span><br><span class="line">    response.set_cookie(name=<span class="string">&#x27;name&#x27;</span>, value=<span class="string">&#x27;value&#x27;</span>, expires=expires)</span><br><span class="line">    <span class="keyword">return</span> response</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/get_cookie&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_cookie</span>():</span></span><br><span class="line">    name = request.cookies.get(<span class="string">&#x27;name&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Cookie value: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(name)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> html</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">download_paper</span>(<span class="params">save_path, paper_url, file_name</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;[-]:正在爬取论文链接&#x27;</span> + paper_url) <span class="comment"># + str(i) + &#x27;张... ...&#x27;)</span></span><br><span class="line">    url = paper_url</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        headers = &#123;</span><br><span class="line">        &#125;</span><br><span class="line">        pdf_data = requests.get(url=url, headers=headers, timeout=<span class="number">30</span>).content</span><br><span class="line">        save_path = save_path + <span class="built_in">str</span>(file_name) + <span class="string">&#x27;.pdf&#x27;</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;save_path:&quot;</span>+save_path)</span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(file=save_path, mode=<span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> pd:</span><br><span class="line">            pd.write(pdf_data)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;[INFO]:paper保存成功&#x27;</span>)  <span class="comment"># ，保存路径：&#123;save_path&#125;&#x27;)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        msg = <span class="string">f&#x27;[ERROR]:出现错误，错误信息：<span class="subst">&#123;e&#125;</span>&#x27;</span></span><br><span class="line">        <span class="built_in">print</span>(msg)</span><br><span class="line">        <span class="keyword">return</span> msg</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化会话和变量</span></span><br><span class="line">session = requests.Session()</span><br><span class="line">session.headers[<span class="string">&#x27;Cookie&#x27;</span>] = <span class="string">&#x27;JSESSIONID=0FF3DD11F5B3CCC09A45C795B75DF204&#x27;</span></span><br><span class="line">session.headers[<span class="string">&#x27;Content-Type&#x27;</span>] = <span class="string">&#x27;application/x-www-form-urlencoded&#x27;</span></span><br><span class="line">base_url = <span class="string">&#x27;2xx.xxx.xxx.xxx:8800&#x27;</span>  <span class="comment"># 图书馆的ip</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># POST请求获取论文列表</span></span><br><span class="line">body = <span class="string">&#x27;ffields=degree_type%3A%E5%8D%9A%E5%A3%AB%E5%90%8E%2C%E5%B7%A5%E5%AD%A6%E5%8D%9A%E5%A3%AB%2C%E7%90%86%E5%AD%A6%E5%8D%9A%E5%A3%AB%2C%E7%94%B5%E5%AD%90%E4%BF%A1%E6%81%AF%E7%A1%95%E5%A3%AB%2C%E5%B7%A5%E7%A8%8B%E7%A1%95%E5%A3%AB%2C%E5%B7%A5%E5%AD%A6%E7%A1%95%E5%A3%AB%2C%E7%90%86%E5%AD%A6%E7%A1%95%E5%A3%AB%3Aspecial%3Afuzzy%7Ccomplete_date_year%3A2024+OR+2023+OR+2022+OR+2021+OR+2020+OR+2019+OR+2018+OR+2017%3Aand%7Cdepartment%3A%E5%85%B6%E5%AE%83%E5%8D%95%E4%BD%8D%EF%BC%88%E6%A0%A1%E5%A4%96%EF%BC%89%2C%E5%85%B6%E5%AE%83%E5%8D%95%E4%BD%8D%EF%BC%88%E6%A0%A1%E5%86%85%EF%BC%89%2C%E6%95%B0%E5%AD%A6%E7%A7%91%E5%AD%A6%E5%AD%A6%E9%99%A2%2C%E7%89%A9%E7%90%86%E4%B8%8E%E7%94%B5%E5%AD%90%E7%A7%91%E5%AD%A6%E5%AD%A6%E9%99%A2%2C%E4%BF%A1%E6%81%AF%E5%AD%A6%E9%83%A8%2C%E7%90%86%E5%B7%A5%E5%AD%A6%E9%99%A2%2C%E8%BD%AF%E4%BB%B6%E5%AD%A6%E9%99%A2%2C%E9%87%91%E8%9E%8D%E4%B8%8E%E7%BB%9F%E8%AE%A1%E5%AD%A6%E9%99%A2%2C%E4%BF%A1%E6%81%AF%E7%A7%91%E5%AD%A6%E6%8A%80%E6%9C%AF%E5%AD%A6%E9%99%A2%2C%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E4%B8%8E%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AD%A6%E9%99%A2%2C%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%AD%A6%E9%99%A2%3Aspecial%3Aexact%7Cxkcode%3A07*+OR+08*+OR+14*%3Aand&amp;ffieldstr=%E5%8D%9A%E5%A3%AB%E5%90%8E%26%E5%B7%A5%E5%AD%A6%E5%8D%9A%E5%A3%AB%26%E7%90%86%E5%AD%A6%E5%8D%9A%E5%A3%AB%26%E7%94%B5%E5%AD%90%E4%BF%A1%E6%81%AF%E7%A1%95%E5%A3%AB%26%E5%B7%A5%E7%A8%8B%E7%A1%95%E5%A3%AB%26%E5%B7%A5%E5%AD%A6%E7%A1%95%E5%A3%AB%26%E7%90%86%E5%AD%A6%E7%A1%95%E5%A3%AB%26%E5%85%B6%E5%AE%83%E5%8D%95%E4%BD%8D%EF%BC%88%E6%A0%A1%E5%A4%96%EF%BC%89%26%E5%85%B6%E5%AE%83%E5%8D%95%E4%BD%8D%EF%BC%88%E6%A0%A1%E5%86%85%EF%BC%89%26%E6%95%B0%E5%AD%A6%E7%A7%91%E5%AD%A6%E5%AD%A6%E9%99%A2%26%E7%89%A9%E7%90%86%E4%B8%8E%E7%94%B5%E5%AD%90%E7%A7%91%E5%AD%A6%E5%AD%A6%E9%99%A2%26%E4%BF%A1%E6%81%AF%E5%AD%A6%E9%83%A8%26%E7%90%86%E5%B7%A5%E5%AD%A6%E9%99%A2%26%E8%BD%AF%E4%BB%B6%E5%AD%A6%E9%99%A2%26%E9%87%91%E8%9E%8D%E4%B8%8E%E7%BB%9F%E8%AE%A1%E5%AD%A6%E9%99%A2%26%E4%BF%A1%E6%81%AF%E7%A7%91%E5%AD%A6%E6%8A%80%E6%9C%AF%E5%AD%A6%E9%99%A2%26%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E4%B8%8E%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AD%A6%E9%99%A2%26%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%AD%A6%E9%99%A2%26%E7%90%86%E5%AD%A6%26%E5%B7%A5%E5%AD%A6%26%E4%BA%A4%E5%8F%89%E5%AD%A6%E7%A7%91&amp;searchkeyword=%E5%B7%A5%E5%AD%A6&amp;searchstrs=&amp;degree_check=%E5%8D%9A%E5%A3%AB%E5%90%8E&amp;degree_type_check=%E5%8D%9A%E5%A3%AB%E5%90%8E&amp;degree_check=%E5%8D%9A%E5%A3%AB&amp;degree_type_check=%E5%B7%A5%E5%AD%A6%E5%8D%9A%E5%A3%AB&amp;degree_type_check=%E7%90%86%E5%AD%A6%E5%8D%9A%E5%A3%AB&amp;degree_check=%E7%A1%95%E5%A3%AB&amp;degree_type_check=%E7%94%B5%E5%AD%90%E4%BF%A1%E6%81%AF%E7%A1%95%E5%A3%AB&amp;degree_type_check=%E5%B7%A5%E7%A8%8B%E7%A1%95%E5%A3%AB&amp;degree_type_check=%E5%B7%A5%E5%AD%A6%E7%A1%95%E5%A3%AB&amp;degree_type_check=%E7%90%86%E5%AD%A6%E7%A1%95%E5%A3%AB&amp;year_check=2024&amp;year_check=2023&amp;year_check=2022&amp;year_check=2021&amp;year_check=2020&amp;year_check=2019&amp;year_check=2018&amp;year_check=2017&amp;department_check=%E5%85%B6%E5%AE%83%E5%8D%95%E4%BD%8D%EF%BC%88%E6%A0%A1%E5%A4%96%EF%BC%89&amp;department_check=%E5%85%B6%E5%AE%83%E5%8D%95%E4%BD%8D%EF%BC%88%E6%A0%A1%E5%86%85%EF%BC%89&amp;department_check=%E6%95%B0%E5%AD%A6%E7%A7%91%E5%AD%A6%E5%AD%A6%E9%99%A2&amp;department_check=%E7%89%A9%E7%90%86%E4%B8%8E%E7%94%B5%E5%AD%90%E7%A7%91%E5%AD%A6%E5%AD%A6%E9%99%A2&amp;department_check=%E4%BF%A1%E6%81%AF%E5%AD%A6%E9%83%A8&amp;department_check=%E7%90%86%E5%B7%A5%E5%AD%A6%E9%99%A2&amp;department_check=%E8%BD%AF%E4%BB%B6%E5%AD%A6%E9%99%A2&amp;department_check=%E9%87%91%E8%9E%8D%E4%B8%8E%E7%BB%9F%E8%AE%A1%E5%AD%A6%E9%99%A2&amp;department_check=%E4%BF%A1%E6%81%AF%E7%A7%91%E5%AD%A6%E6%8A%80%E6%9C%AF%E5%AD%A6%E9%99%A2&amp;department_check=%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E4%B8%8E%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%AD%A6%E9%99%A2&amp;department_check=%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%AD%A6%E9%99%A2&amp;xkcode_check=07&amp;xkcode_check=08&amp;xkcode_check=14&#x27;</span></span><br><span class="line">response = session.post(<span class="string">f&#x27;http://<span class="subst">&#123;base_url&#125;</span>//zjresult_two.action&#x27;</span>, data=body)</span><br><span class="line"><span class="built_in">print</span>(response)</span><br><span class="line">go_on = <span class="number">1</span> <span class="comment">#中断后继续</span></span><br><span class="line"><span class="keyword">if</span> go_on &gt; <span class="number">20</span>:</span><br><span class="line">        pager = go_on//<span class="number">20</span>*<span class="number">20</span>  <span class="comment"># 整数除法</span></span><br><span class="line">        response = session.get(<span class="string">f&#x27;http://<span class="subst">&#123;base_url&#125;</span>/pagedown.action?pagenum=20&amp;pager.offset=<span class="subst">&#123;pager&#125;</span>&#x27;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;-----------开始爬取第-----------&quot;</span>+<span class="built_in">str</span>(pager//<span class="number">20</span>)+<span class="string">&quot;/317页：&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(go_on, <span class="number">6334</span>):  <span class="comment"># 要下载的论文总数</span></span><br><span class="line">    <span class="comment"># 如果i是20的倍数，触发下一页</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;正在爬取第&quot;</span>+<span class="built_in">str</span>(i)+<span class="string">&quot;篇&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> i % <span class="number">20</span> == <span class="number">0</span>:</span><br><span class="line">        pager = i//<span class="number">20</span>*<span class="number">20</span>  <span class="comment"># 整数除法</span></span><br><span class="line">        response = session.get(<span class="string">f&#x27;http://<span class="subst">&#123;base_url&#125;</span>/pagedown.action?pagenum=20&amp;pager.offset=<span class="subst">&#123;pager&#125;</span>&#x27;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;-----------开始爬取第-----------&quot;</span>+<span class="built_in">str</span>(pager//<span class="number">20</span>)+<span class="string">&quot;/317页：&quot;</span>)</span><br><span class="line">    <span class="comment"># 解析论文列表页面</span></span><br><span class="line">    tree = html.fromstring(response.content)</span><br><span class="line">    index = i % <span class="number">20</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;index取余20:&quot;</span>+<span class="built_in">str</span>(index))</span><br><span class="line">    onclick_attr = tree.xpath(<span class="string">f&#x27;//td/a/@onclick&#x27;</span>)[index]</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;onclick_attr:&quot;</span>+<span class="built_in">str</span>(onclick_attr))</span><br><span class="line">    <span class="comment"># 使用正则表达式匹配 docinfo 中的两个参数提取id1和id2</span></span><br><span class="line">    match = re.search(<span class="string">r&quot;docinfo\(&#x27;([^&#x27;]+)&#x27;,&#x27;([^&#x27;]+)&#x27;\)&quot;</span>, onclick_attr)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;match:&quot;</span> + <span class="built_in">str</span>(match))</span><br><span class="line">    <span class="keyword">if</span> match:</span><br><span class="line">        id1 = match.group(<span class="number">1</span>)  <span class="comment"># 第一个匹配的字符串</span></span><br><span class="line">        id2 = match.group(<span class="number">2</span>)  <span class="comment"># 第二个匹配的字符串</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;id1: <span class="subst">&#123;id1&#125;</span>, id2: <span class="subst">&#123;id2&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 获取对应的论文信息</span></span><br><span class="line">        title = tree.xpath(<span class="string">f&#x27;//tr[<span class="subst">&#123;index + <span class="number">1</span>&#125;</span>]/td[2]/a/text()&#x27;</span>)[<span class="number">0</span>].strip()</span><br><span class="line">        author = tree.xpath(<span class="string">f&#x27;//tr[<span class="subst">&#123;index + <span class="number">1</span>&#125;</span>]/td[3]/text()&#x27;</span>)[<span class="number">0</span>].strip()</span><br><span class="line">        degree = tree.xpath(<span class="string">f&#x27;//tr[<span class="subst">&#123;index + <span class="number">1</span>&#125;</span>]/td[4]/text()&#x27;</span>)[<span class="number">0</span>].strip()</span><br><span class="line">        date = tree.xpath(<span class="string">f&#x27;//tr[<span class="subst">&#123;index + <span class="number">1</span>&#125;</span>]/td[5]/text()&#x27;</span>)[<span class="number">0</span>].strip()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 构建文件名</span></span><br><span class="line">        file_name = <span class="string">f&quot;<span class="subst">&#123;degree&#125;</span>_<span class="subst">&#123;date&#125;</span>_<span class="subst">&#123;title&#125;</span>_<span class="subst">&#123;author&#125;</span>.pdf&quot;</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;File name: <span class="subst">&#123;file_name&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># POST请求获取论文详情</span></span><br><span class="line">    body = <span class="string">f&#x27;id1=<span class="subst">&#123;id1&#125;</span>&amp;id2=<span class="subst">&#123;id2&#125;</span>&#x27;</span></span><br><span class="line">    paper_details = session.post(<span class="string">f&#x27;http://<span class="subst">&#123;base_url&#125;</span>/docinfo.action&#x27;</span>, data=body)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 解析论文详情页面</span></span><br><span class="line">    tree = html.fromstring(paper_details.content)</span><br><span class="line">    download_link = tree.xpath(<span class="string">&quot;//div[@class=&#x27;look btn&#x27;]/a/@href&quot;</span>)[<span class="number">0</span>]</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;download_link:&quot;</span> + <span class="built_in">str</span>(download_link))</span><br><span class="line">    <span class="comment"># 构建最终的下载链接</span></span><br><span class="line">    final_url = <span class="string">f&#x27;http://<span class="subst">&#123;base_url&#125;</span>/<span class="subst">&#123;download_link&#125;</span>&#x27;</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;论文下载链接：&quot;</span> + <span class="built_in">str</span>(final_url))</span><br><span class="line">    save_path = <span class="string">r&#x27;C:\Users\18362\Downloads\paper\\&#x27;</span>  <span class="comment"># 避免转义‘</span></span><br><span class="line">    download_paper(save_path, final_url, file_name)</span><br><span class="line">    <span class="comment"># 生成一个2到60之间的随机整数</span></span><br><span class="line">    pause_time = random.randint(<span class="number">2</span>, <span class="number">60</span>)</span><br><span class="line">    <span class="comment"># 暂停程序</span></span><br><span class="line">    time.sleep(pause_time)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>大功告成，开始自动爬取论文</p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20240504152431060.png" alt="image-20240504152431060"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">XiaoYao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://w4xiaoyao.site/2024/03/28/%E6%8A%98%E8%85%BE%E5%90%A7/%E7%88%AC%E8%AE%BA%E6%96%87/">https://w4xiaoyao.site/2024/03/28/折腾吧/爬论文/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%88%AC%E8%99%AB/">爬虫</a><a class="post-meta__tags" href="/tags/%E8%AE%BA%E6%96%87/">论文</a></div><div class="post_share"><div class="social-share" data-image="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/165.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/03/29/%E6%8A%98%E8%85%BE%E5%90%A7/rdpwrap.ini%E5%88%B6%E4%BD%9C/"><img class="prev-cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/145.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">使用ida制作rdpwrap.ini</div></div></a></div><div class="next-post pull-right"><a href="/2024/03/19/%E6%8A%98%E8%85%BE%E5%90%A7/%E6%8C%96%E7%9F%BF%E5%BA%94%E6%80%A5/"><img class="next-cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_008.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">挖矿应急</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/profile_knife.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">XiaoYao</div><div class="author-info__description">多巴胺被赐予意义，人类社会便有了混沌，愿世间尚有净土，留存爱与欢喜。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">62</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">74</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">14</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Liloker"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Liloker" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:theone@liloker.anonaddy.me" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://blog.csdn.net/weixin_42160117" target="_blank" title="CSDN"><i class="far fa-copyright"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">来了，随便坐吧~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">原理分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E6%96%BD%E8%AE%A1%E5%88%92"><span class="toc-number">3.</span> <span class="toc-text">实施计划</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BA%90%E4%BB%A3%E7%A0%81"><span class="toc-number">4.</span> <span class="toc-text">源代码</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/04/06/diary/diary-240406/" title="清明时节雨纷纷，路上行人勿断魂"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/145.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="清明时节雨纷纷，路上行人勿断魂"/></a><div class="content"><a class="title" href="/2024/04/06/diary/diary-240406/" title="清明时节雨纷纷，路上行人勿断魂">清明时节雨纷纷，路上行人勿断魂</a><time datetime="2024-04-06T10:50:22.785Z" title="Created 2024-04-06 18:50:22">2024-04-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/29/%E6%8A%98%E8%85%BE%E5%90%A7/rdpwrap.ini%E5%88%B6%E4%BD%9C/" title="使用ida制作rdpwrap.ini"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/145.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="使用ida制作rdpwrap.ini"/></a><div class="content"><a class="title" href="/2024/03/29/%E6%8A%98%E8%85%BE%E5%90%A7/rdpwrap.ini%E5%88%B6%E4%BD%9C/" title="使用ida制作rdpwrap.ini">使用ida制作rdpwrap.ini</a><time datetime="2024-03-29T12:09:15.487Z" title="Created 2024-03-29 20:09:15">2024-03-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/28/%E6%8A%98%E8%85%BE%E5%90%A7/%E7%88%AC%E8%AE%BA%E6%96%87/" title="爬论文"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/165.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="爬论文"/></a><div class="content"><a class="title" href="/2024/03/28/%E6%8A%98%E8%85%BE%E5%90%A7/%E7%88%AC%E8%AE%BA%E6%96%87/" title="爬论文">爬论文</a><time datetime="2024-03-28T03:30:11.989Z" title="Created 2024-03-28 11:30:11">2024-03-28</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/165.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2024 By XiaoYao</div><div class="footer_custom_text"><a href="https://w4xiaoyao.site">Dominating The Information Age </a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="Increase font size"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="Decrease font size"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadWaline () {
+  function initWaline () {
+    const waline = new Waline(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://waline2-five.vercel.app/',
+      avatar: 'retro',
+      path: location.pathname,
+      emojiCDN: '',
+      emojiMaps: "",
+      visitor: true
+    }, {"pageSize":10,"placeholder":"随便说点什么吧~","langMode":{"nick":"昵称"}}))
+  }
+
+  if (typeof Waline === 'function') initWaline() 
+  else getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js').then(initWaline)
+}
+
+if ('Waline' === 'Waline' || !true) {
+  if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="7988378536" data-server="tencent" data-type="playlist" data-fixed="true" data-mini="true" data-autoplay="true" data-theme="#408fda" data-order="random" data-preload="auto" data-mutex="true" muted></div><script type="text/javascript" src="/js/myjs.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/liloker/BlogMusicJS/dist/BlogMusic.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener toc scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
