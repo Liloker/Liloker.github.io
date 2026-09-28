@@ -32,3 +32,7 @@
   color: #fff;
   background-color: #49b1f5;
 }
+/* ===== 2026-09-28 从旧版 Butterfly 3.7.5 主题源码里迁出的微调（升级后不再改主题文件） ===== */
+#aside-content .card-widget { opacity: 0.9; }          /* 侧边栏透明度 */
+#page-header { background-color: transparent; }        /* 顶部去掉浅蓝底色 */
+#footer { background-color: transparent; }             /* 页脚去掉浅蓝底色 */

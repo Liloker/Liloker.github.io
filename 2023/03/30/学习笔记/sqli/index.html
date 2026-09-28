@@ -1,171 +1,264 @@
-<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SQL注入 | 逍 遥 の B l o g</title><meta name="keywords" content="SQL inject"><meta name="author" content="XiaoYao"><meta name="copyright" content="XiaoYao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="SQL注入笔记持续更新">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>SQL注入 | 逍 遥 の B l o g</title><meta name="author" content="XiaoYao"><meta name="copyright" content="XiaoYao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="SQL注入笔记持续更新">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL注入">
 <meta property="og:url" content="https://liloker.github.io/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/sqli/">
 <meta property="og:site_name" content="逍 遥 の B l o g">
 <meta property="og:description" content="SQL注入笔记持续更新">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/026.jpg">
-<meta property="article:published_time" content="2023-03-30T13:01:15.565Z">
+<meta property="article:published_time" content="2023-03-30T04:00:00.000Z">
 <meta property="article:modified_time" content="2021-03-07T16:00:00.000Z">
 <meta property="article:author" content="XiaoYao">
 <meta property="article:tag" content="SQLi">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/026.jpg"><link rel="shortcut icon" href="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/favicon_hacker.png"><link rel="canonical" href="https://liloker.github.io/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/sqli/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+<meta name="twitter:image" content="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/026.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "SQL注入",
+  "url": "https://liloker.github.io/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/sqli/",
+  "image": "https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/026.jpg",
+  "datePublished": "2023-03-30T04:00:00.000Z",
+  "dateModified": "2021-03-07T16:00:00.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "XiaoYao",
+      "url": "https://liloker.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/favicon_hacker.png"><link rel="canonical" href="https://liloker.github.io/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/sqli/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        const data = { value }
+
+        if (ttl != null) {
+          data.expiry = Date.now() + ttl * 86400000
+        }
+
+        localStorage.setItem(key, JSON.stringify(data))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
+
+        try {
+          const data = JSON.parse(itemStr)
+
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
+
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const hour = new Date().getHours()
+          const start = 6
+          const end = 18
+          const isNight =
+            start < end
+                ? hour < start || hour >= end
+                : hour >= start || hour < end
+          if (theme === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else theme === 'light' ? activateLightMode() : activateDarkMode()
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?true";
-  var s = document.getElementsByTagName("script")[0]; 
+  hm.src = "https://hm.baidu.com/hm.js?f1a652ffc0084a6a5ec4853f1d82444c";
+  var s = document.getElementsByTagName("script")[0];
   s.parentNode.insertBefore(hm, s);
 })();
-</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+btf.addGlobalFn('pjaxComplete', () => {
+  _hmt.push(['_trackPageview',window.location.pathname])
+}, 'baidu_analytics')
+</script><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
-  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
   translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
   copy: {
-    success: 'Copy successfully',
-    error: 'Copy error',
-    noSupport: 'The browser does not support'
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
   },
   relativeDate: {
     homepage: false,
     post: false
   },
   runtime: '',
-  date_suffix: {
-    just: 'Just',
-    min: 'minutes ago',
-    hour: 'hours ago',
-    day: 'days ago',
-    month: 'months ago'
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
   },
-  copyright: {"limitCount":50,"languages":{"author":"Author: XiaoYao","link":"Link: ","source":"Source: 逍 遥 の B l o g","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source."}},
+  copyright: {"limitCount":50,"languages":{"author":"作者: XiaoYao","link":"链接: ","source":"来源: 逍 遥 の B l o g","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
   lightbox: 'fancybox',
   Snackbar: undefined,
-  source: {
-    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
-    justifiedGallery: {
-      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
-    },
-    fancybox: {
-      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
-    }
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
   },
   isPhotoFigcaption: false,
-  islazyload: true,
-  isanchor: false
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
   title: 'SQL注入',
-  isPost: true,
-  isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2021-03-08 00:00:00'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
-
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-    win.saveToLocal = {
-      set: function setWithExpiry(key, value, ttl) {
-        if (ttl === 0) return
-        const now = new Date()
-        const expiryDay = ttl * 86400000
-        const item = {
-          value: value,
-          expiry: now.getTime() + expiryDay,
-        }
-        localStorage.setItem(key, JSON.stringify(item))
-      },
-
-      get: function getWithExpiry(key) {
-        const itemStr = localStorage.getItem(key)
-
-        if (!itemStr) {
-          return undefined
-        }
-        const item = JSON.parse(itemStr)
-        const now = new Date()
-
-        if (now.getTime() > item.expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return item.value
-      }
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/mycss.css"> <!-- 滚动条 + 旧主题的透明度/间距微调 --><meta name="generator" content="Hexo 8.1.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      if ($loadingBox.classList.contains('loaded')) return
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
     }
-  
-    win.getScript = url => new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    })
-  
-      win.activateDarkMode = function () {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = function () {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
-    
-          const now = new Date()
-          const hour = now.getHours()
-          const isNight = hour <= 6 || hour >= 18
-          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
-          else if (t === 'light') activateLightMode()
-          else activateDarkMode()
-        
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
-    
-    const fontSizeVal = saveToLocal.get('global-font-size')
-    if (fontSizeVal !== undefined) {
-      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
-    }
-    })(window)</script><type="text/css" href="/css/mycss.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"><script src="/live2d-widget/autoload.js"></script><script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?f1a652ffc0084a6a5ec4853f1d82444c";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/profile_knife.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">70</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">79</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">16</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archive</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw far fa-images"></i><span> Gallery</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fas fa-gamepad"></i><span> Game1</span></a></li><li><a class="site-page child" href="/gamee/"><i class="fa-fw fas fa-gamepad"></i><span> Game2</span></a></li><li><a class="site-page child" href="/gameee/"><i class="fa-fw fas fa-gamepad"></i><span> Game3</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/026.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">逍 遥 の B l o g</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archive</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw far fa-images"></i><span> Gallery</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fas fa-gamepad"></i><span> Game1</span></a></li><li><a class="site-page child" href="/gamee/"><i class="fa-fw fas fa-gamepad"></i><span> Game2</span></a></li><li><a class="site-page child" href="/gameee/"><i class="fa-fw fas fa-gamepad"></i><span> Game3</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">SQL注入</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-03-30T13:01:15.565Z" title="Created 2023-03-30 21:01:15">2023-03-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-03-07T16:00:00.000Z" title="Updated 2021-03-08 00:00:00">2021-03-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">7.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>25min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="SQL注入"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="数据库攻击"><a href="#数据库攻击" class="headerlink" title="数据库攻击"></a>数据库攻击</h3><p>SQL注入bai是一种非常常见的数据库攻击手段，SQL注入漏洞也是网络世界中最普遍的漏洞之一。攻击学校数据库修改自己成绩的事情，这些学长们一般用的就是SQL注入方法。</p>
+  }
+
+  preloader.initLoading()
+
+  if (document.readyState === 'complete') {
+    preloader.endLoading()
+  } else {
+    window.addEventListener('load', preloader.endLoading)
+    document.addEventListener('DOMContentLoaded', preloader.endLoading)
+    // Add timeout protection: force end after 7 seconds
+    setTimeout(preloader.endLoading, 7000)
+  }
+
+  if (true) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div class="bg-animation" id="web_bg" style="background-image: url(https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/index_%E4%BC%B8%E6%89%8B.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/profile_knife.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">70</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">79</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archive</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw far fa-images"></i><span> Gallery</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fas fa-gamepad"></i><span> Game1</span></a></li><li><a class="site-page child" href="/gamee/"><i class="fa-fw fas fa-gamepad"></i><span> Game2</span></a></li><li><a class="site-page child" href="/gameee/"><i class="fa-fw fas fa-gamepad"></i><span> Game3</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/026.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">逍 遥 の B l o g</span></a><a class="nav-page-title" href="/"><span class="site-name">SQL注入</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archive</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw far fa-images"></i><span> Gallery</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fas fa-gamepad"></i><span> Game1</span></a></li><li><a class="site-page child" href="/gamee/"><i class="fa-fw fas fa-gamepad"></i><span> Game2</span></a></li><li><a class="site-page child" href="/gameee/"><i class="fa-fw fas fa-gamepad"></i><span> Game3</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">SQL注入</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-03-30T04:00:00.000Z" title="发表于 2023-03-30 12:00:00">2023-03-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-03-07T16:00:00.000Z" title="更新于 2021-03-08 00:00:00">2021-03-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">7.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>25分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="数据库攻击"><a href="#数据库攻击" class="headerlink" title="数据库攻击"></a>数据库攻击</h3><p>SQL注入bai是一种非常常见的数据库攻击手段，SQL注入漏洞也是网络世界中最普遍的漏洞之一。攻击学校数据库修改自己成绩的事情，这些学长们一般用的就是SQL注入方法。</p>
 <p>SQL注入其实就是恶意用户通过在表单中填写包含SQL关键字的数据来使数据库执行非常规代码的过程。简单来说，就是数据「越俎代庖」做了代码才能干的事情。</p>
 <p>这个问题的来源是，SQL数据库的操作是通过SQL语句来执行的，而无论是执行代码还是数据项都必须写在SQL语句之中，这就导致如果我们在数据项中加入了某些SQL语句关键字（比如说SELECT、DROP等等），这些关键字就很可能在数据库写入或读取数据时得到执行。</p>
 <p><strong>SQL注入的产生需要满足以下两个条件</strong></p>
 <p>1、参数用户可控：前端传给后端的参数用户可控。</p>
 <p>2、参数带入数据库查询：传入的参数拼接到SQL语句中，且带入数据库中查询。</p>
 <p><strong>按照注入点分类：</strong></p>
-<p>（1）数字型注入：许多网页链接有类似的结构 <a target="_blank" rel="noopener" href="http://xxx.com/users.php?id=1">http://xxx.com/users.php?id=1</a> 基于此种形式的注入，注入点id为数字，一般被叫做数字型注入点，通过这种形式查询出后台数据库信息返回前台展示，可以构造类似以下的SQL语句进行爆破：select *** from 表名 where id=1 and 1=1。<br>（2）字符型注入：网页链接有类似的结构</p>
-<p><a target="_blank" rel="noopener" href="http://xxx.com/users.php?name=admin">http://xxx.com/users.php?name=admin</a> 这种形式，注入点name为字符串，被称为字符型注入，可以用：select *** from 表名 where name=’admin’ and 1=1。</p>
-<p>（3）搜索型注入：主要是指在数据搜索时没有过滤搜索参数，一般在链接地址中有 “keyword=“关键字””，注入点提交的是SQL语句，select * from 表名 where 字段 like ‘%关键字%’ and ‘%1%’=’%1%’。 </p>
+<p>（1）数字型注入：许多网页链接有类似的结构 <a target="_blank" rel="noopener" href="http://xxx.com/users.php?id=1">http://xxx.com/users.php?id=1</a> 基于此种形式的注入，注入点id为数字，一般被叫做数字型注入点，通过这种形式查询出后台数据库信息返回前台展示，可以构造类似以下的SQL语句进行爆破：select *** from 表名 where id&#x3D;1 and 1&#x3D;1。<br>（2）字符型注入：网页链接有类似的结构</p>
+<p><a target="_blank" rel="noopener" href="http://xxx.com/users.php?name=admin">http://xxx.com/users.php?name=admin</a> 这种形式，注入点name为字符串，被称为字符型注入，可以用：select *** from 表名 where name&#x3D;’admin’ and 1&#x3D;1。</p>
+<p>（3）搜索型注入：主要是指在数据搜索时没有过滤搜索参数，一般在链接地址中有 “keyword&#x3D;“关键字””，注入点提交的是SQL语句，select * from 表名 where 字段 like ‘%关键字%’ and ‘%1%’&#x3D;’%1%’。 </p>
 <h3 id="注入点"><a href="#注入点" class="headerlink" title="注入点"></a>注入点</h3><p>SQL注入其实就用户通过在表单中填写包含SQL关键字的数据来使数据库执行非常规代码的过程</p>
 <p><strong>注入点寻找</strong>：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/lzlzzzzzz/p/11794713.html">https://www.cnblogs.com/lzlzzzzzz/p/11794713.html</a></p>
 <h3 id="SQL语言"><a href="#SQL语言" class="headerlink" title="SQL语言"></a>SQL语言</h3><p>基础参考SQL菜鸟教程：<a target="_blank" rel="noopener" href="https://www.runoob.com/sql/sql-tutorial.html">https://www.runoob.com/sql/sql-tutorial.html</a></p>
@@ -187,13 +280,13 @@
 </blockquote>
 <p>以phpstudy为例，启动Apache和MySQL，安装一个可视化的数据库管理软件，phpmyadmin，url中直接进入，（现实中大多数数据库使用命令行操控）</p>
 <p>在MySQL中新建一个名为haha的数据库，数据库中新建一个table1表，表项设置username，id，password这三个字段，数据项的属性设置一下</p>
-<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210713171434950.png" alt="image-20210713171434950"></p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210713171434950.png" alt="image-20210713171434950" loading='lazy'></p>
 <p>在www目录下的index.php中添加如下代码：(多练习)</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    </span><br><span class="line"><span class="variable">$servername</span>=<span class="string">&quot;localhost&quot;</span>; <span class="comment">//定义一个服务器主机名，与win上的127.0.0.1类似</span></span><br><span class="line"><span class="variable">$username</span>=<span class="string">&quot;root&quot;</span>;</span><br><span class="line"><span class="variable">$password</span>=<span class="string">&quot;root&quot;</span>;<span class="comment">//用来连接数据库用户名密码</span></span><br><span class="line"><span class="variable">$dbname</span>=<span class="string">&quot;haha&quot;</span>;</span><br><span class="line"><span class="comment">//创建连接   mysqli自带对象，将连接对象存给变量conn</span></span><br><span class="line"><span class="variable">$conn</span> = <span class="keyword">new</span> mysqli(<span class="variable">$servername</span>,<span class="variable">$username</span>,<span class="variable">$password</span>,<span class="variable">$dbname</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//检测连接</span></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$conn</span>-&gt;connect_error)&#123;  <span class="comment">//如果链接对象中connect_error返回失败</span></span><br><span class="line">	<span class="keyword">die</span>(<span class="string">&quot;连接失败:&quot;</span>.<span class="variable">$conn</span>-&gt;connect_error); <span class="comment">//die函数断掉连接同时用.返回错误,php使用点来连接</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span>(<span class="string">&quot;连接成功&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//增删改查</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//数据库的查询（读取数据库）</span></span><br><span class="line"><span class="comment">//参考https://www.runoob.com/php/php-mysql-select.html 代码</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//准备一条数据库语句（sql语句）</span></span><br><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;SELECT * FROM table1 WHERE id &lt; 3&quot;</span>; <span class="comment">//将数据库中table1表中id项小于3的元素都选出来</span></span><br><span class="line"><span class="variable">$result</span> = <span class="variable">$conn</span>-&gt;query(<span class="variable">$sql</span>);	<span class="comment">//执行建立的conn连接对象中query函数，将sql语句塞给数据库，将执行（query）结果返回给变量$result</span></span><br><span class="line"><span class="comment">//判断result有没有东西</span></span><br><span class="line"> <span class="keyword">if</span> (<span class="variable">$result</span> -&gt;num_rows &gt; <span class="number">0</span>)</span><br><span class="line"> &#123;</span><br><span class="line">     <span class="comment">//输出数据</span></span><br><span class="line">     <span class="keyword">while</span>(<span class="variable">$row</span> = <span class="variable">$result</span>-&gt;fetch_assoc())<span class="comment">//用while循环一条条去读取</span></span><br><span class="line">     &#123;</span><br><span class="line">         <span class="keyword">echo</span> <span class="variable">$row</span>[<span class="string">&#x27;id&#x27;</span>].<span class="string">&#x27;------&#x27;</span>.<span class="variable">$row</span>[<span class="string">&#x27;username&#x27;</span>].<span class="string">&#x27;------&#x27;</span>.<span class="variable">$row</span>[<span class="string">&#x27;password&#x27;</span>].<span class="string">&quot;&lt;br/&gt;&quot;</span>; <span class="comment">//这里返回的row类似于js对象数据，里面有每个条目的信息，包含了name，password等个体属性</span></span><br><span class="line">         <span class="comment">//这里输出是sql查询语句的子集关系，所以一般SQL选所有*</span></span><br><span class="line">     &#125;</span><br><span class="line"> &#125;<span class="keyword">else</span></span><br><span class="line"> &#123;</span><br><span class="line">     <span class="keyword">echo</span> <span class="string">&quot;未查询到结果&quot;</span>;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//数据库的增加数据（插入数据） </span></span><br><span class="line"><span class="comment">//参考 https://www.runoob.com/php/php-mysql-insert.html</span></span><br><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;INSERT INTO table1 (id ,username,password) VALUE (8,&#x27;haha123&#x27;,&#x27;9999123&#x27;)&quot;</span>; <span class="comment">//注意有引号</span></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$conn</span>-&gt;query(<span class="variable">$sql</span>)===<span class="literal">TRUE</span>)<span class="comment">//执行语句query是否成功</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;插入成功&#x27;</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;error:&quot;</span>.<span class="variable">$conn</span>-&gt;error;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//数据的修改（update）</span></span><br><span class="line"><span class="comment">//参考https://www.runoob.com/php/php-mysql-update.html</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;UPDATE table1 SET password=&#x27;nibi123&#x27; WHERE username=&#x27;haha123&#x27; &quot;</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$conn</span>-&gt;query(<span class="variable">$sql</span>)===<span class="literal">TRUE</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;数据修改成功&#x27;</span>;</span><br><span class="line">&#125;<span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;ERROR:&#x27;</span>.<span class="variable">$conn</span>-&gt;error;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//数据的删除</span></span><br><span class="line"><span class="comment">//参考 https://www.runoob.com/php/php-mysql-delete.html</span></span><br><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;DELETE FROM table1 WHERE username=&#x27;haha123&#x27; &quot;</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$conn</span>-&gt;query(<span class="variable">$sql</span>)===<span class="literal">TRUE</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;数据删除成功&#x27;</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;Error:&#x27;</span>.<span class="variable">$conn</span>-&gt;error;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    </span><br><span class="line"><span class="variable">$servername</span>=<span class="string">&quot;localhost&quot;</span>; <span class="comment">//定义一个服务器主机名，与win上的127.0.0.1类似</span></span><br><span class="line"><span class="variable">$username</span>=<span class="string">&quot;root&quot;</span>;</span><br><span class="line"><span class="variable">$password</span>=<span class="string">&quot;root&quot;</span>;<span class="comment">//用来连接数据库用户名密码</span></span><br><span class="line"><span class="variable">$dbname</span>=<span class="string">&quot;haha&quot;</span>;</span><br><span class="line"><span class="comment">//创建连接   mysqli自带对象，将连接对象存给变量conn</span></span><br><span class="line"><span class="variable">$conn</span> = <span class="keyword">new</span> <span class="title function_ invoke__">mysqli</span>(<span class="variable">$servername</span>,<span class="variable">$username</span>,<span class="variable">$password</span>,<span class="variable">$dbname</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//检测连接</span></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$conn</span>-&gt;connect_error)&#123;  <span class="comment">//如果链接对象中connect_error返回失败</span></span><br><span class="line">	<span class="keyword">die</span>(<span class="string">&quot;连接失败:&quot;</span>.<span class="variable">$conn</span>-&gt;connect_error); <span class="comment">//die函数断掉连接同时用.返回错误,php使用点来连接</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span>(<span class="string">&quot;连接成功&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//增删改查</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//数据库的查询（读取数据库）</span></span><br><span class="line"><span class="comment">//参考https://www.runoob.com/php/php-mysql-select.html 代码</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//准备一条数据库语句（sql语句）</span></span><br><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;SELECT * FROM table1 WHERE id &lt; 3&quot;</span>; <span class="comment">//将数据库中table1表中id项小于3的元素都选出来</span></span><br><span class="line"><span class="variable">$result</span> = <span class="variable">$conn</span>-&gt;<span class="title function_ invoke__">query</span>(<span class="variable">$sql</span>);	<span class="comment">//执行建立的conn连接对象中query函数，将sql语句塞给数据库，将执行（query）结果返回给变量$result</span></span><br><span class="line"><span class="comment">//判断result有没有东西</span></span><br><span class="line"> <span class="keyword">if</span> (<span class="variable">$result</span> -&gt;num_rows &gt; <span class="number">0</span>)</span><br><span class="line"> &#123;</span><br><span class="line">     <span class="comment">//输出数据</span></span><br><span class="line">     <span class="keyword">while</span>(<span class="variable">$row</span> = <span class="variable">$result</span>-&gt;<span class="title function_ invoke__">fetch_assoc</span>())<span class="comment">//用while循环一条条去读取</span></span><br><span class="line">     &#123;</span><br><span class="line">         <span class="keyword">echo</span> <span class="variable">$row</span>[<span class="string">&#x27;id&#x27;</span>].<span class="string">&#x27;------&#x27;</span>.<span class="variable">$row</span>[<span class="string">&#x27;username&#x27;</span>].<span class="string">&#x27;------&#x27;</span>.<span class="variable">$row</span>[<span class="string">&#x27;password&#x27;</span>].<span class="string">&quot;&lt;br/&gt;&quot;</span>; <span class="comment">//这里返回的row类似于js对象数据，里面有每个条目的信息，包含了name，password等个体属性</span></span><br><span class="line">         <span class="comment">//这里输出是sql查询语句的子集关系，所以一般SQL选所有*</span></span><br><span class="line">     &#125;</span><br><span class="line"> &#125;<span class="keyword">else</span></span><br><span class="line"> &#123;</span><br><span class="line">     <span class="keyword">echo</span> <span class="string">&quot;未查询到结果&quot;</span>;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//数据库的增加数据（插入数据） </span></span><br><span class="line"><span class="comment">//参考 https://www.runoob.com/php/php-mysql-insert.html</span></span><br><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;INSERT INTO table1 (id ,username,password) VALUE (8,&#x27;haha123&#x27;,&#x27;9999123&#x27;)&quot;</span>; <span class="comment">//注意有引号</span></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$conn</span>-&gt;<span class="title function_ invoke__">query</span>(<span class="variable">$sql</span>)===<span class="literal">TRUE</span>)<span class="comment">//执行语句query是否成功</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;插入成功&#x27;</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;error:&quot;</span>.<span class="variable">$conn</span>-&gt;error;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//数据的修改（update）</span></span><br><span class="line"><span class="comment">//参考https://www.runoob.com/php/php-mysql-update.html</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;UPDATE table1 SET password=&#x27;nibi123&#x27; WHERE username=&#x27;haha123&#x27; &quot;</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$conn</span>-&gt;<span class="title function_ invoke__">query</span>(<span class="variable">$sql</span>)===<span class="literal">TRUE</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;数据修改成功&#x27;</span>;</span><br><span class="line">&#125;<span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;ERROR:&#x27;</span>.<span class="variable">$conn</span>-&gt;error;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//数据的删除</span></span><br><span class="line"><span class="comment">//参考 https://www.runoob.com/php/php-mysql-delete.html</span></span><br><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;DELETE FROM table1 WHERE username=&#x27;haha123&#x27; &quot;</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$conn</span>-&gt;<span class="title function_ invoke__">query</span>(<span class="variable">$sql</span>)===<span class="literal">TRUE</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;数据删除成功&#x27;</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;Error:&#x27;</span>.<span class="variable">$conn</span>-&gt;error;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="php-html"><a href="#php-html" class="headerlink" title="php+html"></a>php+html</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;?php</span><br><span class="line">    $servername &#x3D; &quot;localhost&quot;; &#x2F;&#x2F;大部分公司的代码与数据库不在一起，所以一般这里先写个远程连接的ip地址</span><br><span class="line">    $username&#x3D;&quot;root&quot;;</span><br><span class="line">    $password&#x3D;&quot;root&quot;;</span><br><span class="line">    $dbname&#x3D;&quot;haha&quot;;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;创建连接</span><br><span class="line">    $conn &#x3D; new mysqli($servername,$username,$password,$dbname);</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;检测连接</span><br><span class="line">    if($conn-&gt;connect_error)&#123;</span><br><span class="line">        die(&quot;连接失败：&quot;.$conn-&gt;connect_error);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;数据库查语句</span><br><span class="line">    $sql &#x3D; &quot;SELECT * FROM table1 WHERE id &lt; 12 &quot;;</span><br><span class="line">    $result &#x3D; $conn-&gt;query($sql);</span><br><span class="line">    if($result-&gt;num_rows&gt;0)</span><br><span class="line">    &#123;</span><br><span class="line">        &#x2F;&#x2F;结合html表格输出数据</span><br><span class="line">        echo &quot;&lt;table border&#x3D;&#39;1&#39;&gt;&quot;;</span><br><span class="line">        echo &quot;&lt;tr&gt; &lt;th&gt;id&lt;th&gt; &lt;th&gt;username&lt;th&gt; &lt;th&gt;password&lt;th&gt;&lt;&#x2F;tr&gt;&quot;;</span><br><span class="line">        while($row&#x3D;$result-&gt;fetch_assoc())</span><br><span class="line">        &#123;</span><br><span class="line">            echo &quot;&lt;tr&gt;&quot;;</span><br><span class="line">            echo &quot;&lt;td&gt;&quot;.$row[&#39;id&#39;].&quot;&lt;&#x2F;td&gt;&quot;;</span><br><span class="line">            echo &quot;&lt;td&gt;&quot;.$row[&#39;username&#39;].&quot;&lt;&#x2F;td&gt;&quot;;</span><br><span class="line">            echo &quot;&lt;td&gt;&quot;.$row[&#39;password&#39;].&quot;&lt;&#x2F;td&gt;&quot;;</span><br><span class="line">            echo &quot;&lt;&#x2F;tr&gt;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        echo &quot;&lt;&#x2F;table&gt;&quot;</span><br><span class="line">    &#125;else</span><br><span class="line">    &#123;</span><br><span class="line">        echo &#39;未查询到数据&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">    $conn-&gt;close();&#x2F;&#x2F;数据库需要关闭，否则有安全隐患</span><br><span class="line">    </span><br><span class="line">    ?&gt;</span><br><span class="line">  </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="php-html"><a href="#php-html" class="headerlink" title="php+html"></a>php+html</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;?php</span><br><span class="line">    $servername = &quot;localhost&quot;; //大部分公司的代码与数据库不在一起，所以一般这里先写个远程连接的ip地址</span><br><span class="line">    $username=&quot;root&quot;;</span><br><span class="line">    $password=&quot;root&quot;;</span><br><span class="line">    $dbname=&quot;haha&quot;;</span><br><span class="line">    </span><br><span class="line">    //创建连接</span><br><span class="line">    $conn = new mysqli($servername,$username,$password,$dbname);</span><br><span class="line">    </span><br><span class="line">    //检测连接</span><br><span class="line">    if($conn-&gt;connect_error)&#123;</span><br><span class="line">        die(&quot;连接失败：&quot;.$conn-&gt;connect_error);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //数据库查语句</span><br><span class="line">    $sql = &quot;SELECT * FROM table1 WHERE id &lt; 12 &quot;;</span><br><span class="line">    $result = $conn-&gt;query($sql);</span><br><span class="line">    if($result-&gt;num_rows&gt;0)</span><br><span class="line">    &#123;</span><br><span class="line">        //结合html表格输出数据</span><br><span class="line">        echo &quot;&lt;table border=&#x27;1&#x27;&gt;&quot;;</span><br><span class="line">        echo &quot;&lt;tr&gt; &lt;th&gt;id&lt;th&gt; &lt;th&gt;username&lt;th&gt; &lt;th&gt;password&lt;th&gt;&lt;/tr&gt;&quot;;</span><br><span class="line">        while($row=$result-&gt;fetch_assoc())</span><br><span class="line">        &#123;</span><br><span class="line">            echo &quot;&lt;tr&gt;&quot;;</span><br><span class="line">            echo &quot;&lt;td&gt;&quot;.$row[&#x27;id&#x27;].&quot;&lt;/td&gt;&quot;;</span><br><span class="line">            echo &quot;&lt;td&gt;&quot;.$row[&#x27;username&#x27;].&quot;&lt;/td&gt;&quot;;</span><br><span class="line">            echo &quot;&lt;td&gt;&quot;.$row[&#x27;password&#x27;].&quot;&lt;/td&gt;&quot;;</span><br><span class="line">            echo &quot;&lt;/tr&gt;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        echo &quot;&lt;/table&gt;&quot;</span><br><span class="line">    &#125;else</span><br><span class="line">    &#123;</span><br><span class="line">        echo &#x27;未查询到数据&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    $conn-&gt;close();//数据库需要关闭，否则有安全隐患</span><br><span class="line">    </span><br><span class="line">    ?&gt;</span><br><span class="line">  </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
 
 <hr>
 <p>上面的php+mysql漏洞百出</p>
@@ -214,7 +307,7 @@
 <p>第一关</p>
 <p>根据前面学到的php对数据库操作的SQL语句，以及上面命令行控制数据库的语句</p>
 <p><strong>估算目标的数据库语法</strong></p>
-<p>select username,password from tablex where id=2 limit 0,1  这里估算是这样，但是id也有可能加了引号或者括号等符号</p>
+<p>select username,password from tablex where id&#x3D;2 limit 0,1  这里估算是这样，但是id也有可能加了引号或者括号等符号</p>
 <p><strong>黑客需要破坏数据库语句</strong></p>
 <p>目的是为了知道闭合方式</p>
 <p>一般写代码时会有</p>
@@ -224,19 +317,19 @@
 
 <p>这个世界上所有的闭合方式</p>
 <blockquote>
-<p>` 反引号，机器生成的基本都是反引号，table username</p>
+<p>&#96; 反引号，机器生成的基本都是反引号，table username</p>
 <p>’ ‘     “  ”   ( )   </p>
 <p>（’ ‘）  （“   ”） </p>
 <p>（（x）） （（’x‘）） （（“x”））</p>
 <p>没有任何闭合方式的</p>
 </blockquote>
 <p><strong>1、确定闭合方式</strong></p>
-<p>在url中输入 id=2’</p>
+<p>在url中输入 id&#x3D;2’</p>
 <p>‘ ’2‘ ’ LIMIT 0,1 ‘</p>
 <p>去掉第一个与最后一个’ （这是报错自带的格式）</p>
 <p>‘ 2 ’ ‘ LIMIT 0,1  其中2’是自己输入的id，因此剩下的就是单引号闭合，也就是说，通过传入错误参数2‘让数据库懵逼，然后报错near’  ’ 2‘ ‘LIMIT 0,1 ’</p>
 <p>这个错把有错误的代码部分暴露了出来，发现代码中错误参数2‘周围使用单引号包裹，于是得知数据库这里的闭合方式是单引号；</p>
-<p>另外，使用\转义符可以将\后面第一个符号变成字符，纳入到字符串中，因此当id=2\时，如果 \ 遇到字母比如\n，这里会把字符转义成换行</p>
+<p>另外，使用\转义符可以将\后面第一个符号变成字符，纳入到字符串中，因此当id&#x3D;2\时，如果 \ 遇到字母比如\n，这里会把字符转义成换行</p>
 <p>报错 ：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27; &#x27;</span><span class="number">2</span>\<span class="string">&#x27; LIMIT 1,2 ’</span></span><br></pre></td></tr></table></figure>
 
@@ -246,9 +339,9 @@
 
 <p><strong>2、注释掉后面的limit，消除语法报错</strong></p>
 <p>数据库注释符</p>
-<p>–    /**/    #</p>
+<p>–    &#x2F;**&#x2F;    #</p>
 <p>+相当于空格</p>
-<p>暴露单引号之后，这里就像填空题 id=’空‘ limit 0,1</p>
+<p>暴露单引号之后，这里就像填空题 id&#x3D;’空‘ limit 0,1</p>
 <p>对这里的空，写个2’ 单引号就把空给提前闭合，然后使用–+把后面limit限制注释掉，limit 0,1表示只显示从索引为0，显示1个数据的意思。将limit限制解除即可进行更多操作。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> username,passwoed <span class="keyword">from</span> tablex <span class="keyword">where</span> id<span class="operator">=</span><span class="string">&#x27; 2&#x27;</span><span class="comment">--+ &#x27; limit 0,1</span></span><br></pre></td></tr></table></figure>
 
@@ -261,12 +354,12 @@
 <p>发现order by 3 正常，4不正常，说明数据库有3个栏目（这里的数字应该是下标的感觉）order用法是对字段进行排序，默认升序asc，降序desc，参考<a target="_blank" rel="noopener" href="https://www.runoob.com/sql/sql-orderby.html">https://www.runoob.com/sql/sql-orderby.html</a> order by用法</p>
 <p><em>注意，这里的id需要为正常数</em></p>
 <p><strong>4、根据栏目数，用select联合查询数据表，打通数据库与页面显示对应栏目位置</strong></p>
-<p>select id，username，password from tablex where id=’-2‘ union select 1,2,3 –+</p>
+<p>select id，username，password from tablex where id&#x3D;’-2‘ union select 1,2,3 –+</p>
 <p>-2的id为了显示错误，报错，前面显示失败了，后面才可以显示出来了，（这和cmd中的||有点像），union联合语句，在屏幕上显示报错位置，发现报错位是2,3</p>
 <p><em>这里漏洞相当于union前面不执行就返回后面？-2报错导致不显示，select拼接数据借机显示，union为何方神圣？</em></p>
 <p><strong>5、查看数据库的库名</strong></p>
 <p>将报错位置替换为数据库语法</p>
-<p>id=-2’ union select 1,database(), 3 –+</p>
+<p>id&#x3D;-2’ union select 1,database(), 3 –+</p>
 <p>发现库名是security，（数据库结构，以mysql为例，数据库软件》若干个数据库》表》columns，其中information_schema相当于数据库软件的户口本数据库，schema的意思可以理解为库，如table_schema这个column表示table表所在的数据库名称，table_name才是表的名称</p>
 <p>这里漏洞 就相当于database()可以返回数据库名称，<em>database（）是何方神圣？</em></p>
 <p><strong>6、根据库名查找表名</strong></p>
@@ -300,7 +393,7 @@
 </li>
 </ul>
 <h2 id="常见的网站架构"><a href="#常见的网站架构" class="headerlink" title="常见的网站架构"></a>常见的网站架构</h2><ul>
-<li>wiindows+iis（网站服务器）+asp/aspx(asp.net)（试图代替php）+access（已经淘汰的数据库）/mssql（抄袭mysql）</li>
+<li>wiindows+iis（网站服务器）+asp&#x2F;aspx(asp.net)（试图代替php）+access（已经淘汰的数据库）&#x2F;mssql（抄袭mysql）</li>
 </ul>
 <blockquote>
 <ol>
@@ -313,18 +406,18 @@
 </ol>
 </blockquote>
 <ul>
-<li>windows+apache+php+mysql=wamp(一般使用软件一次搭建)（所谓的万能组合）</li>
+<li>windows+apache+php+mysql&#x3D;wamp(一般使用软件一次搭建)（所谓的万能组合）</li>
 </ul>
 <blockquote>
 <ol>
 <li><p>多数情况下用这个组合大多数是菜鸟，因为可以百度直接搜到wamp一键安装；一般使用软件进行集成化搭建，这种一般出问题不会去修复漏洞</p>
 </li>
-<li><p>mysql这里一般都带phpadmin，可以搜phpadmin老版本的 0day / 漏洞,包括mysql本身也有漏洞</p>
+<li><p>mysql这里一般都带phpadmin，可以搜phpadmin老版本的 0day &#x2F; 漏洞,包括mysql本身也有漏洞</p>
 </li>
 </ol>
 </blockquote>
 <ul>
-<li>linux+apache/nginx/tengine(基于Nginx的魔改)+php+mysql=lamp/lnmp</li>
+<li>linux+apache&#x2F;nginx&#x2F;tengine(基于Nginx的魔改)+php+mysql&#x3D;lamp&#x2F;lnmp</li>
 </ul>
 <blockquote>
 <ol>
@@ -345,7 +438,7 @@
 </ol>
 </blockquote>
 <ul>
-<li>linux+tomcat+java(jsp)+pracle/mysql  (一般用来金融系统比较多，java后台越来越少了)</li>
+<li>linux+tomcat+java(jsp)+pracle&#x2F;mysql  (一般用来金融系统比较多，java后台越来越少了)</li>
 </ul>
 <blockquote>
 <ol>
@@ -353,7 +446,7 @@
 </ol>
 </blockquote>
 <ul>
-<li>linux+nginx+python（django/flask）+mysql  用python做后台比较少，比较新</li>
+<li>linux+nginx+python（django&#x2F;flask）+mysql  用python做后台比较少，比较新</li>
 </ul>
 <blockquote>
 <ol>
@@ -362,8 +455,8 @@
 </ol>
 </blockquote>
 <h2 id="SQLi工具原理分析"><a href="#SQLi工具原理分析" class="headerlink" title="SQLi工具原理分析"></a>SQLi工具原理分析</h2><h3 id="pangolin（穿山甲）分析"><a href="#pangolin（穿山甲）分析" class="headerlink" title="pangolin（穿山甲）分析"></a>pangolin（穿山甲）分析</h3><h4 id="软件原理"><a href="#软件原理" class="headerlink" title="软件原理"></a>软件原理</h4><p>这个软件从安装目录文件看出，是通过穷举table，库等的名字来解决的，强大程度与txt文件中字典数量有关</p>
-<h4 id="目标地址"><a href="#目标地址" class="headerlink" title="目标地址"></a>目标地址</h4><p>目标地址得是觉得有注入点的地址，不能指望这个软件自己找，注意这里的id=1，得是普通的正整数，否则会显示错误乱码</p>
-<h4 id="type"><a href="#type" class="headerlink" title="type"></a>type</h4><p>select * from tablex where id = 1</p>
+<h4 id="目标地址"><a href="#目标地址" class="headerlink" title="目标地址"></a>目标地址</h4><p>目标地址得是觉得有注入点的地址，不能指望这个软件自己找，注意这里的id&#x3D;1，得是普通的正整数，否则会显示错误乱码</p>
+<h4 id="type"><a href="#type" class="headerlink" title="type"></a>type</h4><p>select * from tablex where id &#x3D; 1</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">如果是数字类型</span><br><span class="line">id<span class="operator">=</span><span class="number">1</span></span><br><span class="line">如果是字符类型</span><br><span class="line">id<span class="operator">=</span><span class="string">&#x27;1&#x27;</span></span><br><span class="line">如果是搜索类型</span><br><span class="line">id<span class="operator">=</span><span class="string">&#x27;%1%&#x27;</span></span><br><span class="line">可能情况，后面高级<span class="keyword">sql</span>会介绍搜索注入</span><br></pre></td></tr></table></figure>
 
 <h4 id="DB"><a href="#DB" class="headerlink" title="DB"></a>DB</h4><p>一般根据上面常用组合来估计DB</p>
@@ -402,7 +495,7 @@
 <li>前提，确定目标网站还是有漏洞的</li>
 <li>建议使用Linux版的sqlmap</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u [目标url] --dbs  获取目标url的数据库名</span><br><span class="line">返回结果：目标数据库可能是mysql，询问是否跳过其他可能数据库测试，n可以多测一些</span><br><span class="line">返回结果：想要包含所有的<span class="built_in">test</span>方法测试数据库吗？风险级别为1</span><br><span class="line"></span><br><span class="line">发现security库</span><br><span class="line">sqlmap -u [目标url] -D security --tables</span><br><span class="line">获取库里的表</span><br><span class="line"></span><br><span class="line">发现users表的列</span><br><span class="line">sqlmap -u [目标url] -D security -T users --columns</span><br><span class="line">发现id username password</span><br><span class="line"></span><br><span class="line">找到id username password 内容</span><br><span class="line">sqlmap -u [目标url] -D security -T users -C username,password --dump</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">完整版命令：</span><br><span class="line">sqlmap -u [目标url] --dbs --batch --threads 10 --technique U</span><br><span class="line">使用sqlmap的10线程，忽略错误，使用union select注入网站</span><br><span class="line">（建议平时写命令使用完整版，更加严谨）（发现这里win版本的sqlmap 参数U不行，E可以）（kali的2014版本上的可以） 这里目标的--dbs要放在靠前参数位置</span><br><span class="line"></span><br><span class="line">奇怪的是less-4，kali上的居然搞不定</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u [目标url] --dbs  获取目标url的数据库名</span><br><span class="line">返回结果：目标数据库可能是mysql，询问是否跳过其他可能数据库测试，n可以多测一些</span><br><span class="line">返回结果：想要包含所有的<span class="built_in">test</span>方法测试数据库吗？风险级别为1</span><br><span class="line"></span><br><span class="line">发现security库</span><br><span class="line">sqlmap -u [目标url] -D security --tables</span><br><span class="line">获取库里的表</span><br><span class="line"></span><br><span class="line">发现<span class="built_in">users</span>表的列</span><br><span class="line">sqlmap -u [目标url] -D security -T <span class="built_in">users</span> --columns</span><br><span class="line">发现<span class="built_in">id</span> username password</span><br><span class="line"></span><br><span class="line">找到<span class="built_in">id</span> username password 内容</span><br><span class="line">sqlmap -u [目标url] -D security -T <span class="built_in">users</span> -C username,password --dump</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">完整版命令：</span><br><span class="line">sqlmap -u [目标url] --dbs --batch --threads 10 --technique U</span><br><span class="line">使用sqlmap的10线程，忽略错误，使用union <span class="keyword">select</span>注入网站</span><br><span class="line">（建议平时写命令使用完整版，更加严谨）（发现这里win版本的sqlmap 参数U不行，E可以）（kali的2014版本上的可以） 这里目标的--dbs要放在靠前参数位置</span><br><span class="line"></span><br><span class="line">奇怪的是less-4，kali上的居然搞不定</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">payload:</span><br><span class="line">id<span class="operator">=</span><span class="number">1</span><span class="string">&#x27; AND (SELECT 1136 FROM (SELECT COUNT (*), CONCAT (0x3a616a743a, (SELECT (CASE WHEN (1136=1136) THEN 1 ELSE 0 END)), 0x3a6168633a, FLOOR( RAND(0)*2))xFROM INFORMATION_ SCHEMA.CHARACTER_ SETS GROUP BY x)a) AND &#x27;</span>FkES<span class="string">&#x27;=&#x27;</span>FkES</span><br></pre></td></tr></table></figure>
 
@@ -413,7 +506,7 @@
 <li><p>使用sqlmap对less-5<strong>的报错注入进行操作</strong></p>
 </li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u http://sqlilabs.njhack.xyz/less-5/index.php?id=1 --current-db --batch(忽略错误) --threads 10 --technique E (基于error报错注入)</span><br><span class="line"></span><br><span class="line">显示数据库名，表示成功</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u http://sqlilabs.njhack.xyz/less-5/index.php?<span class="built_in">id</span>=1 --current-db --batch(忽略错误) --threads 10 --technique E (基于error报错注入)</span><br><span class="line"></span><br><span class="line">显示数据库名，表示成功</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>tips: 通常情况下，or和and在注入的时候影响不算很大，两者区别一般在于盲注。很多时候防火墙拦截过滤了and的时候or可能没有，那就可以用or来进行盲注，节省绕过的时间。又或者用xor（异或）绕过防火墙，异或在这不作过多阐述，因为不在本次范围之内。</p>
 <p>less-6 kali搞不定risk1</p>
@@ -455,7 +548,7 @@
 <p><strong>打开burpsuit对其流量进行分析</strong></p>
 <p>抓post包，send to repeater，通过修改post包中的post信息模拟提交，右边窗口预览，可以得到返回报错，得到闭合方式，直接在bp中渗透</p>
 <p>在sqlmap中注入方法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u [目标url，后面不要跟?id=2了,url中是get方式] --data <span class="string">&quot;uname=admin*&amp;passwd=admin&amp;submit=Submit&quot;</span>(这部分是抓到的post包中post的数据，*星号标在哪里sqlmap就打哪里) --current-db --batch --threads 10 --technique E</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u [目标url，后面不要跟?<span class="built_in">id</span>=2了,url中是get方式] --data <span class="string">&quot;uname=admin*&amp;passwd=admin&amp;submit=Submit&quot;</span>(这部分是抓到的post包中post的数据，*星号标在哪里sqlmap就打哪里) --current-db --batch --threads 10 --technique E</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>思考：为什么在uname的admin后面闭合，为什么不在passwd后面的位置闭合，哪里合适一些？怎么手动注入？因为加密？</li>
@@ -489,7 +582,7 @@
 <ul>
 <li>使用请求头注入时，–level必须大于3</li>
 </ul>
-<h3 id="less-20对cookie注入"><a href="#less-20对cookie注入" class="headerlink" title="less-20对cookie注入"></a>less-20对cookie注入</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u [url] --cookie=<span class="string">&quot;uname=admin*;  choauhsduhauhska&quot;</span>(在uname的admin后面注入) --level 4 --dbs --threads 10 --batch --technique E</span><br></pre></td></tr></table></figure>
+<h3 id="less-20对cookie注入"><a href="#less-20对cookie注入" class="headerlink" title="less-20对cookie注入"></a>less-20对cookie注入</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u [url] --cookie=<span class="string">&quot;uname=admin*;  choauhsduhauhska&quot;</span>(在<span class="built_in">uname</span>的admin后面注入) --level 4 --dbs --threads 10 --batch --technique E</span><br></pre></td></tr></table></figure>
 
 
 
@@ -505,126 +598,121 @@
 <p>待更新</p>
 <hr>
 <p>​                                                                                                                                                                                                                                                                       </p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">XiaoYao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://liloker.github.io/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/sqli/">https://liloker.github.io/2023/03/30/学习笔记/sqli/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/SQLi/">SQLi</a></div><div class="post_share"><div class="social-share" data-image="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/026.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/SQL-Mysql%E7%AC%94%E8%AE%B0/"><img class="prev-cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/021.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">SQL-Mysql笔记</div></div></a></div><div class="next-post pull-right"><a href="/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/php%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><img class="next-cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/018.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">php学习笔记</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/profile_knife.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">XiaoYao</div><div class="author-info__description">多巴胺被赐予意义，人类社会便有了混沌，愿世间尚有净土，留存爱与欢喜。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">70</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">79</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">16</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Liloker"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Liloker" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:theone@liloker.anonaddy.me" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://blog.csdn.net/weixin_42160117" target="_blank" title="CSDN"><i class="far fa-copyright"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">来了，随便坐吧~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%94%BB%E5%87%BB"><span class="toc-number">1.1.</span> <span class="toc-text">数据库攻击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E7%82%B9"><span class="toc-number">1.2.</span> <span class="toc-text">注入点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL%E8%AF%AD%E8%A8%80"><span class="toc-number">1.3.</span> <span class="toc-text">SQL语言</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0"><span class="toc-number">2.</span> <span class="toc-text">漏洞复现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#php-MySQL"><span class="toc-number">2.1.</span> <span class="toc-text">php+MySQL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php-html"><span class="toc-number">2.2.</span> <span class="toc-text">php+html</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQLi%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">SQLi基本流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84"><span class="toc-number">4.</span> <span class="toc-text">常见的网站架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQLi%E5%B7%A5%E5%85%B7%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90"><span class="toc-number">5.</span> <span class="toc-text">SQLi工具原理分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#pangolin%EF%BC%88%E7%A9%BF%E5%B1%B1%E7%94%B2%EF%BC%89%E5%88%86%E6%9E%90"><span class="toc-number">5.1.</span> <span class="toc-text">pangolin（穿山甲）分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%8E%9F%E7%90%86"><span class="toc-number">5.1.1.</span> <span class="toc-text">软件原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87%E5%9C%B0%E5%9D%80"><span class="toc-number">5.1.2.</span> <span class="toc-text">目标地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#type"><span class="toc-number">5.1.3.</span> <span class="toc-text">type</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DB"><span class="toc-number">5.1.4.</span> <span class="toc-text">DB</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E7%BB%93%E6%9E%9C"><span class="toc-number">5.1.5.</span> <span class="toc-text">分析结果</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#havij%EF%BC%88%E8%90%9D%E5%8D%9C%E5%A4%B4%EF%BC%89%E5%88%86%E6%9E%90"><span class="toc-number">5.2.</span> <span class="toc-text">havij（萝卜头）分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#hex%E6%8A%80%E5%B7%A7"><span class="toc-number">5.2.1.</span> <span class="toc-text">hex技巧</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#less-5"><span class="toc-number">5.2.2.</span> <span class="toc-text">less-5</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#less-8"><span class="toc-number">5.2.3.</span> <span class="toc-text">less-8</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#less-9"><span class="toc-number">5.2.4.</span> <span class="toc-text">less-9</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sqlmap-%E4%BD%BF%E7%94%A8"><span class="toc-number">6.</span> <span class="toc-text">sqlmap 使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SQLi-Lab"><span class="toc-number">6.0.1.</span> <span class="toc-text">SQLi-Lab</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#less-1%E6%A0%87%E5%87%86%E6%B3%A8%E5%85%A5"><span class="toc-number">6.0.2.</span> <span class="toc-text">less-1标准注入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#less-5%E7%9B%B2%E6%B3%A8"><span class="toc-number">6.0.3.</span> <span class="toc-text">less-5盲注</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#less-8%E5%B8%83%E5%B0%94%E6%B3%A8%E5%85%A5"><span class="toc-number">6.0.4.</span> <span class="toc-text">less-8布尔注入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#less-9%E6%97%B6%E9%97%B4%E6%B3%A8%E5%85%A5"><span class="toc-number">6.0.5.</span> <span class="toc-text">less-9时间注入</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#post%E6%B3%A8%E5%85%A5"><span class="toc-number">6.1.</span> <span class="toc-text">post注入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#less-11%E5%AF%B9post%E6%B3%A8%E5%85%A5"><span class="toc-number">6.1.1.</span> <span class="toc-text">less-11对post注入</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#less-18%E6%90%9C%E9%9B%86%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="toc-number">6.2.</span> <span class="toc-text">less-18搜集用户信息</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#sqlmap%E6%B3%A8%E5%85%A5%E8%AF%B7%E6%B1%82%E5%A4%B4"><span class="toc-number">6.2.1.</span> <span class="toc-text">sqlmap注入请求头</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#less-20%E5%AF%B9cookie%E6%B3%A8%E5%85%A5"><span class="toc-number">6.3.</span> <span class="toc-text">less-20对cookie注入</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQLi%E6%89%8B%E6%B3%A8"><span class="toc-number">7.</span> <span class="toc-text">SQLi手注</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/12/10/%E6%8A%98%E8%85%BE%E5%90%A7/lineageOS22.2t-trebuchet%E6%A1%8C%E9%9D%A2%E9%97%AE%E9%A2%98/" title="lineageOS22-Trebuchet崩溃修复"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_038.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="lineageOS22-Trebuchet崩溃修复"/></a><div class="content"><a class="title" href="/2025/12/10/%E6%8A%98%E8%85%BE%E5%90%A7/lineageOS22.2t-trebuchet%E6%A1%8C%E9%9D%A2%E9%97%AE%E9%A2%98/" title="lineageOS22-Trebuchet崩溃修复">lineageOS22-Trebuchet崩溃修复</a><time datetime="2025-12-10T00:12:50.742Z" title="Created 2025-12-10 08:12:50">2025-12-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/09/%E6%8A%98%E8%85%BE%E5%90%A7/%E9%80%86%E5%90%91/" title="逆向"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_021.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="逆向"/></a><div class="content"><a class="title" href="/2025/12/09/%E6%8A%98%E8%85%BE%E5%90%A7/%E9%80%86%E5%90%91/" title="逆向">逆向</a><time datetime="2025-12-09T00:34:44.798Z" title="Created 2025-12-09 08:34:44">2025-12-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/06/%E6%8A%98%E8%85%BE%E5%90%A7/lineageOS%E5%88%B7%E6%9C%BA/" title="lineageOS22刷机"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_028.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="lineageOS22刷机"/></a><div class="content"><a class="title" href="/2025/12/06/%E6%8A%98%E8%85%BE%E5%90%A7/lineageOS%E5%88%B7%E6%9C%BA/" title="lineageOS22刷机">lineageOS22刷机</a><time datetime="2025-12-06T04:12:09.057Z" title="Created 2025-12-06 12:12:09">2025-12-06</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/026.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2026 By XiaoYao</div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://w4xiaoyao.site">Dominating The Information Age </a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="Increase font size"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="Decrease font size"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
-  endLoading: () => {
-    document.body.style.overflow = 'auto';
-    document.getElementById('loading-box').classList.add("loaded")
-  },
-  initLoading: () => {
-    document.body.style.overflow = '';
-    document.getElementById('loading-box').classList.remove("loaded")
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://liloker.github.io">XiaoYao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://liloker.github.io/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/sqli/">https://liloker.github.io/2023/03/30/学习笔记/sqli/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://liloker.github.io" target="_blank">逍 遥 の B l o g</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/SQLi/">SQLi</a></div><div class="post-share"><div class="social-share" data-image="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/026.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86%E5%8F%96%E8%AF%81%E6%8A%80%E6%9C%AF/" title="信息搜集取证技术"><img class="cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/025.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post" loading='lazy'><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">信息搜集取证技术</div></div><div class="info-2"><div class="info-item-1">本地信息搜集(以win为例) whoami 查看自己的身份 whoami &#x2F;all 获取当前域（active direction 微软系统工程师学习）的信息 ipconfig &#x2F;all 获取详细的ip信息 arp -a 查看arp表，如果有跟网关地址一样的，则表示可能arp欺骗 systeminfo    OS是sp1和非sp1差距还是很大 独立工作站表示未加入公司域环境 cpu考虑挖矿 BIOS考虑是否是蜜罐 启动设备判断是否虚拟机 域：workgroup表示未加入工作组 补丁漏洞  echo %PROCESSOR_ARCHITECTURE%    查看cpu类型 wmic product get name,version 获取电脑上安装的程序和版本信息 wmic qfe get Caption,Description,HotFixID,InstalledOn 以详细方法查看电脑安装的补丁 wmic process list brief 查看进程 net user 查看本地用户 net session 显示本地和远程的会话 net view 查看内网共享，可...</div></div></div></a><a class="pagination-related" href="/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/python%E8%BF%9B%E9%98%B6/" title="python笔记"><img class="cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/018.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post" loading='lazy'><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">python笔记</div></div><div class="info-2"><div class="info-item-1">关于虚拟环境虚拟环境与包冲突 venv存在的意义是：隔离不同项目所需要的不同package+使用不同python解释器版本的路径  在使用pycharm新建项目时，可以基于另外下载的解释器建立某个项目专属虚拟环境并且继承公共环境下的packages  有时候使用虚拟环境(venv)下的控制台安装某些库报错提示需要编译但是没有C++库，但win本机上却安过，可以用cmd本机环境变量中的python版本直接安装到虚拟环境的lib目录的包目录下。  例如，在某次项目中由于要用到pillow图像处理库，打算在pycharm直接安装，结果报出错误：  1The headers or library files could not be found for zlib, a required dependency when compiling Pillow from source.    意思是说，pycharm在安装pillow包的时候需要先在镜像源下载源代码，然后用本地VS C++用于python的扩展来现场编译一些pyd文件（一种用C++写的然后编译好的带有函数接口目录的二进制文件以供p...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/profile_knife.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="author-info-name">XiaoYao</div><div class="author-info-description">多巴胺被赐予意义，人类社会便有了混沌，愿世间尚有净土，留存爱与欢喜。</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">70</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">79</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Liloker"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Liloker" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:theone@liloker.anonaddy.me" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://blog.csdn.net/weixin_42160117" target="_blank" title="CSDN"><i class="far fa-copyright"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">来了，随便坐吧~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%94%BB%E5%87%BB"><span class="toc-number">1.1.</span> <span class="toc-text">数据库攻击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E7%82%B9"><span class="toc-number">1.2.</span> <span class="toc-text">注入点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL%E8%AF%AD%E8%A8%80"><span class="toc-number">1.3.</span> <span class="toc-text">SQL语言</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0"><span class="toc-number">2.</span> <span class="toc-text">漏洞复现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#php-MySQL"><span class="toc-number">2.1.</span> <span class="toc-text">php+MySQL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php-html"><span class="toc-number">2.2.</span> <span class="toc-text">php+html</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQLi%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">SQLi基本流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84"><span class="toc-number">4.</span> <span class="toc-text">常见的网站架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQLi%E5%B7%A5%E5%85%B7%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90"><span class="toc-number">5.</span> <span class="toc-text">SQLi工具原理分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#pangolin%EF%BC%88%E7%A9%BF%E5%B1%B1%E7%94%B2%EF%BC%89%E5%88%86%E6%9E%90"><span class="toc-number">5.1.</span> <span class="toc-text">pangolin（穿山甲）分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%8E%9F%E7%90%86"><span class="toc-number">5.1.1.</span> <span class="toc-text">软件原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87%E5%9C%B0%E5%9D%80"><span class="toc-number">5.1.2.</span> <span class="toc-text">目标地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#type"><span class="toc-number">5.1.3.</span> <span class="toc-text">type</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DB"><span class="toc-number">5.1.4.</span> <span class="toc-text">DB</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E7%BB%93%E6%9E%9C"><span class="toc-number">5.1.5.</span> <span class="toc-text">分析结果</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#havij%EF%BC%88%E8%90%9D%E5%8D%9C%E5%A4%B4%EF%BC%89%E5%88%86%E6%9E%90"><span class="toc-number">5.2.</span> <span class="toc-text">havij（萝卜头）分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#hex%E6%8A%80%E5%B7%A7"><span class="toc-number">5.2.1.</span> <span class="toc-text">hex技巧</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#less-5"><span class="toc-number">5.2.2.</span> <span class="toc-text">less-5</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#less-8"><span class="toc-number">5.2.3.</span> <span class="toc-text">less-8</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#less-9"><span class="toc-number">5.2.4.</span> <span class="toc-text">less-9</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sqlmap-%E4%BD%BF%E7%94%A8"><span class="toc-number">6.</span> <span class="toc-text">sqlmap 使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SQLi-Lab"><span class="toc-number">6.1.</span> <span class="toc-text">SQLi-Lab</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#less-1%E6%A0%87%E5%87%86%E6%B3%A8%E5%85%A5"><span class="toc-number">6.2.</span> <span class="toc-text">less-1标准注入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#less-5%E7%9B%B2%E6%B3%A8"><span class="toc-number">6.3.</span> <span class="toc-text">less-5盲注</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#less-8%E5%B8%83%E5%B0%94%E6%B3%A8%E5%85%A5"><span class="toc-number">6.4.</span> <span class="toc-text">less-8布尔注入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#less-9%E6%97%B6%E9%97%B4%E6%B3%A8%E5%85%A5"><span class="toc-number">6.5.</span> <span class="toc-text">less-9时间注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#post%E6%B3%A8%E5%85%A5"><span class="toc-number">6.6.</span> <span class="toc-text">post注入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#less-11%E5%AF%B9post%E6%B3%A8%E5%85%A5"><span class="toc-number">6.6.1.</span> <span class="toc-text">less-11对post注入</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#less-18%E6%90%9C%E9%9B%86%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="toc-number">6.7.</span> <span class="toc-text">less-18搜集用户信息</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#sqlmap%E6%B3%A8%E5%85%A5%E8%AF%B7%E6%B1%82%E5%A4%B4"><span class="toc-number">6.7.1.</span> <span class="toc-text">sqlmap注入请求头</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#less-20%E5%AF%B9cookie%E6%B3%A8%E5%85%A5"><span class="toc-number">6.8.</span> <span class="toc-text">less-20对cookie注入</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQLi%E6%89%8B%E6%B3%A8"><span class="toc-number">7.</span> <span class="toc-text">SQLi手注</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/12/10/%E6%8A%98%E8%85%BE%E5%90%A7/lineageOS22.2t-trebuchet%E6%A1%8C%E9%9D%A2%E9%97%AE%E9%A2%98/" title="lineageOS22-Trebuchet崩溃修复"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_038.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="lineageOS22-Trebuchet崩溃修复"/ loading='lazy'></a><div class="content"><a class="title" href="/2025/12/10/%E6%8A%98%E8%85%BE%E5%90%A7/lineageOS22.2t-trebuchet%E6%A1%8C%E9%9D%A2%E9%97%AE%E9%A2%98/" title="lineageOS22-Trebuchet崩溃修复">lineageOS22-Trebuchet崩溃修复</a><time datetime="2025-12-10T04:00:00.000Z" title="发表于 2025-12-10 12:00:00">2025-12-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/09/%E6%8A%98%E8%85%BE%E5%90%A7/%E9%80%86%E5%90%91/" title="逆向"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_021.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="逆向"/ loading='lazy'></a><div class="content"><a class="title" href="/2025/12/09/%E6%8A%98%E8%85%BE%E5%90%A7/%E9%80%86%E5%90%91/" title="逆向">逆向</a><time datetime="2025-12-09T04:00:00.000Z" title="发表于 2025-12-09 12:00:00">2025-12-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/06/%E6%8A%98%E8%85%BE%E5%90%A7/lineageOS%E5%88%B7%E6%9C%BA/" title="lineageOS22刷机"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_028.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="lineageOS22刷机"/ loading='lazy'></a><div class="content"><a class="title" href="/2025/12/06/%E6%8A%98%E8%85%BE%E5%90%A7/lineageOS%E5%88%B7%E6%9C%BA/" title="lineageOS22刷机">lineageOS22刷机</a><time datetime="2025-12-06T04:00:00.000Z" title="发表于 2025-12-06 12:00:00">2025-12-06</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/026.jpg);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2021 - 2026 By XiaoYao</span></div><div class="footer_custom_text"><a href="https://liloker.github.io">Dominating The Information Age</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.7.0"></script><script src="/js/main.js?v=5.7.0"></script><script src="/js/tw_cn.js?v=5.7.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><div class="js-pjax"><script>(() => {
+  let initFn = window.walineFn || null
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = {"pageSize":10,"placeholder":"随便说点什么吧~","avatar":"retro","locale":{"nick":"昵称"}}
 
-  }
-}
-window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadWaline () {
-  function initWaline () {
-    const waline = new Waline(Object.assign({
-      el: '#waline-wrap',
+  const destroyWaline = ele => ele.destroy()
+
+  const initWaline = (Fn, el = document, path = window.location.pathname) => {
+    const waline = Fn({
+      el: el.querySelector('#waline-wrap'),
       serverURL: 'https://waline2-five.vercel.app/',
-      avatar: 'retro',
-      path: location.pathname,
-      emojiCDN: '',
-      emojiMaps: "",
-      visitor: true
-    }, {"pageSize":10,"placeholder":"随便说点什么吧~","langMode":{"nick":"昵称"}}))
-  }
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      comment: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
 
-  if (typeof Waline === 'function') initWaline() 
-  else getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js').then(initWaline)
-}
-
-if ('Waline' === 'Waline' || !true) {
-  if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
-  else setTimeout(loadWaline, 0)
-} else {
-  function loadOtherComment () {
-    loadWaline()
-  }
-}</script></div><div class="aplayer no-destroy" data-id="7988378536" data-server="tencent" data-type="playlist" data-fixed="true" data-mini="true" data-autoplay="true" data-theme="#408fda" data-order="random" data-preload="auto" data-mutex="true" muted></div><script type="text/javascript" src="/js/myjs.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
-POWERMODE.shake = false;
-POWERMODE.mobile = false;
-document.body.addEventListener('input', POWERMODE);
-</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/liloker/BlogMusicJS/dist/BlogMusic.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
-  'title',
-  '#config-diff',
-  '#body-wrap',
-  '#rightside-config-hide',
-  '#rightside-config-show',
-  '.js-pjax'
-]
-
-if (false) {
-  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
-}
-
-var pjax = new Pjax({
-  elements: 'a:not([target="_blank"])',
-  selectors: pjaxSelectors,
-  cacheBust: false,
-  analytics: false,
-  scrollRestoration: false
-})
-
-document.addEventListener('pjax:send', function () {
-
-  // removeEventListener toc scroll 
-  window.removeEventListener('scroll', window.tocScrollFn)
-
-  typeof preloader === 'object' && preloader.initLoading()
-  
-  if (window.aplayers) {
-    for (let i = 0; i < window.aplayers.length; i++) {
-      if (!window.aplayers[i].options.fixed) {
-        window.aplayers[i].destroy()
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyWaline = () => {
+        destroyWaline(waline)
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
       }
     }
   }
 
-  typeof typed === 'object' && typed.destroy()
+  const loadWaline = (el, path) => {
+    if (initFn) initWaline(initFn, el, path)
+    else {
+      btf.getCSS('https://cdn.jsdelivr.net/npm/@waline/client@2.15.8/dist/waline.css')
+        .then(() => import('https://cdn.jsdelivr.net/npm/@waline/client@2.15.8/dist/waline.mjs'))
+        .then(({ init }) => {
+          initFn = init || Waline.init
+          initWaline(initFn, el, path)
+          window.walineFn = initFn
+        })
+    }
+  }
 
-  //reset readmode
-  const $bodyClassList = document.body.classList
-  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+  if (isShuoshuo) {
+    'Waline' === 'Waline'
+      ? window.shuoshuoComment = { loadComment: loadWaline } 
+      : window.loadOtherComment = loadWaline
+    return
+  }
 
-})
+  if ('Waline' === 'Waline' || !true) {
+    if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><script src="/js/myjs.js" defer></script> <!-- 鼠标星星特效 --><script src="/js/deferred-widgets.js" defer></script> <!-- 首屏后再加载：看板娘 + 音乐播放器 --><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
-document.addEventListener('pjax:complete', function () {
-  window.refreshFn()
-
-  document.querySelectorAll('script[data-pjax]').forEach(item => {
-    const newScript = document.createElement('script')
-    const content = item.text || item.textContent || item.innerHTML || ""
-    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
-    newScript.appendChild(document.createTextNode(content))
-    item.parentNode.replaceChild(newScript, item)
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"]):not([data-fancybox])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
   })
 
-  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
-
-  typeof chatBtnFn === 'function' && chatBtnFn()
-  typeof panguInit === 'function' && panguInit()
-
-  // google analytics
-  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
-
-  // baidu analytics
-  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
-
-  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
-
-  // Analytics
-  if (false) {
-    MtaH5.pgv()
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => {
+      try {
+        fn()
+      } catch (err) {
+        console.debug('Pjax callback failed:', err)
+      }
+    })
   }
 
-  // prismjs
-  typeof Prism === 'object' && Prism.highlightAll()
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
 
-  typeof preloader === 'object' && preloader.endLoading()
-})
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
 
-document.addEventListener('pjax:error', (e) => {
-  if (e.request.status === 404) {
-    pjax.loadUrl('/404.html')
-  }
-})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      if (!item.parentNode) return
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || ''
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    const responseURL = e.request && e.request.responseURL
+    if (e.request && e.request.status === 404) {
+      false
+        ? pjax.loadUrl('/404')
+        : responseURL && (window.location.href = responseURL)
+    } else if (responseURL) {
+      window.location.href = responseURL
+    }
+  })
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.7.0"></script></div></div></body></html>

@@ -1,162 +1,255 @@
-<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>php学习笔记 | 逍 遥 の B l o g</title><meta name="keywords" content="php笔记"><meta name="author" content="XiaoYao"><meta name="copyright" content="XiaoYao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="从runoob上学来的php">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>php学习笔记 | 逍 遥 の B l o g</title><meta name="author" content="XiaoYao"><meta name="copyright" content="XiaoYao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="从runoob上学来的php">
 <meta property="og:type" content="article">
 <meta property="og:title" content="php学习笔记">
 <meta property="og:url" content="https://liloker.github.io/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/php%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 <meta property="og:site_name" content="逍 遥 の B l o g">
 <meta property="og:description" content="从runoob上学来的php">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/018.jpg">
-<meta property="article:published_time" content="2023-03-30T13:01:15.564Z">
+<meta property="article:published_time" content="2023-03-30T04:00:00.000Z">
 <meta property="article:modified_time" content="2021-05-10T16:00:00.000Z">
 <meta property="article:author" content="XiaoYao">
 <meta property="article:tag" content="php">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/018.jpg"><link rel="shortcut icon" href="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/favicon_hacker.png"><link rel="canonical" href="https://liloker.github.io/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/php%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+<meta name="twitter:image" content="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/018.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "php学习笔记",
+  "url": "https://liloker.github.io/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/php%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/",
+  "image": "https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/018.jpg",
+  "datePublished": "2023-03-30T04:00:00.000Z",
+  "dateModified": "2021-05-10T16:00:00.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "XiaoYao",
+      "url": "https://liloker.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/favicon_hacker.png"><link rel="canonical" href="https://liloker.github.io/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/php%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        const data = { value }
+
+        if (ttl != null) {
+          data.expiry = Date.now() + ttl * 86400000
+        }
+
+        localStorage.setItem(key, JSON.stringify(data))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
+
+        try {
+          const data = JSON.parse(itemStr)
+
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
+
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const hour = new Date().getHours()
+          const start = 6
+          const end = 18
+          const isNight =
+            start < end
+                ? hour < start || hour >= end
+                : hour >= start || hour < end
+          if (theme === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else theme === 'light' ? activateLightMode() : activateDarkMode()
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?true";
-  var s = document.getElementsByTagName("script")[0]; 
+  hm.src = "https://hm.baidu.com/hm.js?f1a652ffc0084a6a5ec4853f1d82444c";
+  var s = document.getElementsByTagName("script")[0];
   s.parentNode.insertBefore(hm, s);
 })();
-</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+btf.addGlobalFn('pjaxComplete', () => {
+  _hmt.push(['_trackPageview',window.location.pathname])
+}, 'baidu_analytics')
+</script><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
-  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
   translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
   copy: {
-    success: 'Copy successfully',
-    error: 'Copy error',
-    noSupport: 'The browser does not support'
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
   },
   relativeDate: {
     homepage: false,
     post: false
   },
   runtime: '',
-  date_suffix: {
-    just: 'Just',
-    min: 'minutes ago',
-    hour: 'hours ago',
-    day: 'days ago',
-    month: 'months ago'
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
   },
-  copyright: {"limitCount":50,"languages":{"author":"Author: XiaoYao","link":"Link: ","source":"Source: 逍 遥 の B l o g","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source."}},
+  copyright: {"limitCount":50,"languages":{"author":"作者: XiaoYao","link":"链接: ","source":"来源: 逍 遥 の B l o g","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
   lightbox: 'fancybox',
   Snackbar: undefined,
-  source: {
-    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
-    justifiedGallery: {
-      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
-    },
-    fancybox: {
-      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
-    }
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
   },
   isPhotoFigcaption: false,
-  islazyload: true,
-  isanchor: false
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
   title: 'php学习笔记',
-  isPost: true,
-  isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2021-05-11 00:00:00'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
-
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-    win.saveToLocal = {
-      set: function setWithExpiry(key, value, ttl) {
-        if (ttl === 0) return
-        const now = new Date()
-        const expiryDay = ttl * 86400000
-        const item = {
-          value: value,
-          expiry: now.getTime() + expiryDay,
-        }
-        localStorage.setItem(key, JSON.stringify(item))
-      },
-
-      get: function getWithExpiry(key) {
-        const itemStr = localStorage.getItem(key)
-
-        if (!itemStr) {
-          return undefined
-        }
-        const item = JSON.parse(itemStr)
-        const now = new Date()
-
-        if (now.getTime() > item.expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return item.value
-      }
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/mycss.css"> <!-- 滚动条 + 旧主题的透明度/间距微调 --><meta name="generator" content="Hexo 8.1.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      if ($loadingBox.classList.contains('loaded')) return
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
     }
-  
-    win.getScript = url => new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    })
-  
-      win.activateDarkMode = function () {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = function () {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
-    
-          const now = new Date()
-          const hour = now.getHours()
-          const isNight = hour <= 6 || hour >= 18
-          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
-          else if (t === 'light') activateLightMode()
-          else activateDarkMode()
-        
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
-    
-    const fontSizeVal = saveToLocal.get('global-font-size')
-    if (fontSizeVal !== undefined) {
-      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
-    }
-    })(window)</script><type="text/css" href="/css/mycss.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"><script src="/live2d-widget/autoload.js"></script><script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?f1a652ffc0084a6a5ec4853f1d82444c";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/profile_knife.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">70</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">79</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">16</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archive</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw far fa-images"></i><span> Gallery</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fas fa-gamepad"></i><span> Game1</span></a></li><li><a class="site-page child" href="/gamee/"><i class="fa-fw fas fa-gamepad"></i><span> Game2</span></a></li><li><a class="site-page child" href="/gameee/"><i class="fa-fw fas fa-gamepad"></i><span> Game3</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/018.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">逍 遥 の B l o g</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archive</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw far fa-images"></i><span> Gallery</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fas fa-gamepad"></i><span> Game1</span></a></li><li><a class="site-page child" href="/gamee/"><i class="fa-fw fas fa-gamepad"></i><span> Game2</span></a></li><li><a class="site-page child" href="/gameee/"><i class="fa-fw fas fa-gamepad"></i><span> Game3</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">php学习笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-03-30T13:01:15.564Z" title="Created 2023-03-30 21:01:15">2023-03-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-05-10T16:00:00.000Z" title="Updated 2021-05-11 00:00:00">2021-05-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">3.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>15min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="php学习笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="php基础教程"><a href="#php基础教程" class="headerlink" title="php基础教程"></a>php基础教程</h1><p>PHP 是服务器端脚本语言，弱类型语言，c++中int，string属于强类型，php中使用$声明变量</p>
+  }
+
+  preloader.initLoading()
+
+  if (document.readyState === 'complete') {
+    preloader.endLoading()
+  } else {
+    window.addEventListener('load', preloader.endLoading)
+    document.addEventListener('DOMContentLoaded', preloader.endLoading)
+    // Add timeout protection: force end after 7 seconds
+    setTimeout(preloader.endLoading, 7000)
+  }
+
+  if (true) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div class="bg-animation" id="web_bg" style="background-image: url(https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/index_%E4%BC%B8%E6%89%8B.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/profile_knife.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">70</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">79</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archive</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw far fa-images"></i><span> Gallery</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fas fa-gamepad"></i><span> Game1</span></a></li><li><a class="site-page child" href="/gamee/"><i class="fa-fw fas fa-gamepad"></i><span> Game2</span></a></li><li><a class="site-page child" href="/gameee/"><i class="fa-fw fas fa-gamepad"></i><span> Game3</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/018.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">逍 遥 の B l o g</span></a><a class="nav-page-title" href="/"><span class="site-name">php学习笔记</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archive</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw far fa-images"></i><span> Gallery</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fas fa-gamepad"></i><span> Game1</span></a></li><li><a class="site-page child" href="/gamee/"><i class="fa-fw fas fa-gamepad"></i><span> Game2</span></a></li><li><a class="site-page child" href="/gameee/"><i class="fa-fw fas fa-gamepad"></i><span> Game3</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">php学习笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-03-30T04:00:00.000Z" title="发表于 2023-03-30 12:00:00">2023-03-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-05-10T16:00:00.000Z" title="更新于 2021-05-11 00:00:00">2021-05-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">3.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>14分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="php基础教程"><a href="#php基础教程" class="headerlink" title="php基础教程"></a>php基础教程</h1><p>PHP 是服务器端脚本语言，弱类型语言，c++中int，string属于强类型，php中使用$声明变量</p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="PHP-是什么？"><a href="#PHP-是什么？" class="headerlink" title="PHP 是什么？"></a>PHP 是什么？</h3><ul>
 <li>PHP（全称：PHP：<strong>Hypertext Preprocessor</strong>，即”PHP：<strong>超文本预处理器</strong>“）是一种<strong>通用开源脚本语言</strong>。</li>
 <li>PHP 脚本在服务器上执行。</li>
@@ -189,7 +282,7 @@
 
 
 
-<h2 id="php5-echo-amp-print"><a href="#php5-echo-amp-print" class="headerlink" title="php5 echo &amp; print"></a>php5 echo &amp; print</h2><ul>
+<h2 id="php5-echo-print"><a href="#php5-echo-print" class="headerlink" title="php5 echo &amp; print"></a>php5 echo &amp; print</h2><ul>
 <li>区别，echo可输出一个或多个字符串，print只能输出一个字符串，返回值总为1</li>
 <li>echo输出速度比print快，没有返回值</li>
 <li>echo 或 echo()这两个写法都可以</li>
@@ -212,7 +305,7 @@
 
 <p>当用户填写完上面的表单并点击提交按钮时，表单的数据会被送往名为 “welcome.php” 的 PHP 文件：</p>
 <p>welcome.php 文件代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">欢迎&lt;?php echo $_POST[&quot;fname&quot;]; ?&gt;!&lt;br&gt;</span><br><span class="line">你的年龄是 &lt;?php echo $_POST[&quot;age&quot;]; ?&gt;  岁。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">欢迎&lt;?php echo $_POST[&quot;fname&quot;]; ?&gt;!&lt;br&gt;</span><br><span class="line">你的年龄是 &lt;?php echo $_POST[&quot;age&quot;]; ?&gt;  岁。</span><br></pre></td></tr></table></figure>
 
 
 
@@ -233,18 +326,18 @@
 <h2 id="php与get，post"><a href="#php与get，post" class="headerlink" title="php与get，post"></a>php与get，post</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$a</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;name&#x27;</span>];</span><br><span class="line"><span class="variable">$b</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;age&#x27;</span>];</span><br><span class="line"><span class="variable">$d</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;namee&#x27;</span>]</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$a</span>.<span class="string">&quot;----&quot;</span>.<span class="variable">$b</span>;</span><br><span class="line">    </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>一般在url中的是get方法，post多用来用户名密码注册，登录，get常用来取东西</p>
-<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210713180258956.png" alt="image-20210713180258956"></p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210713180258956.png" alt="image-20210713180258956" loading='lazy'></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="variable">$b</span>&gt;<span class="number">18</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;chengnian&#x27;</span>.<span class="variable">$a</span>;</span><br><span class="line">&#125;<span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;wei cheng nian&#x27;</span>.<span class="variable">$a</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
-<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210713180310312.png" alt="image-20210713180310312"></p>
-<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210713180320507.png" alt="image-20210713180320507"></p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210713180310312.png" alt="image-20210713180310312" loading='lazy'></p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210713180320507.png" alt="image-20210713180320507" loading='lazy'></p>
 <p>火狐浏览器强行给的post请求，get才能在url中使用</p>
-<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210713180334211.png" alt="image-20210713180334211"></p>
-<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210713180351433.png" alt="image-20210713180351433"></p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210713180334211.png" alt="image-20210713180334211" loading='lazy'></p>
+<p><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/image-20210713180351433.png" alt="image-20210713180351433" loading='lazy'></p>
 <h2 id="php-html"><a href="#php-html" class="headerlink" title="php+html"></a>php+html</h2><p>php是脚本语言，可以插入在html中生成HTML标签，这点与js相似</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;?php</span><br><span class="line">    $servername &#x3D; &quot;localhost&quot;; &#x2F;&#x2F;大部分公司的代码与数据库不在一起，所以一般这里先写个远程连接的ip地址</span><br><span class="line">    $username&#x3D;&quot;root&quot;;</span><br><span class="line">    $password&#x3D;&quot;root&quot;;</span><br><span class="line">    $dbname&#x3D;&quot;haha&quot;;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;创建连接</span><br><span class="line">    $conn &#x3D; new mysqli($servername,$username,$password,$dbname);</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;检测连接</span><br><span class="line">    if($conn-&gt;connect_error)&#123;</span><br><span class="line">        die(&quot;连接失败：&quot;.$conn-&gt;connect_error);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;数据库查语句</span><br><span class="line">    $sql &#x3D; &quot;SELECT * FROM table1 WHERE id &lt; 12 &quot;;</span><br><span class="line">    $result &#x3D; $conn-&gt;query($sql);</span><br><span class="line">    if($result-&gt;num_rows&gt;0)</span><br><span class="line">    &#123;</span><br><span class="line">        &#x2F;&#x2F;结合html表格输出数据</span><br><span class="line">        echo &quot;&lt;table border&#x3D;&#39;1&#39;&gt;&quot;;</span><br><span class="line">        echo &quot;&lt;tr&gt; &lt;th&gt;id&lt;th&gt; &lt;th&gt;username&lt;th&gt; &lt;th&gt;password&lt;th&gt;&lt;&#x2F;tr&gt;&quot;;</span><br><span class="line">        while($row&#x3D;$result-&gt;fetch_assoc())</span><br><span class="line">        &#123;</span><br><span class="line">            echo &quot;&lt;tr&gt;&quot;;</span><br><span class="line">            echo &quot;&lt;td&gt;&quot;.$row[&#39;id&#39;].&quot;&lt;&#x2F;td&gt;&quot;;</span><br><span class="line">            echo &quot;&lt;td&gt;&quot;.$row[&#39;username&#39;].&quot;&lt;&#x2F;td&gt;&quot;;</span><br><span class="line">            echo &quot;&lt;td&gt;&quot;.$row[&#39;password&#39;].&quot;&lt;&#x2F;td&gt;&quot;;</span><br><span class="line">            echo &quot;&lt;&#x2F;tr&gt;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        echo &quot;&lt;&#x2F;table&gt;&quot;</span><br><span class="line">    &#125;else</span><br><span class="line">    &#123;</span><br><span class="line">        echo &#39;未查询到数据&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">    $conn-&gt;close();&#x2F;&#x2F;数据库需要关闭，否则有安全隐患</span><br><span class="line">    </span><br><span class="line">    ?&gt;</span><br><span class="line">  </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;?php</span><br><span class="line">    $servername = &quot;localhost&quot;; //大部分公司的代码与数据库不在一起，所以一般这里先写个远程连接的ip地址</span><br><span class="line">    $username=&quot;root&quot;;</span><br><span class="line">    $password=&quot;root&quot;;</span><br><span class="line">    $dbname=&quot;haha&quot;;</span><br><span class="line">    </span><br><span class="line">    //创建连接</span><br><span class="line">    $conn = new mysqli($servername,$username,$password,$dbname);</span><br><span class="line">    </span><br><span class="line">    //检测连接</span><br><span class="line">    if($conn-&gt;connect_error)&#123;</span><br><span class="line">        die(&quot;连接失败：&quot;.$conn-&gt;connect_error);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //数据库查语句</span><br><span class="line">    $sql = &quot;SELECT * FROM table1 WHERE id &lt; 12 &quot;;</span><br><span class="line">    $result = $conn-&gt;query($sql);</span><br><span class="line">    if($result-&gt;num_rows&gt;0)</span><br><span class="line">    &#123;</span><br><span class="line">        //结合html表格输出数据</span><br><span class="line">        echo &quot;&lt;table border=&#x27;1&#x27;&gt;&quot;;</span><br><span class="line">        echo &quot;&lt;tr&gt; &lt;th&gt;id&lt;th&gt; &lt;th&gt;username&lt;th&gt; &lt;th&gt;password&lt;th&gt;&lt;/tr&gt;&quot;;</span><br><span class="line">        while($row=$result-&gt;fetch_assoc())</span><br><span class="line">        &#123;</span><br><span class="line">            echo &quot;&lt;tr&gt;&quot;;</span><br><span class="line">            echo &quot;&lt;td&gt;&quot;.$row[&#x27;id&#x27;].&quot;&lt;/td&gt;&quot;;</span><br><span class="line">            echo &quot;&lt;td&gt;&quot;.$row[&#x27;username&#x27;].&quot;&lt;/td&gt;&quot;;</span><br><span class="line">            echo &quot;&lt;td&gt;&quot;.$row[&#x27;password&#x27;].&quot;&lt;/td&gt;&quot;;</span><br><span class="line">            echo &quot;&lt;/tr&gt;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        echo &quot;&lt;/table&gt;&quot;</span><br><span class="line">    &#125;else</span><br><span class="line">    &#123;</span><br><span class="line">        echo &#x27;未查询到数据&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    $conn-&gt;close();//数据库需要关闭，否则有安全隐患</span><br><span class="line">    </span><br><span class="line">    ?&gt;</span><br><span class="line">  </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -266,7 +359,7 @@
 <li><p>注：query()方法每次调用只能履行1条SQL命令，如果想1次履行多条命令，就必须使用mysqli对象中的multi_query()方法。如果想以不同的参数屡次履行1条SQL命令，最有效力的办法是先对那条命令做1些预处理然后再履行。</p>
 </li>
 </ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$mysqli</span>=<span class="keyword">new</span> mysqli(<span class="string">&quot;localhost&quot;</span>,<span class="string">&quot;mysql_user&quot;</span>,<span class="string">&quot;mysql_pwd&quot;</span>,<span class="string">&quot;my_db_name&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(mysqli_connect_errno())</span><br><span class="line">&#123;</span><br><span class="line">    printf(<span class="string">&quot;连接失败：%s&quot;</span>,mysqli_connect_error());</span><br><span class="line">    <span class="keyword">exit</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*履行插入命令，并获得它的自动编号值*/</span></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$mysqli</span>-&gt;query(<span class="string">&quot;insert into 表名(列1，列2) value (&#x27;值1,值2&#x27;)&quot;</span>))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;改变的记录数：&quot;</span>.<span class="variable">$mysqli</span>-&gt;affected_rows.<span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;新插入的ID值：&quot;</span>.<span class="variable">$mysqli</span>-&gt;insert_id.<span class="string">&quot;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$mysqli</span>-&gt;close();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$mysqli</span>=<span class="keyword">new</span> <span class="title function_ invoke__">mysqli</span>(<span class="string">&quot;localhost&quot;</span>,<span class="string">&quot;mysql_user&quot;</span>,<span class="string">&quot;mysql_pwd&quot;</span>,<span class="string">&quot;my_db_name&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="title function_ invoke__">mysqli_connect_errno</span>())</span><br><span class="line">&#123;</span><br><span class="line">    <span class="title function_ invoke__">printf</span>(<span class="string">&quot;连接失败：%s&quot;</span>,<span class="title function_ invoke__">mysqli_connect_error</span>());</span><br><span class="line">    <span class="keyword">exit</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*履行插入命令，并获得它的自动编号值*/</span></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$mysqli</span>-&gt;<span class="title function_ invoke__">query</span>(<span class="string">&quot;insert into 表名(列1，列2) value (&#x27;值1,值2&#x27;)&quot;</span>))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;改变的记录数：&quot;</span>.<span class="variable">$mysqli</span>-&gt;affected_rows.<span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;新插入的ID值：&quot;</span>.<span class="variable">$mysqli</span>-&gt;insert_id.<span class="string">&quot;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$mysqli</span>-&gt;<span class="title function_ invoke__">close</span>();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -274,23 +367,23 @@
 
 
 
-<h4 id="创建并检测连接"><a href="#创建并检测连接" class="headerlink" title="创建并检测连接"></a>创建并检测连接</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    </span><br><span class="line"><span class="variable">$servername</span>=<span class="string">&quot;localhost&quot;</span>; <span class="comment">//定义一个服务器主机名，与win上的127.0.0.1类似</span></span><br><span class="line"><span class="variable">$username</span>=<span class="string">&quot;root&quot;</span>;</span><br><span class="line"><span class="variable">$password</span>=<span class="string">&quot;root&quot;</span>;<span class="comment">//用来连接数据库用户名密码</span></span><br><span class="line"><span class="variable">$dbname</span>=<span class="string">&quot;haha&quot;</span>;</span><br><span class="line"><span class="comment">//创建连接   mysqli自带对象，将连接对象存给变量conn</span></span><br><span class="line"><span class="variable">$conn</span> = <span class="keyword">new</span> mysqli(<span class="variable">$servername</span>,<span class="variable">$username</span>,<span class="variable">$password</span>,<span class="variable">$dbname</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//检测连接</span></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$conn</span>-&gt;connect_error)&#123;  <span class="comment">//如果链接对象中connect_error返回失败</span></span><br><span class="line">	<span class="keyword">die</span>(<span class="string">&quot;连接失败:&quot;</span>.<span class="variable">$conn</span>-&gt;connect_error); <span class="comment">//die函数断掉连接同时用.返回错误,php使用点来连接</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span>(<span class="string">&quot;连接成功&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="创建并检测连接"><a href="#创建并检测连接" class="headerlink" title="创建并检测连接"></a>创建并检测连接</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    </span><br><span class="line"><span class="variable">$servername</span>=<span class="string">&quot;localhost&quot;</span>; <span class="comment">//定义一个服务器主机名，与win上的127.0.0.1类似</span></span><br><span class="line"><span class="variable">$username</span>=<span class="string">&quot;root&quot;</span>;</span><br><span class="line"><span class="variable">$password</span>=<span class="string">&quot;root&quot;</span>;<span class="comment">//用来连接数据库用户名密码</span></span><br><span class="line"><span class="variable">$dbname</span>=<span class="string">&quot;haha&quot;</span>;</span><br><span class="line"><span class="comment">//创建连接   mysqli自带对象，将连接对象存给变量conn</span></span><br><span class="line"><span class="variable">$conn</span> = <span class="keyword">new</span> <span class="title function_ invoke__">mysqli</span>(<span class="variable">$servername</span>,<span class="variable">$username</span>,<span class="variable">$password</span>,<span class="variable">$dbname</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//检测连接</span></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$conn</span>-&gt;connect_error)&#123;  <span class="comment">//如果链接对象中connect_error返回失败</span></span><br><span class="line">	<span class="keyword">die</span>(<span class="string">&quot;连接失败:&quot;</span>.<span class="variable">$conn</span>-&gt;connect_error); <span class="comment">//die函数断掉连接同时用.返回错误,php使用点来连接</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span>(<span class="string">&quot;连接成功&quot;</span>);</span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="查"><a href="#查" class="headerlink" title="查"></a>查</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数据库的查询（读取数据库）</span></span><br><span class="line"><span class="comment">//参考https://www.runoob.com/php/php-mysql-select.html 代码</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//准备一条数据库语句（sql语句）</span></span><br><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;SELECT * FROM table1 WHERE id &lt; 3&quot;</span>; <span class="comment">//将数据库中table1表中id项小于3的元素都选出来</span></span><br><span class="line"><span class="variable">$result</span> = <span class="variable">$conn</span>-&gt;query(<span class="variable">$sql</span>);	<span class="comment">//执行建立的conn连接对象中query函数，将sql语句塞给数据库，将执行（query）结果返回给变量$result</span></span><br><span class="line"><span class="comment">//判断result有没有东西</span></span><br><span class="line"> <span class="keyword">if</span> (<span class="variable">$result</span> -&gt;num_rows &gt; <span class="number">0</span>)</span><br><span class="line"> &#123;</span><br><span class="line">     <span class="comment">//输出数据</span></span><br><span class="line">     <span class="keyword">while</span>(<span class="variable">$row</span> = <span class="variable">$result</span>-&gt;fetch_assoc())<span class="comment">//用while循环一条条去读取</span></span><br><span class="line">     &#123;</span><br><span class="line">         <span class="keyword">echo</span> <span class="variable">$row</span>[<span class="string">&#x27;id&#x27;</span>].<span class="string">&#x27;------&#x27;</span>.<span class="variable">$row</span>[<span class="string">&#x27;username&#x27;</span>].<span class="string">&#x27;------&#x27;</span>.<span class="variable">$row</span>[<span class="string">&#x27;password&#x27;</span>].<span class="string">&quot;&lt;br/&gt;&quot;</span>; <span class="comment">//这里返回的row类似于js对象数据，里面有每个条目的信息，包含了name，password等个体属性</span></span><br><span class="line">         <span class="comment">//这里输出是sql查询语句的子集关系，所以一般SQL选所有*</span></span><br><span class="line">     &#125;</span><br><span class="line"> &#125;<span class="keyword">else</span></span><br><span class="line"> &#123;</span><br><span class="line">     <span class="keyword">echo</span> <span class="string">&quot;未查询到结果&quot;</span>;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$conn</span>-&gt;close(); <span class="comment">//关闭数据库，防止一直占用，产生死锁</span></span><br></pre></td></tr></table></figure>
+<h4 id="查"><a href="#查" class="headerlink" title="查"></a>查</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数据库的查询（读取数据库）</span></span><br><span class="line"><span class="comment">//参考https://www.runoob.com/php/php-mysql-select.html 代码</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//准备一条数据库语句（sql语句）</span></span><br><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;SELECT * FROM table1 WHERE id &lt; 3&quot;</span>; <span class="comment">//将数据库中table1表中id项小于3的元素都选出来</span></span><br><span class="line"><span class="variable">$result</span> = <span class="variable">$conn</span>-&gt;<span class="title function_ invoke__">query</span>(<span class="variable">$sql</span>);	<span class="comment">//执行建立的conn连接对象中query函数，将sql语句塞给数据库，将执行（query）结果返回给变量$result</span></span><br><span class="line"><span class="comment">//判断result有没有东西</span></span><br><span class="line"> <span class="keyword">if</span> (<span class="variable">$result</span> -&gt;num_rows &gt; <span class="number">0</span>)</span><br><span class="line"> &#123;</span><br><span class="line">     <span class="comment">//输出数据</span></span><br><span class="line">     <span class="keyword">while</span>(<span class="variable">$row</span> = <span class="variable">$result</span>-&gt;<span class="title function_ invoke__">fetch_assoc</span>())<span class="comment">//用while循环一条条去读取</span></span><br><span class="line">     &#123;</span><br><span class="line">         <span class="keyword">echo</span> <span class="variable">$row</span>[<span class="string">&#x27;id&#x27;</span>].<span class="string">&#x27;------&#x27;</span>.<span class="variable">$row</span>[<span class="string">&#x27;username&#x27;</span>].<span class="string">&#x27;------&#x27;</span>.<span class="variable">$row</span>[<span class="string">&#x27;password&#x27;</span>].<span class="string">&quot;&lt;br/&gt;&quot;</span>; <span class="comment">//这里返回的row类似于js对象数据，里面有每个条目的信息，包含了name，password等个体属性</span></span><br><span class="line">         <span class="comment">//这里输出是sql查询语句的子集关系，所以一般SQL选所有*</span></span><br><span class="line">     &#125;</span><br><span class="line"> &#125;<span class="keyword">else</span></span><br><span class="line"> &#123;</span><br><span class="line">     <span class="keyword">echo</span> <span class="string">&quot;未查询到结果&quot;</span>;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$conn</span>-&gt;<span class="title function_ invoke__">close</span>(); <span class="comment">//关闭数据库，防止一直占用，产生死锁</span></span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="增"><a href="#增" class="headerlink" title="增"></a>增</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数据库的增加数据（插入数据）</span></span><br><span class="line"><span class="comment">//参考 https://www.runoob.com/php/php-mysql-insert.html</span></span><br><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;INSERT INTO table1 (id ,username,password) VALUE (8,&#x27;haha123&#x27;,&#x27;9999123&#x27;)&quot;</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$conn</span>-&gt;query(<span class="variable">$sql</span>)===<span class="literal">TRUE</span>)<span class="comment">//执行语句query是否成功，箭头运算使用query数据库查询函数，传递$sql这个数据库sql字符串变量到数据库中，返回ture或者false</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;插入成功&#x27;</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;error:&quot;</span>.<span class="variable">$conn</span>-&gt;error;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="增"><a href="#增" class="headerlink" title="增"></a>增</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数据库的增加数据（插入数据）</span></span><br><span class="line"><span class="comment">//参考 https://www.runoob.com/php/php-mysql-insert.html</span></span><br><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;INSERT INTO table1 (id ,username,password) VALUE (8,&#x27;haha123&#x27;,&#x27;9999123&#x27;)&quot;</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$conn</span>-&gt;<span class="title function_ invoke__">query</span>(<span class="variable">$sql</span>)===<span class="literal">TRUE</span>)<span class="comment">//执行语句query是否成功，箭头运算使用query数据库查询函数，传递$sql这个数据库sql字符串变量到数据库中，返回ture或者false</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;插入成功&#x27;</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;error:&quot;</span>.<span class="variable">$conn</span>-&gt;error;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="删"><a href="#删" class="headerlink" title="删"></a>删</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数据的删除</span></span><br><span class="line"><span class="comment">//参考 https://www.runoob.com/php/php-mysql-delete.html</span></span><br><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;DELETE FROM table1 WHERE username=&#x27;haha123&#x27; &quot;</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$conn</span>-&gt;query(<span class="variable">$sql</span>)===<span class="literal">TRUE</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;数据删除成功&#x27;</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;Error:&#x27;</span>.<span class="variable">$conn</span>-&gt;error;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="删"><a href="#删" class="headerlink" title="删"></a>删</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数据的删除</span></span><br><span class="line"><span class="comment">//参考 https://www.runoob.com/php/php-mysql-delete.html</span></span><br><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;DELETE FROM table1 WHERE username=&#x27;haha123&#x27; &quot;</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$conn</span>-&gt;<span class="title function_ invoke__">query</span>(<span class="variable">$sql</span>)===<span class="literal">TRUE</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;数据删除成功&#x27;</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;Error:&#x27;</span>.<span class="variable">$conn</span>-&gt;error;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="改"><a href="#改" class="headerlink" title="改"></a>改</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数据的修改（update）</span></span><br><span class="line"><span class="comment">//参考https://www.runoob.com/php/php-mysql-update.html</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;UPDATE table1 SET password=&#x27;nibi123&#x27; WHERE username=&#x27;haha123&#x27; &quot;</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$conn</span>-&gt;query(<span class="variable">$sql</span>)===<span class="literal">TRUE</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;数据修改成功&#x27;</span>;</span><br><span class="line">&#125;<span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;ERROR:&#x27;</span>.<span class="variable">$conn</span>-&gt;error;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="改"><a href="#改" class="headerlink" title="改"></a>改</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数据的修改（update）</span></span><br><span class="line"><span class="comment">//参考https://www.runoob.com/php/php-mysql-update.html</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;UPDATE table1 SET password=&#x27;nibi123&#x27; WHERE username=&#x27;haha123&#x27; &quot;</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$conn</span>-&gt;<span class="title function_ invoke__">query</span>(<span class="variable">$sql</span>)===<span class="literal">TRUE</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;数据修改成功&#x27;</span>;</span><br><span class="line">&#125;<span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;ERROR:&#x27;</span>.<span class="variable">$conn</span>-&gt;error;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
@@ -312,7 +405,7 @@
 <li>该函数是二进制安全的。</li>
 <li>该函数是不区分大小写的。如需进行区分大小写的搜索，使用 <a target="_blank" rel="noopener" href="https://www.runoob.com/php/func-string-strstr.html">strstr()</a> 函数。</li>
 </ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stristr(<span class="keyword">string</span>,search,before_search) </span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">stristr</span>(<span class="keyword">string</span>,search,before_search) </span><br></pre></td></tr></table></figure>
 
 <table>
 <thead>
@@ -336,11 +429,11 @@
 </tbody></table>
 <h3 id="strpos"><a href="#strpos" class="headerlink" title="strpos()"></a>strpos()</h3><p>strpos() 函数用于在字符串内查找一个字符或一段指定的文本。</p>
 <p>如果在字符串中找到匹配，该函数会返回<strong>第一个</strong>匹配的字符位置。如果未找到匹配，则返回 FALSE。</p>
-<h3 id="substr"><a href="#substr" class="headerlink" title="substr()"></a>substr()</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">substr(<span class="keyword">string</span>,start,length)</span><br></pre></td></tr></table></figure>
+<h3 id="substr"><a href="#substr" class="headerlink" title="substr()"></a>substr()</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">substr</span>(<span class="keyword">string</span>,start,length)</span><br></pre></td></tr></table></figure>
 
 <p>返回字符串的一部分,从字符串的start位置开始，返回的字符串长度是length，为负数时 从字符串末端返回的长度，默认是直到字符串的结尾。</p>
 <h3 id="uniqid"><a href="#uniqid" class="headerlink" title="uniqid()"></a>uniqid()</h3><p>uniqid() 函数基于以微秒计的当前时间，生成一个唯一的 ID</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//php实现对文件上传后缀检查与替换</span></span><br><span class="line"><span class="variable">$upload_name</span>=<span class="variable">$_FILES</span>[<span class="string">&#x27;file&#x27;</span>][<span class="string">&#x27;name&#x27;</span>];</span><br><span class="line"><span class="variable">$upload_ext</span>=substr( <span class="variable">$uploaded_name</span>,strrpos(<span class="variable">$uploaded_name</span>,<span class="string">&#x27;.&#x27;</span>)+<span class="number">1</span>);<span class="comment">//从.开始向后取后缀</span></span><br><span class="line"><span class="variable">$target_name</span>=md5(uniqid().<span class="variable">$uploaded_name</span>.<span class="string">&#x27;.&#x27;</span>.<span class="variable">$uploaded_ext</span>);<span class="comment">//对上传文件重命名</span></span><br><span class="line"><span class="keyword">if</span>(strtolower(<span class="variable">$uploaded_ext</span>)==<span class="string">&#x27;jpg&#x27;</span>||strtolower(<span class="variable">$uploaded_ext</span>)==<span class="string">&#x27;jpeg&#x27;</span>||strtolower(<span class="variable">$uploaded_ext</span>)==<span class="string">&#x27;png&#x27;</span>)</span><br><span class="line">&#123;</span><br><span class="line">    move_uploaded_file(<span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;tmp_name&quot;</span>], <span class="variable">$dir</span>.<span class="variable">$target_name</span>);<span class="comment">//将临时文件移动到指定目录下</span></span><br><span class="line">    <span class="variable">$result</span>=<span class="variable">$dir</span>.<span class="variable">$target_name</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;stored in: <span class="subst">$result</span>&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;invalid file&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//php实现对文件上传后缀检查与替换</span></span><br><span class="line"><span class="variable">$upload_name</span>=<span class="variable">$_FILES</span>[<span class="string">&#x27;file&#x27;</span>][<span class="string">&#x27;name&#x27;</span>];</span><br><span class="line"><span class="variable">$upload_ext</span>=<span class="title function_ invoke__">substr</span>( <span class="variable">$uploaded_name</span>,<span class="title function_ invoke__">strrpos</span>(<span class="variable">$uploaded_name</span>,<span class="string">&#x27;.&#x27;</span>)+<span class="number">1</span>);<span class="comment">//从.开始向后取后缀</span></span><br><span class="line"><span class="variable">$target_name</span>=<span class="title function_ invoke__">md5</span>(<span class="title function_ invoke__">uniqid</span>().<span class="variable">$uploaded_name</span>.<span class="string">&#x27;.&#x27;</span>.<span class="variable">$uploaded_ext</span>);<span class="comment">//对上传文件重命名</span></span><br><span class="line"><span class="keyword">if</span>(<span class="title function_ invoke__">strtolower</span>(<span class="variable">$uploaded_ext</span>)==<span class="string">&#x27;jpg&#x27;</span>||<span class="title function_ invoke__">strtolower</span>(<span class="variable">$uploaded_ext</span>)==<span class="string">&#x27;jpeg&#x27;</span>||<span class="title function_ invoke__">strtolower</span>(<span class="variable">$uploaded_ext</span>)==<span class="string">&#x27;png&#x27;</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="title function_ invoke__">move_uploaded_file</span>(<span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;tmp_name&quot;</span>], <span class="variable">$dir</span>.<span class="variable">$target_name</span>);<span class="comment">//将临时文件移动到指定目录下</span></span><br><span class="line">    <span class="variable">$result</span>=<span class="variable">$dir</span>.<span class="variable">$target_name</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;stored in: <span class="subst">$result</span>&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;invalid file&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -349,19 +442,19 @@
 
 
 
-<h3 id="system"><a href="#system" class="headerlink" title="system()"></a>system()</h3><p>   <strong>system(string <code>$command</code>, int <code>&amp;$return_var</code> = ?): string</strong></p>
+<h3 id="system"><a href="#system" class="headerlink" title="system()"></a>system()</h3><p>   <strong>system(string <code>$command</code>, int <code>&amp;$return_var</code> &#x3D; ?): string</strong></p>
 <p>和C的system()函数一样，执行里面第一个参数的命令；command参数是要执行的命令，如果提供return_var参数，则外部命令执行后的返回状态将会被设置到此变量中</p>
 <h3 id="explode"><a href="#explode" class="headerlink" title="explode()"></a>explode()</h3><ul>
 <li>把字符串打散为数组</li>
 </ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$str</span> = <span class="string">&quot;www.runoob.com&quot;</span>;</span><br><span class="line">print_r (explode(<span class="string">&quot;.&quot;</span>,<span class="variable">$str</span>)); <span class="comment">//以点为分隔符</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$str</span> = <span class="string">&quot;www.runoob.com&quot;</span>;</span><br><span class="line"><span class="title function_ invoke__">print_r</span> (<span class="title function_ invoke__">explode</span>(<span class="string">&quot;.&quot;</span>,<span class="variable">$str</span>)); <span class="comment">//以点为分隔符</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
 <h3 id="mysqli-real-escape-string"><a href="#mysqli-real-escape-string" class="headerlink" title="mysqli_real_escape_string()"></a>mysqli_real_escape_string()</h3><ul>
 <li>转义在 SQL 语句中使用的字符串中的特殊字符,起到小的防火墙效果</li>
 </ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqli_real_escape_string(connection,escapestring);</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">mysqli_real_escape_string</span>(connection,escapestring);</span><br></pre></td></tr></table></figure>
 
 <table>
 <thead>
@@ -382,7 +475,7 @@
 <h1 id="补充知识"><a href="#补充知识" class="headerlink" title="补充知识"></a>补充知识</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><h3 id="REQUEST"><a href="#REQUEST" class="headerlink" title="$_REQUEST"></a>$_REQUEST</h3><ul>
 <li><p>是 HTTP Request 变量</p>
 </li>
-<li><p>默认情况下包含了 <a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/reserved.variables.get.php">$_GET</a>，<a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/reserved.variables.post.php">$_POST</a>  和  <a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/reserved.variables.cookies.php">$_COOKIE</a> 的数组。  </p>
+<li><p>默认情况下包含了 <a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/reserved.variables.get.php">$_GET</a>，<a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/reserved.variables.post.php">$_POST</a>  和  <a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/reserved.variables.cookies.php">$_COOKIE</a> 的数组。</p>
 </li>
 </ul>
 <blockquote>
@@ -391,7 +484,7 @@
 <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="exec"><a href="#exec" class="headerlink" title="exec()"></a>exec()</h3><ul>
 <li>执行一个外部程序</li>
 </ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exec(<span class="keyword">string</span> <span class="variable">$command</span>, <span class="keyword">array</span> &amp;<span class="variable">$output</span> = ?, <span class="keyword">int</span> &amp;<span class="variable">$return_var</span> = ?): <span class="keyword">string</span>  <span class="comment">//exec执行command参数所指定的命令</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">exec</span>(<span class="keyword">string</span> <span class="variable">$command</span>, <span class="keyword">array</span> &amp;<span class="variable">$output</span> = ?, <span class="keyword">int</span> &amp;<span class="variable">$return_var</span> = ?): <span class="keyword">string</span>  <span class="comment">//exec执行command参数所指定的命令</span></span><br></pre></td></tr></table></figure>
 
 <p>参数</p>
 <ul>
@@ -403,7 +496,7 @@
 <p>注意，如果数组中已经包含了部分元素，<strong>exec()</strong> 函数会在数组末尾追加内容。如果你不想在数组末尾进行追加，请在传入 <strong>exec()</strong> 函数之前对数组使用 <a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.unset.php">unset()</a> 函数进行重置。           </p>
 </li>
 <li><p><code>return_var</code></p>
-<p>如果同时提供<code>output</code>  和 return_var` 参数，命令执行后的返回状态会被写入到此变量。           </p>
+<p>如果同时提供<code>output</code>  和 return_var&#96; 参数，命令执行后的返回状态会被写入到此变量。</p>
 </li>
 </ul>
 <blockquote>
@@ -413,12 +506,12 @@
 <li>执行外部程序，并且显示输出</li>
 <li>这些函数存在的意义，就是让用户通过php语言去执行系统的命令</li>
 </ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">system(<span class="keyword">string</span> <span class="variable">$command</span>, <span class="keyword">int</span> &amp;<span class="variable">$return_var</span> = ?): <span class="keyword">string</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">system</span>(<span class="keyword">string</span> <span class="variable">$command</span>, <span class="keyword">int</span> &amp;<span class="variable">$return_var</span> = ?): <span class="keyword">string</span></span><br></pre></td></tr></table></figure>
 
 
 
 <p><strong>实例</strong></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;&lt;pre&gt;&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出 shell 命令 &quot;ls&quot; 的返回结果</span></span><br><span class="line"><span class="comment">// 并且将输出的最后一样内容返回到 $last_line。</span></span><br><span class="line"><span class="comment">// 将命令的返回值保存到 $retval。</span></span><br><span class="line"><span class="variable">$last_line</span> = system(<span class="string">&#x27;ls&#x27;</span>, <span class="variable">$retval</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 打印更多信息</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;</span></span><br><span class="line"><span class="string">&lt;/pre&gt;</span></span><br><span class="line"><span class="string">&lt;hr /&gt;Last line of the output: &#x27;</span> . <span class="variable">$last_line</span> . <span class="string">&#x27;</span></span><br><span class="line"><span class="string">&lt;hr /&gt;Return value: &#x27;</span> . <span class="variable">$retval</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;&lt;pre&gt;&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出 shell 命令 &quot;ls&quot; 的返回结果</span></span><br><span class="line"><span class="comment">// 并且将输出的最后一样内容返回到 $last_line。</span></span><br><span class="line"><span class="comment">// 将命令的返回值保存到 $retval。</span></span><br><span class="line"><span class="variable">$last_line</span> = <span class="title function_ invoke__">system</span>(<span class="string">&#x27;ls&#x27;</span>, <span class="variable">$retval</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 打印更多信息</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;</span></span><br><span class="line"><span class="string">&lt;/pre&gt;</span></span><br><span class="line"><span class="string">&lt;hr /&gt;Last line of the output: &#x27;</span> . <span class="variable">$last_line</span> . <span class="string">&#x27;</span></span><br><span class="line"><span class="string">&lt;hr /&gt;Return value: &#x27;</span> . <span class="variable">$retval</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
@@ -435,19 +528,19 @@
 </blockquote>
 <h3 id="php-uname"><a href="#php-uname" class="headerlink" title="php_uname()"></a>php_uname()</h3><ul>
 <li>返回运行 PHP 的系统的有关信息</li>
-<li><strong>php_uname()</strong> 返回了运行 PHP 的操作系统的描述。   这和 <a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.phpinfo.php">phpinfo()</a> 最顶端上输出的是同一个字符串。   如果仅仅要获取操作系统的名称。可以考虑使用常量 **<code>PHP_OS</code>*<em>，不过要注意该常量会包含 PHP 构建（</em>built*）时的操作系统名。  </li>
-<li>在一些旧的 UNIX 平台，它有可能无法检测到当前系统的信息，然后会还原显示成构建 PHP 时的系统信息。这仅仅在你的 uname() 函数库不存在或无法运行时发生。  </li>
+<li><strong>php_uname()</strong> 返回了运行 PHP 的操作系统的描述。   这和 <a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.phpinfo.php">phpinfo()</a> 最顶端上输出的是同一个字符串。   如果仅仅要获取操作系统的名称。可以考虑使用常量 <strong><code>PHP_OS</code></strong>，不过要注意该常量会包含 PHP 构建（<em>built</em>）时的操作系统名。  </li>
+<li>在一些旧的 UNIX 平台，它有可能无法检测到当前系统的信息，然后会还原显示成构建 PHP 时的系统信息。这仅仅在你的 uname() 函数库不存在或无法运行时发生。</li>
 </ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php_uname(<span class="keyword">string</span> <span class="variable">$mode</span> = <span class="string">&quot;a&quot;</span>): <span class="keyword">string</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">php_uname</span>(<span class="keyword">string</span> <span class="variable">$mode</span> = <span class="string">&quot;a&quot;</span>): <span class="keyword">string</span></span><br></pre></td></tr></table></figure>
 
 <p><code>mode</code> 是单个字符，用于定义要返回什么信息：       </p>
 <ul>
 <li><code>&#39;a&#39;</code>：此为默认。包含序列 <code>&quot;s n r v m&quot;</code> 里的所有模式。                 </li>
-<li><code>&#39;s&#39;</code>：操作系统名称。例如：FreeBSD`。                 </li>
-<li><code>&#39;n&#39;</code>：主机名。例如：localhost.example.com`。                 </li>
-<li><code>&#39;r&#39;</code>：版本名称，例如：5.1.2-RELEASE`。                 </li>
+<li><code>&#39;s&#39;</code>：操作系统名称。例如：FreeBSD&#96;。                 </li>
+<li><code>&#39;n&#39;</code>：主机名。例如：localhost.example.com&#96;。                 </li>
+<li><code>&#39;r&#39;</code>：版本名称，例如：5.1.2-RELEASE&#96;。                 </li>
 <li><code>&#39;v&#39;</code>：版本信息。操作系统之间有很大的不同。                 </li>
-<li><code>&#39;m&#39;</code>：机器类型。例如：<code>i386</code>。                 </li>
+<li><code>&#39;m&#39;</code>：机器类型。例如：<code>i386</code>。</li>
 </ul>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.php-uname.php">https://www.php.net/manual/zh/function.php-uname.php</a></p>
@@ -455,7 +548,7 @@
 <h3 id="addslashes"><a href="#addslashes" class="headerlink" title="addslashes()"></a>addslashes()</h3><ul>
 <li>使用反斜线引用字符串</li>
 </ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addslashes(<span class="keyword">string</span> <span class="variable">$str</span>): <span class="keyword">string</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">addslashes</span>(<span class="keyword">string</span> <span class="variable">$str</span>): <span class="keyword">string</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -475,126 +568,121 @@
 
 
 
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">XiaoYao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://liloker.github.io/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/php%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">https://liloker.github.io/2023/03/30/学习笔记/php学习笔记/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/php/">php</a></div><div class="post_share"><div class="social-share" data-image="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/018.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/sqli/"><img class="prev-cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/026.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">SQL注入</div></div></a></div><div class="next-post pull-right"><a href="/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/python%E8%BF%9B%E9%98%B6/"><img class="next-cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/018.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">python笔记</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/profile_knife.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">XiaoYao</div><div class="author-info__description">多巴胺被赐予意义，人类社会便有了混沌，愿世间尚有净土，留存爱与欢喜。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">70</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">79</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">16</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Liloker"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Liloker" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:theone@liloker.anonaddy.me" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://blog.csdn.net/weixin_42160117" target="_blank" title="CSDN"><i class="far fa-copyright"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">来了，随便坐吧~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#php%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">php基础教程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.1.1.</span> <span class="toc-text">PHP 是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP-%E6%96%87%E4%BB%B6%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.1.2.</span> <span class="toc-text">PHP 文件是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP-%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.1.3.</span> <span class="toc-text">PHP 能做什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8-PHP%EF%BC%9F"><span class="toc-number">1.1.4.</span> <span class="toc-text">为什么使用 PHP？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#php%E8%AF%AD%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">php语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#php5-echo-amp-print"><span class="toc-number">1.3.</span> <span class="toc-text">php5 echo &amp; print</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.4.</span> <span class="toc-text">@</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#php%E8%A1%A8%E5%8D%95"><span class="toc-number">2.</span> <span class="toc-text">php表单</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#php%E8%A1%A8%E5%8D%95-1"><span class="toc-number">2.1.</span> <span class="toc-text">php表单</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B"><span class="toc-number">2.1.1.</span> <span class="toc-text">实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#php%E4%B8%8Eget%EF%BC%8Cpost"><span class="toc-number">2.2.</span> <span class="toc-text">php与get，post</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#php-html"><span class="toc-number">2.3.</span> <span class="toc-text">php+html</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#php%E9%AB%98%E7%BA%A7%E8%BF%9B%E9%98%B6"><span class="toc-number">3.</span> <span class="toc-text">php高级进阶</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#php%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">4.</span> <span class="toc-text">php数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#php-Mysql"><span class="toc-number">4.1.</span> <span class="toc-text">php+Mysql</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#query-%E5%87%BD%E6%95%B0"><span class="toc-number">4.1.0.1.</span> <span class="toc-text">query()函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%B9%B6%E6%A3%80%E6%B5%8B%E8%BF%9E%E6%8E%A5"><span class="toc-number">4.1.0.2.</span> <span class="toc-text">创建并检测连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5"><span class="toc-number">4.1.0.3.</span> <span class="toc-text">查</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A2%9E"><span class="toc-number">4.1.0.4.</span> <span class="toc-text">增</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0"><span class="toc-number">4.1.0.5.</span> <span class="toc-text">删</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B9"><span class="toc-number">4.1.0.6.</span> <span class="toc-text">改</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#php%E4%B8%8EAjax"><span class="toc-number">5.</span> <span class="toc-text">php与Ajax</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#php%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C"><span class="toc-number">6.</span> <span class="toc-text">php参考手册</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#stristr"><span class="toc-number">6.0.1.</span> <span class="toc-text">stristr()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#strpos"><span class="toc-number">6.0.2.</span> <span class="toc-text">strpos()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#substr"><span class="toc-number">6.0.3.</span> <span class="toc-text">substr()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#uniqid"><span class="toc-number">6.0.4.</span> <span class="toc-text">uniqid()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#eval"><span class="toc-number">6.0.5.</span> <span class="toc-text">eval()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#system"><span class="toc-number">6.0.6.</span> <span class="toc-text">system()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#explode"><span class="toc-number">6.0.7.</span> <span class="toc-text">explode()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysqli-real-escape-string"><span class="toc-number">6.0.8.</span> <span class="toc-text">mysqli_real_escape_string()</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%E7%9F%A5%E8%AF%86"><span class="toc-number">7.</span> <span class="toc-text">补充知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-number">7.1.</span> <span class="toc-text">变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#REQUEST"><span class="toc-number">7.1.1.</span> <span class="toc-text">$_REQUEST</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-number">7.2.</span> <span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#exec"><span class="toc-number">7.2.1.</span> <span class="toc-text">exec()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#system-1"><span class="toc-number">7.2.2.</span> <span class="toc-text">system()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#isset"><span class="toc-number">7.2.3.</span> <span class="toc-text">isset()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php-uname"><span class="toc-number">7.2.4.</span> <span class="toc-text">php_uname()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#addslashes"><span class="toc-number">7.2.5.</span> <span class="toc-text">addslashes()</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/12/10/%E6%8A%98%E8%85%BE%E5%90%A7/lineageOS22.2t-trebuchet%E6%A1%8C%E9%9D%A2%E9%97%AE%E9%A2%98/" title="lineageOS22-Trebuchet崩溃修复"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_038.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="lineageOS22-Trebuchet崩溃修复"/></a><div class="content"><a class="title" href="/2025/12/10/%E6%8A%98%E8%85%BE%E5%90%A7/lineageOS22.2t-trebuchet%E6%A1%8C%E9%9D%A2%E9%97%AE%E9%A2%98/" title="lineageOS22-Trebuchet崩溃修复">lineageOS22-Trebuchet崩溃修复</a><time datetime="2025-12-10T00:12:50.742Z" title="Created 2025-12-10 08:12:50">2025-12-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/09/%E6%8A%98%E8%85%BE%E5%90%A7/%E9%80%86%E5%90%91/" title="逆向"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_021.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="逆向"/></a><div class="content"><a class="title" href="/2025/12/09/%E6%8A%98%E8%85%BE%E5%90%A7/%E9%80%86%E5%90%91/" title="逆向">逆向</a><time datetime="2025-12-09T00:34:44.798Z" title="Created 2025-12-09 08:34:44">2025-12-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/06/%E6%8A%98%E8%85%BE%E5%90%A7/lineageOS%E5%88%B7%E6%9C%BA/" title="lineageOS22刷机"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_028.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="lineageOS22刷机"/></a><div class="content"><a class="title" href="/2025/12/06/%E6%8A%98%E8%85%BE%E5%90%A7/lineageOS%E5%88%B7%E6%9C%BA/" title="lineageOS22刷机">lineageOS22刷机</a><time datetime="2025-12-06T04:12:09.057Z" title="Created 2025-12-06 12:12:09">2025-12-06</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/018.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2026 By XiaoYao</div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://w4xiaoyao.site">Dominating The Information Age </a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="Increase font size"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="Decrease font size"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
-  endLoading: () => {
-    document.body.style.overflow = 'auto';
-    document.getElementById('loading-box').classList.add("loaded")
-  },
-  initLoading: () => {
-    document.body.style.overflow = '';
-    document.getElementById('loading-box').classList.remove("loaded")
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://liloker.github.io">XiaoYao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://liloker.github.io/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/php%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">https://liloker.github.io/2023/03/30/学习笔记/php学习笔记/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://liloker.github.io" target="_blank">逍 遥 の B l o g</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/php/">php</a></div><div class="post-share"><div class="social-share" data-image="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/018.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E4%B8%8D%E6%83%B3%E5%86%99%E8%BF%99%E7%83%82%E5%A4%A7%E8%A1%97%E7%9A%84C++%E9%93%B6%E8%A1%8C%E8%BF%98%E8%B4%B7%E7%B3%BB%E7%BB%9F/" title="不想写这烂大街的C++银行还贷系统"><img class="cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_019.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post" loading='lazy'><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">不想写这烂大街的C++银行还贷系统</div></div><div class="info-2"><div class="info-item-1">控制台界面 get：结构体嵌套写法  面向对象思想的应用   fstream库运用  while(1)break 源码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180181182...</div></div></div></a><a class="pagination-related" href="/2023/03/30/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/vim%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="vim学习笔记"><img class="cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/022.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post" loading='lazy'><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">vim学习笔记</div></div><div class="info-2"><div class="info-item-1">vi&#x2F;vim vi&#x2F;vim 的使用基本上 vi&#x2F;vim 共分为三种模式，分别是命令模式（Command mode），输入模式（Insert mode）和底线命令模式（Last line mode）。 这三种模式的作用分别是： 命令模式：用户刚刚启动 vi&#x2F;vim，便进入了命令模式。 此状态下敲击键盘动作会被Vim识别为命令，而非输入字符。比如我们此时按下i，并不会输入一个字符，i被当作了一个命令。 以下是常用的几个命令：  i 切换到输入模式，以输入字符。 x 删除当前光标所在处的字符。 : 切换到底线命令模式，以在最底一行输入命令。 &#x2F;后面跟上搜索的字符串，回车搜索，n和N上下移动搜索目标  若想要编辑文本：启动Vim，进入了命令模式，按下i，切换到输入模式。 命令模式只有一些最基本的命令，因此仍要依靠底线命令模式输入更多命令。 输入模式在命令模式下按下i就进入了输入模式。 在输入模式中，可以使用以下按键：  字符按键以及Shift组合，输入字符 ENTER，回车键，换行 BACK SPACE，退格键，删除光标前一个字符 DEL...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/profile_knife.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="author-info-name">XiaoYao</div><div class="author-info-description">多巴胺被赐予意义，人类社会便有了混沌，愿世间尚有净土，留存爱与欢喜。</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">70</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">79</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">16</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Liloker"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Liloker" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:theone@liloker.anonaddy.me" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://blog.csdn.net/weixin_42160117" target="_blank" title="CSDN"><i class="far fa-copyright"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">来了，随便坐吧~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#php%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">php基础教程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.1.1.</span> <span class="toc-text">PHP 是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP-%E6%96%87%E4%BB%B6%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.1.2.</span> <span class="toc-text">PHP 文件是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP-%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.1.3.</span> <span class="toc-text">PHP 能做什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8-PHP%EF%BC%9F"><span class="toc-number">1.1.4.</span> <span class="toc-text">为什么使用 PHP？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#php%E8%AF%AD%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">php语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#php5-echo-print"><span class="toc-number">1.3.</span> <span class="toc-text">php5 echo &amp; print</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.4.</span> <span class="toc-text">@</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#php%E8%A1%A8%E5%8D%95"><span class="toc-number">2.</span> <span class="toc-text">php表单</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#php%E8%A1%A8%E5%8D%95-1"><span class="toc-number">2.1.</span> <span class="toc-text">php表单</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B"><span class="toc-number">2.1.1.</span> <span class="toc-text">实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#php%E4%B8%8Eget%EF%BC%8Cpost"><span class="toc-number">2.2.</span> <span class="toc-text">php与get，post</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#php-html"><span class="toc-number">2.3.</span> <span class="toc-text">php+html</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#php%E9%AB%98%E7%BA%A7%E8%BF%9B%E9%98%B6"><span class="toc-number">3.</span> <span class="toc-text">php高级进阶</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#php%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">4.</span> <span class="toc-text">php数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#php-Mysql"><span class="toc-number">4.1.</span> <span class="toc-text">php+Mysql</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#query-%E5%87%BD%E6%95%B0"><span class="toc-number">4.1.1.</span> <span class="toc-text">query()函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%B9%B6%E6%A3%80%E6%B5%8B%E8%BF%9E%E6%8E%A5"><span class="toc-number">4.1.2.</span> <span class="toc-text">创建并检测连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5"><span class="toc-number">4.1.3.</span> <span class="toc-text">查</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A2%9E"><span class="toc-number">4.1.4.</span> <span class="toc-text">增</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0"><span class="toc-number">4.1.5.</span> <span class="toc-text">删</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B9"><span class="toc-number">4.1.6.</span> <span class="toc-text">改</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#php%E4%B8%8EAjax"><span class="toc-number">5.</span> <span class="toc-text">php与Ajax</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#php%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C"><span class="toc-number">6.</span> <span class="toc-text">php参考手册</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#stristr"><span class="toc-number">6.1.</span> <span class="toc-text">stristr()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#strpos"><span class="toc-number">6.2.</span> <span class="toc-text">strpos()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#substr"><span class="toc-number">6.3.</span> <span class="toc-text">substr()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#uniqid"><span class="toc-number">6.4.</span> <span class="toc-text">uniqid()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#eval"><span class="toc-number">6.5.</span> <span class="toc-text">eval()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#system"><span class="toc-number">6.6.</span> <span class="toc-text">system()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#explode"><span class="toc-number">6.7.</span> <span class="toc-text">explode()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysqli-real-escape-string"><span class="toc-number">6.8.</span> <span class="toc-text">mysqli_real_escape_string()</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%E7%9F%A5%E8%AF%86"><span class="toc-number">7.</span> <span class="toc-text">补充知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-number">7.1.</span> <span class="toc-text">变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#REQUEST"><span class="toc-number">7.1.1.</span> <span class="toc-text">$_REQUEST</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-number">7.2.</span> <span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#exec"><span class="toc-number">7.2.1.</span> <span class="toc-text">exec()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#system-1"><span class="toc-number">7.2.2.</span> <span class="toc-text">system()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#isset"><span class="toc-number">7.2.3.</span> <span class="toc-text">isset()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php-uname"><span class="toc-number">7.2.4.</span> <span class="toc-text">php_uname()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#addslashes"><span class="toc-number">7.2.5.</span> <span class="toc-text">addslashes()</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/12/10/%E6%8A%98%E8%85%BE%E5%90%A7/lineageOS22.2t-trebuchet%E6%A1%8C%E9%9D%A2%E9%97%AE%E9%A2%98/" title="lineageOS22-Trebuchet崩溃修复"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_038.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="lineageOS22-Trebuchet崩溃修复"/ loading='lazy'></a><div class="content"><a class="title" href="/2025/12/10/%E6%8A%98%E8%85%BE%E5%90%A7/lineageOS22.2t-trebuchet%E6%A1%8C%E9%9D%A2%E9%97%AE%E9%A2%98/" title="lineageOS22-Trebuchet崩溃修复">lineageOS22-Trebuchet崩溃修复</a><time datetime="2025-12-10T04:00:00.000Z" title="发表于 2025-12-10 12:00:00">2025-12-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/09/%E6%8A%98%E8%85%BE%E5%90%A7/%E9%80%86%E5%90%91/" title="逆向"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_021.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="逆向"/ loading='lazy'></a><div class="content"><a class="title" href="/2025/12/09/%E6%8A%98%E8%85%BE%E5%90%A7/%E9%80%86%E5%90%91/" title="逆向">逆向</a><time datetime="2025-12-09T04:00:00.000Z" title="发表于 2025-12-09 12:00:00">2025-12-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/06/%E6%8A%98%E8%85%BE%E5%90%A7/lineageOS%E5%88%B7%E6%9C%BA/" title="lineageOS22刷机"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_028.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="lineageOS22刷机"/ loading='lazy'></a><div class="content"><a class="title" href="/2025/12/06/%E6%8A%98%E8%85%BE%E5%90%A7/lineageOS%E5%88%B7%E6%9C%BA/" title="lineageOS22刷机">lineageOS22刷机</a><time datetime="2025-12-06T04:00:00.000Z" title="发表于 2025-12-06 12:00:00">2025-12-06</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/018.jpg);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2021 - 2026 By XiaoYao</span></div><div class="footer_custom_text"><a href="https://liloker.github.io">Dominating The Information Age</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.7.0"></script><script src="/js/main.js?v=5.7.0"></script><script src="/js/tw_cn.js?v=5.7.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><div class="js-pjax"><script>(() => {
+  let initFn = window.walineFn || null
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = {"pageSize":10,"placeholder":"随便说点什么吧~","avatar":"retro","locale":{"nick":"昵称"}}
 
-  }
-}
-window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadWaline () {
-  function initWaline () {
-    const waline = new Waline(Object.assign({
-      el: '#waline-wrap',
+  const destroyWaline = ele => ele.destroy()
+
+  const initWaline = (Fn, el = document, path = window.location.pathname) => {
+    const waline = Fn({
+      el: el.querySelector('#waline-wrap'),
       serverURL: 'https://waline2-five.vercel.app/',
-      avatar: 'retro',
-      path: location.pathname,
-      emojiCDN: '',
-      emojiMaps: "",
-      visitor: true
-    }, {"pageSize":10,"placeholder":"随便说点什么吧~","langMode":{"nick":"昵称"}}))
-  }
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      comment: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
 
-  if (typeof Waline === 'function') initWaline() 
-  else getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js').then(initWaline)
-}
-
-if ('Waline' === 'Waline' || !true) {
-  if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
-  else setTimeout(loadWaline, 0)
-} else {
-  function loadOtherComment () {
-    loadWaline()
-  }
-}</script></div><div class="aplayer no-destroy" data-id="7988378536" data-server="tencent" data-type="playlist" data-fixed="true" data-mini="true" data-autoplay="true" data-theme="#408fda" data-order="random" data-preload="auto" data-mutex="true" muted></div><script type="text/javascript" src="/js/myjs.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
-POWERMODE.shake = false;
-POWERMODE.mobile = false;
-document.body.addEventListener('input', POWERMODE);
-</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/liloker/BlogMusicJS/dist/BlogMusic.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
-  'title',
-  '#config-diff',
-  '#body-wrap',
-  '#rightside-config-hide',
-  '#rightside-config-show',
-  '.js-pjax'
-]
-
-if (false) {
-  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
-}
-
-var pjax = new Pjax({
-  elements: 'a:not([target="_blank"])',
-  selectors: pjaxSelectors,
-  cacheBust: false,
-  analytics: false,
-  scrollRestoration: false
-})
-
-document.addEventListener('pjax:send', function () {
-
-  // removeEventListener toc scroll 
-  window.removeEventListener('scroll', window.tocScrollFn)
-
-  typeof preloader === 'object' && preloader.initLoading()
-  
-  if (window.aplayers) {
-    for (let i = 0; i < window.aplayers.length; i++) {
-      if (!window.aplayers[i].options.fixed) {
-        window.aplayers[i].destroy()
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyWaline = () => {
+        destroyWaline(waline)
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
       }
     }
   }
 
-  typeof typed === 'object' && typed.destroy()
+  const loadWaline = (el, path) => {
+    if (initFn) initWaline(initFn, el, path)
+    else {
+      btf.getCSS('https://cdn.jsdelivr.net/npm/@waline/client@2.15.8/dist/waline.css')
+        .then(() => import('https://cdn.jsdelivr.net/npm/@waline/client@2.15.8/dist/waline.mjs'))
+        .then(({ init }) => {
+          initFn = init || Waline.init
+          initWaline(initFn, el, path)
+          window.walineFn = initFn
+        })
+    }
+  }
 
-  //reset readmode
-  const $bodyClassList = document.body.classList
-  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+  if (isShuoshuo) {
+    'Waline' === 'Waline'
+      ? window.shuoshuoComment = { loadComment: loadWaline } 
+      : window.loadOtherComment = loadWaline
+    return
+  }
 
-})
+  if ('Waline' === 'Waline' || !true) {
+    if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><script src="/js/myjs.js" defer></script> <!-- 鼠标星星特效 --><script src="/js/deferred-widgets.js" defer></script> <!-- 首屏后再加载：看板娘 + 音乐播放器 --><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
-document.addEventListener('pjax:complete', function () {
-  window.refreshFn()
-
-  document.querySelectorAll('script[data-pjax]').forEach(item => {
-    const newScript = document.createElement('script')
-    const content = item.text || item.textContent || item.innerHTML || ""
-    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
-    newScript.appendChild(document.createTextNode(content))
-    item.parentNode.replaceChild(newScript, item)
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"]):not([data-fancybox])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
   })
 
-  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
-
-  typeof chatBtnFn === 'function' && chatBtnFn()
-  typeof panguInit === 'function' && panguInit()
-
-  // google analytics
-  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
-
-  // baidu analytics
-  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
-
-  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
-
-  // Analytics
-  if (false) {
-    MtaH5.pgv()
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => {
+      try {
+        fn()
+      } catch (err) {
+        console.debug('Pjax callback failed:', err)
+      }
+    })
   }
 
-  // prismjs
-  typeof Prism === 'object' && Prism.highlightAll()
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
 
-  typeof preloader === 'object' && preloader.endLoading()
-})
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
 
-document.addEventListener('pjax:error', (e) => {
-  if (e.request.status === 404) {
-    pjax.loadUrl('/404.html')
-  }
-})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      if (!item.parentNode) return
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || ''
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    const responseURL = e.request && e.request.responseURL
+    if (e.request && e.request.status === 404) {
+      false
+        ? pjax.loadUrl('/404')
+        : responseURL && (window.location.href = responseURL)
+    } else if (responseURL) {
+      window.location.href = responseURL
+    }
+  })
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.7.0"></script></div></div></body></html>
