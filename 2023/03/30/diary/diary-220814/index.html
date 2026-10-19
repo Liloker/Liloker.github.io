@@ -1,0 +1,755 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>exp_master-220814 | 逍 遥 の B l o g</title><meta name="author" content="XiaoYao"><meta name="copyright" content="XiaoYao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="转行之后第一次大型密保项目经历">
+<meta property="og:type" content="article">
+<meta property="og:title" content="exp_master-220814">
+<meta property="og:url" content="https://liloker.github.io/2023/03/30/diary/diary-220814/">
+<meta property="og:site_name" content="逍 遥 の B l o g">
+<meta property="og:description" content="转行之后第一次大型密保项目经历">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_083.jpg">
+<meta property="article:published_time" content="2023-03-30T04:00:00.000Z">
+<meta property="article:modified_time" content="2023-01-27T08:53:46.000Z">
+<meta property="article:author" content="XiaoYao">
+<meta property="article:tag" content="经历">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_083.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "exp_master-220814",
+  "url": "https://liloker.github.io/2023/03/30/diary/diary-220814/",
+  "image": "https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_083.jpg",
+  "datePublished": "2023-03-30T04:00:00.000Z",
+  "dateModified": "2023-01-27T08:53:46.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "XiaoYao",
+      "url": "https://liloker.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/favicon_hacker.png"><link rel="canonical" href="https://liloker.github.io/2023/03/30/diary/diary-220814/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        const data = { value }
+
+        if (ttl != null) {
+          data.expiry = Date.now() + ttl * 86400000
+        }
+
+        localStorage.setItem(key, JSON.stringify(data))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
+
+        try {
+          const data = JSON.parse(itemStr)
+
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
+
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const hour = new Date().getHours()
+          const start = 6
+          const end = 18
+          const isNight =
+            start < end
+                ? hour < start || hour >= end
+                : hour >= start || hour < end
+          if (theme === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else theme === 'light' ? activateLightMode() : activateDarkMode()
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?f1a652ffc0084a6a5ec4853f1d82444c";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+btf.addGlobalFn('pjaxComplete', () => {
+  _hmt.push(['_trackPageview',window.location.pathname])
+}, 'baidu_analytics')
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: XiaoYao","link":"链接: ","source":"来源: 逍 遥 の B l o g","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'exp_master-220814',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/mycss.css"> <!-- 滚动条 + 旧主题的透明度/间距微调 --><meta name="generator" content="Hexo 8.1.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      if ($loadingBox.classList.contains('loaded')) return
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+
+  if (document.readyState === 'complete') {
+    preloader.endLoading()
+  } else {
+    window.addEventListener('load', preloader.endLoading)
+    document.addEventListener('DOMContentLoaded', preloader.endLoading)
+    // Add timeout protection: force end after 7 seconds
+    setTimeout(preloader.endLoading, 7000)
+  }
+
+  if (true) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div class="bg-animation" id="web_bg" style="background-image: url(https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/index_%E4%BC%B8%E6%89%8B.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/profile_knife.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">74</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archive</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw far fa-images"></i><span> Gallery</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fas fa-gamepad"></i><span> Game1</span></a></li><li><a class="site-page child" href="/gamee/"><i class="fa-fw fas fa-gamepad"></i><span> Game2</span></a></li><li><a class="site-page child" href="/gameee/"><i class="fa-fw fas fa-gamepad"></i><span> Game3</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_083.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">逍 遥 の B l o g</span></a><a class="nav-page-title" href="/"><span class="site-name">exp_master-220814</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archive</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw far fa-images"></i><span> Gallery</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/game/"><i class="fa-fw fas fa-gamepad"></i><span> Game1</span></a></li><li><a class="site-page child" href="/gamee/"><i class="fa-fw fas fa-gamepad"></i><span> Game2</span></a></li><li><a class="site-page child" href="/gameee/"><i class="fa-fw fas fa-gamepad"></i><span> Game3</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">exp_master-220814</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-03-30T04:00:00.000Z" title="发表于 2023-03-30 12:00:00">2023-03-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-27T08:53:46.000Z" title="更新于 2023-01-27 16:53:46">2023-01-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/experience/">experience</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">7</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div class="hbe hbe-container" id="hexo-blog-encrypt"
+     data-hbe-format="4"
+     data-wpm="密码不对，再试一次。"
+     data-whm="密码不对，再试一次。"
+     data-salt="a71e48cc20033e47133484e7b6483f2caa67f38872e805a2fda36b8aa6a70ce3"
+     data-nonce="8dd918ae31b65ab6461095af"
+     data-kdf-iterations="250000"
+     data-auto-save="false">
+  <script id="hbeData" type="hbeData">
+    b0135c0b4f8599df7d5136aa1d65ccb28495cf8fe8fe6a7e15a962942b37e2f53cd7a533bc5e4f3c6acce4016168e372d9ea3a1d059d294247679bf84f4efbb92c74105f20d571250c3789660a531108deb346c245e80143786f90520cb2b29d13ff1957e348d41527358e45aee00b11d9bddde907f6ff3b4fe30aef39f601889334794537ef9aaf333d3990d9a6303a7f8be84a52ce07058fd6539224db3e542c23c09c9afa507f9967dc3a6961203767ac9e29e04f5c059133e7bf6b7009e8a26e4d1ac69ddd6eba28582503818cb36ca92c54170e82e09f31288fe56596ad97932d2e5623d83951047a7bdfbd5cf66a432aecaece9bef5e927fb1cc5f22e5cbb7fda3e745ef9c169fdef7ab795c534dd3e99c926d45168aeec02e29d90c71e0939318dd30a37e06a8b1f7d0548afc051e0e75be84e4fcc6863f5f90ce21da18e79330fec0f1c765f949de370fafb4ec8a773881d2da9324113ac90b415b6af9d8fa6fb4933931924ce57e461d91fac0e6aedf197486980edffe3572e873c08cdf068fc4681c2ce5c41012eca845e9991481c0f3a362feb055e33e4c22232275cd7d8c17007108a3b3f4d20b27a3b3e147611330abeaf147214d7e6c7c6ce8a7c0b0189ae3659c5a416a27400a450e76a8e0ddd6a38e3bc3b4e0c7dfc87344cc2b5f87981afa2671585a28d7b8672bf6354daf803f638ff4bb740aebc1761cb5586a06a68cdf3c58c2727bc94549e95226eeed1b1a63a088cf52b4fb09899995ca08587622c0f878fab4f3ed61c6f0793f318bd993913a824d3ce3ee269415cbead787012a7f28789becdc8d9996b7ec87172b6d6217026aca8bbd270f2c5d314e6ba95a6e88bdde7295365dde7b6380150c21a90b5b1b0bc808ef910e4a73f314c75d5c22913522c7026ef901e5d39bf0d554b00e2384ccc2318a4fe21441918be9eaeeac9b0b06f42765a3c6b58f3e71ae2386a65a17268696676b6ce8f9f557b2b9b598e2fafe9c6d34ecaeb0a3436fd22ad1a51460b9d5676cee239423cff665ded501a8bbf23776ba582032ec218f91b75c521b5665e250d37b8b92b48b854dafb2ec604b6436a66858ec23faf24432a32d53f365618f1fe83292fb42495cf001cffaa5f62b136bca69aa5e60f73dccc8e4419d2bf8c98e43eb29f772ac4d256e5870ad371c0ade87d7cfddca71dd36b8508670ca4a7f285ca3969e4c4843130c168d4307b3e1ef23c471919f8253c47e40518dae064da8853764a6fb6e7b3761cdaa558634b2304469a769ade0ce24bce61a4914b1da0a0e3f3b68cda924addc9437377ce3354d31bcd7672826369d7473d1209ad37ddddb772d1833cd6bf622d408bab961fabff18d066a3a2ac86d096140302be45b343c63510ebc65c31fd934c79ab0575484798997fc8c73a617d2fcc54d67b19718a0640f0eaa0aff2dbebeeaebe76d70c81654a57f64dff7e1b9147b5af66bfe301e9a5df8cee74e639feb1ae385f1971430bad7a0f74fd26573712885267a02756ecd237a9c9fc105c7c534ab29b64dd12859bb20532e16fd511782cc5c077727a678176c0165cfb4591c6a41e5f073242d93b606173040cc6f40b2a81920a48c1114d05a62ca2e7c8dfeaad04e9d4b53a3727262548c556ae62f08e61e2f3e55c3539d7709cebe25f8377a2ee9ea2aa376da47f1d9a1c8687e320d6106ceeed40cd069290f24f59c578fe52f57ed3e50515783ce5491a6757f22ff0522d854dc082756ab91f80b8f3136c9e543ad5705e07a5d3180e70592f8ee60a3ace91230a8f6ce1739c23c61f1e0ea958d795a36ba4e90738ca2d914b15951653ce79b01f12c87ea85d1e5d21d5c11075a0efd04876f0a18b9d2a9e0a0acae1263aea6ef7bb57f5a35dcbf20203ed5681f9e27e07dbd6161b5cce10ec1ede42dcd7f1ae6b447433c99731fb53e5f47ff73dd4d2386748e2654e832fec7677646ddecb73db651fea7ecf56edff5d1bd05537819c781426186c5470c35048568724708745e05144ca239f0ba2bcfcf211891ed75653d730aed83f937f5b9acdee0e07b02ff9066e75c063ddd67c5eff05ace72f4aa161e815333938b50ce48388c893c62d8ace10bc20e7e33d569d7a00e557e5eae2c430a608bc254a40c1ea9a76234fbe5442dd53e9ad1ebf803f8b538baf8e57e7b29c867abab89f935245c9a1bd979b5bf30487354abbc77b9f0cc4f5895b75df832a04128d6120bb991738b0ff9bbda327aa6cb8bbf142ef8f350a91d7ef37bf970f11c02deac6fdff565c69dfe549383bf85c2d1dc6e794144892926c3f62e7157e98f2e13069a9a24c5432e967860b62fcc9a5d07f3bfefc403c6429119592be85e7a507f8ee882d7b6cff0d5c77e584ae95ae4af2c25a5a6cc8ba568b3f403374319b23da0d34c91bfd21f1b6ce552ebe195bb1b2ae223d03cc3d6a0842d4e29347cb732968a836f8d52ed0cf628c736b3725bb2a288ae483c8d4d92c5897474445021169cdd51f556594c1ff6984fa2a2221465104c9a8b99e3f5033f15d2e587c4ade61d4017efe22d71619d5477d8db1b6c3fcbf00f0331ae1fef356f2a5995e2ad2a40a1f5f061d68b260d5b0598dd5cdfa79acce4e55f713a9bc05a5f8a7b8f2230d30620679d7e19aa8ca75d84984b9906ff8689541d0e85159704c416a13cec2655f0a1dc0cfdc8b58d28f27de733e48b9fd002f1166251041415c841df70d53efa7c6ae1d33a9975c9c580cfc3bff61a670fb060059ddd709d64261ed1be377fa63c993fa1f1e7c330fcb0904a6aaf24b5443507dfc0ed50546f8f290c4e3266db194c8a3b4b7f87b6d6aa47e668f391b092c1835dded63b4c2fc166ded1d5826d278c0869f6bcad2f3012e418a8cd2b6a918c596395da66cce87af34f02578180968a1c8c5f2d42c756f6beac306bdb503019d8f95b2826ccb4719188e69075e9f5b1432074d52a36e2b53779ab2c9a2cb0b7a47de6d0445036540afe8742df0308456d4259bbd161eb54447d2a6d6048c64ef02423d0e8a790847b308591024fdb3d03eecf11f559278d3f335d9b8e6295321f94c069dc2b7fedfa01b03f7b5614837c90bd12173eaa609f5ba6952acaf28d2764de1743226abe0fbfe68548bdaaed54de126c4b6e23d2f54291515a8d1919c545d412ffbb5f36832f1dab80a7a84a20df509b8e5a2732c0e9bb53796e9a7c8375387a7035e16a3e6df8f0d67491d7d04672fd6a4f5769a19b9f2bd2ae13fc12747e758e6041c7ec3101b0bb583f1857a615c268e5a1b310653fb00b80599fd4d2354ec8f1329f058dacb049ae31f8cabe76ddc4e06f0a886a04819c3024dfa19b64ee83c75073882b9ab377c2d2224445a64947f7a8b1f02ae4ca3d5d26338baee839358c4dbd917f422ae2f8f8e8b64b43bfa84b0cab075f93ecc95434ccd87331163672fa7957291bdb3851df4af3c844c6673da0003ea29aaf76cc00396852e2ab5ddc94be5a7d675a5efb4c8919cbf0c7b619614f9ae72b0b721ae2520636e42a6dc26b98deeb7a97cc7a6e764c8d44c56185f52b55cec8a921b31f72e47ed4e01c563378cef3897d0b71763f23825902e2e415871cc860f5766abc912e83fa05d52c60e618abd2c223a13afbb2bffe11744ded316e12ca32c0f835c28ea14d1912d0be2582d646b6246dcd232aeeeae6d82306d693b6ecd4229971245566d65c578bcc498be01e22e7d04054a0b351f1fa9fcee25d45f5ebcc4a92dc839a816ad11015bad084f27a7109cb5bd949cebee082765e4a2c9f2a4b0b075223dc8035d5cc4ec8d614ae506a550359581afea3e7dcf77f06d9ac4fa5cbeb70689be924e38e0b20b8fa3985fb5f7de9979fd2de3bac5ea7ad46b1ae57302c712e68f2d7e81c5c821ed747b67051d618490d4a2cc973655cccde4627ff93b80b75e83e2f33dceae781a514da1c07978d9e8c7899fb17720c2488aaf2c597836aa04ce2e2fbd6892f16e1e67b00f485101187501f3366ddb3c9e963b225b079ededbc3c8298647cf7aa19199f24e11823bde30489b337ac408fa2af1838e8af9b9d03e8b6adc4e9ce1ccb587cc9cd2fd7aa11c1bb4c38b39d63e50350819ffaab108589da4d7d0d43bccf7765ae07412ccff1fc961938e4f875289ab2c871d428398859643cbd6226c4f423e94ddbf3ddfb360c5a178927075f6821a1869053a06ab6f3cbbd77939d76652ed6c5301ba2ef797f9ca5f53b00bd2aa29267ef297fcb747469406534346f729cdd91e4f829ec2442bf91db17daa633a2c38b6753008f7d7f8947f5e6a75163eb36f3da2b5dbb88a206ec49eabfe933eb21090978b53d353460069067ca1e757414aa0bd548c7d889bd9ca5d3da061697a7212f2005c48f4ba062a7a7eb82cfd6d44f29ea3f8362649d34912cdeca56e4e39ac6226d3bb25bc4bc3c51acd90dc74e2d6dc90f35a1283eb19fd1ff117413ea6237f565d491f904690787dfef6a9f9bcac21df1c7e21c2402e2e571d5feca7082dbcf3cab571226278be5d6e32df706f7e3fefe1a19718c5ef2c7eda6335cf76e6946d7c0d655dd67d386adcd13730ef30c82a71483a6534b85e15428f56b0d8f1f46964d0d2de82b87c0a28ed3f53489d1b91c9addbc767b52b1ff1d5268ca54e77c8c568c4d28dccdd814bf81336ed8ea3cd5a69a8ea5ef83c78d9cda2639c6e409afd46812d31063e74beb1ec93e269c1b533948a2819a698f511a84806101b8a57524199f6b885606583f0d1086ba9807967f8dacb7a01230737edf2c011732e4c916e0da6c9973edc638b706a509bebd2f0ba1252986e6f0d26292f04a2beeaddafb7468feaa1148107fad7b82b300ef3566a01b2b11633c44a5074f6a560265cd99e43febbba740f2c2539b2a9ba436fa54cc4a29954c97a596429cc4f15f159ef409e36fd80a08437a8c4f03c55285fb056e99474f3820dd717e86efad9cf3f221f260acb713e59d0affff64cae5ee9eff38fad3d63dae720b90fb3ebed02335632609c34a155f847d341b76132f648ca0fe1b38027616012fbca1e435652fcde15544b3b358fd2bceec0904dd5655259c1a37a0881d1ab8bbb98513b7288afc558d0a234d767454a0a99f180c8ee58557656b1eea995675ab0797b764b820aa2094e1b91e9a0666b2307f3696c4e68103b91a8dec3d26efe47cef60e9d4a637f538f97b708407122366ff0b4740cc6188606664bcd8dc9937c0c853172aee6dcbf9d82e726abc8168fb640585aa192174d7462953fa9def55219b4a37cd0b7974a5775a24b35a8ad46e78828154308f493139542d9ded39939b6bc5d29d468351dd76105083521db0ba8e0fde4f6f0aeb9c631f406b4d3dad56e8ee1d8e2044faaf99bce24119497daf8c211349855a0c548656d1cf1dfc4175c7f1a2dab6a91561a0af4c0727c7e03722b9bc189cac7b70fa08a20bb3358e2d79016676d4cfde783678ed7cf0484a595a95988904d4e01d2b472e7721ac2d7d12098b998125f8a3e1fe20301d35e222591a7686720969fd33abc3f7eb11abd89c044e78c2bde1968334db00a8163bada69660ea20bb837267f3dacc5368543ced67adf0742f0ede8194143a843283a7cb7c338b6c5aa5ae2de4ddd0d729c62e54b86e381fde2279045a40ef90ee91d07c7c28e281ff67b7d0ae5249d3d1c05808382237be53cbd7ce75481cbddd70c168cc65e80aed96b352bda59066c7477f020710b79a4d4802aeae645d26217a0ebeffb0cbf320c26a78aacf9a1b03ba999b0d32818e7e253e2537759de6f6298976da0f25f4ec59cdbc6cd8ac26904a2bfc9cb3bcded4dbf728dcd32213dceb85ef964c0f6d6c02557a27f99fad4f106d429c025e2c35c2e818e1ec3d8c14cb980354d36c6ade5912af525342db2a81a43c80ca42886f686d554bfc1d10cebbd8acc435e860db5631f9670b86c706c4354646199f2e6a619f4e19a59ea8237eeaeaf748b6d03d5178b7c131c5fce8c7e572e54b6b270d4a1e645c558e6cf9640bc46f7a12e9be5a2cc589b60946ffa205baa40dbfe396acf0fd5dbb9afd91657db816b556993f6c5a4e333a719bae6c430330c788af7e185495dd79b080d5e6193dd4c128e625d9ebd7976def5c9c830d61e2c3d1d0215b0df3c72f58c5628a674f75c2e785a1bd22597a88c53c73ad7e7251d00449e0b1df39e44ff0bb63d96bd23de3b6f2fc3e1cab8f68edbdf2691fb8e0ee2bc2908c8be30a0c1ad2fa07977f815243d640cad891b1718fc1b4faf17f638ff3ce18251c132e4fadda14302bdf3bbd430dbd4b770fccddf7229af7cc224fad4fee0771337f4b558cf5ed6be4b780f655eaa7fc81d090472b3cf4891b5e74c5d050d32b8538ba5fd33a6280e3e15cf7e936d2a0ddf6aed26efa761e7d6989b1508700d7580b17dc73957fac93cc7f58ce29050870985ae6b78361060b06f3276eebfa46b2fff50ba5103fa44e8d0a4df5f7cbb2981decb8dea4d3d8f8eae69ff552cdeb8bfef39710b9d3e0718f056719e4840af70c9b70f3b4af2aa0ee27bf6790c1033540a56c05f83f31cde8ce914908d3868db325aa6c7cb0a606105ad14242c96f0ae83b733500d1cc48c1ec0a2c36200dcb266d2fc8572adf926f8b6a9f9f20ef1bd569a11fd26144a82afde83dd9753a15a97901e0d8eea8c2fda9e4677a6e565a723ed7cbe41c477cbd25ead65e7911d47a86057576c7ecaac295e533c84f87a04dcb695b530fa0f126f2513edbd3038e2aa6632360850579d9088c1f2ba3133dd07e6ea0c7b58636fd7f2640b5115f892b584caa1582c1fa247a5548f8bc31dbc3e3be2fbf1ec89c1e4283be1f9f2116c0ee3e6d2a262b4c3a780bfb2a7927acb2a230d2d6282d7c7f0c6b2a6a495a788f70677cc0d49ffed3194b0a079e3d910d211e738e97c598265b8669175550057f2966d3a60323474b343d16bb8edae7be1786e2d1561c8ca7a6f2fdf13b2364bae9df3ad0ecf95391ab9997fd6d199fd92e15bc7b3231a689abb6f01dd761582883a27bd394e07ef9d53c00cde4911770c2f9772549b93d2896b9cec299616b99c0190cef35dbb64086431c3590f99c94a3fa5bc8a93b29bd09d817e22ce35713f45a5c765087eba2d7f0fddff4d9faabfe041b52bed52ebb181efe366b397678b53de37eef9d121471530a696f1ed11bdf983f097c955f6a1fe2db1993acffa0e1b0b2063484399f8095744e5bd302d70b0a76a8e0aacfa78d0475a6719954b091da987937b2c4d7b32cb8bbaf2f218bdab1ae45f30f26f083cd89f169c66d8a771017a59cf0c223231541157fa3d936ab43f00100be2de4f8bd6591e4d8be09b99fcc128a84633ccd775ab936eefdcb778398425c699c5d0b28d821a04f7f29247d136498e44858912c6318573c5775af93fd355bad07018d05fbeb960c3421c4dbc051a9c659ef9e5e4e58783aad90ae5814df0ea78d1d4c0c9413dcd86dd470f10cabf50a8ebb92d3854bbd7afced0047a6b62ae27af4c8aca63786f65fbf05c7f9c4b4ac07a0da7b1453008846e02ff0099880ae3627b24dd69fd1d86a6ba172d23795ee3e4a73014fff907e2e9d3328b6b1649482bf83f82ec73ac03ef682dd65be42d32f3435b4b68967b528d44db5f6774bae4ff2c62e30a0726f81f15379614fbcaf2c38312eedbbb0b8608adfd1276f07fe0f4931e09dae530dacced8847b90f3873c3ace26953857e81653636255df2b782b4c6e838f6a7be00bf60af96e5b6ad5a1eac0e2d4996fbdaa6845e94cce5f85f32905dd7ee010958739a8d5d09757d71772cd83a4c3cf8c293103389e74b1dfa56541026ca04bc7f4bf802879fee4bd109493f4b09f881a25e605658247bbe6e4942798d4e1d613eb8f0be54bb2557cd1e693fd4e320384130892ad0c0018360971ccf6a85cf6519d7511edac5c823e76b7c6d5d258ae83ebbd760e72ba65ab59c9cbdc5f737e0ed9a7be9872172afdface43f4bcdce3c7f2cfdf5cd933abb02c1910263145ba3b940f80ca3ddaabd411a25a38c6ac783400db9a686a69fa4f766cc4da04f75c9526d18dab0cf338dac325b6687e6601dbf3b62ea74b17734ba436a25b99a190033304762b6438934532b87d7e707c74d7e00cd9ab726f031817118180edd526bf56ba5649a71601a2b3f6c140aca2575914389f8656cea3d64135211640ea8c59c662766a19b915fa757b57ad2287edb81ac017a9eb02062eb256f034d792aee749d200d1178431c5fdc44976e325bf65681d46c0b9618fa08544ae14b8be7cd7b0f1bce5a528e25a22def81a3a69649d9d95d266251da77f27f660a6b3e603e4d25f398c164570ef8d991aa91856de76c6d9a5306485fa47dc294effa271768a51bd26ab031da15f4d001181f83b3a1a71c2a7004f9997b7845964797a61fb3475eaea363b79aba75e91bb18dce4177d56305a3412f4ec8998d09886fbc324d827a6bdc27e2e479c594dd8375f16629f2d1ec389da4135dd8c162ae1318671ac1da77bca738aa559c73627f3ef9aa790fcf6bacc1c6ec75fde1e4dcb55a0806c1144f1c601195ffb3b6e33abb104e52783f3868776fe5cb94a9cea055f35707f660a93404489b8d6a8e589e8dc9bacbe3593384ea91bd1b19ba364e87dd06fb753e41779dd82e5c86e111783ba77d720abb1563f5504c9caf41f67a7f8ff3798680b13d68faed706b1139dc7331c88410413799d3557d2d34d09e92f45c9e23d88af078665d536890d564c062037f1f660b5a61500c3bc709bfca88c09e3a0e842a74d41f8547b4fd4e94d6418e10b5658b6841503a99dbd190c14a1d2c76190141b0d88222c7378f768eb37f72354afe430574537af39d3f0cc72617e08edff984625cf33b98354107097cae52b04c6facdaec59cc91fb4475e1935cdb876265bc236e0c90994da57a64aedde746a2fa6277d23423607dcfcd78b71e53d6594102f2e6216f71eae3dedb963a8db0a174d619efb893f0a4abf74cd498f52c0ffe967c62ec32254d50c74bc10c402042cb3f159fe70a536809a397ec4b524cc4cad8776a4f397e6c4c42f7d29ae797e03bdcd9eebdbff502fbc6806efebd4f9ea5983666d3e6383f71cd302b8ec8011cbf15045004bc1a0376896a8ecc3cf644493c54c1343fcfe9078df0eeafdd9edc086374701c3c8d9bca3b5a15d2674110864c09af9f1dba3553ec06370e5a7f31895b596f78dab7a3b43492874e7b8c37e187f900bdc6ec5d87ecd0ccea1ee44d59aac1aeb94284c3c76771ae086f64bd5d32d4f6a9f8f8474986c6018489e671bdf6853a903ad6775cbe952d4d8664c4ec90b66c0e048a4a660abc727844ced8655c2cc0b988a2e75ff4a05d883bcee48b11947b7d84e7542f405942b5c85f61ef3247b64c4f6ca1747bb20a7fc743b972d700a1434f5e85899b7ebb0506d44dcb473cf2356f24c3f52ecdefce61581add86aaf008110ae4c03e8f5850591d60c90b7b5802e210ebc820c7490f014c01941e2f92f889339306111610995643754b56b9f05e5023129612b13c462ce7fdbb374d31df1ec885d0442928d7d7a615c328c6618a08eb0da75eb6fc827cb83f1e035bd7e6e2735183a1a
+  </script>
+  <div class="hbe hbe-content">
+    <form id="hbeForm" class="hbe hbe-form" onsubmit="return false">
+      <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">请输入密码</span>
+      </label>
+    </div>
+      <button class="hbe hbe-button" type="submit">Decrypt</button>
+      <div class="hbe hbe-error" role="alert" aria-live="polite"></div>
+    </form>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.51dd9f3b98.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css"></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://liloker.github.io">XiaoYao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://liloker.github.io/2023/03/30/diary/diary-220814/">https://liloker.github.io/2023/03/30/diary/diary-220814/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://liloker.github.io" target="_blank">逍 遥 の B l o g</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%BB%8F%E5%8E%86/">经历</a></div><div class="post-share"><div class="social-share" data-image="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_083.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related  no-desc" href="/2023/03/30/diary/diary-220922/" title="exp_master-220921"><img class="cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_081.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post" loading='lazy'><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">exp_master-220921</div></div></div></a><a class="pagination-related  no-desc" href="/2023/03/30/diary/diary-210716/" title="diary-201716"><img class="cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_083.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post" loading='lazy'><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">diary-201716</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related no-desc" href="/2023/03/30/diary/diary-220922/" title="exp_master-220921"><img class="cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_081.jpg" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2023-01-27</div><div class="info-item-2">exp_master-220921</div></div></div></a><a class="pagination-related no-desc" href="/2023/03/30/diary/exp_master-220508/" title="exp_master-220508"><img class="cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_083.jpg" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2022-07-08</div><div class="info-item-2">exp_master-220508</div></div></div></a><a class="pagination-related no-desc" href="/2023/03/30/diary/diary-220923/" title="diary-220923"><img class="cover" src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_082.jpg" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2022-09-23</div><div class="info-item-2">diary-220923</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img_struct4blog/profile_knife.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="author-info-name">XiaoYao</div><div class="author-info-description">多巴胺被赐予意义，人类社会便有了混沌，愿世间尚有净土，留存爱与欢喜。</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">74</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">91</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Liloker"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Liloker" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:theone@liloker.anonaddy.me" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://blog.csdn.net/weixin_42160117" target="_blank" title="CSDN"><i class="far fa-copyright"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">来了，随便坐吧~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content toc-div-class is-expand" style="display:none"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#hvv%E9%9D%A2%E8%AF%95"><span class="toc-number">1.</span> <span class="toc-text">hvv面试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E6%9C%889%E5%8F%B7"><span class="toc-number">2.</span> <span class="toc-text">7月9号</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E6%9C%8812%E6%97%A5%E2%80%94%E2%80%94%E6%8F%90%E5%89%8D%E8%BF%9B%E5%9C%BA"><span class="toc-number">2.1.</span> <span class="toc-text">7月12日——提前进场</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E6%9C%8815%E6%97%A5%E2%80%94%E2%80%94%E6%8C%89%E5%85%B5%E4%B8%8D%E5%8A%A8"><span class="toc-number">2.2.</span> <span class="toc-text">7月15日——按兵不动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E6%9C%8825%E6%97%A5%E2%80%94%E2%80%94%E6%AD%A3%E5%BC%8F%E5%BC%80%E6%88%98"><span class="toc-number">2.3.</span> <span class="toc-text">7月25日——正式开战</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8%E6%9C%888%E6%99%9A9%E7%82%B9%E2%80%94%E2%80%94%E7%BB%93%E6%9D%9F"><span class="toc-number">2.4.</span> <span class="toc-text">8月8晚9点——结束</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/10/16/%E7%8B%AC%E7%AB%8B%E5%BC%80%E5%8F%91/solo-three-apps-ai-workflow/" title="工作之余做三款上架 App：AI 写了大部分代码，那我在做什么"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/029.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="工作之余做三款上架 App：AI 写了大部分代码，那我在做什么"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/10/16/%E7%8B%AC%E7%AB%8B%E5%BC%80%E5%8F%91/solo-three-apps-ai-workflow/" title="工作之余做三款上架 App：AI 写了大部分代码，那我在做什么">工作之余做三款上架 App：AI 写了大部分代码，那我在做什么</a><time datetime="2026-10-16T13:30:00.000Z" title="发表于 2026-10-16 21:30:00">2026-10-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/09/20/%E6%8A%98%E8%85%BE%E5%90%A7/blog-publish-pipeline/" title="我的博客发布流水线：从 Obsidian 到 Cloudflare Pages"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/026.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="我的博客发布流水线：从 Obsidian 到 Cloudflare Pages"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/09/20/%E6%8A%98%E8%85%BE%E5%90%A7/blog-publish-pipeline/" title="我的博客发布流水线：从 Obsidian 到 Cloudflare Pages">我的博客发布流水线：从 Obsidian 到 Cloudflare Pages</a><time datetime="2026-09-20T12:50:00.000Z" title="发表于 2026-09-20 20:50:00">2026-09-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/09/10/experience/gpu-server-brokerage/" title="一次 GPU 服务器居间的复盘：方向与方法论"><img src="https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Myblog/img4post/cutecity/002.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="一次 GPU 服务器居间的复盘：方向与方法论"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/09/10/experience/gpu-server-brokerage/" title="一次 GPU 服务器居间的复盘：方向与方法论">一次 GPU 服务器居间的复盘：方向与方法论</a><time datetime="2026-09-10T13:40:00.000Z" title="发表于 2026-09-10 21:40:00">2026-09-10</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://imgbed4iloker.oss-cn-hangzhou.aliyuncs.com/Typora-img/cuteworld_083.jpg);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2021 - 2026 By XiaoYao</span></div><div class="footer_custom_text"><a href="https://liloker.github.io">Dominating The Information Age</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.7.0"></script><script src="/js/main.js?v=5.7.0"></script><script src="/js/tw_cn.js?v=5.7.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.14/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><div class="js-pjax"><script>(() => {
+  const parseViewBox = viewBox => {
+    if (!viewBox) return null
+    const parts = viewBox.trim().split(/[\s,]+/).map(n => Number(n))
+    if (parts.length !== 4 || parts.some(n => Number.isNaN(n))) return null
+    return parts
+  }
+
+  const getSvgViewBox = svg => {
+    const attr = parseViewBox(svg.getAttribute('viewBox'))
+    if (attr) return attr
+
+    // Fallback: use bbox to build a viewBox
+    try {
+      const bbox = svg.getBBox()
+      if (bbox && bbox.width && bbox.height) return [bbox.x, bbox.y, bbox.width, bbox.height]
+    } catch (e) {
+      // getBBox may fail on some edge cases; ignore
+    }
+
+    const w = Number(svg.getAttribute('width')) || 0
+    const h = Number(svg.getAttribute('height')) || 0
+    if (w > 0 && h > 0) return [0, 0, w, h]
+    return [0, 0, 100, 100]
+  }
+
+  const setSvgViewBox = (svg, vb) => {
+    svg.setAttribute('viewBox', `${vb[0]} ${vb[1]} ${vb[2]} ${vb[3]}`)
+  }
+
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v))
+
+  const openSvgInNewTab = ({ source, initViewBox }) => {
+    const getClonedSvg = () => {
+      if (typeof source === 'string') {
+        const template = document.createElement('template')
+        template.innerHTML = source.trim()
+        const svg = template.content.querySelector('svg')
+        return svg ? svg.cloneNode(true) : null
+      }
+      if (source && typeof source.cloneNode === 'function') {
+        return source.cloneNode(true)
+      }
+      return null
+    }
+
+    const clone = getClonedSvg()
+    if (!clone) return
+    if (initViewBox && initViewBox.length === 4) {
+      clone.setAttribute('viewBox', initViewBox.join(' '))
+    }
+    if (!clone.getAttribute('xmlns')) clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+    if (!clone.getAttribute('xmlns:xlink') && clone.innerHTML.includes('xlink:')) {
+      clone.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink')
+    }
+    // inject background to match current theme
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark'
+    const bg = getComputedStyle(document.body).backgroundColor || (isDark ? '#1e1e1e' : '#ffffff')
+    if (!clone.style.background) clone.style.background = bg
+
+    const serializer = new XMLSerializer()
+    const svgSource = serializer.serializeToString(clone)
+    const htmlSource = `<!doctype html><html><head><meta charset="utf-8" />
+      <style>
+        html, body { width: 100%; height: 100%; margin: 0; display: flex; align-items: center; justify-content: center; background: ${bg}; }
+        svg { max-width: 100%; max-height: 100%; height: auto; width: auto; }
+      </style>
+      </head><body>${svgSource}</body></html>`
+    const blob = new Blob([htmlSource], { type: 'text/html;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    window.open(url, '_blank', 'noopener')
+
+    setTimeout(() => URL.revokeObjectURL(url), 5000)
+  }
+
+  const attachMermaidViewerButton = wrap => {
+    let btn = wrap.querySelector('.mermaid-open-btn')
+    if (!btn) {
+      btn = document.createElement('button')
+      btn.type = 'button'
+      btn.className = 'mermaid-open-btn'
+      wrap.appendChild(btn)
+    }
+
+    btn.innerHTML = '<i class="fa fa-search fa-fw" aria-hidden="true"></i>'
+
+    if (!btn.__mermaidViewerBound) {
+      btn.addEventListener('click', e => {
+        e.preventDefault()
+        e.stopPropagation()
+        const svg = wrap.__mermaidOriginalSvg || wrap.querySelector('svg')
+        if (!svg) return
+        const initViewBox = wrap.__mermaidInitViewBox
+        openSvgInNewTab({ source: svg, initViewBox })
+      })
+      btn.__mermaidViewerBound = true
+    }
+  }
+
+  // Zoom around a point (px, py) in the SVG viewport (in viewBox coordinates)
+  const zoomAtPoint = (vb, factor, px, py) => {
+    const w = vb[2] * factor
+    const h = vb[3] * factor
+    const nx = px - (px - vb[0]) * factor
+    const ny = py - (py - vb[1]) * factor
+    return [nx, ny, w, h]
+  }
+
+  const initMermaidGestures = wrap => {
+    // Clean up previous event listeners and pending frames
+    if (wrap.__mermaidAbortController) {
+      wrap.__mermaidAbortController.abort()
+      if (wrap.__mermaidRafId) cancelAnimationFrame(wrap.__mermaidRafId)
+    }
+    const ac = new AbortController()
+    wrap.__mermaidAbortController = ac
+    const svg = wrap.querySelector('svg')
+    if (!svg) return
+
+    // Ensure viewBox exists so gestures always work
+    const initVb = getSvgViewBox(svg)
+    wrap.__mermaidInitViewBox = initVb
+    wrap.__mermaidCurViewBox = initVb.slice()
+    setSvgViewBox(svg, initVb)
+    // Disable default gestures to prevent scroll chaining and pinch-zoom penetration in Chrome
+    svg.style.touchAction = 'none'
+
+    // Cache BoundingClientRect, throttled on scroll to reduce reflow
+    let cachedRect = svg.getBoundingClientRect()
+    let rectDirty = false
+    const markRectDirty = () => { rectDirty = true }
+    window.addEventListener('resize', markRectDirty, { signal: ac.signal })
+    window.addEventListener('scroll', markRectDirty, { signal: ac.signal, capture: true })
+    const getRect = () => {
+      if (rectDirty) {
+        cachedRect = svg.getBoundingClientRect()
+        rectDirty = false
+      }
+      return cachedRect
+    }
+
+    // Precompute clamp bounds from initial viewBox
+    const minW = initVb[2] * 0.1
+    const maxW = initVb[2] * 10
+    const minH = initVb[3] * 0.1
+    const maxH = initVb[3] * 10
+    const clampVb = vb => {
+      const out = vb.slice()
+      out[2] = clamp(out[2], minW, maxW)
+      out[3] = clamp(out[3], minH, maxH)
+      return out
+    }
+
+    // Throttle DOM updates using requestAnimationFrame
+    let pendingVb = null
+    let rafId = null
+    const applyVb = () => {
+      if (pendingVb) {
+        wrap.__mermaidCurViewBox = pendingVb
+        setSvgViewBox(svg, pendingVb)
+        pendingVb = null
+      }
+      rafId = null
+      wrap.__mermaidRafId = null
+    }
+    const setCurVb = vb => {
+      pendingVb = clampVb(vb)
+      if (!rafId) {
+        rafId = requestAnimationFrame(applyVb)
+        wrap.__mermaidRafId = rafId
+      }
+    }
+
+    const state = {
+      pointers: new Map(),
+      startVb: null,
+      startDist: 0,
+      lastPointerX: 0,
+      lastPointerY: 0
+    }
+
+    const onPointerDown = e => {
+      if (e.pointerType === 'mouse' && e.button !== 0) return
+      svg.setPointerCapture(e.pointerId)
+      const curVb = wrap.__mermaidCurViewBox
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+      if (state.pointers.size === 1) {
+        state.startVb = curVb.slice()
+        state.lastPointerX = e.clientX
+        state.lastPointerY = e.clientY
+      } else if (state.pointers.size === 2) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        state.startDist = Math.hypot(dx, dy)
+        state.startVb = curVb.slice()
+      }
+    }
+
+    const onPointerMove = e => {
+      if (!state.pointers.has(e.pointerId)) return
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+      const curVb = wrap.__mermaidCurViewBox
+      const rect = getRect()
+      if (state.pointers.size === 1 && state.startVb) {
+        const p = state.pointers.values().next().value
+        const dxClient = p.x - state.lastPointerX
+        const dyClient = p.y - state.lastPointerY
+        state.lastPointerX = p.x
+        state.lastPointerY = p.y
+        const dx = dxClient * (curVb[2] / rect.width)
+        const dy = dyClient * (curVb[3] / rect.height)
+        setCurVb([curVb[0] - dx, curVb[1] - dy, curVb[2], curVb[3]])
+        return
+      }
+      if (state.pointers.size === 2 && state.startVb && state.startDist > 0) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        const dist = Math.hypot(dx, dy)
+        if (!dist) return
+        const factor = state.startDist / dist
+        const cx = (pts[0].x + pts[1].x) / 2
+        const cy = (pts[0].y + pts[1].y) / 2
+        const px = curVb[0] + (cx - rect.left) * (curVb[2] / rect.width)
+        const py = curVb[1] + (cy - rect.top) * (curVb[3] / rect.height)
+        setCurVb(zoomAtPoint(state.startVb, factor, px, py))
+      }
+    }
+
+    const onPointerUpOrCancel = e => {
+      // Release PointerCapture to avoid event capture anomalies
+      if (svg.hasPointerCapture && svg.hasPointerCapture(e.pointerId)) {
+        svg.releasePointerCapture(e.pointerId)
+      }
+      state.pointers.delete(e.pointerId)
+      if (state.pointers.size === 0) {
+        state.startVb = null
+        state.startDist = 0
+      } else if (state.pointers.size === 1) {
+        const p = state.pointers.values().next().value
+        state.lastPointerX = p.x
+        state.lastPointerY = p.y
+      }
+    }
+
+    const onWheel = e => {
+      // Prevent event bubbling from triggering external scroll
+      e.preventDefault()
+      e.stopPropagation()
+      // Normalize deltaY across deltaMode (Chrome uses pixels, Safari uses lines)
+      let delta = e.deltaY
+      if (e.deltaMode === 1) delta *= 16
+      else if (e.deltaMode === 2) delta *= 400
+
+      // Continuous zoom factor: smoother than fixed 1.1/0.9 steps
+      const zoomFactor = Math.pow(1.001, delta)
+
+      const curVb = wrap.__mermaidCurViewBox
+      const rect = getRect()
+      const px = curVb[0] + (e.clientX - rect.left) * (curVb[2] / rect.width)
+      const py = curVb[1] + (e.clientY - rect.top) * (curVb[3] / rect.height)
+      setCurVb(zoomAtPoint(curVb, zoomFactor, px, py))
+    }
+
+    const onDblClick = () => {
+      const init = wrap.__mermaidInitViewBox
+      if (init) setCurVb(init)
+    }
+
+    svg.addEventListener('pointerdown', onPointerDown, { signal: ac.signal })
+    svg.addEventListener('pointermove', onPointerMove, { signal: ac.signal })
+    svg.addEventListener('pointerup', onPointerUpOrCancel, { signal: ac.signal })
+    svg.addEventListener('pointercancel', onPointerUpOrCancel, { signal: ac.signal })
+    svg.addEventListener('wheel', onWheel, { passive: false, signal: ac.signal })
+    svg.addEventListener('dblclick', onDblClick, { signal: ac.signal })
+  }
+
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      // Clean up event listeners before removing old SVG
+      if (item.__mermaidAbortController) {
+        item.__mermaidAbortController.abort()
+      }
+      const oldSvg = item.querySelector('svg')
+      if (oldSvg) oldSvg.remove()
+      let config = {}
+      try {
+        config = mermaidSrc.dataset.config ? JSON.parse(mermaidSrc.dataset.config) : {}
+      } catch (e) {
+        console.warn('[mermaid] failed to parse dataset.config:', e)
+      }
+      if (!config.theme) {
+        config.theme = theme
+      }
+      const mermaidThemeConfig = `%%{init: ${JSON.stringify(config)}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+        if (true) initMermaidGestures(item)
+        item.__mermaidOriginalSvg = svg
+        if (true) attachMermaidViewerButton(item)
+      }
+
+      const handleError = err => {
+        console.error(`[mermaid] render failed for block #${index}:`, err)
+        const errorEl = document.createElement('div')
+        errorEl.className = 'mermaid-error'
+        errorEl.textContent = `Mermaid render error: ${err.message || err}`
+        mermaidSrc.insertAdjacentElement('afterend', errorEl)
+      }
+
+      try {
+        const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+        // mermaid v9 and v10 compatibility
+        if (typeof renderFn === 'string') {
+          renderMermaid(renderFn)
+        } else {
+          renderFn.then(({ svg }) => renderMermaid(svg)).catch(handleError)
+        }
+      } catch (err) {
+        handleError(err)
+      }
+    })
+  }
+
+  const codeToMermaid = $article => {
+    const codeMermaidEle = $article.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    const $article = document.getElementById('article-container')
+    if (!$article) return
+
+    if (true) codeToMermaid($article)
+    const $mermaid = $article.querySelectorAll('.mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://registry.npmmirror.com/mermaid/11.16.0/files/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  let initFn = window.walineFn || null
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = {"pageSize":10,"placeholder":"随便说点什么吧~","avatar":"retro","locale":{"nick":"昵称"}}
+
+  const destroyWaline = ele => ele.destroy()
+
+  const initWaline = (Fn, el = document, path = window.location.pathname) => {
+    const waline = Fn({
+      el: el.querySelector('#waline-wrap'),
+      serverURL: 'https://waline2-five.vercel.app/',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      comment: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyWaline = () => {
+        destroyWaline(waline)
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const loadWaline = (el, path) => {
+    if (initFn) initWaline(initFn, el, path)
+    else {
+      btf.getCSS('https://cdn.jsdelivr.net/npm/@waline/client@2.15.8/dist/waline.css')
+        .then(() => import('https://cdn.jsdelivr.net/npm/@waline/client@2.15.8/dist/waline.mjs'))
+        .then(({ init }) => {
+          initFn = init || Waline.init
+          initWaline(initFn, el, path)
+          window.walineFn = initFn
+        })
+    }
+  }
+
+  if (isShuoshuo) {
+    'Waline' === 'Waline'
+      ? window.shuoshuoComment = { loadComment: loadWaline } 
+      : window.loadOtherComment = loadWaline
+    return
+  }
+
+  if ('Waline' === 'Waline' || !true) {
+    if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><script src="/js/myjs.js" defer></script> <!-- 鼠标星星特效 --><script src="/js/deferred-widgets.js" defer></script> <!-- 首屏后再加载：看板娘 + 音乐播放器 --><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"]):not([data-fancybox])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => {
+      try {
+        fn()
+      } catch (err) {
+        console.debug('Pjax callback failed:', err)
+      }
+    })
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      if (!item.parentNode) return
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || ''
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    const responseURL = e.request && e.request.responseURL
+    if (e.request && e.request.status === 404) {
+      false
+        ? pjax.loadUrl('/404')
+        : responseURL && (window.location.href = responseURL)
+    } else if (responseURL) {
+      window.location.href = responseURL
+    }
+  })
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.7.0"></script></div></div></body></html>
